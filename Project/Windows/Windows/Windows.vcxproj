@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1F18D5C6-904F-497B-BFD5-5DA3AD3309D9}</ProjectGuid>
+    <RootNamespace>Windows</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)../../Common/Libraries/GLFW_3.0.4/include;$(ProjectDir)/../../Common/Libraries/boost_1_55_0/;$(ProjectDir)../../Common/Libraries/AMD_APP_SDK/include;$(ProjectDir)../../Common/Libraries/pugixml-1.4/src/;$(ProjectDir)../../Common/Libraries/jsoncpp-src-0.5.0/src;$(ProjectDir)../../Common/Libraries/jsoncpp-src-0.5.0/include;$(ProjectDir)../../Common/Libraries/stbimage;$(ProjectDir)../../Common/Libraries/glew-1.10.0/include;$(ProjectDir)../../Common/Libraries/openal-1.16.0/include;$(ProjectDir)../../Common/Libraries/freetype/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)/../../Common/Libraries/boost_1_55_0/boostlib;$(ProjectDir)../../Common/Libraries/AMD_APP_SDK/lib/x86;$(ProjectDir)../../Common/Libraries/glew-1.10.0/lib;$(ProjectDir)../../Common/Libraries/openal-1.16.0/lib;$(ProjectDir)../../Common/Libraries/freetype/lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(ProjectDir)../../Common/Libraries/pugixml-1.4/src/;$(ProjectDir)../../Common/Libraries/jsoncpp-src-0.5.0/src;$(ProjectDir)../../Common/Libraries/stbimage;$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)../../Common/Libraries/GLFW_3.0.4/lib/glfw3.lib;glew32.lib;opengl32.lib;OpenCL.lib;OpenAL32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_reader.cpp" />
+    <ClCompile Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_value.cpp" />
+    <ClCompile Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_writer.cpp" />
+    <ClCompile Include="..\..\Common\Libraries\pugixml-1.4\src\pugixml.cpp" />
+    <ClCompile Include="..\..\Common\Libraries\stbimage\stb_vorbis.c" />
+    <ClCompile Include="..\..\Common\Main\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\autolink.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\config.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\features.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\forwards.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\json.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\reader.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\value.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\writer.h" />
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_batchallocator.h" />
+    <ClInclude Include="..\..\Common\Libraries\pugixml-1.4\src\pugiconfig.hpp" />
+    <ClInclude Include="..\..\Common\Libraries\pugixml-1.4\src\pugixml.hpp" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_c_lexer.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_divide.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_dxt.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_herringbone_wang_tile.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_image.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_image_write.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_perlin.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_textedit.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_truetype.h" />
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stretchy_buffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_internalarray.inl" />
+    <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_internalmap.inl" />
+    <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_valueiterator.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

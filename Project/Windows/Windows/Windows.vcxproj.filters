@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{83de7bb7-0758-41c9-af94-8589d0530add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\pugixml">
+      <UniqueIdentifier>{12738b6c-431f-460c-9341-2b6ef76c8389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\json">
+      <UniqueIdentifier>{49d09566-2e16-4074-b6c2-fd7f304747f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\stbimage">
+      <UniqueIdentifier>{89feeb7d-e1f2-4f62-8044-cb8bb421c629}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Common\Main\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Libraries\pugixml-1.4\src\pugixml.cpp">
+      <Filter>Libraries\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_reader.cpp">
+      <Filter>Libraries\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_value.cpp">
+      <Filter>Libraries\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_writer.cpp">
+      <Filter>Libraries\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Libraries\stbimage\stb_vorbis.c">
+      <Filter>Libraries\stbimage</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Libraries\pugixml-1.4\src\pugiconfig.hpp">
+      <Filter>Libraries\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\pugixml-1.4\src\pugixml.hpp">
+      <Filter>Libraries\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_batchallocator.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\autolink.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\config.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\features.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\forwards.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\json.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\reader.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\value.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\writer.h">
+      <Filter>Libraries\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_c_lexer.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_divide.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_dxt.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_herringbone_wang_tile.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_image.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_image_write.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_perlin.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_textedit.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stb_truetype.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Libraries\stbimage\stretchy_buffer.h">
+      <Filter>Libraries\stbimage</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_internalarray.inl">
+      <Filter>Libraries\json</Filter>
+    </None>
+    <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_internalmap.inl">
+      <Filter>Libraries\json</Filter>
+    </None>
+    <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_valueiterator.inl">
+      <Filter>Libraries\json</Filter>
+    </None>
+  </ItemGroup>
+</Project>
