@@ -1,4 +1,4 @@
-#define STB_IMAGE_IMPLEMENTATION
+/*#define STB_IMAGE_IMPLEMENTATION
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 #include <stb_image.h>
@@ -54,18 +54,14 @@ void loadImage(std::string & filename)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glGenerateMipmap(GL_TEXTURE_2D);
 
-}
+}*/
 
-
-
-
+#include "../Core/G_Application.h"
 
 
 int main()
 {
-    FT_Library library;
-    
-    FT_Error error = FT_Init_FreeType(&library);
-
+    Gem::Application::instance()->execute();
+    Gem::Application::destroy();
     return 0;
 }

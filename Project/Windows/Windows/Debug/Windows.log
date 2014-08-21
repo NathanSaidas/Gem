@@ -1,4 +1,4 @@
-﻿Build started 20/08/2014 6:30:34 PM.
+﻿Build started 21/08/2014 3:27:31 AM.
      1>Project "C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Windows.vcxproj" on node 2 (Clean target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\Windows.lastbuildstate".
@@ -6,4 +6,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.02
+Time Elapsed 00:00:00.09
