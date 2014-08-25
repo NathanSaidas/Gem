@@ -19,16 +19,11 @@ namespace Gem
         bool isUp();
         ButtonState currentState();
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
         
     protected:
         ButtonState m_CurrentState;
     };
-
-    
-
     typedef Key Button;
 }
 

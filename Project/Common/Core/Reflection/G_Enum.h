@@ -15,12 +15,12 @@ namespace Gem
 
         
 
-        class TypeFactory;
+        class Type;
         class Enum : public Primitive
         {
         public:
             Enum():Primitive(){}
-            Enum(int aValue,char * aName):Primitive(){value = aValue; name = aName;}
+            Enum(int aValue,char * aName):Primitive(){value = aValue; m_Name = aName;}
             ~Enum(){}
             int value;
 
@@ -54,7 +54,7 @@ namespace Gem
                 return (aValue == value);
             }
             
-            friend TypeFactory;
+            friend Type;
         };
 
         //class Enum : Type

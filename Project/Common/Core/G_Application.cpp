@@ -7,6 +7,7 @@
 #include "Utilities\G_Utilities.h"
 #include "Utilities\G_Time.h"
 #include <GLFW\glfw3.h>
+#include "Entity Component\G_GameObjectManager.h"
 
 namespace Gem
 {
@@ -61,6 +62,7 @@ namespace Gem
         log("Application running");
         WindowManager * windowManager = WindowManager::instance();
         Input * input = Input::instance();
+        GameObjectManager * gom = GameObjectManager::instance();
         
         
         int mainWindowHandle = windowManager->createWindow("Main Window",1280,768);
@@ -78,13 +80,24 @@ namespace Gem
         //Update them
         while(windowManager->hasWindows())
         {
+            //Calculate delta time
             float currentTime = glfwGetTime();
             float lastTime = Time::s_CurrentTime;
             Time::s_DeltaTime = currentTime - lastTime;
             Time::s_CurrentTime = currentTime;
 
+            //Update inputs
             input->update();
+            //Update the windows (Poll Events and swap buffers)
             windowManager->update();
+            //Update all the game objects
+            gom->update();
+            //Make Render Calls on each window
+
+
+
+            gom->processDestroyRequests();
+
             
             
         
@@ -103,6 +116,7 @@ namespace Gem
     //called after run
     bool Application::deinit()
     {
+        GameObjectManager::destroy();
         Input::destroy();
         WindowManager::destroy();
         WindowManager::deinit();
@@ -110,20 +124,8 @@ namespace Gem
         return true;
     }
 
-    Type Application::getType()
+    Type * Application::getType()
     {
-        return TypeFactory::create("Application",TypeID::APPLICATION,sizeof(Application));
-    }
-    Type Application::baseType()
-    {
-        return Object::getType();
-    }
-    Type * Application::instanceOf(int & aCount)
-    {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
+        return Type::create("Application",TypeID::APPLICATION,sizeof(Application),Object::getType());
     }
 }

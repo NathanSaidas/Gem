@@ -16,9 +16,7 @@ namespace Gem
         void execute();
 
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
     private:
 
         bool init();

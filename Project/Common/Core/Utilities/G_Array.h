@@ -148,35 +148,9 @@ namespace Gem
             return m_Array[aIndex];
         }
 
-        Reflection::Type getType()
+        Reflection::Type * getType()
         {
-            return Reflection::TypeFactory::create("Array",Reflection::TypeID::ARRAY,sizeof(Array<TYPE,DEREFERENCED_TYPE>));
-        }
-        Reflection::Type baseType()
-        {
-            return Reflection::TypeFactory::create("Object",Reflection::TypeID::OBJECT,sizeof(Object));
-        }
-        Reflection::Type * instanceOf(int & aCount)
-        {
-            int prevCount = 0;
-            Reflection::Type * prevType = Object::instanceOf(prevCount);
-            aCount =  prevCount + 1;
-            char ** names = new char * [1];
-            int * typeIDs = new int[1];
-            int * sizes = new int[1];
-
-            
-
-            names[0] = "Object";
-            typeIDs[0] = Reflection::TypeID::OBJECT;
-            sizes[0] = sizeof(Object);
-
-            Reflection::Type * types = Reflection::TypeFactory::create(names,typeIDs,sizes,aCount,prevType,prevCount);
-
-            delete[]names;
-            delete[]typeIDs;
-            delete[]sizes;
-            return types;
+            return Reflection::Type::create("Array",Reflection::TypeID::ARRAY,sizeof(Array<TYPE,DEREFERENCED_TYPE>),Object::getType());
         }
         
 

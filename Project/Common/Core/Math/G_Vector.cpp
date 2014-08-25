@@ -1,6 +1,8 @@
 #include "G_Vector.h"
 #include "../Reflection/G_Reflection.h"
-
+#include "G_Math.h"
+#include "G_Quaterion.h"
+#include <pugixml.hpp>
 namespace Gem
 {
     using namespace Reflection;
@@ -13,29 +15,52 @@ namespace Gem
     Vector2::Vector2(float aX, float aY)
     {
         x = aX;
-        x = aY;
+        y = aY;
     }
     Vector2::~Vector2()
     {
     }
-    Type Vector2::getType()
+    Type * Vector2::getType()
     {
-        return TypeFactory::create("Vector2",TypeID::VECTOR2,sizeof(Vector2));
+        return Type::create("Vector2",TypeID::VECTOR2,sizeof(Vector2),Object::getType());
     }
-    Type Vector2::baseType()
+    pugi::xml_node Vector2::serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
     {
-        return Object::getType();
+        aNode.append_attribute("X") = x;
+        aNode.append_attribute("Y") = y;
+        return aNode;
     }
-    Type * Vector2::instanceOf(int & aCount)
+    bool Vector2::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
     {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
-    }
+        int threshHold = 2;
+        //if(aIncludeTypeInfo == true)
+        //{
+        //    
+        //}
+        int count = 0;
+        std::string name = "";
+        for(pugi::xml_attribute_iterator iter = aNode.attributes_begin(); iter != aNode.attributes_end(); ++iter)
+        {
+            if(count > threshHold)
+            {
+                break;
+            }
 
-
+            name = iter->name();
+            if(name == "X")
+            {
+                x = iter->as_float();
+                count ++;
+            }
+            else if(name == "Y")
+            {
+                y = iter->as_float();
+                count ++;
+            }
+            
+        }
+        return count >= threshHold;
+    }
 
     //Vector3
     Vector3::Vector3()
@@ -62,33 +87,78 @@ namespace Gem
         y = aVec.x;
         z = aVec.y;
     }
-    Vector3::Vector3(float x, float y, float z)
+    Vector3::Vector3(float aX, float aY, float aZ)
     {
-        this->x = x;
-        this->y = y;
-        this->z = z;
+        x = aX;
+        y = aY;
+        z = aZ;
     }
     Vector3::~Vector3()
     {
 
     }
+    Vector3 Vector3::rotate(float aAngle, Vector3 aAxis)
+    {
+        
+        float sinHalfAngle = (float)sin(Math::degreesToRad(aAngle / 2.0f));
+        float cosHalfAngle = (float)cos(Math::degreesToRad(aAngle / 2.0f));
 
+        float rX = aAxis.x * sinHalfAngle;
+        float rY = aAxis.y * sinHalfAngle;
+        float rZ = aAxis.z * sinHalfAngle;
+        float rW = cosHalfAngle;
 
-    Type Vector3::getType()
-    {
-        return TypeFactory::create("Vector3",TypeID::VECTOR3,sizeof(Vector3));
+        Quaterion rotation(rX,rY,rZ,rW);
+        Quaterion conjugate = rotation.conjugate();
+
+        Quaterion w = rotation.multiply((*this)).multiply(conjugate);
+
+        return Vector3(w.x,w.y,w.z);
     }
-    Type Vector3::baseType()
+    pugi::xml_node Vector3::serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
     {
-        return Object::getType();
+        aNode.append_attribute("X") = x;
+        aNode.append_attribute("Y") = y;
+        aNode.append_attribute("Z") = z;
+        return aNode;
     }
-    Type * Vector3::instanceOf(int & aCount)
+    bool Vector3::deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo )
     {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
+        int threshHold = 3;
+        int count = 0;
+        std::string name = "";
+        for(pugi::xml_attribute_iterator iter = aNode.attributes_begin(); iter != aNode.attributes_end(); ++iter)
+        {
+            if(count > threshHold)
+            {
+                break;
+            }
+
+            name = iter->name();
+            if(name == "X")
+            {
+                x = iter->as_float();
+                count ++;
+            }
+            else if(name == "Y")
+            {
+                y = iter->as_float();
+                count ++;
+            }
+            else if(name == "Z")
+            {
+                z = iter->as_float();
+                count ++;
+            }
+            
+        }
+        return count >= threshHold;
     }
+
+    Type * Vector3::getType()
+    {
+        return Type::create("Vector3",TypeID::VECTOR3,sizeof(Vector3),Object::getType());
+    }
+
 
 }

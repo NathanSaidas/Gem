@@ -43,20 +43,9 @@ namespace Gem
         }
         m_FreeNumberList.addElement(aNumber);
     }
-    Type UNG::getType()
+    Type * UNG::getType()
     {
-        return TypeFactory::create("UniqueNumberGenerator",TypeID::UNIQUE_NUMBER_GENERATOR,sizeof(UniqueNumberGenerator));
+        return Type::create("UniqueNumberGenerator",TypeID::UNIQUE_NUMBER_GENERATOR,sizeof(UniqueNumberGenerator),Object::getType());
     }
-    Type UNG::baseType()
-    {
-        return Object::getType();
-    }
-    Type * UNG::instanceOf(int & aCount)
-    {
-        int aPrevCount;
-        Type * aPrevTypes = Object::instanceOf(aCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,aPrevCount+1,aPrevTypes,aPrevCount);
-        return types;
-    }
+
 }

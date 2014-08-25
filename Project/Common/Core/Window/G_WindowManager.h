@@ -26,10 +26,12 @@ namespace Gem
         void detachHook(WindowHook * aHook, int aHandle);
 
         int getFocusedWindow();
+        inline int getMainWindowID()
+        {
+            return 0;
+        }
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
     private:
         static WindowManager * s_Instance;
         WindowManager();

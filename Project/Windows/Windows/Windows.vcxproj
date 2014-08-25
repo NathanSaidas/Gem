@@ -69,21 +69,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Common\Core\Base Objects\G_Object.cpp" />
+    <ClCompile Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.cpp" />
+    <ClCompile Include="..\..\Common\Core\Entity Component\G_GameObjectManager.cpp" />
+    <ClCompile Include="..\..\Common\Core\Entity Component\G_Component.cpp" />
+    <ClCompile Include="..\..\Common\Core\Entity Component\G_GameObject.cpp" />
     <ClCompile Include="..\..\Common\Core\G_Application.cpp" />
     <ClCompile Include="..\..\Common\Core\Input\G_Input.cpp" />
     <ClCompile Include="..\..\Common\Core\Input\G_Key.cpp" />
     <ClCompile Include="..\..\Common\Core\Input\G_InputAxis.cpp" />
+    <ClCompile Include="..\..\Common\Core\Math\G_Matrix.cpp" />
     <ClCompile Include="..\..\Common\Core\Math\G_Vector.cpp" />
+    <ClCompile Include="..\..\Common\Core\Math\G_Quaterion.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\Allocator.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\LinearAllocator.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\G_Memory.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\PoolAllocator.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_Class.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_Interface.cpp" />
+    <ClCompile Include="..\..\Common\Core\Reflection\G_SerializedField.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_TypeFactory.cpp" />
+    <ClCompile Include="..\..\Common\Core\Reflection\G_Type.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\G_Time.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\G_UniqueNumberGenerator.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\G_Utilities.cpp" />
+    <ClCompile Include="..\..\Common\Core\Window\G_Screen.cpp" />
     <ClCompile Include="..\..\Common\Core\Window\G_Window.cpp" />
     <ClCompile Include="..\..\Common\Core\Window\G_WindowHook.cpp" />
     <ClCompile Include="..\..\Common\Core\Window\G_WindowManager.cpp" />
@@ -96,12 +105,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\Core\Base Objects\G_Object.h" />
+    <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.h" />
+    <ClInclude Include="..\..\Common\Core\Entity Component\G_GameObjectManager.h" />
+    <ClInclude Include="..\..\Common\Core\Entity Component\G_Component.h" />
+    <ClInclude Include="..\..\Common\Core\Entity Component\G_GameObject.h" />
     <ClInclude Include="..\..\Common\Core\G_Application.h" />
     <ClInclude Include="..\..\Common\Core\Input\G_Input.h" />
     <ClInclude Include="..\..\Common\Core\Input\G_Key.h" />
     <ClInclude Include="..\..\Common\Core\Input\G_KeyDef.h" />
     <ClInclude Include="..\..\Common\Core\Input\G_InputAxis.h" />
     <ClInclude Include="..\..\Common\Core\Math\G_Math.h" />
+    <ClInclude Include="..\..\Common\Core\Math\G_Matrix.h" />
+    <ClInclude Include="..\..\Common\Core\Math\G_Quaterion.h" />
     <ClInclude Include="..\..\Common\Core\Math\G_Vector.h" />
     <ClInclude Include="..\..\Common\Core\Memory\Allocator.h" />
     <ClInclude Include="..\..\Common\Core\Memory\LinearAllocator.h" />
@@ -109,10 +124,12 @@
     <ClInclude Include="..\..\Common\Core\Memory\PoolAllocator.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Class.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Enum.h" />
+    <ClInclude Include="..\..\Common\Core\Reflection\G_Field.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Interface.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Operators.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Primitive.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Reflection.h" />
+    <ClInclude Include="..\..\Common\Core\Reflection\G_SerializedField.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Type.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_TypeFactory.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Types.h" />
@@ -120,6 +137,8 @@
     <ClInclude Include="..\..\Common\Core\Utilities\G_Time.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_UniqueNumberGenerator.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_Utilities.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\G_IXmlSerializable.h" />
+    <ClInclude Include="..\..\Common\Core\Window\G_Screen.h" />
     <ClInclude Include="..\..\Common\Core\Window\G_Window.h" />
     <ClInclude Include="..\..\Common\Core\Window\G_WindowManager.h" />
     <ClInclude Include="..\..\Common\Core\Window\G_WindowHook.h" />

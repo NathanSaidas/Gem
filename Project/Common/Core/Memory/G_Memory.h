@@ -4,11 +4,15 @@
 
 #include "PoolAllocator.h"
 #include "../Base Objects/G_Object.h"
+#include "../Reflection/G_Operators.h"
 
 //Byte Defintiions
 #define KILO_BYTE 1024             //1024
 #define MEGA_BYTE 1024 * KILO_BYTE //1048576
 #define GIGA_BYTE 1024 * MEGA_BYTE //1073741824
+
+#define ASSERT_MEMORY_LEAK 1
+
 namespace Gem
 {
     namespace Memory
@@ -34,7 +38,7 @@ namespace Gem
 
         //There is currently 8 block sizes in powers of two
         //There is a ninth block size which is to be user defined.
-        enum class Allocator
+        enum class BlockSize
         {
             BLOCK_8,
             BLOCK_16,
@@ -46,6 +50,13 @@ namespace Gem
             BLOCK_1024,
             BLOCK_BIG,
             BLOCK_COUNT
+        };
+        enum class ByteSize
+        {
+            BYTE,
+            KILOBYTE,
+            MEGABYTE,
+            GIGABYTE
         };
 
         //Short hand functions for allocation and deallocation (instantiate and destroy)
@@ -69,6 +80,9 @@ namespace Gem
         {
             return MemoryManager::instance()->destroy<T>(aPtr,aLength);
         }
+
+        Object * destroySize(Object * aPtr, int aSize);
+        
     }
 
     class MemoryManager : public Object
@@ -103,12 +117,16 @@ namespace Gem
                 //Bad Size
                 return nullptr;
             }
-            return allocator->allocate<T>(aLength);
+            T * address = allocator->allocate<T>(aLength);
+            return address;
         }
         
         //Get the allocator of the proper size and deallocate for the object T
         //the ptr is returned as is if it was null or invalid allocator
         //a nullptr is returned after deallocating
+
+        Object * destroySize(Object * aPtr, int aSize);
+
         template<class T>
         T * destroy(void * aPtr)
         {
@@ -137,10 +155,14 @@ namespace Gem
             return nullptr;
         }
         
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
 
+        int getTotalBytesUsed();
+        int getBytesUsed(int aSize);
+        int getTotalBytesFree();
+        int getTotalBytesFree(Memory::ByteSize aByteSize);
+        int getBytesFree(Memory::BlockSize aBlockSize);
+        int getBytesFree(Memory::BlockSize aBlockSize, Memory::ByteSize aByteSize);
     private:
         static MemoryManager * s_Instance;
         MemoryManager();
@@ -160,7 +182,10 @@ namespace Gem
         void * m_Block1024;      //7
         void * m_BigBlock;       //8
         //Array of Allocators
-        PoolAllocator * m_Allocator[Memory::Allocator::BLOCK_COUNT];
+        PoolAllocator * m_Allocator[Memory::BlockSize::BLOCK_COUNT];
+
+        //For memory leak  report
+        friend Allocator;
         
     };
 

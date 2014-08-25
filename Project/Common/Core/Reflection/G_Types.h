@@ -11,11 +11,17 @@ namespace Gem
             //ADD TYPES TO LIST
             enum TypeID
             {
-                INVALID_ID = 0,
-                NONE,
-                CLASS,
+                NONE = -2,
+                INVALID_ID = -1,
+                CLASS = 0,
                 INTERFACE,
                 OBJECT,
+                //Primitive Types
+                INT,
+                FLOAT,
+                CHAR_PTR,
+                BOOLEAN,
+                //
                 STRING,
                 ARRAY,
                 ALLOCATOR,
@@ -32,6 +38,18 @@ namespace Gem
                 VECTOR2,
                 VECTOR3,
                 VECTOR4,
+                MATRIX_4X4,
+                QUATERION,
+
+                //ENTITY COMPONENT
+                GAME_OBJECT,
+                //COMPONENTS
+                COMPONENT,
+                TRANSFORM,
+
+                //END COMPONENTS
+                GAME_OBJECT_MANAGER,
+                SCREEN
 
             };
         }

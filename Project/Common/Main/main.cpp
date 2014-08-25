@@ -57,11 +57,12 @@ void loadImage(std::string & filename)
 }*/
 
 #include "../Core/G_Application.h"
-
+#include "../Core/Memory/G_Memory.h"
 
 int main()
 {
     Gem::Application::instance()->execute();
     Gem::Application::destroy();
+    Gem::MemoryManager::destroy();
     return 0;
 }

@@ -61,20 +61,9 @@ namespace Gem
         return m_CurrentState;
     }
 
-    Type Key::getType()
+    Type * Key::getType()
     {
-        return TypeFactory::create("Key",TypeID::KEY,sizeof(Key));
+        return Type::create("Key",TypeID::KEY,sizeof(Key),Object::getType());
     }
-    Type Key::baseType()
-    {
-        return Object::getType();
-    }
-    Type * Key::instanceOf(int & aCount)
-    {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
-    }
+
 }

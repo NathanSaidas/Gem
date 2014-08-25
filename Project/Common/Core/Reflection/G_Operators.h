@@ -2,7 +2,7 @@
 #define G_OPERATORS_H
 
 #include "G_Type.h"
-#include "G_TypeFactory.h"
+#include "G_Types.h"
 #include "G_Class.h"
 #include "G_Enum.h"
 
@@ -11,73 +11,116 @@ namespace Gem
     namespace Reflection
     {
         //Reflection Operators
-        inline char * nameOf(Type & aType)
+        inline char * nameOf(Type * aType)
         {
-            return TypeFactory::nameOf(aType);
+            return Type::nameOf(aType);
         }
+        //Frees the type it allocated
         inline char * nameOf(Class & aClass)
         {
-            return TypeFactory::nameOf(aClass.getType());
+            char * result = "";
+            Type * type = aClass.getType();
+            if(type != nullptr)
+            {
+                result = Type::nameOf(type);
+                Type::freeType(type);
+            }
+            return result;
         }
+        //Frees the type it allocated
         inline char * nameOf(Class * aClass)
         {
+            char * result = "";
             if(aClass != nullptr)
             {
-                return TypeFactory::nameOf(aClass->getType());
+                Type * type = aClass->getType();
+                if(type != nullptr)
+                {
+                    result = Type::nameOf(type);
+                    Type::freeType(type);
+                }
             }
-            return "";
+            return result;
         }
-        inline char * nameOf(Enum aEnum)
+        //inline char * nameOf(Enum aEnum)
+        //{
+        //    return Type::nameOf(aEnum);
+        //}
+        //inline char * nameOf(Enum * aEnum)
+        //{
+        //    if(aEnum == nullptr)
+        //    {
+        //        return "";
+        //    }
+        //    return Type::nameOf((*aEnum));
+        //}
+        inline int typeID(Type * aType)
         {
-            return TypeFactory::nameOf(aEnum);
-        }
-        inline char * nameOf(Enum * aEnum)
-        {
-            if(aEnum == nullptr)
-            {
-                return "";
-            }
-            return TypeFactory::nameOf((*aEnum));
-        }
-        inline int typeID(Type & aType)
-        {
-            return TypeFactory::typeID(aType);
+            return Type::typeID(aType);
         }
         inline int typeID(Class & aClass)
         {
-            return TypeFactory::typeID(aClass.getType());
+            int result = TypeID::INVALID_ID;
+
+            Type * type = aClass.getType();
+            if(type != nullptr)
+            {
+                result = Type::typeID(type);
+                Type::freeType(type);
+            }
+
+            return result;
         }
         inline int typeID(Class * aClass)
         {
+            int result = TypeID::INVALID_ID;
             if(aClass != nullptr)
             {
-                return TypeFactory::typeID(aClass->getType());
+                Type * type = aClass->getType();
+                if(type != nullptr)
+                {
+                    result = Type::typeID(type);
+                    Type::freeType(type);
+                }
             }
-            return 0;
+            return result;
         }
         
         template<class T>
-        Type typeOf()
+        Type * typeOf()
         {
             T type;
             return type.getType();
         }
 
-        inline int sizeOf(Type & aType)
+        inline int sizeOf(Type * aType)
         {
-            return TypeFactory::sizeOf(aType);
+            return Type::sizeOf(aType);
         }
         inline int sizeOf(Class & aClass)
         {
-            return TypeFactory::sizeOf(aClass.getType());
+            int result = 0;
+            Type * type = aClass.getType();
+            if(type != nullptr)
+            {
+                result = Type::sizeOf(type);
+                Type::freeType(type);
+            }
+            return result;
         }
         inline int sizeOf(Class * aClass)
         {
+            int result = 0;
             if(aClass != nullptr)
             {
-                return TypeFactory::sizeOf(aClass->getType());
+                Type * type = aClass->getType();
+                if(type != nullptr)
+                {
+                    result = Type::sizeOf(type);
+                    Type::freeType(type);
+                }
             }
-            return 0;
+            return result;
         }
     }
 }

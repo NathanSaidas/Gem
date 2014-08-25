@@ -158,20 +158,9 @@ namespace Gem
         return m_CurrentValue;
     }
 
-    Type InputAxis::getType()
+    Type * InputAxis::getType()
     {
-        return TypeFactory::create("InputAxis",TypeID::WINDOW_HOOK,sizeof(InputAxis));
+        return Type::create("InputAxis",TypeID::WINDOW_HOOK,sizeof(InputAxis),Object::getType());
     }
-    Type InputAxis::baseType()
-    {
-        return Object::getType();
-    }
-    Type * InputAxis::instanceOf(int & aCount)
-    {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
-    }
+
 }

@@ -8,6 +8,7 @@
 #include "G_Enum.h"
 #include "G_TypeFactory.h"
 #include "G_Operators.h"
+#include "G_Field.h"
 
 
 namespace OnLooker

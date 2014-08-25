@@ -3,6 +3,12 @@
 
 #include "../Base Objects/G_Object.h"
 
+#include "../Entity Component/G_GameObject.h"
+#include "../Utilities/G_Array.h"
+
+#include "../Math/G_Math.h"
+
+
 namespace Gem
 {
     class Window;
@@ -14,9 +20,7 @@ namespace Gem
         //Gets invoked by the window
         virtual void update();
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
 
     protected:
         bool isFocused();
@@ -29,6 +33,11 @@ namespace Gem
 
         float m_Timer;
         float m_CurrentTime;
+
+        int m_CoolField;
+        Vector3 m_Position;
+
+        Array<GameObject*,GameObject> m_GameObjects;
     };
 }
 

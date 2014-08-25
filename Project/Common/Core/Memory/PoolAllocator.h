@@ -111,6 +111,25 @@ namespace Gem
             m_NumberOfAllocations--;
         }
 
+        inline void deallocateSize(Object * p)
+        {
+            //Make sure the address is valid
+            ASSERT(p != nullptr);
+            if(p == nullptr)
+            {
+                return;
+            }
+
+            p->Object::~Object();
+
+            //Adjust the ferelist pointer
+            *((void**)p) = m_FreeList;
+            m_FreeList = (void**)p;
+            //Modify memory stats
+            m_UsedMemory -= m_ObjectSize;
+            m_NumberOfAllocations--;
+        }
+
         /*
         *   Function: deallocate
         *   Return Type: void
@@ -137,9 +156,14 @@ namespace Gem
             m_NumberOfAllocations--;
         }
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        
+
+        virtual Reflection::Type * getType();
+
+        inline int objectSize()
+        {
+            return m_ObjectSize;
+        }
 
     private:
         PoolAllocator(const PoolAllocator&){}

@@ -13,11 +13,9 @@ namespace Gem
         public:
             Class(){}
             ~Class(){}
-
+    
             //3 Basic functions to establish a type
-            virtual Type getType();
-            virtual Type baseType();
-            virtual Type * instanceOf(int & aCount);
+            virtual Type * getType();
         protected:
             
             

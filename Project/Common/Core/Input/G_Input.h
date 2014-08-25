@@ -31,8 +31,8 @@ namespace Gem
             return false;
         }
         //returns true if the key is up (released)
-        inline
-        bool getKeyUp(KeyCode aKeyCode)
+        
+        inline bool getKeyUp(KeyCode aKeyCode)
         {
             if(m_Keys[(int)aKeyCode] != nullptr)
             {
@@ -43,8 +43,8 @@ namespace Gem
 
         //returns true if the key is down or pressed
         //returns false if the key is up or released
-        inline
-        bool getKey(KeyCode aKeyCode)
+        
+        inline bool getKey(KeyCode aKeyCode)
         {
             if(m_Keys[(int)aKeyCode] != nullptr)
             {
@@ -106,12 +106,12 @@ namespace Gem
         AxisCode getAxisNegativeKey(std::string aName , int aKey);
         bool getAxisResetOnRelease(std::string aName );
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
     private:
-        Key * m_Keys[(int)KeyCode::COUNT];
-        Button * m_MouseButtons[(int)MouseButton::COUNT];
+        //Key * m_Keys[(int)KeyCode::COUNT];
+        //Button * m_MouseButtons[(int)MouseButton::COUNT];
+        std::vector<Key*> m_Keys;
+        std::vector<Button*> m_MouseButtons;
 
         Vector2 m_MouseScrollWheel;
 

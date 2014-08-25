@@ -9,7 +9,7 @@ namespace Gem
         class Primitive
         {
         protected:
-            char * name;
+            char * m_Name;
         };
     };
 }

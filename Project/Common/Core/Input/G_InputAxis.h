@@ -28,9 +28,7 @@ namespace Gem
         AxisCode negativeKey(int aKey);
         float axisValue();
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
     private:
         static const int MAX_AXIS_KEYS = 2;
         static const float AXIS_INCREMENT_SPEED;

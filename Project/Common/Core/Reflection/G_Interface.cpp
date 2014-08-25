@@ -6,9 +6,9 @@ namespace Gem
 {
     namespace Reflection
     {
-        Type Interface::getType()
+        Type * Interface::getType()
         {
-            return TypeFactory::create("Interface",TypeID::INTERFACE,sizeof(Interface));
+            return Type::create("Interface",TypeID::INTERFACE,sizeof(Interface),nullptr);
         }
     }
 }

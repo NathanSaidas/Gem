@@ -28,13 +28,18 @@ namespace Gem
 
     Input::Input()
     {
+        //For use when allocating memory dynamically.
+        //However there is a weird memory glitch.
+        //m_Keys = Memory::instantiate<Key*>();
+        //m_MouseButtons = Memory::instantiate<Button*>();
+
         for(int i = 0; i < (int)KeyCode::COUNT; i++)
         {
-            m_Keys[i] = Memory::instantiate<Key>();
+            m_Keys.push_back(Memory::instantiate<Key>());
         }
         for(int i = 0; i < (int)MouseButton::COUNT; i++)
         {
-            m_MouseButtons[i] = Memory::instantiate<Button>();
+            m_MouseButtons.push_back(Memory::instantiate<Button>());
         }
         m_CurrentWindowID = -1;
     }
@@ -48,6 +53,13 @@ namespace Gem
         {
             m_MouseButtons[i] = Memory::destroy<Button>(m_MouseButtons[i]);
         }
+
+        m_Keys.clear();
+        m_MouseButtons.clear();
+        //For use when allocating memory dynamically.
+        //However there is a weird memory glitch.
+        //m_Keys = Memory::destroy<Key*>(m_Keys,(int)KeyCode::COUNT);
+        //m_MouseButtons = Memory::destroy<Button*>(m_MouseButtons,(int)MouseButton::COUNT);
     }
 
     //int Input::getKeyState(KeyCode aKeyCode)
@@ -233,20 +245,9 @@ namespace Gem
         return true;
     }
 
-    Type Input::getType()
+    Type * Input::getType()
     {
-        return TypeFactory::create("Input",TypeID::INPUT,sizeof(Input));
+        return Type::create("Input",TypeID::INPUT,sizeof(Input),Object::getType());
     }
-    Type Input::baseType()
-    {
-        return Object::getType();
-    }
-    Type * Input::instanceOf(int & aCount)
-    {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
-    }
+
 }

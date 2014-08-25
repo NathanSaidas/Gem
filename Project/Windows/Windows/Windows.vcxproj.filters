@@ -41,6 +41,12 @@
     <Filter Include="Core\Math">
       <UniqueIdentifier>{5a1f5557-f58a-40f7-b43d-ed790dec3c17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Entity Component">
+      <UniqueIdentifier>{25e5bf8d-f952-403a-b535-8bd496b38b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Entity Component\Engine Components">
+      <UniqueIdentifier>{403b7bb0-6be7-4f05-bcf8-695187a5067b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Common\Main\main.cpp">
@@ -117,6 +123,33 @@
     </ClCompile>
     <ClCompile Include="..\..\Common\Core\Input\G_InputAxis.cpp">
       <Filter>Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Entity Component\G_GameObject.cpp">
+      <Filter>Core\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Entity Component\G_Component.cpp">
+      <Filter>Core\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Entity Component\G_GameObjectManager.cpp">
+      <Filter>Core\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Math\G_Matrix.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.cpp">
+      <Filter>Core\Entity Component\Engine Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Math\G_Quaterion.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Window\G_Screen.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Reflection\G_Type.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Reflection\G_SerializedField.cpp">
+      <Filter>Core\Reflection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +302,36 @@
     </ClInclude>
     <ClInclude Include="..\..\Common\Core\Input\G_InputAxis.h">
       <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Entity Component\G_GameObject.h">
+      <Filter>Core\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Entity Component\G_Component.h">
+      <Filter>Core\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Entity Component\G_GameObjectManager.h">
+      <Filter>Core\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Math\G_Matrix.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Math\G_Quaterion.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.h">
+      <Filter>Core\Entity Component\Engine Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Window\G_Screen.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Reflection\G_Field.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\G_IXmlSerializable.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Reflection\G_SerializedField.h">
+      <Filter>Core\Reflection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

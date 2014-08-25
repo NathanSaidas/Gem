@@ -2,11 +2,12 @@
 #define OL_VECTOR_H
 
 #include "../Base Objects/G_Object.h"
+#include "../Utilities/G_IXmlSerializable.h"
 #include <math.h>
 
 namespace Gem
 {
-    class Vector2 : public Object
+    class Vector2 : public Object , IXmlSerializable
     {
     public:
         Vector2();
@@ -133,9 +134,7 @@ namespace Gem
             return aFrom * aTime + aTo * time;
         }
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
 
         static Vector2 one()
         {
@@ -146,20 +145,28 @@ namespace Gem
             return Vector2();
         }
         
+        virtual pugi::xml_node serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
+        virtual bool deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         //Members
         union
         {
-            float x;
-            float y;
+            struct
+            {
+                float x;
+                float y;
+            };
         };
         union
         {
-            float u;
-            float v;
+            struct
+            {
+                float u;
+                float v;
+            };
         };
     };
 
-    class Vector3 : public Object
+    class Vector3 : public Object, IXmlSerializable
     {
     public:
         Vector3();
@@ -185,6 +192,14 @@ namespace Gem
         {
             return Vector3(x - aVec.x, y - aVec.y, z - aVec.z);
         }
+        inline static Vector3 subtract(const Vector3 & aLeft, const Vector3 & aRight)
+        {
+            Vector3 result;
+            result.x = aLeft.x - aRight.x;
+            result.y = aLeft.y - aRight.y;
+            result.z = aLeft.z - aRight.z;
+            return result;
+        }
         inline Vector3 multiply(Vector2 & aVec)
         {
             return Vector3(x * aVec.x,y * aVec.y,z);
@@ -192,6 +207,10 @@ namespace Gem
         inline Vector3 multiply(Vector3 & aVec)
         {
             return Vector3(x * aVec.x, y * aVec.y, z * aVec.z);
+        }
+        Vector3 & operator *(Vector3 & aVec)
+        {
+            return multiply(aVec);
         }
         inline Vector3 divide(Vector2 & aVec)
         {
@@ -211,15 +230,22 @@ namespace Gem
             return Vector3(x / aValue, y / aValue, z / aValue);
         }
 
-        inline float dot(Vector3 & aVec)
+        inline float dot(const Vector3 & aVec)
         {
             return x * aVec.x + y * aVec.y + z * aVec.z;
         }
-        inline Vector3 cross(Vector3 & aVec)
+        inline Vector3 cross(const Vector3 & aVec)
         {
             return Vector3(y * aVec.z - z * aVec.y, z * aVec.x - x * aVec.z, x * aVec.y - y * aVec.x);
         }
-        
+        inline static Vector3 cross(const Vector3 & aLeft, const Vector3 & aRight)
+        {
+            Vector3 result;
+            result.x = aLeft.y * aRight.z - aLeft.z * aRight.y;
+            result.y = aLeft.z * aRight.x - aLeft.x * aRight.z;
+            result.z = aLeft.x * aRight.y - aLeft.y * aRight.x;
+            return result;
+        }
         inline float length()
         {
             return sqrtf(x * x + y * y + z * z);
@@ -241,23 +267,70 @@ namespace Gem
             z /= len;
         }
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        Vector3 rotate(float aAngle, Vector3 aAxis);
 
+        virtual Reflection::Type * getType();
 
+        inline static const Vector3 one()
+        {
+            return Vector3(1.0f,1.0f,1.0f);
+        }
+        inline static const Vector3 zero()
+        {
+            return Vector3(0.0f,0.0f,0.0f);
+        }
+        inline static const Vector3 up()
+        {
+            return Vector3(0.0f,1.0f,0.0f);
+        }
+        inline static const Vector3 forward()
+        {
+            return Vector3(0.0f,0.0f,1.0f);
+        }
         //Members
+        //union
+        //{
+        //    float x;
+        //    float r;
+        //};
+        //union
+        //{
+        //    float y;
+        //    float g;
+        //};
+        //union
+        //{
+        //    float z;
+        //    float b;
+        //};
+        float x;
+        float y;
+        float z;
+
+        virtual pugi::xml_node serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
+        virtual bool deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
+    };
+
+    class Vector4
+    {
+    public:
+        Vector4(){}
+        Vector4(float aX, float aY, float aZ, float aW)
+            : x(aX), y(aY), z(aZ),w(aW){}
+
         union
         {
             float x;
             float y;
             float z;
+            float w;
         };
         union
         {
             float r;
             float g;
             float b;
+            float a;
         };
     };
 }

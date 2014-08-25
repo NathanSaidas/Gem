@@ -38,21 +38,9 @@ namespace Gem
     }
 
     //Reflection Virtuals
-    Type Window::getType()
+    Type * Window::getType()
     {
-        return TypeFactory::create("Window", TypeID::WINDOW, sizeof(Window));
-    }
-    Type Window::baseType()
-    {
-        return Object::getType();
-    }
-    Type * Window::instanceOf(int & aCount)
-    {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
+        return Type::create("Window", TypeID::WINDOW, sizeof(Window),Object::getType());
     }
 
     //These are events that will be sent from a window manager

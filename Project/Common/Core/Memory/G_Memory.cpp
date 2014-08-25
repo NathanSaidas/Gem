@@ -4,6 +4,14 @@
 
 namespace Gem
 {
+    namespace Memory
+    {
+        Object * destroySize(Object * aPtr, int aSize)
+        {
+            return MemoryManager::instance()->destroySize(aPtr,aSize);
+        }
+    }
+
     MemoryManager * MemoryManager::s_Instance;
     MemoryManager * MemoryManager::instance()
     {
@@ -34,20 +42,30 @@ namespace Gem
         m_Block512 = malloc(Memory::BLOCK_512_ALLOC_SIZE);
         m_Block1024 = malloc(Memory::BLOCK_1024_ALLOC_SIZE);
         m_BigBlock = malloc(Memory::BIG_BLOCK_ALLOC_SIZE);
+
+        //m_Block8 = ::operator new(Memory::BLOCK_8_ALLOC_SIZE);
+        //m_Block16 = ::operator new(Memory::BLOCK_16_ALLOC_SIZE);
+        //m_Block32 = ::operator new(Memory::BLOCK_32_ALLOC_SIZE);
+        //m_Block64 = ::operator new(Memory::BLOCK_64_ALLOC_SIZE);
+        //m_Block128 = ::operator new(Memory::BLOCK_128_ALLOC_SIZE);
+        //m_Block256 = ::operator new(Memory::BLOCK_256_ALLOC_SIZE);
+        //m_Block512 = ::operator new(Memory::BLOCK_512_ALLOC_SIZE);
+        //m_Block1024 = ::operator new(Memory::BLOCK_1024_ALLOC_SIZE);
+        //m_BigBlock = ::operator new(Memory::BIG_BLOCK_ALLOC_SIZE);
         //Create the Pool Allocators
-        m_Allocator[(int)Memory::Allocator::BLOCK_8] = new PoolAllocator(8,8,Memory::BLOCK_8_ALLOC_SIZE,m_Block8);
-        m_Allocator[(int)Memory::Allocator::BLOCK_16] = new PoolAllocator(16,8,Memory::BLOCK_16_ALLOC_SIZE,m_Block16);
-        m_Allocator[(int)Memory::Allocator::BLOCK_32] = new PoolAllocator(32,8,Memory::BLOCK_32_ALLOC_SIZE,m_Block32);
-        m_Allocator[(int)Memory::Allocator::BLOCK_64] = new PoolAllocator(64,8,Memory::BLOCK_64_ALLOC_SIZE,m_Block64);
-        m_Allocator[(int)Memory::Allocator::BLOCK_128] = new PoolAllocator(128,8,Memory::BLOCK_16_ALLOC_SIZE,m_Block128);
-        m_Allocator[(int)Memory::Allocator::BLOCK_256] = new PoolAllocator(256,8,Memory::BLOCK_256_ALLOC_SIZE,m_Block256);
-        m_Allocator[(int)Memory::Allocator::BLOCK_512] = new PoolAllocator(512,8,Memory::BLOCK_512_ALLOC_SIZE,m_Block512);
-        m_Allocator[(int)Memory::Allocator::BLOCK_1024] = new PoolAllocator(1024,8,Memory::BLOCK_1024_ALLOC_SIZE,m_Block1024);
-        m_Allocator[(int)Memory::Allocator::BLOCK_BIG] = new PoolAllocator(Memory::BIG_BLOCK_SIZE,8,Memory::BIG_BLOCK_ALLOC_SIZE,m_BigBlock);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_8] = new PoolAllocator(8,8,Memory::BLOCK_8_ALLOC_SIZE,m_Block8);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_16] = new PoolAllocator(16,8,Memory::BLOCK_16_ALLOC_SIZE,m_Block16);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_32] = new PoolAllocator(32,8,Memory::BLOCK_32_ALLOC_SIZE,m_Block32);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_64] = new PoolAllocator(64,8,Memory::BLOCK_64_ALLOC_SIZE,m_Block64);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_128] = new PoolAllocator(128,8,Memory::BLOCK_16_ALLOC_SIZE,m_Block128);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_256] = new PoolAllocator(256,8,Memory::BLOCK_256_ALLOC_SIZE,m_Block256);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_512] = new PoolAllocator(512,8,Memory::BLOCK_512_ALLOC_SIZE,m_Block512);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_1024] = new PoolAllocator(1024,8,Memory::BLOCK_1024_ALLOC_SIZE,m_Block1024);
+        m_Allocator[(int)Memory::BlockSize::BLOCK_BIG] = new PoolAllocator(Memory::BIG_BLOCK_SIZE,8,Memory::BIG_BLOCK_ALLOC_SIZE,m_BigBlock);
     }
     MemoryManager::~MemoryManager()
     {
-        for(int i = 0; i < (int)Memory::Allocator::BLOCK_COUNT; i++)
+        for(int i = 0; i < (int)Memory::BlockSize::BLOCK_COUNT; i++)
         {
             if(m_Allocator[i] != 0)
             {
@@ -55,6 +73,17 @@ namespace Gem
                 m_Allocator[i] = 0;
             }
         }
+        //::operator delete(m_Block8);
+        //::operator delete(m_Block16);
+        //::operator delete(m_Block32);
+        //::operator delete(m_Block64);
+        //::operator delete(m_Block128);
+        //::operator delete(m_Block256);
+        //::operator delete(m_Block512);
+        //::operator delete(m_Block1024);
+        //::operator delete(m_BigBlock);        
+
+
         free(m_Block8);
         free(m_Block16);
         free(m_Block32);
@@ -65,76 +94,178 @@ namespace Gem
         free(m_Block1024);
         free(m_BigBlock);
     }
+    Object * MemoryManager::destroySize(Object * aPtr, int aSize)
+    {
+        PoolAllocator * allocator = getAllocator(aSize);
+        if(allocator == nullptr || aPtr == nullptr)
+        {
+            //Bad Size
+            return aPtr;
+        }
+        allocator->deallocateSize(aPtr);
+        return nullptr;
+    }
 
     PoolAllocator * MemoryManager::getAllocator(int aSize)
     {
         if(inBounds(aSize,1,8))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_8];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_8];
         }
         else if(inBounds(aSize,9,16))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_16];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_16];
         }
         else if(inBounds(aSize,17,32))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_32];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_32];
         }
         else if(inBounds(aSize,33,64))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_64];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_64];
         }
         else if(inBounds(aSize,65,128))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_128];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_128];
         }
         else if(inBounds(aSize,129,256))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_256];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_256];
         }
         else if(inBounds(aSize,257,512))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_512];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_512];
         }
         else if(inBounds(aSize,513,1024))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_1024];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_1024];
         }
         else if(inBounds(aSize,1025,Memory::BIG_BLOCK_SIZE))
         {
-            return m_Allocator[(int)Memory::Allocator::BLOCK_BIG];
+            return m_Allocator[(int)Memory::BlockSize::BLOCK_BIG];
         }
         return 0;
     }
 
     using namespace Reflection;
 
-    Type MemoryManager::getType()
+    Type * MemoryManager::getType()
     {
-        return TypeFactory::create("Memory_Manager",TypeID::MEMORY_MANAGER,sizeof(MemoryManager));
+        return Type::create("Memory_Manager",TypeID::MEMORY_MANAGER,sizeof(MemoryManager), Object::getType());
     }
-    Type MemoryManager::baseType()
+
+    int MemoryManager::getTotalBytesUsed()
     {
-        return TypeFactory::create("Object",TypeID::OBJECT,sizeof(Object));
+        int memory = 0;
+
+        memory += getBytesUsed(8);
+        memory += getBytesUsed(16);
+        memory += getBytesUsed(32);
+        memory += getBytesUsed(64);
+        memory += getBytesUsed(128);
+        memory += getBytesUsed(256);
+        memory += getBytesUsed(512);
+        memory += getBytesUsed(1024);
+        memory += getBytesUsed(1025);
+
+        return memory;
     }
-    Type * MemoryManager::instanceOf(int & aCount)
+    int MemoryManager::getBytesUsed(int aSize)
     {
-        int prevSize = 0;
-        Type * prevTypes = Object::instanceOf(prevSize);
-        aCount = prevSize + 1;
-        char ** names = new char * [1];
-        int * typeIDs = new int[1];
-        int * sizes = new int[1];
-
-        names[0] = "Object";
-        typeIDs[0] = TypeID::OBJECT;
-        sizes[0] = sizeof(Object);
-
-        Type * types = TypeFactory::create(names,typeIDs,sizes,aCount,prevTypes,prevSize);
-
-        delete[]names;
-        delete[]typeIDs;
-        delete[]sizes;
-        return types; 
+        PoolAllocator * allocator = getAllocator(aSize);
+        if(allocator != nullptr)
+        {
+            return allocator->numberOfAllocations() * allocator->objectSize();
+        }
+        return 0;
     }
+    int MemoryManager::getTotalBytesFree()
+    {
+        int memory = 0;
+
+        memory += getBytesFree(Memory::BlockSize::BLOCK_8);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_16);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_32);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_64);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_128);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_256);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_512);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_1024);
+        memory += getBytesFree(Memory::BlockSize::BLOCK_BIG);
+        return memory;
+    }
+    int MemoryManager::getTotalBytesFree(Memory::ByteSize aByteSize)
+    {
+        int memory = getTotalBytesFree();
+
+        switch (aByteSize)
+        {
+        case Gem::Memory::ByteSize::KILOBYTE:
+            memory /= KILO_BYTE;
+            break;
+        case Gem::Memory::ByteSize::MEGABYTE:
+            memory /= MEGA_BYTE;
+            break;
+        case Gem::Memory::ByteSize::GIGABYTE:
+            memory /= GIGA_BYTE;
+            break;
+        }
+        return memory;
+    }
+    int MemoryManager::getBytesFree(Memory::BlockSize aBlockSize)
+    {
+        int freeBytes = 0;
+
+        switch (aBlockSize)
+        {
+        case Memory::BlockSize::BLOCK_8:
+            freeBytes = Memory::BLOCK_8_ALLOC_SIZE - getBytesUsed(8);
+            break;
+        case Memory::BlockSize::BLOCK_16:
+            freeBytes = Memory::BLOCK_16_ALLOC_SIZE - getBytesUsed(16);
+            break;
+        case Memory::BlockSize::BLOCK_32:
+            freeBytes = Memory::BLOCK_32_ALLOC_SIZE - getBytesUsed(32);
+            break;
+        case Memory::BlockSize::BLOCK_64:
+            freeBytes = Memory::BLOCK_64_ALLOC_SIZE - getBytesUsed(64);
+            break;
+        case Memory::BlockSize::BLOCK_128:
+            freeBytes = Memory::BLOCK_128_ALLOC_SIZE - getBytesUsed(128);
+            break;
+        case Memory::BlockSize::BLOCK_256:
+            freeBytes = Memory::BLOCK_256_ALLOC_SIZE - getBytesUsed(256);
+            break;
+        case Memory::BlockSize::BLOCK_512:
+            freeBytes = Memory::BLOCK_512_ALLOC_SIZE - getBytesUsed(512);
+            break;
+        case Memory::BlockSize::BLOCK_1024:
+            freeBytes = Memory::BLOCK_1024_ALLOC_SIZE - getBytesUsed(1024);
+            break;
+        case Memory::BlockSize::BLOCK_BIG:
+            freeBytes = Memory::BIG_BLOCK_ALLOC_SIZE - getBytesUsed(1025);
+            break;
+        }
+
+        return freeBytes;
+    }
+    int MemoryManager::getBytesFree(Memory::BlockSize aBlockSize, Memory::ByteSize aByteSize)
+    {
+        int memory = getBytesFree(aBlockSize);
+
+        switch (aByteSize)
+        {
+        case Gem::Memory::ByteSize::KILOBYTE:
+            memory /= KILO_BYTE;
+            break;
+        case Gem::Memory::ByteSize::MEGABYTE:
+            memory /= MEGA_BYTE;
+            break;
+        case Gem::Memory::ByteSize::GIGABYTE:
+            memory /= GIGA_BYTE;
+            break;
+        }
+        return memory;
+    }
+
 }

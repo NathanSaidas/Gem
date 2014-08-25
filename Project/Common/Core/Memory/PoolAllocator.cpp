@@ -1,5 +1,6 @@
 #include "PoolAllocator.h"
 #include "../Reflection/G_Reflection.h"
+#include "../Utilities/G_Utilities.h"
 namespace Gem
 {
     PoolAllocator::PoolAllocator(u32 aObjectSize, u8 aObjectAlignment, u32 aSize, void* aMem) 
@@ -26,7 +27,10 @@ namespace Gem
     }
     PoolAllocator::~PoolAllocator() 
     {
-        
+        log("Memory Leak Report (" + I2S(m_ObjectSize) +")");
+        log("Allocations: " + I2S(m_NumberOfAllocations));
+        log("Memory Used: " + I2S(m_UsedMemory));
+
         m_FreeList = nullptr;
     }
 
@@ -64,34 +68,11 @@ namespace Gem
     
     using namespace Reflection;
 
-    Type PoolAllocator::getType()
+    Type * PoolAllocator::getType()
     {
-        return TypeFactory::create("Pool_Allocator",TypeID::POOL_ALLOCATOR,sizeof(PoolAllocator));
+        return Type::create("Pool_Allocator",TypeID::POOL_ALLOCATOR,sizeof(PoolAllocator),Allocator::getType());
     }
-    Type PoolAllocator::baseType()
-    {
-        return TypeFactory::create("Allocator",TypeID::ALLOCATOR,sizeof(Allocator));
-    }
-    Type * PoolAllocator::instanceOf(int & aCount)
-    {
-        int prevSize = 0;
-        Type * prevTypes = Allocator::instanceOf(prevSize);
-        aCount = prevSize + 1;
-        char ** names = new char * [1];
-        int * typeIDs = new int[1];
-        int * sizes = new int[1];
 
-        names[0] = "Allocator";
-        typeIDs[0] = TypeID::ALLOCATOR;
-        sizes[0] = sizeof(Allocator);
-
-        Type * types = TypeFactory::create(names,typeIDs,sizes,aCount,prevTypes,prevSize);
-
-        delete[]names;
-        delete[]typeIDs;
-        delete[]sizes;
-        return types; 
-    }
 
 
 }

@@ -10,7 +10,7 @@ namespace Gem
         class Interface
         {
             public:
-                virtual Type getType();
+                virtual Type * getType();
         };
         
     }

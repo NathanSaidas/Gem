@@ -183,22 +183,11 @@ namespace Gem
         return -1;
     }
 
-    Type WindowManager::getType()
+    Type * WindowManager::getType()
     {
-        return TypeFactory::create("WindowManager",TypeID::WINDOW_MANAGER,sizeof(WindowManager));
+        return Type::create("WindowManager",TypeID::WINDOW_MANAGER,sizeof(WindowManager),Object::getType());
     }
-    Type WindowManager::baseType()
-    {
-        return Object::getType();
-    }
-    Type * WindowManager::instanceOf(int & aCount)
-    {
-        int prevCount = 0;
-        Type * prevTypes = Object::instanceOf(prevCount);
-        Type base = baseType();
-        Type * types = TypeFactory::create(base,prevCount +1,prevTypes,prevCount);
-        return types;
-    }
+
 
 
     GLFWwindow * WindowManager::getCurrentWindow()

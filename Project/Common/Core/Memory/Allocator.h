@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <malloc.h>
 #include <new.h>
+#include <string>
 #include "../Base Objects/G_Object.h"
 
 namespace Gem
@@ -85,7 +86,9 @@ namespace Gem
 
         virtual ~Allocator()
         {
+#ifdef ASSERT_MEMORY_LEAK
             ASSERT(m_NumberOfAllocations == 0 && m_UsedMemory == 0);
+#endif
         }
 
         virtual void * allocate(u32 aSize, u8 aAlignment) = 0;
@@ -177,23 +180,7 @@ namespace Gem
         *   Parameters: none
         *   Date Modified: 27/06/2014 by Nathan Hanlan
         */
-        virtual Reflection::Type getType();
-        /*
-        *   Function: baseType()
-        *   Return Type: Type
-        *   Description: Returns the base type for Allocator
-        *   Parameters: none
-        *   Date Modified: 27/06/2014 by Nathan Hanlan
-        */
-        virtual Reflection::Type baseType();
-        /*
-        *   Function: instanceOf
-        *   Return Type: Type
-        *   Description: Returns the parent types of this class
-        *   Parameters: none
-        *   Date Modified: 27/06/2014 by Nathan Hanlan
-        */
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
 
     protected:
         u32 m_UsedMemory;

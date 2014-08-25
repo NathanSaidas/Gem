@@ -22,9 +22,7 @@ namespace Gem
         char * title();
 
         //Reflection Virtuals
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
     protected:
         //These are events that will be sent from a window manager
         virtual void keyEvent(int aKey, int aScanCode, int aAction, int aMods);

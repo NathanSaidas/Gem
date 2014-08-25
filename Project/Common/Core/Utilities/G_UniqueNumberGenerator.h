@@ -20,9 +20,7 @@ namespace Gem
         int getUniqueNumber();
         void returnUniqueNumber(int aNumber);
 
-        virtual Reflection::Type getType();
-        virtual Reflection::Type baseType();
-        virtual Reflection::Type * instanceOf(int & aCount);
+        virtual Reflection::Type * getType();
 
     private:
         int m_NextNumber;

@@ -6,6 +6,7 @@ namespace Gem
     class Time
     {
     public:
+        static float getTime();
         static float currentTime();
         static float deltaTime();
     private:
