@@ -47,6 +47,9 @@
     <Filter Include="Core\Entity Component\Engine Components">
       <UniqueIdentifier>{403b7bb0-6be7-4f05-bcf8-695187a5067b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Utilities\FileIO">
+      <UniqueIdentifier>{b7b1282b-e75f-418d-b3ae-e524875b5335}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Common\Main\main.cpp">
@@ -142,14 +145,59 @@
     <ClCompile Include="..\..\Common\Core\Math\G_Quaterion.cpp">
       <Filter>Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Common\Core\Window\G_Screen.cpp">
-      <Filter>Core\Window</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Common\Core\Reflection\G_Type.cpp">
       <Filter>Core\Reflection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Core\Reflection\G_SerializedField.cpp">
       <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.cpp">
+      <Filter>Core\Entity Component\Engine Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\G_IO.cpp">
+      <Filter>Core\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Window\G_Scene.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Window\G_SceneManager.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamDoc.cpp">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamProperty.cpp">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamObject.cpp">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamFile.cpp">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_integer.cpp">
+      <Filter>Core\Base Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_real.cpp">
+      <Filter>Core\Base Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_string.cpp">
+      <Filter>Core\Base Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Memory\G_ISTMListener.cpp">
+      <Filter>Core\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Memory\G_Pointer.cpp">
+      <Filter>Core\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_boolean.cpp">
+      <Filter>Core\Base Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\G_Debug.cpp">
+      <Filter>Core\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="fruit.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -321,9 +369,6 @@
     <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.h">
       <Filter>Core\Entity Component\Engine Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Common\Core\Window\G_Screen.h">
-      <Filter>Core\Window</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Common\Core\Reflection\G_Field.h">
       <Filter>Core\Reflection</Filter>
     </ClInclude>
@@ -332,6 +377,63 @@
     </ClInclude>
     <ClInclude Include="..\..\Common\Core\Reflection\G_SerializedField.h">
       <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_EngineComponents.h">
+      <Filter>Core\Entity Component\Engine Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.h">
+      <Filter>Core\Entity Component\Engine Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\G_IO.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Window\G_SceneManager.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Window\G_Scene.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamDoc.h">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamProperty.h">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamObject.h">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamFile.h">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_integer.h">
+      <Filter>Core\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_real.h">
+      <Filter>Core\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_string.h">
+      <Filter>Core\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_BaseObjects.h">
+      <Filter>Core\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Memory\G_ISTMListener.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Memory\G_Pointer.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_boolean.h">
+      <Filter>Core\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\G_Debug.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="fruit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="detail.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

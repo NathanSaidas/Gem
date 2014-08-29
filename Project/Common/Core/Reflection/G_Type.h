@@ -37,26 +37,14 @@ namespace Gem
             static char * nameOf(Type * aType);
             static int typeID(Type * aType);
             static int sizeOf(Type * aType);
+            static bool instanceOf(Type * aBase, Type * aDerived);
 
-            inline static Type * Int()
-            {
-                return create("Int",TypeID::INT,sizeof(int),nullptr);
-            }
-            inline static Type * Float()
-            {
-                return create("Float",TypeID::FLOAT,sizeof(float),nullptr);
-            }
-            inline static Type * CharPtr()
-            {
-                return create("CharPtr",TypeID::CHAR_PTR,sizeof(char*),nullptr);
-            }
-            inline static Type * Boolean()
-            {
-                return create("Boolean",TypeID::BOOLEAN,sizeof(bool),nullptr);
-            }
 
+
+            Type * getType();
+            
         protected:
-            Type():Primitive(){}
+            Type():Primitive(){m_Name = "INVALID", m_TypeID == TypeID::INVALID_ID; m_Size = 0; m_Basetype = nullptr;}
             
             int m_TypeID;
             int m_Size;

@@ -5,7 +5,7 @@
 #include "G_Types.h"
 #include "G_Class.h"
 #include "G_Enum.h"
-
+#include "../Memory/PoolAllocator.h"
 namespace Gem
 {
     namespace Reflection
@@ -120,6 +120,56 @@ namespace Gem
                     Type::freeType(type);
                 }
             }
+            return result;
+        }
+
+        inline bool instanceOf(Type * aBase, Type * aDerived)
+        {
+            return Type::instanceOf(aBase,aDerived);
+        }
+        
+        inline bool instanceOf(Class & aBase, Class & aDerived)
+        {
+            bool result = false;
+            Type * base = aBase.getType();
+            Type * derived = aDerived.getType();
+            
+            result = Type::instanceOf(base,derived);
+
+            if(base != nullptr)
+            {
+                Type::freeType(base);
+            }
+            if(derived != nullptr)
+            {
+                Type::freeType(derived);
+            }
+
+            return result;
+        }
+        inline bool instanceOf(Class * aBase, Class * aDerived)
+        {
+
+            if(aBase == nullptr || aDerived == nullptr)
+            {
+                return false;
+            }
+
+            bool result = false;
+            Type * base = aBase->getType();
+            Type * derived = aDerived->getType();
+            
+            result = Type::instanceOf(base,derived);
+
+            if(base != nullptr)
+            {
+                Type::freeType(base);
+            }
+            if(derived != nullptr)
+            {
+                Type::freeType(derived);
+            }
+
             return result;
         }
     }

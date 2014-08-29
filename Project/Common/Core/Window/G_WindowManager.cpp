@@ -208,7 +208,7 @@ namespace Gem
     }
     void WindowManager::update()
     {
-        glfwPollEvents();
+        //glfwPollEvents();
         //Update all the windows
         for(int i = 0; i < m_Windows.size(); i++)
         {

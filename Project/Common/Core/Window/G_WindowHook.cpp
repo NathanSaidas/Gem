@@ -10,6 +10,14 @@
 #include "../Entity Component/G_Component.h"
 #include "../Entity Component/G_GameObjectManager.h"
 #include "../Entity Component/Engine Components/G_Transform.h"
+#include "../Entity Component/Engine Components/G_DebugComponent.h"
+#include "../Utilities/G_IO.h"
+#include "../Base Objects/G_integer.h"
+#include "../Base Objects/G_real.h"
+#include "../Base Objects/G_string.h"
+#include "G_SceneManager.h"
+
+
 #include <pugixml.hpp>
 namespace Gem
 {
@@ -128,10 +136,13 @@ namespace Gem
     void WindowHook::onAttachToWindow(int aHandle)
     {
         log("Attached to " + I2S(aHandle));
-        //Input::instance()->createAxis("Forward",AxisCode::UP,AxisCode::DOWN);
-        //Input::instance()->setAxisPositiveKey("Forward",AxisCode::W,1);
-        //Input::instance()->setAxisNegativeKey("Forward",AxisCode::S,1);
-        //Input::instance()->setAxisResetOnRelease("Forward",false);
+        Input::instance()->createAxis("Forward",AxisCode::UP,AxisCode::DOWN);
+        Input::instance()->setAxisPositiveKey("Forward",AxisCode::W,1);
+        Input::instance()->setAxisNegativeKey("Forward",AxisCode::S,1);
+        Input::instance()->setAxisResetOnRelease("Forward",false);
+
+        GameObject * go = GameObject::instantiate("_Debug");
+        go->addComponent(Memory::instantiate<DebugComponent>());
         
         //m_CoolField = 0;
         //Field<void*> * fields[3];
@@ -140,7 +151,7 @@ namespace Gem
 
         //Field<int> field(&m_CoolField);
         //field.setValue(30);
-        pugi::xml_document doc;
+        //pugi::xml_document doc;
         //pugi::xml_parse_result result = doc.load_file("TestFile.xml");
 
         //if(result.status != pugi::xml_parse_status::status_ok)
@@ -149,6 +160,8 @@ namespace Gem
         //}
 
         //pugi::xml_node root = doc.first_child();
+
+        
 
         //Save - begin
         //pugi::xml_node root = doc.append_child("Root");
@@ -175,35 +188,88 @@ namespace Gem
         //vec.serialize(fields.append_child("Vector2"));
 
         //load - begin
-        GameObject * go = GameObject::instantiate("Default");
-        pugi::xml_parse_result result = doc.load_file("TestFile.xml");
-        if(result.status != pugi::xml_parse_status::status_ok)
-        {
-            log("Problem parsing file");
-        }
-        pugi::xml_node root = doc.child("Root");
-        pugi::xml_node gameObject = root.child("GameObjects");
-        go->deserialize(gameObject.child("GameObject_A"));
-
-        go = GameObject::instantiate("Default");
-        go->deserialize(gameObject.child("GameObject_B"));
+        //GameObject * go = GameObject::instantiate("Default");
+        //pugi::xml_parse_result result = doc.load_file("TestFile.xml");
+        //if(result.status != pugi::xml_parse_status::status_ok)
+        //{
+        //    log("Problem parsing file");
+        //}
+        //pugi::xml_node root = doc.child("Root");
+        //pugi::xml_node gameObject = root.child("GameObjects");
+        //go->deserialize(gameObject.child("GameObject_A"));
+        //
+        //go = GameObject::instantiate("Default");
+        //go->deserialize(gameObject.child("GameObject_B"));
 
         //end
 
         //attribute.set_value("int");
+        //SceneManager::instance()->loadFromMasterList();
+        //
+        //SceneManager::instance()->addNewSceneName("Scene_A");
+        //SceneManager::instance()->addNewSceneName("Scene_B");
+        //SceneManager::instance()->addNewSceneName("Scene_C");
+        //
+        //SceneManager::instance()->saveToMasterList();
+        //
+        //SceneManager::destroy();
 
-        doc.save_file("TestFile.xml");
+        //STMBlock localStringBlock;
+        //string * localString = (string*)Memory::instantiateSTM<string>(localStringBlock);
+        //localStringBlock.registerListener(this);
 
+        
+        //Memory::destroySTM<string>(localString);
+
+        //GameObject * go = (GameObject*)Memory::instantiateSTM<GameObject>(this);
+        //go = (GameObject*)Memory::destroySTM<GameObject>(go);
 
     }
+
+    //Mystery Code
+    //template<typename Func, typename T>
+    //void delegate(Func func, T param)
+    //{
+    //    func(param);
+    //}
+    //
+    //typedef void(*Foreach_Xml)(pugi::xml_node aNode);
+    //Foreach_Xml callback = func;
+    //pugi::xml_node node;
+    //delegate<Foreach_Xml,pugi::xml_node>(callback,node);
+
+
     void WindowHook::onDetachFromWindow(int aHandle)
     {
+        
+        
         log("Detached from " + I2S(aHandle));
     }
 
     Type * WindowHook::getType()
     {
         return Type::create("WindowHook",TypeID::WINDOW_HOOK,sizeof(WindowHook),Object::getType());
+    }
+
+    void WindowHook::onMemoryClear(Object * aPtr)
+    {
+        if(aPtr == nullptr)
+        {
+            return;
+        }
+        Type * type = aPtr->getType();
+
+        if(typeID(type) == TypeID::STRING)
+        {
+            string * lString = (string*)aPtr;
+            log("Freeing Memory");
+        }
+
+        Type::freeType(type);
+    }
+    void WindowHook::onMemoryMove(Object * aOldPtr)
+    {
+
     }
 
 }

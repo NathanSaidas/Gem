@@ -4,6 +4,8 @@
 
 
 #include "Allocator.h"
+#include "../Reflection/G_Operators.h"
+#include <vector>
 
 namespace Gem
 {
@@ -59,6 +61,60 @@ namespace Gem
             T * tObj = new(p)T();
             return tObj;
         }
+        template<class T>
+        inline T * allocate(std::vector<Object *> aArgs )
+        {
+            ASSERT(m_FreeList != nullptr)
+            if(m_FreeList == nullptr)
+            {
+                return nullptr;
+            }
+            void * p = m_FreeList;
+            //Adjust freelist pointer.
+            m_FreeList = (void**)(*m_FreeList);
+            //Modify memory stats
+            m_UsedMemory += m_ObjectSize;
+            m_NumberOfAllocations ++;
+            //Invoke the constructor of the object but using the given address of 'p'
+            T * tObj = new(p)T(aArgs);
+            return tObj;
+        }
+        template<class T>
+        inline T * allocate(std::vector<Object> & aArgs)
+        {
+            ASSERT(m_FreeList != nullptr)
+            if(m_FreeList == nullptr)
+            {
+                return nullptr;
+            }
+            void * p = m_FreeList;
+            //Adjust freelist pointer.
+            m_FreeList = (void**)(*m_FreeList);
+            //Modify memory stats
+            m_UsedMemory += m_ObjectSize;
+            m_NumberOfAllocations ++;
+            //Invoke the constructor of the object but using the given address of 'p'
+            T * tObj = new(p)T(aArgs);
+            return tObj;
+        }
+        template<class T>
+        inline T * allocate(std::vector<Object*> & aPtrArgs,std::vector<Object> & aArgs)
+        {
+            ASSERT(m_FreeList != nullptr)
+            if(m_FreeList == nullptr)
+            {
+                return nullptr;
+            }
+            void * p = m_FreeList;
+            //Adjust freelist pointer.
+            m_FreeList = (void**)(*m_FreeList);
+            //Modify memory stats
+            m_UsedMemory += m_ObjectSize;
+            m_NumberOfAllocations ++;
+            //Invoke the constructor of the object but using the given address of 'p'
+            T * tObj = new(p)T(aPtrArgs,aArgs);
+            return tObj;
+        }
         /*
         *   Function: allocate
         *   Return Type: a pointer to the given T
@@ -69,6 +125,11 @@ namespace Gem
         template<class T>
         inline T * allocate(int aLength)
         {
+            if(m_UsedMemory >= m_Size)
+            {
+                return nullptr;
+            }
+
             ASSERT(m_FreeList != nullptr);
             if(m_FreeList == nullptr)
             {
@@ -82,6 +143,7 @@ namespace Gem
             m_NumberOfAllocations ++;
 
             T * tObjArray = new(p)T[aLength];
+            tObjArray = (T*)(*tObjArray);
             return tObjArray;
         }
         /*
@@ -120,6 +182,11 @@ namespace Gem
                 return;
             }
 
+            //if(Reflection::instanceOf(typeOf<Component>(),p->getType()) == true)
+            //{
+            //    //((Component*)p)->onDestroy();
+            //}
+
             p->Object::~Object();
 
             //Adjust the ferelist pointer
@@ -146,7 +213,7 @@ namespace Gem
             {
                 return;
             }
-            T * object = (T*)p;
+            T * object = (T*)(&p);
             object->T::~T[aLength]();
 
             *((void**)p) = m_FreeList;

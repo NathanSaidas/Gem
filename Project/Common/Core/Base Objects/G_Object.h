@@ -2,9 +2,12 @@
 #define G_OBJECT_H
 
 //#include "../../Reflection/OL_Reflection.h"
+//#include "../Memory/G_Pointer.h"
 #include "../Reflection/G_Class.h"
 #include "../Reflection/G_Type.h"
 #include <string>
+
+
 
 
 namespace Gem
@@ -27,10 +30,13 @@ namespace Gem
 
 
         //virtual Reflection::Type * getType();
+        //virtual Pointer<
         virtual Reflection::Type * getType();
         virtual std::string toString();
         //friend MemoryManager;
         //friend PoolAllocator;
+    private:
+        //int m_ReferenceCount;
     };
 
 

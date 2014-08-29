@@ -14,6 +14,12 @@ namespace Gem
     {
 
     }
+    //Pointer<Reflection::Type> Object::getType2()
+    //{
+    //    ///Pointer<Type> type(false);
+    //    ///type.ref() = getType();
+    //    return Pointer<Type>();
+    //}
     Type * Object::getType()
     {
         return Type::create("Object",TypeID::OBJECT,sizeof(Object),Class::getType());

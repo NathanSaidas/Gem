@@ -43,6 +43,14 @@ namespace Gem
     {
         instance()->_destroyImmediate(aGameObject);
     }
+    void GameObjectManager::unloadScene(Scene * aScene)
+    {
+        if(m_SceneToUnload != nullptr)
+        {
+            return;
+        }
+        m_SceneToUnload = aScene;
+    }
     GameObject * GameObjectManager::_instantiate(std::string aName)
     {
         GameObject * gameObject = Memory::instantiate<GameObject>();
@@ -94,8 +102,10 @@ namespace Gem
     {
         float startTime = Time::getTime();
 
+        //Get time stamps to determine if slow update and/or fixed update should run
         bool fixedUpdate = fabsf(Time::getTime() - m_FixedUpdateTimeStamp) > PHYSICS_UPDATE_TIME;
         bool slowUpdate = fabsf(Time::getTime() - m_SlowUpdateTimeStamp) > 1.0f;
+
         if(fixedUpdate == true)
         {
             m_FixedUpdateTimeStamp = Time::getTime();
@@ -105,30 +115,47 @@ namespace Gem
             m_SlowUpdateTimeStamp = Time::getTime();
         }
 
+        //Regular update loop
         for(int i = 0; i < m_GameObjects.size(); i++)
         {
-            m_GameObjects[i]->preUpdate();
+            if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+            {
+                m_GameObjects[i]->preUpdate();
+            }
         }
         for(int i = 0; i < m_GameObjects.size(); i++)
         {
-            m_GameObjects[i]->update();
+            if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+            {
+                m_GameObjects[i]->update();
+            }
         }
         for(int i = 0; i < m_GameObjects.size(); i++)
         {
-            m_GameObjects[i]->postUpdate();
+            if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+            {
+                m_GameObjects[i]->postUpdate();
+            }
         }
+
         if(fixedUpdate == true)
         {
             for(int i = 0; i < m_GameObjects.size(); i++)
             {
-                m_GameObjects[i]->fixedUpdate();
+                if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+                {
+                    m_GameObjects[i]->fixedUpdate();
+                }
             }
         }
         if(slowUpdate == true)
         {
             for(int i = 0; i < m_GameObjects.size(); i++)
             {
-                m_GameObjects[i]->slowUpdate();
+                if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+                {
+                    m_GameObjects[i]->slowUpdate();
+                }
             }
         }
 
@@ -136,7 +163,35 @@ namespace Gem
     }
     void GameObjectManager::renderPass(int aWindowID, int aScreenID, int aCameraID)
     {
+        bool shouldRender = true;
 
+        if(shouldRender == true)
+        {
+            for(int i = 0; i < m_GameObjects.size(); i++)
+            {
+                if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+                {
+                    m_GameObjects[i]->preRender();
+                }
+            }
+            for(int i = 0; i < m_GameObjects.size(); i++)
+            {
+                if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+                {
+                    m_GameObjects[i]->render();
+                }
+            }
+            for(int i = 0; i < m_GameObjects.size(); i++)
+            {
+                if(m_GameObjects[i] != nullptr && m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+                {
+                    m_GameObjects[i]->postRender();
+                }
+            }
+
+        }
+
+        
     }
     void GameObjectManager::processDestroyRequests()
     {
@@ -184,10 +239,32 @@ namespace Gem
         log("Garbage Collection Ended");
         log("Time - " + F2S(Time::getTime() - startTime));
     }
+    void GameObjectManager::processSceneUnload()
+    {
+        if(m_SceneToUnload == nullptr)
+        {
+            return;
+        }
+
+        float startTime = Time::getTime();
+
+        for(int i = m_GameObjects.size()-1; i >= 0; i--)
+        {
+            if(m_GameObjects[i]->checkFlag(ECFlag::DONT_DESTROY_ON_LOAD) == false)
+            {
+                destroyImmediate(m_GameObjects[i]);
+            }
+        }
+
+        float delta = Time::getTime() - startTime;
+        log("Process Scene Unload " + F2S(delta));
+
+    }
     GameObjectManager::GameObjectManager() : Object()
     {
         m_SlowUpdateTimeStamp = 0.0f;
         m_FixedUpdateTimeStamp = 0.0f;
+        m_SceneToUnload = nullptr;
     }
     GameObjectManager::~GameObjectManager()
     {

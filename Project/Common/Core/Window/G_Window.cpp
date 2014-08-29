@@ -1,6 +1,7 @@
 #include "G_Window.h"
 #include "G_WindowHook.h"
 #include "../Reflection/G_Reflection.h"
+#include "../Entity Component/G_GameObjectManager.h"
 #include <GLFW\glfw3.h>
 namespace Gem
 {
@@ -69,7 +70,7 @@ namespace Gem
         {
             m_WindowHook->update();
         }
-
+        GameObjectManager::instance()->renderPass(m_HandleID,0,0);
         //Handle flags
         glfwSwapBuffers(m_Handle);
     }

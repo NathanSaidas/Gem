@@ -1,6 +1,6 @@
 #ifndef G_COMPONENT_H
 #define G_COMPONENT_H
-#include "../Base Objects/G_Object.h"
+#include "../Base Objects/G_BaseObjects.h"
 #include "../Utilities/G_IXmlSerializable.h"
 #include <string>
 #include <vector>
@@ -69,6 +69,7 @@ namespace Gem
         bool checkFlag(int aFlag);
 
         friend class GameObject;
+        friend class PoolAllocator;
     };
 
 }

@@ -13,6 +13,7 @@ namespace Gem
             type->m_TypeID = aTypeID;
             type->m_Size = aSize;
             type->m_Basetype = aBaseType;
+            
             return type;
         }
         void Type::freeType(Type * aType)
@@ -46,6 +47,37 @@ namespace Gem
                 return aType->m_Size;
             }
             return 0;
+        }
+        bool Type::instanceOf(Type * aBase, Type * aDerived)
+        {
+            if(aBase == nullptr || aDerived == nullptr)
+            {
+                return false;
+            }
+
+            if(*aBase == *aDerived)
+            {
+                return true;
+            }
+            if(aBase->m_TypeID == TypeID::INVALID_ID || aDerived->m_TypeID == TypeID::INVALID_ID)
+            {
+                return false;
+            }
+            Type * type = aDerived->baseType();
+            while(type != nullptr)
+            {
+                if(*type == *aBase)
+                {
+                    return true;
+                }
+                type = type->baseType();
+            }
+            return false;
+        }
+
+        Type * Type::getType()
+        {
+            return create("Type",TypeID::TYPE,sizeof(Type),nullptr);
         }
     }
 }

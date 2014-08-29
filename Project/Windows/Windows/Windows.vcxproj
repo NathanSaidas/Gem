@@ -68,7 +68,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_boolean.cpp" />
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_integer.cpp" />
     <ClCompile Include="..\..\Common\Core\Base Objects\G_Object.cpp" />
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_real.cpp" />
+    <ClCompile Include="..\..\Common\Core\Base Objects\G_string.cpp" />
+    <ClCompile Include="..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.cpp" />
     <ClCompile Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.cpp" />
     <ClCompile Include="..\..\Common\Core\Entity Component\G_GameObjectManager.cpp" />
     <ClCompile Include="..\..\Common\Core\Entity Component\G_Component.cpp" />
@@ -81,6 +86,8 @@
     <ClCompile Include="..\..\Common\Core\Math\G_Vector.cpp" />
     <ClCompile Include="..\..\Common\Core\Math\G_Quaterion.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\Allocator.cpp" />
+    <ClCompile Include="..\..\Common\Core\Memory\G_ISTMListener.cpp" />
+    <ClCompile Include="..\..\Common\Core\Memory\G_Pointer.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\LinearAllocator.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\G_Memory.cpp" />
     <ClCompile Include="..\..\Common\Core\Memory\PoolAllocator.cpp" />
@@ -89,10 +96,17 @@
     <ClCompile Include="..\..\Common\Core\Reflection\G_SerializedField.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_TypeFactory.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_Type.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamDoc.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamFile.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamObject.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamProperty.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\G_Debug.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\G_IO.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\G_Time.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\G_UniqueNumberGenerator.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\G_Utilities.cpp" />
-    <ClCompile Include="..\..\Common\Core\Window\G_Screen.cpp" />
+    <ClCompile Include="..\..\Common\Core\Window\G_Scene.cpp" />
+    <ClCompile Include="..\..\Common\Core\Window\G_SceneManager.cpp" />
     <ClCompile Include="..\..\Common\Core\Window\G_Window.cpp" />
     <ClCompile Include="..\..\Common\Core\Window\G_WindowHook.cpp" />
     <ClCompile Include="..\..\Common\Core\Window\G_WindowManager.cpp" />
@@ -102,9 +116,17 @@
     <ClCompile Include="..\..\Common\Libraries\pugixml-1.4\src\pugixml.cpp" />
     <ClCompile Include="..\..\Common\Libraries\stbimage\stb_vorbis.c" />
     <ClCompile Include="..\..\Common\Main\main.cpp" />
+    <ClCompile Include="fruit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_BaseObjects.h" />
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_boolean.h" />
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_real.h" />
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_integer.h" />
     <ClInclude Include="..\..\Common\Core\Base Objects\G_Object.h" />
+    <ClInclude Include="..\..\Common\Core\Base Objects\G_string.h" />
+    <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.h" />
+    <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_EngineComponents.h" />
     <ClInclude Include="..\..\Common\Core\Entity Component\Engine Components\G_Transform.h" />
     <ClInclude Include="..\..\Common\Core\Entity Component\G_GameObjectManager.h" />
     <ClInclude Include="..\..\Common\Core\Entity Component\G_Component.h" />
@@ -119,6 +141,8 @@
     <ClInclude Include="..\..\Common\Core\Math\G_Quaterion.h" />
     <ClInclude Include="..\..\Common\Core\Math\G_Vector.h" />
     <ClInclude Include="..\..\Common\Core\Memory\Allocator.h" />
+    <ClInclude Include="..\..\Common\Core\Memory\G_ISTMListener.h" />
+    <ClInclude Include="..\..\Common\Core\Memory\G_Pointer.h" />
     <ClInclude Include="..\..\Common\Core\Memory\LinearAllocator.h" />
     <ClInclude Include="..\..\Common\Core\Memory\G_Memory.h" />
     <ClInclude Include="..\..\Common\Core\Memory\PoolAllocator.h" />
@@ -133,15 +157,22 @@
     <ClInclude Include="..\..\Common\Core\Reflection\G_Type.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_TypeFactory.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Types.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamDoc.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamFile.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamObject.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamProperty.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_Array.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\G_Debug.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\G_IO.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_Time.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_UniqueNumberGenerator.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_Utilities.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\G_IXmlSerializable.h" />
-    <ClInclude Include="..\..\Common\Core\Window\G_Screen.h" />
+    <ClInclude Include="..\..\Common\Core\Window\G_Scene.h" />
     <ClInclude Include="..\..\Common\Core\Window\G_Window.h" />
     <ClInclude Include="..\..\Common\Core\Window\G_WindowManager.h" />
     <ClInclude Include="..\..\Common\Core\Window\G_WindowHook.h" />
+    <ClInclude Include="..\..\Common\Core\Window\G_SceneManager.h" />
     <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\autolink.h" />
     <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\config.h" />
     <ClInclude Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\include\json\features.h" />
@@ -164,6 +195,8 @@
     <ClInclude Include="..\..\Common\Libraries\stbimage\stb_textedit.h" />
     <ClInclude Include="..\..\Common\Libraries\stbimage\stb_truetype.h" />
     <ClInclude Include="..\..\Common\Libraries\stbimage\stretchy_buffer.h" />
+    <ClInclude Include="detail.h" />
+    <ClInclude Include="fruit.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_internalarray.inl" />

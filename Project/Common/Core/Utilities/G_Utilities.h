@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 //This utilities file provides conversion functions from string to int/short/float etc and back
 
@@ -10,6 +11,7 @@
 
 namespace Gem
 {
+
     /*
     *   Function: convertStringToInt
     *   Return Type: int

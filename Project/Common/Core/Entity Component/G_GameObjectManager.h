@@ -5,13 +5,14 @@
 #include <vector>
 #include <string>
 
+
 namespace Gem
 {
     //How much time to give the garbage collection system to collect destroyed objects
     const float GARBAGE_COLLECTION_TIME = 0.02f;
     const float PHYSICS_UPDATE_TIME = 0.003f;
     
-
+    class Scene;
     class GameObject;
     class GameObjectManager : public Object
     {
@@ -22,6 +23,8 @@ namespace Gem
         static GameObject * instantiate(std::string aName);
         static void destroy(GameObject * aGameObject);
         static void destroyImmediate(GameObject * aGameObject);
+
+        void unloadScene(Scene * aScene);
 
         inline int objectCount()
         {
@@ -42,6 +45,7 @@ namespace Gem
         void update();
         void renderPass(int aWindowID, int aScreenID, int aCameraID);
         void processDestroyRequests();
+        void processSceneUnload();
 
         std::vector<GameObject*> m_GameObjects;
         std::vector<GameObject*> m_DestroyRequests;
@@ -49,9 +53,12 @@ namespace Gem
         float m_SlowUpdateTimeStamp;
         float m_FixedUpdateTimeStamp;
 
+        Scene * m_SceneToUnload;
+
         friend class PoolAllocator;
         friend class Application;
         friend class Screen;
+        friend class Window;
     };
 }
 

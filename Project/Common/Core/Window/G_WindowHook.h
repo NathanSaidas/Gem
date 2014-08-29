@@ -2,6 +2,7 @@
 #define G_WINDOW_HOOK_H
 
 #include "../Base Objects/G_Object.h"
+#include "../Memory/G_ISTMListener.h"
 
 #include "../Entity Component/G_GameObject.h"
 #include "../Utilities/G_Array.h"
@@ -12,7 +13,7 @@
 namespace Gem
 {
     class Window;
-    class WindowHook : public Object
+    class WindowHook : public Object, ISTMListener
     {
     public:
         WindowHook();
@@ -21,6 +22,8 @@ namespace Gem
         virtual void update();
 
         virtual Reflection::Type * getType();
+        virtual void onMemoryClear(Object * aPtr);
+        virtual void onMemoryMove(Object * aOldPtr);
 
     protected:
         bool isFocused();

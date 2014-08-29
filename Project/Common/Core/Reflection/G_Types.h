@@ -16,6 +16,8 @@ namespace Gem
                 CLASS = 0,
                 INTERFACE,
                 OBJECT,
+                POINTER,
+                TYPE,
                 //Primitive Types
                 INT,
                 FLOAT,
@@ -27,6 +29,7 @@ namespace Gem
                 ALLOCATOR,
                 POOL_ALLOCATOR,
                 MEMORY_MANAGER,
+                SHORT_TERM_MEMORY_BLOCK,
                 WINDOW,
                 WINDOW_MANAGER,
                 WINDOW_HOOK,
@@ -46,10 +49,18 @@ namespace Gem
                 //COMPONENTS
                 COMPONENT,
                 TRANSFORM,
+                DEBUG_COMPONENT,
 
                 //END COMPONENTS
                 GAME_OBJECT_MANAGER,
-                SCREEN
+                SCENE,
+                SCENE_MANAGER,
+
+                IO,
+                STREAM_PROPERTY,
+                STREAM_OBJECT,
+                STREAM_FILE,
+                STREAM_DOC
 
             };
         }

@@ -127,6 +127,8 @@ namespace Gem
             //Allocate the array
             T * objectArray = ( ( T*) allocate(sizeof(T) *(aLength + headerSize),__alignof(T)) ) + headerSize;
 
+            //objectArray = allocate(sizeof(T) * (aLength + headerSize), __alignof(T)) + headerSize;
+
             //Assign ptr
             *(((u32*)objectArray)-1) = aLength;
 
@@ -136,7 +138,7 @@ namespace Gem
                 new(&objectArray[i])T;
             }
 
-            return p;
+            return objectArray;
         }
         template<class T> void deallocateArray(T * aArray)
         {
@@ -145,7 +147,7 @@ namespace Gem
                 return;
             }
 
-            u32 length = *(((u32*)pArray) - 1);
+            u32 length = *(((u32*)aArray) - 1);
 
             for(u32 i = 0; i < length; i++)
             {

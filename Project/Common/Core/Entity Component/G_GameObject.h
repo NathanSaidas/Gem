@@ -9,6 +9,7 @@
 namespace Gem
 {
     class Component;
+    class Scene;
 
     namespace ECFlag
     {
@@ -16,6 +17,7 @@ namespace Gem
         const int ENABLED               = 1 << 1; //2
         const int DONT_DESTROY_ON_LOAD  = 1 << 2; //4
         const int FLAGGED_FOR_DESTROY   = 1 << 3; //8
+        const int DYNAMIC_STATE         = 1 << 4; //16 A flag for determining whether or not a game object has a dynamic state that can be changed during "Play Time". 
     }
 
     class GameObject : public Object, IXmlSerializable
@@ -64,6 +66,8 @@ namespace Gem
         void onDisable();  //Safe Reference
         void onDestroy();  //Safe Reference
 
+        void onSceneLoaded(Scene * aScene);
+
         //Update Functions
         //Called Every Frame
         void preUpdate(); 
@@ -88,6 +92,10 @@ namespace Gem
 
 
         int m_Flag;
+
+        //For lookup within the scene after serialized
+        int m_ReferenceID;
+
         void raiseFlag(int aFlag);
         void lowerFlag(int aFlag);
         bool checkFlag(int aFlag);

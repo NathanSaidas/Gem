@@ -58,11 +58,73 @@ void loadImage(std::string & filename)
 
 #include "../Core/G_Application.h"
 #include "../Core/Memory/G_Memory.h"
+#include "../Core/Memory/PoolAllocator.h"
+#include "../Core/Input/G_InputAxis.h"
+
+#include "../Core/Utilities/G_Utilities.h"
+#include "../../Windows/Windows/fruit.h"
+#include <vector>
+
+
+//Example of a Local Pointer that is confined to the scope
+template<class T>
+class LocalPtr
+{
+public:
+    LocalPtr()
+    {
+        m_Data = Gem::Memory::instantiate<T>();
+    }
+    ~LocalPtr()
+    {
+        m_Data = Gem::Memory::destroy<T>(m_Data);
+    }
+
+    T * ref()
+    {
+        return m_Data;
+    }
+    T data()
+    {
+        return *m_Data;
+    }
+
+    T operator =(T & aValue)
+    {
+        return (*m_Data) = aValue;
+    }
+    T operator =(T aValue)
+    {
+        return (*m_Data) = aValue;
+    }
+private:
+    T * m_Data;
+};
+
+
+class RenderingComponent : public Component
+{
+    // Bla, bla
+};
+COMPONENT_REGISTER(RenderingComponent, "RenderingComponent")
+class PhysicsComponent : public Component
+{
+
+};
+COMPONENT_REGISTER(PhysicsComponent,"RenderingComponent")
 
 int main()
 {
     Gem::Application::instance()->execute();
     Gem::Application::destroy();
     Gem::MemoryManager::destroy();
+    //scopeTest(firstRef);
+
+    //integer refCount = aClass->getInt(
+    Component * comp = component::create("RenderingComponent");
+    component::destroy(comp);
+
+    system("pause");
+
     return 0;
 }

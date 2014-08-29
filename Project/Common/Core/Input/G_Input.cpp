@@ -60,6 +60,12 @@ namespace Gem
         //However there is a weird memory glitch.
         //m_Keys = Memory::destroy<Key*>(m_Keys,(int)KeyCode::COUNT);
         //m_MouseButtons = Memory::destroy<Button*>(m_MouseButtons,(int)MouseButton::COUNT);
+
+        for(int i = 0; i < m_Axis.size(); i++)
+        {
+            m_Axis[i] = Memory::destroy<InputAxis>(m_Axis[i]);
+        }
+        m_Axis.clear();
     }
 
     //int Input::getKeyState(KeyCode aKeyCode)
@@ -107,6 +113,7 @@ namespace Gem
             //Window focus has changed
         }
         m_CurrentWindowID = currentWindow;
+        glfwPollEvents();
     }
 
     void Input::processKeyEvent(int aKey, int aAction, int aMods)

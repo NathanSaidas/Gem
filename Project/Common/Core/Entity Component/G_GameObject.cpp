@@ -213,6 +213,10 @@ namespace Gem
             m_Components[i]->preUpdate();
         }
     }
+    void GameObject::onSceneLoaded(Scene * aScene)
+    {
+
+    }
     void GameObject::update()
     {
         for(int i = 0; i < m_Components.size(); i++)
@@ -324,6 +328,9 @@ namespace Gem
         
         pugi::xml_node flagNode = fieldsNode.append_child("Flags");
         flagNode.append_attribute("Value")= m_Flag;
+        
+        pugi::xml_node referenceNode = fieldsNode.append_child("ReferenceID");
+        referenceNode.append_attribute("Value") = m_ReferenceID;
 
         pugi::xml_node componentsNode = fieldsNode.append_child("Components");
         componentsNode.append_attribute("Count") = m_Components.size();
@@ -345,7 +352,7 @@ namespace Gem
     }
     bool GameObject::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
     {
-        int threshHold = 3;
+        int threshHold = 4;
         int count = 0;
         pugi::xml_node fieldsNode = aNode.child("Fields");
         std::string nodeName = "";
@@ -361,6 +368,12 @@ namespace Gem
             else if(nodeName == "Flags")
             {
                 m_Flag = nodeIter->attribute("Value").as_int();
+                count++;
+            }
+            else if(nodeName == "ReferenceID")
+            {
+                m_ReferenceID = nodeIter->attribute("ReferenceID").as_int();
+                //Register with Scene at this point
                 count++;
             }
             else if(nodeName == "Components")

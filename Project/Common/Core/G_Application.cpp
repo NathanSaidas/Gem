@@ -8,6 +8,7 @@
 #include "Utilities\G_Time.h"
 #include <GLFW\glfw3.h>
 #include "Entity Component\G_GameObjectManager.h"
+#include "Window\G_SceneManager.h"
 
 namespace Gem
 {
@@ -89,15 +90,13 @@ namespace Gem
             //Update inputs
             input->update();
             //Update the windows (Poll Events and swap buffers)
+            gom->update();
             windowManager->update();
             //Update all the game objects
-            gom->update();
             //Make Render Calls on each window
-
-
-
             gom->processDestroyRequests();
-
+            gom->processSceneUnload();
+            MemoryManager::instance()->update();
             
             
         
@@ -116,6 +115,7 @@ namespace Gem
     //called after run
     bool Application::deinit()
     {
+        SceneManager::destroy();
         GameObjectManager::destroy();
         Input::destroy();
         WindowManager::destroy();
