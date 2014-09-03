@@ -2,60 +2,81 @@
 #define G_TYPE_H
 
 #include "G_Primitive.h"
-#include "G_Types.h"
+#include "../Primitives/G_string.h"
+#include "../Primitives/G_integer.h"
 
 //Base class of every data type. Enum / Class
 namespace Gem
 {
-    class PoolAllocator;
+    class string;
+    class Allocator;
+
     namespace Reflection
     {
+        class TypeInfo;
+        typedef Primitive * (*CreatePrimitiveFunc)(Primitive*);
+        typedef Primitive * (*DestroyPrimitiveFunc)(Primitive*);
 
-        class Type;
-        class Type : public Primitive
+        class Type sealed: public Primitive
         {
         public:
-            
-            ~Type()
-            {
-                Type::freeType(m_Basetype);
-            }
-            bool operator ==(const Type & aRhs)
+            Type();
+            ~Type();
+
+            inline bool operator ==(Type & aRhs)
             {
                 return aRhs.m_TypeID == m_TypeID;
             }
-            inline Type * baseType()
-            {
-                return m_Basetype;
-            }
-
             //Create methods
-            static Type * create(char * aName, int aTypeID, int aSize, Type * aBaseType);
-            static void freeType(Type * aType);
+            //static Type * create(char * aName, int aTypeID, int aSize, Type * aBaseType);
+            //static void freeType(Type * aType);
 
             //Operators
-            static char * nameOf(Type * aType);
-            static int typeID(Type * aType);
-            static int sizeOf(Type * aType);
-            static bool instanceOf(Type * aBase, Type * aDerived);
+            //static char * nameOf(Type * aType);
+            //static int typeID(Type * aType);
+            //static int sizeOf(Type * aType);
+            //static bool instanceOf(Type * aBase, Type * aDerived);
 
 
 
-            Type * getType();
+            //Type * getType();
+
+            //string & name() const;
+            //char * name() const;
+            string  name() const;
+            integer typeID() const;
+            integer size() const;
+            integer alignment() const;
+            //string  baseClass() const;
+            //char * baseClass() const;
+            Type * baseClass() const;
             
+
+            Pointer<Type> getType() override;
         protected:
-            Type():Primitive(){m_Name = "INVALID", m_TypeID == TypeID::INVALID_ID; m_Size = 0; m_Basetype = nullptr;}
-            
-            int m_TypeID;
-            int m_Size;
-            Type * m_Basetype;
+            static Type * copy(Type * aType);
 
-            
+            //char * m_Name;
+            string m_Name;
+            integer m_TypeID;
+            integer m_Size;
+            integer m_Alignment;
+            //string m_BaseClass;
+            //char * m_BaseClass;
+            Type * m_BaseType;
 
-            friend Type;
-            friend PoolAllocator;
+            CreatePrimitiveFunc m_CreateFunc;
+            DestroyPrimitiveFunc m_DestroyFunc;
+
+            Primitive * invokeCreate(Primitive* aAddress);
+            Primitive * invokeDestroy(Primitive* aAddress);
+           
+            friend Gem::Allocator;
+            friend class Hidden;
+            friend class Runtime;
         };
     }
 }
+GEM_CLASS(Type,Primitive)
 
 #endif

@@ -1,9 +1,7 @@
 #ifndef G_WINDOW_HOOK_H
 #define G_WINDOW_HOOK_H
 
-#include "../Base Objects/G_Object.h"
-#include "../Memory/G_ISTMListener.h"
-
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Entity Component/G_GameObject.h"
 #include "../Utilities/G_Array.h"
 
@@ -13,7 +11,7 @@
 namespace Gem
 {
     class Window;
-    class WindowHook : public Object, ISTMListener
+    class WindowHook : public Object
     {
     public:
         WindowHook();
@@ -21,9 +19,7 @@ namespace Gem
         //Gets invoked by the window
         virtual void update();
 
-        virtual Reflection::Type * getType();
-        virtual void onMemoryClear(Object * aPtr);
-        virtual void onMemoryMove(Object * aOldPtr);
+        virtual Pointer<Reflection::Type> getType() override;
 
     protected:
         bool isFocused();
@@ -43,5 +39,5 @@ namespace Gem
         Array<GameObject*,GameObject> m_GameObjects;
     };
 }
-
+GEM_CLASS(WindowHook,Object)
 #endif

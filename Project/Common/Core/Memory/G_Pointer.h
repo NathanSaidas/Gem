@@ -1,20 +1,26 @@
 #ifndef G_POINTER_H
 #define G_POINTER_H
 
-#include "G_Memory.h"
-#include <boost\static_assert.hpp>
-#include <boost\type_traits.hpp>
-#include "../Reflection/G_Class.h"
+#include "G_MemoryManager.h"
+//#include <boost\static_assert.hpp>
+//#include <boost\type_traits.hpp>
+//#include "../Reflection/G_Primitive.h"
+
+
 
 namespace Gem
 {
+    namespace Reflection
+    {
+        class Type;
+    }
     
 
     template<class T>
-    class Pointer //: public Reflection::Class
+    class Pointer //: Reflection::Primitive
     {
         //BOOST_STATIC_ASSERT((boost::is_base_of<Object,T>::value));
-        static_assert(boost::is_base_of<Object,T>::value || boost::is_base_of<Reflection::Type,T>::value , "Object of type T is not derived of Object");
+        //static_assert(boost::is_base_of<Object,T>::value || boost::is_base_of<Reflection::Type,T>::value , "Object of type T is not derived of Object");
         //static_assert(false,"derp");
     public:
         
@@ -67,6 +73,7 @@ namespace Gem
         }
         ~Pointer()
         {
+            int preCount = count();
             if(m_Owner != nullptr)
             {
                 //if(m_Owner == this && m_References.size() > 0)
@@ -84,7 +91,7 @@ namespace Gem
 
                 m_Owner->releaseReference(*this);
             }
-            if(count() == 1)
+            if(preCount == 1)
             {
                 m_Data = Gem::Memory::destroy<T>(m_Data);
             }
@@ -203,6 +210,10 @@ namespace Gem
                     m_Owner->transferOwnership(*this);
                 }
                 m_Owner->releaseReference(*this);
+                if (count() == 1)
+                {
+                    m_Data = Memory::destroy<T>(m_Data);
+                }
             }
             //assign
             assign(aValue);
@@ -222,6 +233,22 @@ namespace Gem
             }
             return (*m_Data) = aValue;
         }
+
+        bool operator==(Pointer<T> & aValue)
+        {
+            if (isAlive() == false || aValue.isAlive() == false)
+            {
+                return false;
+            }
+
+            return (*m_Data == *aValue.m_Data);
+        }
+        //Pointer<int> getType();
+
+        //Pointer<Type> getType()
+        //{
+        //    Pointer<Type>
+        //}
         //virtual Reflection::Type * getType()
         //{
         //    return Reflection::Type::create("Pointer",Reflection::TypeID::POINTER,sizeof(Pointer<T>),Reflection::Class::getType());
@@ -288,6 +315,33 @@ namespace Gem
         //Gets called on the owner
         void releaseReference(Pointer<T> & aExpired)
         {
+            //aExpired == the one whos leaving the list
+            //Find them and remove the from the refereses
+
+            Pointer<T> * currentRef = this;
+            Pointer<T> * next = currentRef->getNext();
+            while (true && next != nullptr)
+            {
+                //Compare current next to expired
+                //If found check to see if expired has next
+                //If expired has next set this next to expired next
+                if (next->ref() == aExpired.ref())
+                {
+                    if (aExpired.hasNext() == true)
+                    {
+                        currentRef->setNext(aExpired.getNext());
+                        break;
+                    }
+                    else
+                    {
+                        currentRef->setNext(nullptr);
+                        break;
+                    }
+                }
+                //Iterate through the list
+                currentRef = next;
+                next = currentRef->getNext();
+            }
             //Reduce count
             //m_ReferenceCount--;
             

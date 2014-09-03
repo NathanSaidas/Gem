@@ -61,9 +61,9 @@ namespace Gem
         return m_CurrentState;
     }
 
-    Type * Key::getType()
+    Pointer<Reflection::Type> Key::getType()
     {
-        return Type::create("Key",TypeID::KEY,sizeof(Key),Object::getType());
+        return typeOf("Key");
     }
 
 }

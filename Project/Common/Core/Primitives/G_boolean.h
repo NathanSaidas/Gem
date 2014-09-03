@@ -1,11 +1,11 @@
 #ifndef G_BOOLEAN_H
 #define G_BOOLEAN_H
 
-#include "G_Object.h"
+#include "../Reflection/G_Primitive.h"
 
 namespace Gem
 {
-    class boolean sealed: public Object
+    class boolean sealed: public Reflection::Primitive
     {
         public:
         boolean(boolean & aValue);
@@ -28,10 +28,14 @@ namespace Gem
             return m_Value;
         }
 
-        virtual Reflection::Type * getType() override;
+        Pointer<Reflection::Type> getType() override;
+    protected:
+        void onInstantiate();
+        void onDestroy();
     private:
         bool m_Value;
     };
 }
+GEM_CLASS(boolean, Primitive)
 
 #endif

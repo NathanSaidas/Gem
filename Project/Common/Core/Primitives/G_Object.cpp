@@ -1,6 +1,9 @@
 #include "G_Object.h"
 #include "../Reflection/G_Reflection.h"
-#include <string>
+#include "../Reflection/G_ReflectionOperators.h"
+#include "G_string.h"
+
+
 namespace Gem
 {
 
@@ -20,12 +23,20 @@ namespace Gem
     //    ///type.ref() = getType();
     //    return Pointer<Type>();
     //}
-    Type * Object::getType()
+    Pointer<Reflection::Type> Object::getType()
     {
-        return Type::create("Object",TypeID::OBJECT,sizeof(Object),Class::getType());
+        return typeOf("Object");
     }
-    std::string Object::toString()
+    string Object::toString()
     {
-        return nameOf(this);
+        return "";
+    }
+    void Object::onInstantiate()
+    {
+
+    }
+    void Object::onDestroy()
+    {
+
     }
 }

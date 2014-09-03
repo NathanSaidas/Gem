@@ -20,9 +20,9 @@ namespace Gem
     Vector2::~Vector2()
     {
     }
-    Type * Vector2::getType()
+    Pointer<Reflection::Type> Vector2::getType()
     {
-        return Type::create("Vector2",TypeID::VECTOR2,sizeof(Vector2),Object::getType());
+        return typeOf("Vector2");
     }
     pugi::xml_node Vector2::serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
     {
@@ -155,10 +155,13 @@ namespace Gem
         return count >= threshHold;
     }
 
-    Type * Vector3::getType()
+    Pointer<Reflection::Type> Vector3::getType()
     {
-        return Type::create("Vector3",TypeID::VECTOR3,sizeof(Vector3),Object::getType());
+        return typeOf("Vector3");
     }
 
-
+    Pointer<Reflection::Type> Vector4::getType()
+    {
+        return typeOf("Vector4");
+    }
 }

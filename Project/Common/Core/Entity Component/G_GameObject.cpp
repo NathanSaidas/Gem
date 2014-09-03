@@ -61,11 +61,11 @@ namespace Gem
         }
         return nullptr;
     }
-    Component * GameObject::getComponent(std::string aTypeName)
+    Component * GameObject::getComponent(string aTypeName)
     {
         for(int i = 0; i < m_Components.size(); i++)
         {
-            if(aTypeName == nameOf(m_Components[i]->getType()))
+            if(aTypeName == m_Components[i]->getType().data().name())
             {
                 return m_Components[i];
             }
@@ -84,12 +84,13 @@ namespace Gem
         }
         return components;
     }
-    std::vector<Component*> GameObject::getComponents(std::string aTypeName)
+    std::vector<Component*> GameObject::getComponents(string aTypeName)
     {
         std::vector<Component*> components;
         for(int i = 0; i < m_Components.size(); i++)
         {
-            if(aTypeName == nameOf(m_Components[i]->getType()))
+            
+            if (aTypeName == m_Components[i]->getType().data().name())
             {
                 components.push_back(m_Components[i]);
             }
@@ -108,33 +109,12 @@ namespace Gem
     void GameObject::addComponentBypass(pugi::xml_node_iterator & aComponent)
     {
         //Get Type information
-        int type = aComponent->attribute("TypeID").as_int();
+        string type = aComponent->attribute("TypeName").as_string();
         pugi::xml_node node(aComponent->internal_object());
 
         //Add a component based on type ID
         //Initialize component with the internal  object of the iterator node
-        switch (type)
-        {
-            //BASIC EXAMPLE
-        case TypeID::COMPONENT:
-            {
-                Component * component = Memory::instantiate<Component>();
-                addComponentBypass(component);
-                component->deserialize(node);
-            }
-            break;
-        case TypeID::TRANSFORM:
-            {
-                Transform * transform = Memory::instantiate<Transform>();
-                addComponentBypass(transform);
-                transform->deserialize(node);
-            }
-            break;
-
-        default:
-
-            break;
-        }
+        
         
     }
     void GameObject::removeComponent(Component * aComponent)
@@ -393,8 +373,8 @@ namespace Gem
         }
         return count >= threshHold;
     }
-    Type * GameObject::getType()
+    Pointer<Reflection::Type> GameObject::getType()
     {
-        return Type::create("GameObject",TypeID::GAME_OBJECT,sizeof(GameObject),Object::getType());
+        return typeOf("GameObject");
     }
 }

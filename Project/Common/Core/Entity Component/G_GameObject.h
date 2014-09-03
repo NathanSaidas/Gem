@@ -1,7 +1,7 @@
 #ifndef G_GAME_OBJECT_H
 #define G_GAME_OBJECT_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Utilities/G_IXmlSerializable.h"
 #include <string>
 #include <vector>
@@ -33,9 +33,9 @@ namespace Gem
 
         Component * addComponent(Component * aComponent);
         Component * getComponent(Reflection::Type * aComponent);
-        Component * getComponent(std::string aTypeName);
+        Component * getComponent(string aTypeName);
         std::vector<Component*> getComponents(Reflection::Type * aComponent);
-        std::vector<Component*> getComponents(std::string aTypeName);
+        std::vector<Component*> getComponents(string aTypeName);
 
         std::string name();
         bool enabled();
@@ -46,7 +46,7 @@ namespace Gem
         virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         
 

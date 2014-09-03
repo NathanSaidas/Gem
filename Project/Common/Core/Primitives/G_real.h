@@ -1,11 +1,11 @@
 #ifndef G_REAL_H
 #define G_REAL_H
 
-#include "G_Object.h"
+#include "../Reflection/G_Primitive.h"
 
 namespace Gem
 {
-    class real sealed: public Object
+    class real sealed: public Reflection::Primitive
     {
     public:
         real(real & aValue);
@@ -27,9 +27,12 @@ namespace Gem
         {
             return m_Value;
         }
+        Pointer<Reflection::Type> getType() override;
 
-
-        virtual Reflection::Type * getType() override;
+    protected:
+        void onInstantiate();
+        void onDestroy();
+        
     private:
         float m_Value;
     };
@@ -51,5 +54,5 @@ namespace Gem
         return int(lhs / rhs);
     }
 }
-
+GEM_CLASS(real, Primitive)
 #endif

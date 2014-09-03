@@ -12,9 +12,6 @@
 #include "../Entity Component/Engine Components/G_Transform.h"
 #include "../Entity Component/Engine Components/G_DebugComponent.h"
 #include "../Utilities/G_IO.h"
-#include "../Base Objects/G_integer.h"
-#include "../Base Objects/G_real.h"
-#include "../Base Objects/G_string.h"
 #include "G_SceneManager.h"
 
 
@@ -246,30 +243,10 @@ namespace Gem
         log("Detached from " + I2S(aHandle));
     }
 
-    Type * WindowHook::getType()
+    Pointer<Reflection::Type> WindowHook::getType()
     {
-        return Type::create("WindowHook",TypeID::WINDOW_HOOK,sizeof(WindowHook),Object::getType());
+        return typeOf("WindowHook");
     }
 
-    void WindowHook::onMemoryClear(Object * aPtr)
-    {
-        if(aPtr == nullptr)
-        {
-            return;
-        }
-        Type * type = aPtr->getType();
-
-        if(typeID(type) == TypeID::STRING)
-        {
-            string * lString = (string*)aPtr;
-            log("Freeing Memory");
-        }
-
-        Type::freeType(type);
-    }
-    void WindowHook::onMemoryMove(Object * aOldPtr)
-    {
-
-    }
 
 }

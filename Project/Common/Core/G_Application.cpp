@@ -124,8 +124,9 @@ namespace Gem
         return true;
     }
 
-    Type * Application::getType()
+    Pointer<Reflection::Type> Application::getType()
     {
-        return Type::create("Application",TypeID::APPLICATION,sizeof(Application),Object::getType());
+        return typeOf("Application");
     }
+    
 }

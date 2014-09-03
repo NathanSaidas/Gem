@@ -4,7 +4,7 @@
 #include <math.h>
 #include "G_Vector.h"
 #include "G_Matrix.h"
-#include "G_Quaterion.h"
+#include "G_Quaternion.h"
 
 namespace Gem
 {

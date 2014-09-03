@@ -1,7 +1,7 @@
 #ifndef G_APPLICATION_H
 #define G_APPLICATION_H
 
-#include "Base Objects/G_Object.h"
+#include "Primitives\G_PrimitiveObjects.h"
 
 namespace Gem
 {
@@ -16,7 +16,7 @@ namespace Gem
         void execute();
 
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
 
         bool init();
@@ -30,5 +30,8 @@ namespace Gem
         friend class PoolAllocator;
     };
 }
+
+GEM_CLASS(Application,Object)
+
 
 #endif

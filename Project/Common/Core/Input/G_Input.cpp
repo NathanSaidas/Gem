@@ -252,9 +252,10 @@ namespace Gem
         return true;
     }
 
-    Type * Input::getType()
+    Pointer<Reflection::Type> Input::getType()
     {
-        return Type::create("Input",TypeID::INPUT,sizeof(Input),Object::getType());
+        return typeOf("Input");
     }
+        
 
 }

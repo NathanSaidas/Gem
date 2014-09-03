@@ -39,9 +39,9 @@ namespace Gem
     }
 
     //Reflection Virtuals
-    Type * Window::getType()
+    Pointer<Reflection::Type> Window::getType()
     {
-        return Type::create("Window", TypeID::WINDOW, sizeof(Window),Object::getType());
+        return typeOf("Window");
     }
 
     //These are events that will be sent from a window manager

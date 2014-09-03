@@ -25,9 +25,9 @@ namespace Gem
         }
     }
 
-    Type * GameObjectManager::getType()
+    Pointer<Reflection::Type> GameObjectManager::getType()
     {
-        return Type::create("GameObjectManager",TypeID::GAME_OBJECT_MANAGER,sizeof(GameObjectManager),Object::getType());
+        return typeOf("GameObjectManager");
     }
 
     

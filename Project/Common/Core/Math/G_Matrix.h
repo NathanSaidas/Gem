@@ -1,7 +1,7 @@
 #ifndef G_MATRIX_H
 #define G_MATRIX_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_Vector.h"
 
 namespace Gem
@@ -15,7 +15,7 @@ namespace Gem
         float m31, m32, m33, m34;
         float m41, m42, m43, m44;
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
 
         Matrix4x4(){}
         Matrix4x4(const Vector3 & aRight, const Vector3 & aUp, const Vector3 & at)
@@ -163,7 +163,7 @@ namespace Gem
     };
 
 
-    class Matrix3x3
+    class Matrix3x3 : Object
     {
     public:
 
@@ -189,8 +189,12 @@ namespace Gem
         }
 
         void setIdentity();
+
+        virtual Pointer<Reflection::Type> getType() override;
+
     };
 
 }
-
+GEM_CLASS(Matrix4x4,Object)
+GEM_CLASS(Matrix3x3,Object)
 #endif

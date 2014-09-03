@@ -1,15 +1,16 @@
 #include "G_Class.h"
-#include "G_Types.h"
-#include "G_TypeFactory.h"
+#include "G_Type.h"
+#include "../Reflection/G_ReflectionOperators.h"
+#include "../Primitives/G_string.h"
 
 namespace Gem
 {
     namespace Reflection
     {
         //Class Methods
-        Type * Class::getType()
+        Pointer<Reflection::Type> Class::getType()
         {
-            return Type::create("Class",TypeID::CLASS,sizeof(Class),nullptr);
+            return typeOf("Class");
         }
 
     }

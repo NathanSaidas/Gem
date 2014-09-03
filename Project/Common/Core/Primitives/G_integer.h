@@ -1,15 +1,15 @@
 #ifndef G_INT_H
 #define G_INT_H
 
-#include "G_Object.h"
+#include "../Reflection/G_Primitive.h"
 
 namespace Gem
 {
 
-    class integer sealed: public Object
+    class integer sealed: public Reflection::Primitive
     {
     public:
-        integer(integer & aValue);
+        integer(const integer & aValue);
         integer(int aValue);
         integer();
         ~integer();
@@ -30,7 +30,10 @@ namespace Gem
         }
 
 
-        virtual Reflection::Type * getType() override;
+        Pointer<Reflection::Type> getType() override;
+    protected:
+        void onInstantiate();
+        void onDestroy();
     private:
         int m_Value;
     };
@@ -51,6 +54,7 @@ namespace Gem
     {
         return int(lhs / rhs);
     }
+    
 }
-
+GEM_CLASS(integer, Primitive)
 #endif

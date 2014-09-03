@@ -1,9 +1,110 @@
-﻿Build started 29/08/2014 8:23:48 AM.
-     1>Project "C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Windows.vcxproj" on node 2 (Clean target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug\Windows.lastbuildstate".
-     1>Done Building Project "C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Windows.vcxproj" (Clean target(s)).
+﻿Build started 9/3/2014 1:59:36 PM.
+     1>Project "C:\Users\hanl0030\Desktop\Gem\Gem\Project\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.cpp" "..\..\Common\Core\Entity Component\Engine Components\G_Transform.cpp" "..\..\Common\Core\Entity Component\G_GameObjectManager.cpp" "..\..\Common\Core\Entity Component\G_Component.cpp" "..\..\Common\Core\Entity Component\G_GameObject.cpp" ..\..\Common\Core\G_Application.cpp ..\..\Common\Core\Input\G_Input.cpp ..\..\Common\Core\Input\G_Key.cpp ..\..\Common\Core\Input\G_InputAxis.cpp ..\..\Common\Core\Math\G_Matrix.cpp ..\..\Common\Core\Math\G_Vector.cpp ..\..\Common\Core\Math\G_Quaterion.cpp ..\..\Common\Core\Memory\G_Allocator.cpp ..\..\Common\Core\Memory\G_MemoryManager.cpp ..\..\Common\Core\Memory\G_Pointer.cpp ..\..\Common\Core\Primitives\G_boolean.cpp ..\..\Common\Core\Primitives\G_integer.cpp ..\..\Common\Core\Primitives\G_Object.cpp ..\..\Common\Core\Primitives\G_real.cpp ..\..\Common\Core\Primitives\G_string.cpp ..\..\Common\Core\Reflection\G_Class.cpp ..\..\Common\Core\Reflection\G_Primitive.cpp ..\..\Common\Core\Reflection\G_ReflectionOperators.cpp ..\..\Common\Core\Reflection\G_ReflectionRegristration.cpp ..\..\Common\Core\Reflection\G_ReflectionRuntime.cpp ..\..\Common\Core\Reflection\G_Type.cpp ..\..\Common\Core\Reflection\G_TypeList.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamDoc.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamFile.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamObject.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamProperty.cpp ..\..\Common\Core\Utilities\G_Debug.cpp ..\..\Common\Core\Utilities\G_IO.cpp ..\..\Common\Core\Utilities\G_Time.cpp ..\..\Common\Core\Utilities\G_UniqueNumberGenerator.cpp ..\..\Common\Core\Utilities\G_Utilities.cpp ..\..\Common\Core\Window\G_Scene.cpp ..\..\Common\Core\Window\G_SceneManager.cpp ..\..\Common\Core\Window\G_Window.cpp ..\..\Common\Core\Window\G_WindowHook.cpp ..\..\Common\Core\Window\G_WindowManager.cpp "..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_reader.cpp" "..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_value.cpp" "..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_writer.cpp" "..\..\Common\Libraries\pugixml-1.4\src\pugixml.cpp" ..\..\Common\Main\main.cpp fruit.cpp
+         fruit.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         main.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\main\main.cpp(61): fatal error C1083: Cannot open include file: '../Core/Memory/PoolAllocator.h': No such file or directory
+         pugixml.cpp
+         json_writer.cpp
+         json_value.cpp
+         json_reader.cpp
+         G_WindowManager.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_WindowHook.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Window.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_SceneManager.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_scenemanager.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Scene.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_scene.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Utilities.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_utilities.cpp(163): warning C4018: '<' : signed/unsigned mismatch
+         G_UniqueNumberGenerator.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Time.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_time.cpp(10): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+         G_IO.cpp
+         G_Debug.cpp
+         G_StreamProperty.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamproperty.h(4): fatal error C1083: Cannot open include file: '../../Base Objects/G_Object.h': No such file or directory
+         G_StreamObject.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamobject.h(4): fatal error C1083: Cannot open include file: '../../Base Objects/G_Object.h': No such file or directory
+         G_StreamFile.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.h(4): fatal error C1083: Cannot open include file: '../../Base Objects/G_Object.h': No such file or directory
+         G_StreamDoc.cpp
+         Generating Code...
+         Compiling...
+         G_TypeList.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_typelist.cpp(76): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_typelist.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_typelist.cpp(98): warning C4018: '<' : signed/unsigned mismatch
+         G_Type.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_ReflectionRuntime.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionruntime.cpp(119): warning C4018: '<' : signed/unsigned mismatch
+         G_ReflectionRegristration.cpp
+         G_ReflectionOperators.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_Primitive.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_Class.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_string.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_real.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_Object.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_integer.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_boolean.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_Pointer.cpp
+         G_MemoryManager.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_Allocator.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+         G_Quaterion.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Vector.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Matrix.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_InputAxis.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Key.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         Generating Code...
+         Compiling...
+         G_Input.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Application.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_GameObject.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Component.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.h(3): fatal error C1083: Cannot open include file: '../Base Objects/G_BaseObjects.h': No such file or directory
+         G_GameObjectManager.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+         G_Transform.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.h(3): fatal error C1083: Cannot open include file: '../Base Objects/G_BaseObjects.h': No such file or directory
+         G_DebugComponent.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.h(3): fatal error C1083: Cannot open include file: '../Base Objects/G_BaseObjects.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\hanl0030\Desktop\Gem\Gem\Project\Windows\Windows\Windows.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.03
+Time Elapsed 00:00:12.50

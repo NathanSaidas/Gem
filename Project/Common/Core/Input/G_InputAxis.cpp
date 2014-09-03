@@ -158,9 +158,9 @@ namespace Gem
         return m_CurrentValue;
     }
 
-    Type * InputAxis::getType()
+    Pointer<Reflection::Type> InputAxis::getType()
     {
-        return Type::create("InputAxis",TypeID::WINDOW_HOOK,sizeof(InputAxis),Object::getType());
+        return typeOf("InputAxis");
     }
 
 }

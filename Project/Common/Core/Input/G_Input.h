@@ -1,7 +1,7 @@
 #ifndef OL_INPUT_H
 #define OL_INPUT_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_KeyDef.h"
 #include "G_Key.h"
 #include "../Math/G_Math.h"
@@ -106,7 +106,7 @@ namespace Gem
         AxisCode getAxisNegativeKey(std::string aName , int aKey);
         bool getAxisResetOnRelease(std::string aName );
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         //Key * m_Keys[(int)KeyCode::COUNT];
         //Button * m_MouseButtons[(int)MouseButton::COUNT];
@@ -140,5 +140,6 @@ namespace Gem
     };
 
 }
+GEM_CLASS(Input,Object)
 
 #endif

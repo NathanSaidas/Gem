@@ -1,7 +1,7 @@
 #ifndef G_GAME_OBJECT_MANAGER_H
 #define G_GAME_OBJECT_MANAGER_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include <vector>
 #include <string>
 
@@ -32,7 +32,7 @@ namespace Gem
         }
         std::vector<GameObject*> & getGameObjects();
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         static GameObjectManager * s_Instance;
         GameObjectManager();
@@ -61,5 +61,6 @@ namespace Gem
         friend class Window;
     };
 }
+GEM_CLASS(GameObjectManager,Object)
 
 #endif

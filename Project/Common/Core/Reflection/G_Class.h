@@ -2,20 +2,20 @@
 #define G_CLASS_H
 
 
-#include "G_Type.h"
+#include "G_Primitive.h"
 
 namespace Gem
 {
     namespace Reflection
     {
-        class Class //: public Type 
+        class Class : public Primitive
         {
         public:
             Class(){}
             ~Class(){}
     
             //3 Basic functions to establish a type
-            virtual Type * getType();
+            virtual Pointer<Reflection::Type> getType() override;
         protected:
             
             
@@ -25,5 +25,5 @@ namespace Gem
     }
 
 }
-
+GEM_CLASS(Class, Primitive)
 #endif

@@ -183,9 +183,9 @@ namespace Gem
         return -1;
     }
 
-    Type * WindowManager::getType()
+    Pointer<Reflection::Type> WindowManager::getType()
     {
-        return Type::create("WindowManager",TypeID::WINDOW_MANAGER,sizeof(WindowManager),Object::getType());
+        return typeOf("WindowManager");
     }
 
 

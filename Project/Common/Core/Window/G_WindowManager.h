@@ -1,7 +1,7 @@
 #ifndef G_WINDOW_MANAGER_H
 #define G_WINDOW_MANAGER_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Utilities/G_UniqueNumberGenerator.h"
 #include <vector>
 
@@ -31,7 +31,7 @@ namespace Gem
             return 0;
         }
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         static WindowManager * s_Instance;
         WindowManager();
@@ -65,5 +65,5 @@ namespace Gem
 
 
 }
-
+GEM_CLASS(WindowManager,Object)
 #endif

@@ -1,7 +1,7 @@
 #ifndef G_INPUT_AXIS_H
 #define G_INPUT_AXIS_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_Key.h"
 #include <string>
 
@@ -28,7 +28,7 @@ namespace Gem
         AxisCode negativeKey(int aKey);
         float axisValue();
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         static const int MAX_AXIS_KEYS = 2;
         static const float AXIS_INCREMENT_SPEED;
@@ -44,5 +44,6 @@ namespace Gem
 
     };
 }
+GEM_CLASS(InputAxis,Object)
 
 #endif

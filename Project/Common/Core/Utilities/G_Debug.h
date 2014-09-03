@@ -3,10 +3,6 @@
 
 namespace Gem
 {
-    template<class X> struct A
-    {
-        template<class T> void funcDef();
-    };
 
     
 

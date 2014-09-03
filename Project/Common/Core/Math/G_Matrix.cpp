@@ -5,9 +5,10 @@
 namespace Gem
 {
     using namespace Reflection;
-    Type * Matrix4x4::getType()
+
+    Pointer<Reflection::Type> Matrix4x4::getType()
     {
-        return Type::create("Matrix4x4",TypeID::MATRIX_4X4,sizeof(Matrix4x4),Object::getType());
+        return typeOf("Matrix4x4");
     }
 
 
@@ -184,5 +185,10 @@ namespace Gem
     {
         m12 = m13 = m21 = m23 = m31 = m32 = 0.0f;
         m11 = m22 = m33 = 0.0f;
+    }
+
+    Pointer<Reflection::Type> Matrix3x3::getType()
+    {
+        return typeOf("Matrix3x3");
     }
 }

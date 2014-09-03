@@ -1,34 +1,34 @@
-#ifndef G_QUATERION_H
-#define G_QUATERION_H
+#ifndef G_QUATERNION_H
+#define G_QUATERNION_H
 #include <math.h>
 #include "G_Vector.h"
 #include "G_Matrix.h"
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Utilities/G_IXmlSerializable.h"
 
 namespace Gem
 {
 
-    class Quaterion : Object, IXmlSerializable
+    class Quaternion : Object, IXmlSerializable
     {
     public:
 
         float x, y, z, w;
 
-        Quaterion(){}
-        Quaterion(float aX, float aY, float aZ, float aW)
+        Quaternion(){}
+        Quaternion(float aX, float aY, float aZ, float aW)
             :x(aX),y(aY),z(aZ),w(aW){}
-        Quaterion(float aReal, const Vector3 & aVec)
+        Quaternion(float aReal, const Vector3 & aVec)
             :x(aReal),y(aVec.x),z(aVec.y),w(aVec.z){}
 
         //From euler angles
-        Quaterion(float aX, float aY, float aZ);
-        Quaterion(const Vector3 & aVec);
-        ~Quaterion();
+        Quaternion(float aX, float aY, float aZ);
+        Quaternion(const Vector3 & aVec);
+        ~Quaternion();
 
 
-        Quaterion &operator =(const Quaterion & aValue)
+        Quaternion &operator =(const Quaternion & aValue)
         {
             x = aValue.x;
             y = aValue.y;
@@ -36,17 +36,17 @@ namespace Gem
             w = aValue.w;
             return *this;
         }
-        const Quaterion operator +(const Quaterion & aValue) const
+        const Quaternion operator +(const Quaternion & aValue) const
         {
-            return Quaterion(x + aValue.x, y + aValue.y, z + aValue.z, w + aValue.w);
+            return Quaternion(x + aValue.x, y + aValue.y, z + aValue.z, w + aValue.w);
         }
-        const Quaterion operator -(const Quaterion & aValue) const
+        const Quaternion operator -(const Quaternion & aValue) const
         {
-            return Quaterion(x - aValue.x, y - aValue.y, z - aValue.z, w - aValue.w);
+            return Quaternion(x - aValue.x, y - aValue.y, z - aValue.z, w - aValue.w);
         }
-        const Quaterion operator *(const Quaterion & aValue) const
+        const Quaternion operator *(const Quaternion & aValue) const
         {
-            return Quaterion(
+            return Quaternion(
                 /*x*/w * aValue.x + x * aValue.w - y * aValue.z + z * aValue.y,
                 /*y*/w * aValue.y + x * aValue.z + y * aValue.w - z * aValue.x,
                 /*z*/w * aValue.z - x * aValue.y + y * aValue.x + z * aValue.w,
@@ -77,13 +77,13 @@ namespace Gem
         }
         const Vector3 eulerAngles() const;
 
-        static const Quaterion euler(float x, float y, float z)
+        static const Quaternion euler(float x, float y, float z)
         {
-            return Quaterion(x,y,z);
+            return Quaternion(x,y,z);
         }
-        static const Quaterion euler(Vector3 aVec)
+        static const Quaternion euler(Vector3 aVec)
         {
-            return Quaterion(aVec);
+            return Quaternion(aVec);
         }
 
         inline float length()
@@ -91,9 +91,9 @@ namespace Gem
             return sqrtf(x * x + y * y + z* z + w * w);
         }
 
-        inline Quaterion normalized()
+        inline Quaternion normalized()
         {
-            Quaterion newQuat;
+            Quaternion newQuat;
             float lLength = length();
             newQuat.x = x/lLength;
             newQuat.y = y/lLength;
@@ -110,40 +110,41 @@ namespace Gem
             w = w/lLength;
         }
 
-        inline Quaterion conjugate()
+        inline Quaternion conjugate()
         {
-            return Quaterion(-x,-y,-z,w);
+            return Quaternion(-x,-y,-z,w);
         }
 
-        inline Quaterion multiply(Quaterion aValue)
+        inline Quaternion multiply(Quaternion aValue)
         {
             float lw = w * aValue.w - x * aValue.x - y * aValue.y - z * aValue.z;
             float lx = x * aValue.w + w * aValue.x + y * aValue.z - z * aValue.y;
             float ly = y * aValue.w + w * aValue.y + z * aValue.x - x * aValue.z;
             float lz = z * aValue.w + w * aValue.z + x * aValue.y - y * aValue.x;
 
-            return Quaterion(lx,ly,lz,lw);
+            return Quaternion(lx,ly,lz,lw);
         }
 
-        inline static Quaterion identity()
+        inline static Quaternion identity()
         {
-            return Quaterion(0.0f,0.0f,0.0f,1.0f);
+            return Quaternion(0.0f,0.0f,0.0f,1.0f);
         }
 
-        inline Quaterion multiply(Vector3 aVec)
+        inline Quaternion multiply(Vector3 aVec)
         {
             float localW = -x * aVec.x - y * aVec.y - z * aVec.z;
             float localX =  w * aVec.x + y * aVec.z - z * aVec.y;
             float localY =  w * aVec.y + z * aVec.x - x * aVec.z;
             float localZ =  w * aVec.z + x * aVec.y - y * aVec.x;
 
-            return Quaterion(localX,localY,localZ,localW);
+            return Quaternion(localX,localY,localZ,localW);
         }
         virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
     };
 }
+GEM_CLASS(Quaternion,Object)
 
 #endif

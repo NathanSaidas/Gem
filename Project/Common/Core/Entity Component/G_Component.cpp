@@ -67,9 +67,9 @@ namespace Gem
 
         return success;
     }
-    Type * Component::getType()
+    Pointer<Reflection::Type> getType()
     {
-        return Type::create("Component",TypeID::COMPONENT,sizeof(Component),Object::getType());
+        return typeOf("Component");
     }
 
     Component::Component()

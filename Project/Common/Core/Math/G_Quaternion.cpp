@@ -1,4 +1,4 @@
-#include "G_Quaterion.h"
+#include "G_Quaternion.h"
 #include "../Reflection/G_Reflection.h"
 #include "G_Math.h"
 #include <pugixml.hpp>
@@ -6,7 +6,7 @@ namespace Gem
 {
     using namespace Reflection;
 
-    Quaterion::Quaterion(float aX, float aY, float aZ)
+    Quaternion::Quaternion(float aX, float aY, float aZ)
     {
         double tX = Math::degreesToRad(aX);
         double tY = Math::degreesToRad(aY);
@@ -29,7 +29,7 @@ namespace Gem
         z = c1 * s2 * c3  - s1 * c2 * s3;
 
     }
-    Quaterion::Quaterion(const Vector3 & aVec)
+    Quaternion::Quaternion(const Vector3 & aVec)
     {
         double tX = Math::degreesToRad(aVec.x);
         double tY = Math::degreesToRad(aVec.y);
@@ -54,12 +54,12 @@ namespace Gem
 
 
     }
-    Quaterion::~Quaterion()
+    Quaternion::~Quaternion()
     {
 
     }
 
-    const Vector3 Quaterion::eulerAngles() const
+    const Vector3 Quaternion::eulerAngles() const
     {
         Vector3 eulerAngle;
 
@@ -87,7 +87,7 @@ namespace Gem
 
         return Math::radToDegrees(eulerAngle);
     }
-    pugi::xml_node Quaterion::serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo )
+    pugi::xml_node Quaternion::serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo )
     {
         aNode.append_attribute("X") = x;
         aNode.append_attribute("Y") = y;
@@ -95,7 +95,7 @@ namespace Gem
         aNode.append_attribute("W") = w;
         return aNode;
     }
-    bool Quaterion::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
+    bool Quaternion::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
     {
         int threshHold = 4;
         int count = 0;
@@ -131,9 +131,9 @@ namespace Gem
         }
         return count >= threshHold;
     }
-    Type * Quaterion::getType()
+    Pointer<Reflection::Type> Quaternion::getType()
     {
-        return Type::create("Quaterion",TypeID::QUATERION,sizeof(Quaterion),Object::getType());
+        return typeOf("Quaternion");
     }
 
 }

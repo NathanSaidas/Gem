@@ -1,13 +1,13 @@
 #ifndef OL_VECTOR_H
 #define OL_VECTOR_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Utilities/G_IXmlSerializable.h"
 #include <math.h>
 
 namespace Gem
 {
-    class Vector2 : public Object , IXmlSerializable
+    class Vector2 : public Object
     {
     public:
         Vector2();
@@ -134,7 +134,7 @@ namespace Gem
             return aFrom * aTime + aTo * time;
         }
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
 
         static Vector2 one()
         {
@@ -269,7 +269,7 @@ namespace Gem
 
         Vector3 rotate(float aAngle, Vector3 aAxis);
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
 
         inline static const Vector3 one()
         {
@@ -311,7 +311,7 @@ namespace Gem
         virtual bool deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
     };
 
-    class Vector4
+    class Vector4 : Object
     {
     public:
         Vector4(){}
@@ -332,7 +332,11 @@ namespace Gem
             float b;
             float a;
         };
+
+        virtual Pointer<Reflection::Type> getType() override;
     };
 }
-
+GEM_CLASS(Vector2,Object)
+GEM_CLASS(Vector3,Object)
+GEM_CLASS(Vector4,Object)
 #endif

@@ -1,6 +1,6 @@
 #ifndef G_COMPONENT_H
 #define G_COMPONENT_H
-#include "../Base Objects/G_BaseObjects.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Utilities/G_IXmlSerializable.h"
 #include <string>
 #include <vector>
@@ -31,7 +31,7 @@ namespace Gem
 
         virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         
         GameObject * m_GameObject;
@@ -73,5 +73,6 @@ namespace Gem
     };
 
 }
+GEM_CLASS(Component,Object)
 
 #endif
