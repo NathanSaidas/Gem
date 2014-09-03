@@ -5,7 +5,6 @@
 #include "../../Memory/G_Memory.h"
 #include "../G_Utilities.h"
 #include <pugixml.hpp>
-#include "../../Base Objects/G_string.h"
 
 using namespace pugi;
 
@@ -198,9 +197,9 @@ namespace Gem
             }
             m_StreamObjects.clear();
         }
-        Type * StreamFile::getType()
+        Pointer<Reflection::Type> StreamFile::getType()
         {
-            return Type::create("StreamFile",TypeID::STREAM_FILE,sizeof(StreamFile),Object::getType());
+            return typeOf("StreamFile");
         }
     }
 }

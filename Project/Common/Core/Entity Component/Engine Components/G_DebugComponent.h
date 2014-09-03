@@ -117,7 +117,7 @@ namespace Gem
 
         virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;;
     private:
         Pointer<integer> m_IntPtr;
 

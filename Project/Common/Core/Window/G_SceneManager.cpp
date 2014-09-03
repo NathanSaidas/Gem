@@ -155,8 +155,8 @@ namespace Gem
         m_SceneFilenames.push_back(filename);
         return true;
     }
-    Type * SceneManager::getType()
+    Pointer<Reflection::Type> SceneManager::getType()
     {
-        return Type::create("SceneManager",TypeID::SCENE_MANAGER,sizeof(SceneManager),Object::getType());
+        return typeOf("SceneManager");
     }
 }

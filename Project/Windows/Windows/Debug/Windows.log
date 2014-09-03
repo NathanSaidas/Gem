@@ -1,110 +1,447 @@
-﻿Build started 9/3/2014 1:59:36 PM.
+﻿Build started 9/3/2014 5:56:02 PM.
      1>Project "C:\Users\hanl0030\Desktop\Gem\Gem\Project\Windows\Windows\Windows.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.cpp" "..\..\Common\Core\Entity Component\Engine Components\G_Transform.cpp" "..\..\Common\Core\Entity Component\G_GameObjectManager.cpp" "..\..\Common\Core\Entity Component\G_Component.cpp" "..\..\Common\Core\Entity Component\G_GameObject.cpp" ..\..\Common\Core\G_Application.cpp ..\..\Common\Core\Input\G_Input.cpp ..\..\Common\Core\Input\G_Key.cpp ..\..\Common\Core\Input\G_InputAxis.cpp ..\..\Common\Core\Math\G_Matrix.cpp ..\..\Common\Core\Math\G_Vector.cpp ..\..\Common\Core\Math\G_Quaterion.cpp ..\..\Common\Core\Memory\G_Allocator.cpp ..\..\Common\Core\Memory\G_MemoryManager.cpp ..\..\Common\Core\Memory\G_Pointer.cpp ..\..\Common\Core\Primitives\G_boolean.cpp ..\..\Common\Core\Primitives\G_integer.cpp ..\..\Common\Core\Primitives\G_Object.cpp ..\..\Common\Core\Primitives\G_real.cpp ..\..\Common\Core\Primitives\G_string.cpp ..\..\Common\Core\Reflection\G_Class.cpp ..\..\Common\Core\Reflection\G_Primitive.cpp ..\..\Common\Core\Reflection\G_ReflectionOperators.cpp ..\..\Common\Core\Reflection\G_ReflectionRegristration.cpp ..\..\Common\Core\Reflection\G_ReflectionRuntime.cpp ..\..\Common\Core\Reflection\G_Type.cpp ..\..\Common\Core\Reflection\G_TypeList.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamDoc.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamFile.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamObject.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamProperty.cpp ..\..\Common\Core\Utilities\G_Debug.cpp ..\..\Common\Core\Utilities\G_IO.cpp ..\..\Common\Core\Utilities\G_Time.cpp ..\..\Common\Core\Utilities\G_UniqueNumberGenerator.cpp ..\..\Common\Core\Utilities\G_Utilities.cpp ..\..\Common\Core\Window\G_Scene.cpp ..\..\Common\Core\Window\G_SceneManager.cpp ..\..\Common\Core\Window\G_Window.cpp ..\..\Common\Core\Window\G_WindowHook.cpp ..\..\Common\Core\Window\G_WindowManager.cpp "..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_reader.cpp" "..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_value.cpp" "..\..\Common\Libraries\jsoncpp-src-0.5.0\src\json_writer.cpp" "..\..\Common\Libraries\pugixml-1.4\src\pugixml.cpp" ..\..\Common\Main\main.cpp fruit.cpp
-         fruit.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         main.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\main\main.cpp(61): fatal error C1083: Cannot open include file: '../Core/Memory/PoolAllocator.h': No such file or directory
-         pugixml.cpp
-         json_writer.cpp
-         json_value.cpp
-         json_reader.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\Common\Core\Entity Component\Engine Components\G_DebugComponent.cpp" "..\..\Common\Core\Entity Component\Engine Components\G_Transform.cpp" "..\..\Common\Core\Entity Component\G_Component.cpp" "..\..\Common\Core\Entity Component\G_GameObject.cpp" "..\..\Common\Core\Entity Component\G_GameObjectManager.cpp" ..\..\Common\Core\G_Application.cpp ..\..\Common\Core\Input\G_Input.cpp ..\..\Common\Core\Input\G_InputAxis.cpp ..\..\Common\Core\Math\G_Matrix.cpp ..\..\Common\Core\Math\G_Quaternion.cpp ..\..\Common\Core\Math\G_Vector.cpp ..\..\Common\Core\Utilities\FileIO\G_StreamFile.cpp ..\..\Common\Core\Utilities\G_IO.cpp ..\..\Common\Core\Utilities\G_UniqueNumberGenerator.cpp ..\..\Common\Core\Window\G_Scene.cpp ..\..\Common\Core\Window\G_SceneManager.cpp ..\..\Common\Core\Window\G_Window.cpp ..\..\Common\Core\Window\G_WindowHook.cpp ..\..\Common\Core\Window\G_WindowManager.cpp
          G_WindowManager.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(100): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(124): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(152): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(173): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(196): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(213): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(276): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(294): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(310): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(312): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(328): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowmanager.cpp(330): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_WindowHook.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(91): error C2039: 'getTotalBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(92): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(93): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(94): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(95): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(96): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(97): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(98): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(99): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(100): error C2039: 'getBytesUsed' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(106): error C2039: 'getTotalBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(107): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(108): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(109): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(110): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(111): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(112): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(113): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(114): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_windowhook.cpp(115): error C2039: 'getBytesFree' : is not a member of 'Gem::MemoryManager'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(63) : see declaration of 'Gem::MemoryManager'
          G_Window.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_SceneManager.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_scenemanager.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_scenemanager.cpp(122): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_scenemanager.cpp(148): warning C4018: '<' : signed/unsigned mismatch
          G_Scene.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\window\g_scene.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         G_Utilities.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_utilities.cpp(163): warning C4018: '<' : signed/unsigned mismatch
          G_UniqueNumberGenerator.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         G_Time.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_time.cpp(10): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_array.h(21): error C2780: 'T *Gem::Memory::destroy(T *)' : expects 1 arguments - 2 provided
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_memorymanager.h(161) : see declaration of 'Gem::Memory::destroy'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_array.h(20) : while compiling class template member function 'Gem::Array<int,int>::~Array(void)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.cpp(10) : see reference to function template instantiation 'Gem::Array<int,int>::~Array(void)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(27) : see reference to class template instantiation 'Gem::Array<int,int>' being compiled
          G_IO.cpp
-         G_Debug.cpp
-         G_StreamProperty.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamproperty.h(4): fatal error C1083: Cannot open include file: '../../Base Objects/G_Object.h': No such file or directory
-         G_StreamObject.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamobject.h(4): fatal error C1083: Cannot open include file: '../../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_io.cpp(78): error C2084: function 'Gem::Pointer<Gem::Reflection::Type> Gem::FileIO::Directory::getType(void)' already has a body
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_io.h(47) : see previous definition of 'getType'
          G_StreamFile.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.h(4): fatal error C1083: Cannot open include file: '../../Base Objects/G_Object.h': No such file or directory
-         G_StreamDoc.cpp
-         Generating Code...
-         Compiling...
-         G_TypeList.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_typelist.cpp(76): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_typelist.cpp(87): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_typelist.cpp(98): warning C4018: '<' : signed/unsigned mismatch
-         G_Type.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_ReflectionRuntime.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionruntime.cpp(119): warning C4018: '<' : signed/unsigned mismatch
-         G_ReflectionRegristration.cpp
-         G_ReflectionOperators.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_Primitive.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_Class.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_string.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_real.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_Object.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_integer.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_boolean.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_Pointer.cpp
-         G_MemoryManager.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_Allocator.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-         G_Quaterion.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(33): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(48): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(61): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(81): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(100): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(114): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(129): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(171): error C2039: 'Empty' : is not a member of 'Gem::string'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(14) : see declaration of 'Gem::string'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(171): error C2065: 'Empty' : undeclared identifier
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\fileio\g_streamfile.cpp(194): warning C4018: '<' : signed/unsigned mismatch
          G_Vector.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.cpp(4): fatal error C1083: Cannot open include file: 'G_Quaterion.h': No such file or directory
+         G_Quaternion.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(26): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(27): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(28): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(29): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(49): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(50): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(51): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(52): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(69): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(70): warning C4244: '=' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(76): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(77): warning C4244: '=' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(84): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(85): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.cpp(86): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_Matrix.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.cpp(85): warning C4244: 'argument' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.cpp(86): warning C4244: 'argument' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.cpp(159): warning C4244: 'argument' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_InputAxis.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         G_Key.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\utilities\g_uniquenumbergenerator.h(5): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         Generating Code...
-         Compiling...
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_Input.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(64): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(84): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(153): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(178): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(189): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(200): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(212): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(223): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(234): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\input\g_input.cpp(245): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_Application.cpp
      1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         G_GameObject.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
-         G_Component.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.h(3): fatal error C1083: Cannot open include file: '../Base Objects/G_BaseObjects.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\g_application.cpp(86): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          G_GameObjectManager.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.h(4): fatal error C1083: Cannot open include file: '../Base Objects/G_Object.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(67): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(83): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(91): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(119): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(126): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(133): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(143): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(153): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(170): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(177): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(184): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(234): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobjectmanager.cpp(273): warning C4018: '<' : signed/unsigned mismatch
+         G_GameObject.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(30): error C3861: 'sizeOf': identifier not found
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(36): error C2039: 'destroySize' : is not a member of 'Gem::Memory'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(36): error C3861: 'destroySize': identifier not found
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(55): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(57): error C2678: binary '==' : no operator found which takes a left-hand operand of type 'Gem::Pointer<Gem::Reflection::Type>' (or there is no acceptable conversion)
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_pointer.h(237): could be 'bool Gem::Pointer<Gem::Reflection::Type>::operator ==(Gem::Pointer<Gem::Reflection::Type> &)'
+                 while trying to match the argument list '(Gem::Pointer<Gem::Reflection::Type>, Gem::Reflection::Type *)'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(66): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(78): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(80): error C2678: binary '==' : no operator found which takes a left-hand operand of type 'Gem::Pointer<Gem::Reflection::Type>' (or there is no acceptable conversion)
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\memory\g_pointer.h(237): could be 'bool Gem::Pointer<Gem::Reflection::Type>::operator ==(Gem::Pointer<Gem::Reflection::Type> &)'
+                 while trying to match the argument list '(Gem::Pointer<Gem::Reflection::Type>, Gem::Reflection::Type *)'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(90): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(122): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(147): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(154): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(161): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(169): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(176): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(183): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(191): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(202): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(209): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(217): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(224): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(232): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(239): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(246): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_gameobject.cpp(320): warning C4018: '<' : signed/unsigned mismatch
+         G_Component.cpp
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(43): error C2440: 'initializing' : cannot convert from 'Gem::Pointer<Gem::Reflection::Type>' to 'Gem::Reflection::Type *'
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(46): error C3861: 'nameOf': identifier not found
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(47): error C3861: 'typeID': identifier not found
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(48): error C2039: 'freeType' : is not a member of 'Gem::Reflection::Type'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_type.h(20) : see declaration of 'Gem::Reflection::Type'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(48): error C3861: 'freeType': identifier not found
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(58): error C2440: 'initializing' : cannot convert from 'Gem::Pointer<Gem::Reflection::Type>' to 'Gem::Reflection::Type *'
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(61): error C3861: 'typeID': identifier not found
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(65): error C2039: 'freeType' : is not a member of 'Gem::Reflection::Type'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_type.h(20) : see declaration of 'Gem::Reflection::Type'
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.cpp(65): error C3861: 'freeType': identifier not found
          G_Transform.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.h(3): fatal error C1083: Cannot open include file: '../Base Objects/G_BaseObjects.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\engine components\g_transform.cpp(11): error C2653: 'Quaterion' : is not a class or namespace name
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\engine components\g_transform.cpp(11): error C3861: 'identity': identifier not found
          G_DebugComponent.cpp
-     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\entity component\g_component.h(3): fatal error C1083: Cannot open include file: '../Base Objects/G_BaseObjects.h': No such file or directory
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\primitives\g_string.h(129): warning C4521: 'Gem::string' : multiple copy constructors specified
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(213): warning C4172: returning address of local variable or temporary
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_math.h(20): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Vector4 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Vector4
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_vector.h(341) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Vector4>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Matrix3x3 *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Matrix3x3
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_matrix.h(199) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Matrix3x3>' being compiled
+     1>c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(25): error C2243: 'type cast' : conversion from 'Gem::Quaternion *' to 'Gem::Reflection::Primitive *' exists, but is inaccessible
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(69) : see reference to function template instantiation 'Gem::Reflection::Primitive *Gem::Reflection::createPrimitive<T>(Gem::Reflection::Primitive *)' being compiled
+                 with
+                 [
+                     T=Gem::Quaternion
+                 ]
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(66) : while compiling class template member function 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)'
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\reflection\g_reflectionregristration.h(61) : see reference to function template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>::RegistryEntry(const std::string &,const std::string &)' being compiled
+                 c:\users\hanl0030\desktop\gem\gem\project\common\core\math\g_quaternion.h(148) : see reference to class template instantiation 'Gem::Reflection::RegistryEntry<Gem::Quaternion>' being compiled
          Generating Code...
      1>Done Building Project "C:\Users\hanl0030\Desktop\Gem\Gem\Project\Windows\Windows\Windows.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:12.50
+Time Elapsed 00:00:06.99

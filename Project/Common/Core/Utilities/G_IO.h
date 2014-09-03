@@ -2,13 +2,14 @@
 #define G_IO_H
 
 #include <boost\filesystem.hpp>
+#include "../Primitives/G_PrimitiveObjects.h"
 
 
 namespace Gem
 {
     namespace FileIO
     {
-        class File
+        class File : public Object
         {
         public:
             File():m_Path(""){}
@@ -22,11 +23,12 @@ namespace Gem
                 return m_Path;
             }
             bool verify();
+            virtual Pointer<Reflection::Type> getType();
         private:
             std::string m_Path;
         };
         //
-        class Directory
+        class Directory : public Object
         {
         public:
             Directory():m_Path(""){}
@@ -42,12 +44,12 @@ namespace Gem
             }
             bool verify();
             //static std::vector<Directory> toDirectories(std::vector<std::string> aDirectoryList);
-    
+            virtual Pointer<Reflection::Type> getType();
         private:
             std::string m_Path;
         };
 
-        class IO
+        class IO : public Object
         {
         public:
             inline static Directory projectDirectory()
@@ -121,8 +123,12 @@ namespace Gem
                 }
                 return File();
             }
+            virtual Pointer<Reflection::Type> getType();
         };
     }
 }
+GEM_CLASS(FileIO::File,Object)
+GEM_CLASS(FileIO::Directory,Object)
+GEM_CLASS(FileIO::IO,Object)
 
 #endif

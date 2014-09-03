@@ -51,9 +51,9 @@ namespace Gem
 
         return true;
     }
-    Reflection::Type * Transform::getType()
+    Pointer<Reflection::Type> Transform::getType()
     {
-        return Type::create("Transform",TypeID::TRANSFORM,sizeof(Transform),Component::getType());
+        return typeOf("Transform");
     }
         
 }

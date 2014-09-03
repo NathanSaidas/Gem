@@ -15,7 +15,9 @@ namespace Gem
     class Window : public Object
     {
     public:
-        
+        Window();
+        virtual ~Window();
+
         int handle();
         int width();
         int height();
@@ -42,8 +44,7 @@ namespace Gem
         int m_HandleID;
         char * m_Title;
 
-        Window();
-        virtual ~Window();
+        
 
         void createWindow();
         void destroyWindow();

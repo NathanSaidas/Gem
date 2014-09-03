@@ -2,7 +2,7 @@
 #include "G_StreamProperty.h"
 #include "../../Reflection/G_Reflection.h"
 #include "../../Memory/G_Memory.h"
-#include "../../Base Objects/G_BaseObjects.h"
+#include "../../Primitives/G_PrimitiveObjects.h"
 
 #include <pugixml.hpp>
 
@@ -142,9 +142,9 @@ namespace Gem
             }
         }
 
-        Type * StreamObject::getType()
+        Pointer<Reflection::Type> StreamObject::getType()
         {
-            return Type::create("StreamObject",TypeID::STREAM_OBJECT,sizeof(StreamObject),Object::getType());
+            return typeOf("StreamObject");
         }
     }
 }

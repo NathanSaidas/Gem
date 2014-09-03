@@ -17,6 +17,8 @@ namespace Gem
     class GameObjectManager : public Object
     {
     public:
+        GameObjectManager();
+        virtual ~GameObjectManager();
         static GameObjectManager * instance();
         static void destroy();
 
@@ -35,8 +37,7 @@ namespace Gem
         virtual Pointer<Reflection::Type> getType() override;
     private:
         static GameObjectManager * s_Instance;
-        GameObjectManager();
-        virtual ~GameObjectManager();
+        
 
         GameObject * _instantiate(std::string aName);
         void _destroy(GameObject * aGameObject);

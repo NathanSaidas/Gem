@@ -15,6 +15,8 @@ namespace Gem
     class WindowManager : public Object
     {
     public:
+        WindowManager();
+        ~WindowManager();
         static bool init();
         static void deinit();
         static WindowManager * instance();
@@ -34,8 +36,7 @@ namespace Gem
         virtual Pointer<Reflection::Type> getType() override;
     private:
         static WindowManager * s_Instance;
-        WindowManager();
-        ~WindowManager();
+        
 
         GLFWwindow * getCurrentWindow();
         bool hasWindows();

@@ -1,7 +1,7 @@
 #ifndef G_STREAM_FILE_H
 #define G_STREAM_FILE_H
 
-#include "../../Base Objects/G_Object.h"
+#include "../../Primitives/G_PrimitiveObjects.h"
 #include <string>
 #include <vector>
 
@@ -40,7 +40,7 @@ namespace Gem
 
             void clear();
 
-            virtual Reflection::Type * getType();
+            virtual Pointer<Reflection::Type> getType() override;
         private:
             std::vector<StreamObject*> m_StreamObjects;
             StreamDoc * m_Document;
@@ -53,5 +53,5 @@ namespace Gem
 
     }
 }
-
+GEM_CLASS(FileIO::StreamFile,Object)
 #endif

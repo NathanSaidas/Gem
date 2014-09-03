@@ -1,4 +1,5 @@
 #include "G_Time.h"
+#include "../Reflection/G_Reflection.h"
 #include <GLFW\glfw3.h>
 
 namespace Gem
@@ -16,5 +17,9 @@ namespace Gem
     float Time::deltaTime()
     {
         return s_DeltaTime; 
+    }
+    Pointer<Reflection::Type> Time::getType()
+    {
+        return typeOf("Time");
     }
 }

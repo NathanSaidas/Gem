@@ -8,6 +8,8 @@ namespace Gem
     class Application : public Object
     {
     public:
+        Application();
+        ~Application();
         static Application * instance();
         static void destroy();
 
@@ -24,8 +26,7 @@ namespace Gem
         bool deinit();
 
         static Application * s_Instance;
-        Application();
-        ~Application();
+        
 
         friend class PoolAllocator;
     };

@@ -16,14 +16,13 @@ namespace Gem
 
         virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
 
     private:
         Vector3 m_Position;
-        Quaterion m_Rotation;
+        Quaternion m_Rotation;
         Vector3 m_Scale;
     };
 }
-
-
+GEM_CLASS(Transform,Component)
 #endif

@@ -2,7 +2,7 @@
 #define G_UNIQUE_NUMBER_GENERATOR_H
 
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_Array.h"
 
 
@@ -20,13 +20,14 @@ namespace Gem
         int getUniqueNumber();
         void returnUniqueNumber(int aNumber);
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType() override;
 
     private:
         int m_NextNumber;
         Array<int,int> m_FreeNumberList;
         
     };
+    
 }
-
+GEM_CLASS(UniqueNumberGenerator, Object)
 #endif

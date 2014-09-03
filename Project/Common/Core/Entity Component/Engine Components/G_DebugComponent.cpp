@@ -59,9 +59,9 @@ namespace Gem
     {
         return Component::deserialize(aNode);
     }
-    Reflection::Type * DebugComponent::getType()
+    Pointer<Reflection::Type> getType()
     {
-        return Type::create("DebugComponent",TypeID::DEBUG_COMPONENT,sizeof(DebugComponent),Component::getType());
+        return typeOf("DebugComponent");
     }
 
     //Creation/Delete Functions
@@ -73,19 +73,10 @@ namespace Gem
     {
         log("Init");
 
-        Pointer<Type> type(false);
-        Pointer<Type> objType(typeOf<Object>());
-        Pointer<Type> compType(getType());
-
-        type.allocate();
         //bool isEqual = instanceOf(objType.ref(),compType.ref());
         //isEqual = instanceOf(compType.ref(),objType.ref());
         //isEqual = instanceOf(type.ref(), objType.ref());
 
-
-        bool isEqual = instanceOf(objType,compType);
-        isEqual = instanceOf(compType,objType);
-        isEqual = instanceOf(type, objType);
 
     }
     void DebugComponent::onLateInit() //Safe Reference
@@ -96,8 +87,6 @@ namespace Gem
     void DebugComponent::onEnable()   //Safe Reference
     {
         log("Enable");
-        A<int> t;
-        t.funcDef<int>();
     }
     void DebugComponent::onDisable()  //Safe Reference  
     {

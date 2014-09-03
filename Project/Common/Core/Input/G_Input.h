@@ -107,6 +107,8 @@ namespace Gem
         bool getAxisResetOnRelease(std::string aName );
 
         virtual Pointer<Reflection::Type> getType() override;
+        Input();
+        ~Input();
     private:
         //Key * m_Keys[(int)KeyCode::COUNT];
         //Button * m_MouseButtons[(int)MouseButton::COUNT];
@@ -123,8 +125,7 @@ namespace Gem
         std::vector<InputAxis*> m_Axis;
 
         static Input * s_Instance;
-        Input();
-        ~Input();
+        
 
 
         void update();

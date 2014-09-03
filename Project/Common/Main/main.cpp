@@ -58,7 +58,6 @@ void loadImage(std::string & filename)
 
 #include "../Core/G_Application.h"
 #include "../Core/Memory/G_Memory.h"
-#include "../Core/Memory/PoolAllocator.h"
 #include "../Core/Input/G_InputAxis.h"
 
 #include "../Core/Utilities/G_Utilities.h"
@@ -102,17 +101,6 @@ private:
 };
 
 
-class RenderingComponent : public Component
-{
-    // Bla, bla
-};
-COMPONENT_REGISTER(RenderingComponent, "RenderingComponent")
-class PhysicsComponent : public Component
-{
-
-};
-COMPONENT_REGISTER(PhysicsComponent,"RenderingComponent")
-
 int main()
 {
     Gem::Application::instance()->execute();
@@ -121,8 +109,6 @@ int main()
     //scopeTest(firstRef);
 
     //integer refCount = aClass->getInt(
-    Component * comp = component::create("RenderingComponent");
-    component::destroy(comp);
 
     system("pause");
 

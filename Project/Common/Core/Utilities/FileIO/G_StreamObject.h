@@ -1,7 +1,7 @@
 #ifndef G_STREAM_OBJECT_H
 #define G_STREAM_OBJECT_H
 
-#include "../../Base Objects/G_Object.h"
+#include "../../Primitives/G_PrimitiveObjects.h"
 
 #include <string>
 #include <vector>
@@ -38,7 +38,7 @@ namespace Gem
             void serialize(pugi::xml_node & aNode);
             void deserialize(pugi::xml_node & aNode);
 
-            virtual Reflection::Type * getType();
+            virtual Pointer<Reflection::Type> getType() override;
         private:
             std::string m_Name;
             std::vector<StreamProperty*> m_Properties;
@@ -47,5 +47,5 @@ namespace Gem
         };
     }
 }
-
+GEM_CLASS(FileIO::StreamObject,Object)
 #endif

@@ -1,7 +1,7 @@
 #ifndef G_STREAM_PROPERTY_H
 #define G_STREAM_PROPERTY_H
 
-#include "../../Base Objects/G_Object.h"
+#include "../../Primitives/G_PrimitiveObjects.h"
 #include <string>
 namespace Gem
 {
@@ -27,7 +27,7 @@ namespace Gem
                 void setValue(float aValue);
                 void setValue(double aValue);
 
-                virtual Reflection::Type * getType();
+                virtual Pointer<Reflection::Type> getType() override;
             private:
 
                 std::string m_Name;
@@ -36,5 +36,5 @@ namespace Gem
 
     }
 }
-
+GEM_CLASS(FileIO::StreamProperty, Object)
 #endif

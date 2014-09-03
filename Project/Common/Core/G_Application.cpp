@@ -48,6 +48,7 @@ namespace Gem
     //called before run
     bool Application::init()
     {
+        Runtime::instance();
         //Initialize things
         if(WindowManager::init() == false)
         {
@@ -96,7 +97,6 @@ namespace Gem
             //Make Render Calls on each window
             gom->processDestroyRequests();
             gom->processSceneUnload();
-            MemoryManager::instance()->update();
             
             
         
@@ -120,7 +120,7 @@ namespace Gem
         Input::destroy();
         WindowManager::destroy();
         WindowManager::deinit();
-
+        Runtime::destroy();
         return true;
     }
 

@@ -43,9 +43,9 @@ namespace Gem
         }
         m_FreeNumberList.addElement(aNumber);
     }
-    Type * UNG::getType()
+    Pointer<Reflection::Type> UNG::getType()
     {
-        return Type::create("UniqueNumberGenerator",TypeID::UNIQUE_NUMBER_GENERATOR,sizeof(UniqueNumberGenerator),Object::getType());
+        return typeOf("UniqueNumberGenerator");
     }
 
 }

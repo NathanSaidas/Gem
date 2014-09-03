@@ -1,14 +1,14 @@
 #ifndef OL_ARRAY_H
 #define OL_ARRAY_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Memory/G_Memory.h"
 #include "../Reflection/G_Reflection.h"
 
 namespace Gem
 {
     template<class TYPE,class DEREFERENCED_TYPE>
-    class Array : public Object
+    class Array
     {
     public:
         Array()
@@ -163,6 +163,7 @@ namespace Gem
     };
 
 }
+
         
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef G_SCENE_MANAGER_H
 #define G_SCENE_MANAGER_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_PrimitiveObjects.h"
 #include <vector>
 
 namespace Gem
@@ -11,7 +11,8 @@ namespace Gem
     class SceneManager sealed: public Object
     {
     public:
-        
+        SceneManager();
+        ~SceneManager();
 
         static SceneManager * instance();
         static void destroy();
@@ -22,12 +23,11 @@ namespace Gem
 
         //This is how you force an override on a method
         //you can also use final to block further override
-        virtual Reflection::Type * getType() override;
+        virtual Pointer<Reflection::Type> getType() override;
     private:
         //Singleton Stuff
         static SceneManager * s_Instance;
-        SceneManager();
-        ~SceneManager();
+        
 
         std::vector<std::string> m_SceneFilenames;
         std::string m_StartSceneFilename;
@@ -40,10 +40,10 @@ namespace Gem
         static const char * NODE_START_FILE;
         static const char * NODE_SCENE_FILE;
         static const char * NODE_FILE_NAME;
-
-        friend PoolAllocator;
     };
     
 }
+
+GEM_CLASS(SceneManager,Object)
 
 #endif

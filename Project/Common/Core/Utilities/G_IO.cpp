@@ -1,4 +1,5 @@
 #include "G_IO.h"
+#include "../Reflection/G_Reflection.h"
 
 
 
@@ -49,10 +50,18 @@ namespace Gem
         {
             return IO::isDirectory(m_Path);
         }
-
+        Pointer<Reflection::Type> Directory::getType()
+        {
+            return typeOf("Directory");
+        }
+            
         bool File::verify()
         {
             return IO::isFile(m_Path);
+        }
+        Pointer<Reflection::Type> File::getType()
+        {
+            return typeOf("File");
         }
 
         bool IO::createFolder(std::string & aPath)
@@ -64,6 +73,10 @@ namespace Gem
                 aPath = path.string();
             }
             return boost::filesystem::create_directory(aPath);
+        }
+        Pointer<Reflection::Type> Directory::getType()
+        {
+            return typeOf("IO");
         }
     }
 }

@@ -66,9 +66,9 @@ namespace Gem
             m_Value = convertDoubleToString(aValue);
         }
 
-        Type * StreamProperty::getType()
+        Pointer<Reflection::Type> StreamProperty::getType()
         {
-            return Type::create("StreamProperty",TypeID::STREAM_PROPERTY,sizeof(StreamProperty),Object::getType());
+            return typeOf("StreamProperty");
         }
     }
 }
