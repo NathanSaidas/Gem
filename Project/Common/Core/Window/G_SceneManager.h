@@ -29,7 +29,7 @@ namespace Gem
         static SceneManager * s_Instance;
         
 
-        std::vector<std::string> m_SceneFilenames;
+        std::vector<string> m_SceneFilenames;
         std::string m_StartSceneFilename;
 
         std::vector<Scene *> m_Scenes;

@@ -7,19 +7,20 @@ namespace Gem
 {
     namespace FileIO
     {
-        std::vector<std::string> Directory::getFiles()
+        std::vector<string> Directory::getFiles()
         {
-            std::vector<std::string> filenames;
+            std::vector<string> filenames;
 
             if(IO::exists(m_Path))
             {
                 if(IO::isDirectory(m_Path))
                 {
-                    for(boost::filesystem::directory_iterator iter(m_Path); iter != boost::filesystem::directory_iterator(); ++iter)
+                    for(boost::filesystem::directory_iterator iter(m_Path.c_str()); iter != boost::filesystem::directory_iterator(); ++iter)
                     {
-                        if(IO::isFile(iter->path().string()))
+                        if(IO::isFile(iter->path().string().c_str()))
                         {
-                            filenames.push_back(iter->path().string());
+							
+							filenames.push_back(iter->path().filename().string().c_str());
                         }
                     }
                 }
@@ -27,19 +28,19 @@ namespace Gem
 
             return filenames;
         }
-        std::vector<std::string> Directory::getDirectories()
+        std::vector<string> Directory::getDirectories()
         {
-            std::vector<std::string> directoryNames;
+            std::vector<string> directoryNames;
 
             if(IO::exists(m_Path))
             {
                 if(IO::isDirectory(m_Path))
                 {
-                    for(boost::filesystem::directory_iterator iter(m_Path); iter != boost::filesystem::directory_iterator(); ++iter)
+                    for(boost::filesystem::directory_iterator iter(m_Path.c_str()); iter != boost::filesystem::directory_iterator(); ++iter)
                     {
-                        if(IO::isDirectory(iter->path().string()))
+                        if(IO::isDirectory(iter->path().string().c_str()))
                         {
-                            directoryNames.push_back(iter->path().string());
+                            directoryNames.push_back(iter->path().string().c_str());
                         }
                     }
                 }
@@ -55,24 +56,17 @@ namespace Gem
             return typeOf("Directory");
         }
             
-        bool File::verify()
-        {
-            return IO::isFile(m_Path);
-        }
-        Pointer<Reflection::Type> File::getType()
-        {
-            return typeOf("File");
-        }
+        
 
-        bool IO::createFolder(std::string & aPath)
+        bool IO::createFolder(string & aPath)
         {
-            boost::filesystem::path path(aPath);
+            boost::filesystem::path path(aPath.c_str());
             if(path.has_extension())
             {
                 path.replace_extension("");
-                aPath = path.string();
+				aPath = path.string().c_str();
             }
-            return boost::filesystem::create_directory(aPath);
+            return boost::filesystem::create_directory(aPath.c_str());
         }
         Pointer<Reflection::Type> IO::getType()
         {

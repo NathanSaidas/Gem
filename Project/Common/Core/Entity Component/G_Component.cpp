@@ -73,7 +73,10 @@ namespace Gem
     {
 
     }
+	void Component::onApplicationQuit()
+	{
 
+	}
     //Update Functions
     //Called Every Frame
     void Component::preUpdate()

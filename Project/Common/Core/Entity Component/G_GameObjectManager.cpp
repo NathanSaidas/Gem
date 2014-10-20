@@ -237,7 +237,7 @@ namespace Gem
         }
 
         log("Garbage Collection Ended");
-        log("Time - " + F2S(Time::getTime() - startTime));
+		log("Time - " + convertFloatToSTDString(Time::getTime() - startTime));
     }
     void GameObjectManager::processSceneUnload()
     {
@@ -257,9 +257,19 @@ namespace Gem
         }
 
         float delta = Time::getTime() - startTime;
-        log("Process Scene Unload " + F2S(delta));
+        log("Process Scene Unload " + convertFloatToSTDString(delta));
 
     }
+	void GameObjectManager::onApplicationQuit()
+	{
+		for (int i = 0; i < m_GameObjects.size(); i++)
+		{
+			if (m_GameObjects.at(i) != nullptr)
+			{
+				m_GameObjects.at(i)->onApplicationQuit();
+			}
+		}
+	}
     GameObjectManager::GameObjectManager() : Object()
     {
         m_SlowUpdateTimeStamp = 0.0f;

@@ -48,86 +48,12 @@ namespace Gem
 
     void SceneManager::loadFromMasterList()
     {
-        File file = IO::sceneMasterList(true);
-        if(file.verify() == false)
-        {
-            //Invalid Filename
-            return;
-        }
-
-        pugi::xml_document doc;
-        pugi::xml_parse_result result = doc.load_file(file.filename().c_str());
-
-
-        pugi::xml_node root = doc.child(NODE_ROOT);
-        if(strcmp(root.name(), NODE_ROOT) != 0)
-        {
-            //Failed to find root bad file
-            return;
-        }
-
-        pugi::xml_node sceneFileList = root.child(NODE_MASTER_LIST);
-        if(strcmp(sceneFileList.name(), NODE_MASTER_LIST) != 0)
-        {
-            //Failed to find scenemaster list bad file
-            return;
-        }
-
-        std::vector<std::string> tempNames;
         
-        for(pugi::xml_node_iterator iter = sceneFileList.begin(); iter != sceneFileList.end(); ++iter)
-        {
-            pugi::xml_node node(iter->internal_object());
-            if(strcmp(node.name(),NODE_SCENE_FILE) == 0)
-            {
-                std::string filename = node.attribute(NODE_FILE_NAME).as_string();
-                if(IO::isFile(filename))
-                {
-                    tempNames.push_back(filename);
-                }
-            }
-        }
-
-        pugi::xml_node startFileNode = root.child(NODE_START_FILE);
-        std::string startFile = startFileNode.attribute(NODE_FILE_NAME).as_string();
-        
-        if(IO::isFile(startFile))
-        {
-            m_StartSceneFilename = startFile;
-        }
-        else
-        {
-            m_StartSceneFilename = "";
-        }
-
-        m_SceneFilenames.clear();
-        m_SceneFilenames = tempNames;
-        
-
 
     }
     void SceneManager::saveToMasterList()
     {
-        File file = IO::sceneMasterList(true);
-        if(file.verify() == false)
-        {
-            //Invalid Filename
-            return;
-        }
-
-        pugi::xml_document doc;
-        pugi::xml_node root = doc.append_child(NODE_ROOT);
-        pugi::xml_node sceneFileList = root.append_child(NODE_MASTER_LIST);
-
-        for(int i = 0; i < m_SceneFilenames.size(); i++)
-        {
-            pugi::xml_node sceneNode = sceneFileList.append_child(NODE_SCENE_FILE);
-            sceneNode.append_attribute(NODE_FILE_NAME) = m_SceneFilenames[i].c_str();
-        }
-        pugi::xml_node startNode = root.append_child(NODE_START_FILE);
-        startNode.append_attribute(NODE_FILE_NAME) = m_StartSceneFilename.c_str();
-
-        doc.save_file(file.filename().c_str());
+        
 
     }
 
@@ -138,7 +64,7 @@ namespace Gem
         {
             FileIO::IO::createFolder(assetsDirectory.directoryName() + "\\Scenes");
         }
-        std::string filename = assetsDirectory.directoryName() + "\\Scenes\\" + aName + ".xml";
+        string filename = assetsDirectory.directoryName() + "\\Scenes\\" + aName + ".xml";
 
         if(IO::isFile(filename) == false)
         {

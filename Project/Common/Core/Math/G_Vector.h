@@ -133,6 +133,7 @@ namespace Gem
             return aFrom * aTime + aTo * time;
         }
 
+		virtual string toString() override;
         virtual Pointer<Reflection::Type> getType() override;
 
         static Vector2 one()

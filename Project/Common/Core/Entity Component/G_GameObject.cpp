@@ -37,6 +37,10 @@ namespace Gem
         //TODO: Waiting for Entity Component Manager
         aComponent->onDisable();
         aComponent->onDestroy();
+		GameObject * gameObject = aComponent->m_GameObject;
+		gameObject->removeComponent(aComponent);
+		
+
         //GameObject * gameObject = aComponent->m_GameObject;
         //gameObject->removeComponent(aComponent);
         // = (Component*)Memory::destroySize(aComponent,size);
@@ -125,6 +129,7 @@ namespace Gem
     }
     void GameObject::removeComponent(Component * aComponent)
     {
+
         for(int i = 0; i < m_Components.size(); i++)
         {
             if(m_Components[i] == aComponent)
@@ -203,6 +208,13 @@ namespace Gem
     {
 
     }
+	void GameObject::onApplicationQuit()
+	{
+		for (int i = 0; i < m_Components.size(); i++)
+		{
+			m_Components[i]->onApplicationQuit();
+		}
+	}
     void GameObject::update()
     {
         for(int i = 0; i < m_Components.size(); i++)

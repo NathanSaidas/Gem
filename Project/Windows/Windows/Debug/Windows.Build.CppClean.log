@@ -1,117 +1,220 @@
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\VC110.PDB
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_STREAMDOC.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_STREAMFILE.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_STREAMOBJECT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_STREAMPROPERTY.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_DEBUG.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_IO.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_TIME.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_UNIQUENUMBERGENERATOR.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_UTILITIES.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_SCENE.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_SCENEMANAGER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_WINDOW.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_WINDOWHOOK.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_WINDOWMANAGER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\JSON_READER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\JSON_VALUE.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\JSON_WRITER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\PUGIXML.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\MAIN.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\FRUIT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_COMPONENT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_GAMEOBJECT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_APPLICATION.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_INPUT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_KEY.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_INPUTAXIS.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_MATRIX.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_VECTOR.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_QUATERION.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\ALLOCATOR.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_ISTMLISTENER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_POINTER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\LINEARALLOCATOR.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_MEMORY.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\POOLALLOCATOR.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_CLASS.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_INTERFACE.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_SERIALIZEDFIELD.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_TYPEFACTORY.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_TYPE.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_BOOLEAN.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_INTEGER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_OBJECT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_REAL.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_STRING.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_DEBUGCOMPONENT.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_TRANSFORM.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\G_GAMEOBJECTMANAGER.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\WINDOWS\DEBUG\STB_VORBIS.OBJ
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\DEBUG\WINDOWS.ILK
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\DEBUG\WINDOWS.EXE
-C:\USERS\NATHAN\DOCUMENTS\NATHAN\PROGRAMMING\VERSION CONTROLLED\C++\GEM\PROJECT\WINDOWS\DEBUG\WINDOWS.PDB
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\Allocator.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\fruit.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Application.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_boolean.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Class.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Component.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Debug.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_DebugComponent.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_GameObject.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_GameObjectManager.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Input.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_InputAxis.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_integer.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Interface.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_IO.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_ISTMListener.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Key.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Matrix.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Memory.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Object.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Pointer.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Quaterion.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_real.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Scene.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_SceneManager.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_SerializedField.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_StreamDoc.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_StreamFile.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_StreamObject.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_StreamProperty.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_string.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Time.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Transform.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Type.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_TypeFactory.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_UniqueNumberGenerator.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Utilities.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Vector.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_Window.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_WindowHook.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\G_WindowManager.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\json_reader.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\json_value.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\json_writer.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\LinearAllocator.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\main.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\PoolAllocator.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\pugixml.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\stb_vorbis.obj
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\cl.command.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\CL.read.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\CL.write.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link-cvtres.read.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link-cvtres.write.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link-rc.read.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link-rc.write.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link.command.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link.read.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\link.write.1.tlog
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\vc110.idb
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Windows\Debug\vc110.pdb
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Debug\Windows.pdb
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Debug\Windows.exe
-C:\Users\Nathan\Documents\Nathan\Programming\Version Controlled\C++\Gem\Project\Windows\Debug\Windows.ilk
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_streamdoc.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_streamfile.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_streamobject.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_streamproperty.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_debug.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_io.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_time.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_uniquenumbergenerator.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_utilities.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_scene.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_scenemanager.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_window.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_windowhook.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_windowmanager.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\json_reader.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\json_value.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\json_writer.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\pugixml.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\main.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\fruit.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_key.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_inputaxis.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_matrix.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_vector.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_quaternion.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_allocator.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_memorymanager.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_pointer.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_boolean.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_integer.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_object.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_real.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_string.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_class.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_primitive.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_reflectionoperators.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_reflectionregristration.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_reflectionruntime.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_type.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_typelist.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_debugcomponent.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_transform.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_gameobjectmanager.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_component.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_gameobject.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_application.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_input.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\vc110.pdb
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\stb_vorbis.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\g_file.obj
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\cl.command.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\cl.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\cl.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.10024-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.10024-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.10024-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.10024-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.10024.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.10024.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11060-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11060-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11060-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11060-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11060.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11060.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11876-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11876-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11876-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11876-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11876.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.11876.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12696-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12696-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12696-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12696-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12696.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12696.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12852-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12852-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12852-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12852-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12852.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12852.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12964-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12964-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12964-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12964-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12964.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12964.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12976-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12976-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12976-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12976-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12976.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.12976.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.2532-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.2532-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.2532-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.2532-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.2532.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.2532.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.3736-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.3736-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.3736-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.3736-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.3736.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.3736.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4784-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4784-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4784-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4784-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4784.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4784.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4860-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4860-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4860-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4860-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4860.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.4860.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6696-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6696-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6696-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6696-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6696.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6696.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6856-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6856-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6856-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6856-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6856.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6856.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6948-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6948-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6948-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6948-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6948.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.6948.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.704-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.704-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.704-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.704-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.704.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.704.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.7548-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.7548-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.7548-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.7548-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.7548.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.7548.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.812-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.812-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.812-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.812-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.812.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.812.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8164-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8164-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8164-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8164-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8164.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8164.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8176-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8176-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8176-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8176-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8176.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8176.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8328-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8328-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8328-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8328-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8328.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8328.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8532-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8532-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8532-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8532-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8532.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8532.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8564-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8564-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8564-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8564-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8564.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8564.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8584-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8584-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8584-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8584-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8584.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8584.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8760-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8760-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8760-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8760-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8760.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.8760.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9020-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9020-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9020-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9020-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9020.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9020.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9140-cvtres.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9140-cvtres.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9140-rc.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9140-rc.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9140.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.9140.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.command.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.read.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\link.write.1.tlog
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\vc110.idb
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\vc120.idb
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\windows\debug\vc120.pdb
+c:\users\development\desktop\fast_repo\gem\trunk\project\windows\debug\windows.pdb

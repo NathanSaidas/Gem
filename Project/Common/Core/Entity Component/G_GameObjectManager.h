@@ -47,6 +47,7 @@ namespace Gem
         void renderPass(int aWindowID, int aScreenID, int aCameraID);
         void processDestroyRequests();
         void processSceneUnload();
+		void onApplicationQuit();
 
         std::vector<GameObject*> m_GameObjects;
         std::vector<GameObject*> m_DestroyRequests;

@@ -51,7 +51,7 @@ namespace Gem
         }
         void StreamProperty::setValue(int aValue)        
         {
-            m_Value = I2S(aValue);
+			m_Value = I2S(aValue).c_str();
         }
         void StreamProperty::setValue(short aValue)      
         {
@@ -59,7 +59,7 @@ namespace Gem
         }
         void StreamProperty::setValue(float aValue)      
         {
-            m_Value = F2S(aValue);
+            m_Value = F2S(aValue).c_str();
         }
         void StreamProperty::setValue(double aValue)     
         {

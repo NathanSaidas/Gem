@@ -2,6 +2,7 @@
 #include "../Reflection/G_Reflection.h"
 #include "G_Math.h"
 #include "G_Quaternion.h"
+#include "../Utilities/G_Utilities.h";
 namespace Gem
 {
     using namespace Reflection;
@@ -19,6 +20,10 @@ namespace Gem
     Vector2::~Vector2()
     {
     }
+	string Vector2::toString()
+	{
+		return string("X:") + F2S(x) + " Y:" + F2S(y);
+	}
     Pointer<Reflection::Type> Vector2::getType()
     {
         return typeOf("Vector2");

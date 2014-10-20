@@ -18,7 +18,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -95,6 +95,7 @@
     <ClCompile Include="..\..\Common\Core\Reflection\G_ReflectionRuntime.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_Type.cpp" />
     <ClCompile Include="..\..\Common\Core\Reflection\G_TypeList.cpp" />
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_File.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamDoc.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamFile.cpp" />
     <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_StreamObject.cpp" />
@@ -151,6 +152,11 @@
     <ClInclude Include="..\..\Common\Core\Reflection\G_ReflectionRuntime.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_Type.h" />
     <ClInclude Include="..\..\Common\Core\Reflection\G_TypeList.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_Collections.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_ForwardList.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_List.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_ICollection.h" />
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_File.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamDoc.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamFile.h" />
     <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_StreamObject.h" />

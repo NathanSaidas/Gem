@@ -50,6 +50,9 @@
     <Filter Include="Core\Primitives">
       <UniqueIdentifier>{800d133a-85e8-44d2-aaae-b476ca221589}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Utilities\Collections">
+      <UniqueIdentifier>{41eed577-fcd8-42c7-b68f-c01920cb5cd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Common\Main\main.cpp">
@@ -195,6 +198,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Common\Core\Math\G_Quaternion.cpp">
       <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Utilities\FileIO\G_File.cpp">
+      <Filter>Core\Utilities\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +422,21 @@
     </ClInclude>
     <ClInclude Include="..\..\Common\Core\Math\G_Quaternion.h">
       <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\FileIO\G_File.h">
+      <Filter>Core\Utilities\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_List.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_ForwardList.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_ICollection.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Utilities\Collections\G_Collections.h">
+      <Filter>Core\Utilities\Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

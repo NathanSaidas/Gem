@@ -151,7 +151,7 @@ namespace Gem
                     continue;
                 }
                 nodeName = "StreamObject_";
-                nodeName.append(I2S(i));
+                nodeName.append(convertIntToSTDString(i));
 
                 xml_node node = aNode.append_child(nodeName.c_str());
                 aNode.append_attribute("_Name_") = object->name().c_str();

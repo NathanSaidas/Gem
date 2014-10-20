@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include "../Primitives/G_Object.h"
 //This utilities file provides conversion functions from string to int/short/float etc and back
 
 
@@ -21,10 +21,15 @@ namespace Gem
     */
     
     int convertStringToInt(const std::string & aString);
+	int convertStringToInt(const string & aString);
     inline int S2I(const std::string & aString)
     {
         return convertStringToInt(aString);
     }
+	inline int S2I(const string & aString)
+	{
+		return convertStringToInt(aString);
+	}
     /*
     *   Function: convertStringToUInt
     *   Return Type: unsigned int
@@ -57,10 +62,15 @@ namespace Gem
     *   Date Modified: 13/1/2014 by Nathan Hanlan
     */
     float convertStringToFloat(const std::string & aString);
+	float convertStringToFloat(const string & aString);
     inline float S2F(const std::string & aString)
     {
         return convertStringToFloat(aString);
     }
+	inline float S2F(const string & aString)
+	{
+		return convertStringToFloat(aString);
+	}
     /*
     *   Function: convertStringToDouble
     *   Return Type: double
@@ -76,11 +86,12 @@ namespace Gem
     *   converts it to a string, then returns the string.
     *   Date Modified: 13/1/2014 by Nathan Hanlan
     */
-    std::string convertIntToString(const int & aNumber);
-    inline std::string I2S(const int & aNumber)
-    {
-        return convertIntToString(aNumber);
-    }
+    std::string convertIntToSTDString(const int & aNumber);
+	string convertIntToString(const int & aNumber);
+	inline string I2S(const int & aNumber)
+	{
+		return convertIntToString(aNumber);
+	}
     /*
     *   Function: convertUIntToString
     *   Return Type: string
@@ -112,8 +123,9 @@ namespace Gem
     *   converts it to a string, then returns the string.
     *   Date Modified: 13/1/2014 by Nathan Hanlan
     */
-    std::string convertFloatToString(const float & aNumber);
-    inline std::string F2S(const float & aNumber)
+    std::string convertFloatToSTDString(const float & aNumber);
+	string convertFloatToString(const float & aNumber);
+    inline string F2S(const float & aNumber)
     {
         return convertFloatToString(aNumber);
     }

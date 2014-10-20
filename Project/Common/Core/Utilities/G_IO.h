@@ -3,50 +3,39 @@
 
 #include <boost\filesystem.hpp>
 #include "../Primitives/G_PrimitiveObjects.h"
+#include "FileIO\G_File.h"
 
 
 namespace Gem
 {
     namespace FileIO
     {
-        class File : public Object
-        {
-        public:
-            File():m_Path(""){}
-            File(std::string aPath):m_Path(aPath){}
-            ~File(){}
-            //static std::vector<File> toFiles(std::vector<std::string> aFileList);
-
-
-            inline std::string filename()
-            {
-                return m_Path;
-            }
-            bool verify();
-            virtual Pointer<Reflection::Type> getType();
-        private:
-            std::string m_Path;
-        };
+        
         //
         class Directory : public Object
         {
         public:
             Directory():m_Path(""){}
-            Directory(std::string aPath):m_Path(aPath){}
+            Directory(string aPath):m_Path(aPath){}
             ~Directory(){}
     
-            std::vector<std::string> getFiles();
-            std::vector<std::string> getDirectories();
+            std::vector<string> getFiles();
+            std::vector<string> getDirectories();
     
-            inline std::string directoryName()
+            inline string directoryName()
             {
                 return m_Path;
             }
+			inline string path()
+			{
+				return string(m_Path);
+			}
+			///Returns true if the directory is a directory
             bool verify();
             //static std::vector<Directory> toDirectories(std::vector<std::string> aDirectoryList);
             virtual Pointer<Reflection::Type> getType();
         private:
-            std::string m_Path;
+            string m_Path;
         };
 
         class IO : public Object
@@ -54,7 +43,7 @@ namespace Gem
         public:
             inline static Directory projectDirectory()
             {
-                std::string directory = "..\\..\\";
+                string directory = "..\\..\\";
                 if(exists(directory))
                 {
                     if(isDirectory(directory))
@@ -64,20 +53,21 @@ namespace Gem
                 }
                 return Directory();
             }
-            static bool createFolder(std::string & aPath);
-            inline static bool isDirectory(std::string aPath)
+            static bool createFolder(string & aPath);
+            inline static bool isDirectory(string aPath)
             {
-                return boost::filesystem::is_directory(aPath);
+                return boost::filesystem::is_directory(aPath.c_str());
             }
-            inline static bool isFile(std::string aPath)
+            inline static bool isFile(string aPath)
             {
-                return boost::filesystem::is_regular_file(aPath);
+                return boost::filesystem::is_regular_file(aPath.c_str());
             }
-            inline static bool exists(std::string aPath)
+            inline static bool exists(string aPath)
             {
-                return boost::filesystem::exists(aPath);
+                return boost::filesystem::exists(aPath.c_str());
             }
 
+			//Where all assets belong. (Texture,Audio,Etc)
             inline static Directory assetsDirectory()
             {
                 std::string directory = "..\\..\\Assets";
@@ -90,6 +80,18 @@ namespace Gem
                 }
                 return Directory();
             }
+			inline static Directory logFileDirectory()
+			{
+				std::string directory = "..\\..\\Assets\\Logs";
+				if (exists(directory))
+				{
+					if (isDirectory(directory))
+					{
+						return Directory(directory);
+					}
+				}
+				return Directory();
+			}
             inline static Directory projectSettings()
             {
                 std::string directory = "..\\..\\ProjectSettings";
@@ -102,32 +104,12 @@ namespace Gem
                 }
                 return Directory();
             }
-            inline static File sceneMasterList(bool aCreate = false)
-            {
-                std::string file = "..\\..\\ProjectSettings\\SceneMasterList.xml";
-                if(exists(file))
-                {
-                    if(isFile(file))
-                    {
-                        return File(file);
-                    }
-                }
-                else
-                {
-                    if(aCreate == true && exists("..\\..\\ProjectSettings\\"))
-                    {
-                        std::ofstream file(file);
-                        file.close();
-                        return sceneMasterList(false);
-                    }
-                }
-                return File();
-            }
+
             virtual Pointer<Reflection::Type> getType();
         };
     }
 }
-GEM_CLASS(FileIO::File,Object)
+
 GEM_CLASS(FileIO::Directory,Object)
 GEM_CLASS(FileIO::IO,Object)
 

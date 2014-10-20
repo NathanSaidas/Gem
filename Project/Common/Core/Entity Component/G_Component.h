@@ -45,6 +45,7 @@ namespace Gem
         virtual void onDisable();  //Safe Reference
         virtual void onDestroy();  //Safe Reference
 
+		virtual void onApplicationQuit();
         //Update Functions
         //Called Every Frame
         virtual void preUpdate(); 

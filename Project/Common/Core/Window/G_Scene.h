@@ -50,20 +50,20 @@ namespace Gem
         //(Designed for edit time)
         void open();
 
-        std::string name();
-        std::string filename();
+        string name();
+        string filename();
         int index();
         bool isEditing();
 
 
-        void setName(std::string aName);
+        void setName(string aName);
         void setIsEditing(bool aValue);
 
 
         virtual Pointer<Reflection::Type> getType();
     private:
-        std::string m_Name;
-        std::string m_Filename;
+        string m_Name;
+        string m_Filename;
         int m_Index;
 
         bool m_IsEditing;

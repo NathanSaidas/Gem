@@ -53,7 +53,7 @@ namespace Gem
         {
             return;
         }
-        std::string file = filename();
+        string file = filename();
         if(IO::isFile(file) == false)
         {
             return;
@@ -82,7 +82,7 @@ namespace Gem
     }
     void Scene::load()
     {
-        std::string file = filename();
+        string file = filename();
         if(IO::isFile(file) == false)
         {
             return;
@@ -135,11 +135,11 @@ namespace Gem
         load();
     }
 
-    std::string Scene::name()
+    string Scene::name()
     {
         return m_Name;
     }
-    std::string Scene::filename()
+    string Scene::filename()
     {
         return m_Filename;
     }
@@ -153,7 +153,7 @@ namespace Gem
     }
 
 
-    void Scene::setName(std::string aName)
+    void Scene::setName(string aName)
     {
         m_Name = aName;
         m_Filename = FileIO::IO::assetsDirectory().directoryName() + "\\Scenes\\" + aName + ".xml";

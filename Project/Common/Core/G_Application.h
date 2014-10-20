@@ -16,7 +16,7 @@ namespace Gem
 
         //called once on main thread
         void execute();
-
+		static void exit();
 
         virtual Pointer<Reflection::Type> getType() override;
     private:
@@ -27,7 +27,7 @@ namespace Gem
 
         static Application * s_Instance;
         
-
+		bool m_ShouldQuit;
         friend class PoolAllocator;
     };
 }

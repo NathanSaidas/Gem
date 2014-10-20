@@ -64,6 +64,7 @@ namespace Gem
         void onDestroy();  //Safe Reference
 
         void onSceneLoaded(Scene * aScene);
+		void onApplicationQuit();
 
         //Update Functions
         //Called Every Frame

@@ -5,15 +5,12 @@
 #include <sstream>
 #include <stdlib.h>
 #include <time.h>
-using namespace std;
-
 namespace Gem
 {
-    int convertStringToInt(const string & aString)
+	int convertStringToInt(const std::string & aString)
     {
         int number = 0;
-
-        stringstream stream(aString);
+        std::stringstream stream(aString);
         stream >> number;
         if(stream.fail())
         {
@@ -23,11 +20,24 @@ namespace Gem
 
         return number;
     }
-    unsigned int convertStringToUInt(const string & aString)
+	int convertStringToInt(const Gem::string & aString)
+	{
+		int number = 0;
+		std::stringstream stream(aString.c_str());
+		stream >> number;
+		if (stream.fail())
+		{
+
+			return 0;
+		}
+
+		return number;
+	}
+	unsigned int convertStringToUInt(const std::string & aString)
     {
         unsigned int number = 0;
 
-        stringstream stream(aString);
+		std::stringstream stream(aString);
         stream >> number;
         if(stream.fail())
         {
@@ -37,11 +47,11 @@ namespace Gem
 
         return number;
     }
-    short convertStringToShort(const string & aString)
+	short convertStringToShort(const std::string & aString)
     {
         short number = 0;
 
-        stringstream stream(aString);
+		std::stringstream stream(aString);
         stream >> number;
         if(stream.fail())
         {
@@ -51,11 +61,11 @@ namespace Gem
 
         return number;
     }
-    unsigned short convertStringToUShort(const string & aString)
+	unsigned short convertStringToUShort(const std::string & aString)
     {
         unsigned short number = 0;
 
-        stringstream stream(aString);
+		std::stringstream stream(aString);
         stream >> number;
         if(stream.fail())
         {
@@ -65,11 +75,11 @@ namespace Gem
 
         return number;
     }
-    float convertStringToFloat(const string & aString)
+	float convertStringToFloat(const std::string & aString)
     {
         float number = 0.0f;
 
-        stringstream stream(aString);
+		std::stringstream stream(aString);
         stream >> number;
         if(stream.fail())
         {
@@ -79,11 +89,25 @@ namespace Gem
 
         return number;
     }
-    double convertStringToDouble(const string & aString)
+	float convertStringToFloat(const string & aString)
+	{
+		float number = 0.0f;
+
+		std::stringstream stream(aString.c_str());
+		stream >> number;
+		if (stream.fail())
+		{
+
+			return 0.0f;
+		}
+
+		return number;
+	}
+	double convertStringToDouble(const std::string & aString)
     {
         double number = 0.0;
 
-        stringstream stream(aString);
+		std::stringstream stream(aString);
         stream >> number;
         if(stream.fail())
         {
@@ -94,61 +118,81 @@ namespace Gem
         return number;
     }
 
-    string convertIntToString(const int & aNumber)
+	std::string convertIntToSTDString(const int & aNumber)
     {
         string returnString;
 
-        stringstream stream;
+		std::stringstream stream;
 
         stream << aNumber;
 
         return stream.str();
     }
-    string convertUIntToString(const unsigned int & aNumber)
+	string convertIntToString(const int & aNumber)
+	{
+		string returnString;
+
+		std::stringstream stream;
+
+		stream << aNumber;
+
+		return stream.str().c_str();
+	}
+	std::string convertUIntToString(const unsigned int & aNumber)
     {
         string returnString;
 
-        stringstream stream;
+		std::stringstream stream;
 
         stream << aNumber;
 
         return stream.str();
     }
-    string convertShortToString(const short & aNumber)
+	std::string convertShortToString(const short & aNumber)
     {
         string returnString;
 
-        stringstream stream;
+		std::stringstream stream;
 
         stream << aNumber;
 
         return stream.str();
     }
-    string convertUShortToString(const unsigned short & aNumber)
+	std::string convertUShortToString(const unsigned short & aNumber)
     {
         string returnString;
 
-        stringstream stream;
+		std::stringstream stream;
 
         stream << aNumber;
 
         return stream.str();
     }
-    string convertFloatToString(const float & aNumber)
+	std::string convertFloatToSTDString(const float & aNumber)
     {
         string returnString;
 
-        stringstream stream;
+		std::stringstream stream;
 
         stream << aNumber;
 
         return stream.str();
     }
-    string convertDoubleToString(const double & aNumber)
+	string convertFloatToString(const float & aNumber)
+	{
+		string returnString;
+
+		std::stringstream stream;
+
+		stream << aNumber;
+
+		return stream.str().c_str();
+	}
+	std::string convertDoubleToString(const double & aNumber)
     {
         string returnString;
 
-        stringstream stream;
+		std::stringstream stream;
 
         stream << aNumber;
 
@@ -214,14 +258,14 @@ namespace Gem
     {
         srand((unsigned int)time(0));
     }
-    string loadCompleteFile(const char* filename)
+	std::string loadCompleteFile(const char* filename)
     {
-        string contents;
-        ifstream readStream(filename);
+		std::string contents;
+		std::ifstream readStream(filename);
 	    if(!readStream.is_open())
 	    {
             
-            ofstream  writeStream(filename);
+			std::ofstream  writeStream(filename);
             writeStream << "Heres the file";
             writeStream.close();
 

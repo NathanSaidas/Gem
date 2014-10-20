@@ -4,7 +4,7 @@
 #include <GLFW\glfw3.h>
 #include "../Window/G_WindowManager.h"
 #include "G_InputAxis.h"
-
+#include "../Utilities/G_Debug.h"
 namespace Gem
 {
     using namespace Reflection;

@@ -1,5 +1,6 @@
 #include "G_Application.h"
 #include "Reflection\G_Reflection.h"
+#include "Utilities\G_Debug.h"
 #include "Memory\G_Memory.h"
 #include "Window\G_WindowHook.h"
 #include "Window\G_WindowManager.h"
@@ -32,7 +33,7 @@ namespace Gem
     }
     Application::Application()
     {
-
+		m_ShouldQuit = false;
     }
     Application::~Application()
     {
@@ -44,11 +45,19 @@ namespace Gem
         run();
         deinit();
     }
-
+	void Application::exit()
+	{
+		if (s_Instance != nullptr)
+		{
+			s_Instance->m_ShouldQuit = true;
+		}
+	}
+		
     //called before run
     bool Application::init()
     {
         Runtime::instance();
+		Debug::instance();
         //Initialize things
         if(WindowManager::init() == false)
         {
@@ -80,7 +89,7 @@ namespace Gem
         
         //While there is windows update
         //Update them
-        while(windowManager->hasWindows())
+        while(windowManager->hasWindows() && m_ShouldQuit == false)
         {
             //Calculate delta time
             float currentTime = glfwGetTime();
@@ -98,10 +107,13 @@ namespace Gem
             gom->processDestroyRequests();
             gom->processSceneUnload();
             
+
+			
             
         
         }
-        
+		gom->onApplicationQuit();
+
         windowManager->destroyWindow(mainWindowHandle);
         
         mainHook = Memory::destroy<WindowHook>(mainHook);
@@ -120,6 +132,7 @@ namespace Gem
         Input::destroy();
         WindowManager::destroy();
         WindowManager::deinit();
+		Debug::destroy();
         Runtime::destroy();
         return true;
     }
