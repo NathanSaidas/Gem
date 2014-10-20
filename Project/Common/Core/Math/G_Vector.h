@@ -2,7 +2,6 @@
 #define OL_VECTOR_H
 
 #include "../Primitives/G_PrimitiveObjects.h"
-#include "../Utilities/G_IXmlSerializable.h"
 #include <math.h>
 
 namespace Gem
@@ -144,9 +143,6 @@ namespace Gem
         {
             return Vector2();
         }
-        
-        virtual pugi::xml_node serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
-        virtual bool deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
         //Members
         union
         {
@@ -166,7 +162,7 @@ namespace Gem
         };
     };
 
-    class Vector3 : public Object, IXmlSerializable
+    class Vector3 : public Object
     {
     public:
         Vector3();
@@ -230,14 +226,22 @@ namespace Gem
             return Vector3(x / aValue, y / aValue, z / aValue);
         }
 
+		///Dot Product Confirmed Working October,19,2014
         inline float dot(const Vector3 & aVec)
         {
             return x * aVec.x + y * aVec.y + z * aVec.z;
         }
+		///Dot Product Confirmed Working October,19,2014
+		inline static float dot(const Vector3 & aLeft, const Vector3 & aRight)
+		{
+			return aLeft.x * aRight.x + aLeft.y * aRight.y + aLeft.z * aRight.z;
+		}
+		///Cross Product Confirmed Working October,19,2014
         inline Vector3 cross(const Vector3 & aVec)
         {
             return Vector3(y * aVec.z - z * aVec.y, z * aVec.x - x * aVec.z, x * aVec.y - y * aVec.x);
         }
+		///Cross Product Confirmed Working October,19,2014
         inline static Vector3 cross(const Vector3 & aLeft, const Vector3 & aRight)
         {
             Vector3 result;
@@ -246,19 +250,25 @@ namespace Gem
             result.z = aLeft.x * aRight.y - aLeft.y * aRight.x;
             return result;
         }
+
+		///Length Confirmed Working October,19,2014
         inline float length()
         {
             return sqrtf(x * x + y * y + z * z);
         }
+		///SqrLength Confirmed Working October,19,2014
         inline float sqrLength()
         {
             return x * x + y * y + z * z;
         }
+		///Normalized Confirmed Working October,19,2014
         inline Vector3 normalized()
         {
             float len = length();
             return Vector3(x/len,y/len,z/len);
         }
+
+		///Normalized Confirmed Working October,19,2014
         inline void normalize()
         {
             float len = length();
@@ -268,8 +278,15 @@ namespace Gem
         }
 
         Vector3 rotate(float aAngle, Vector3 aAxis);
-
+		string toString();
         virtual Pointer<Reflection::Type> getType() override;
+
+        inline void setZero()
+        {
+            x = 0.0f;
+            y = 0.0f;
+            z = 0.0f;
+        }
 
         inline static const Vector3 one()
         {
@@ -287,6 +304,10 @@ namespace Gem
         {
             return Vector3(0.0f,0.0f,1.0f);
         }
+		inline static const Vector3 right()
+		{
+			return Vector3(1.0f, 0.0f, 0.0f);
+		}
         //Members
         //union
         //{
@@ -306,12 +327,9 @@ namespace Gem
         float x;
         float y;
         float z;
-
-        virtual pugi::xml_node serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
-        virtual bool deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
     };
 
-    class Vector4 : Object
+    class Vector4 : public Object
     {
     public:
         Vector4(){}

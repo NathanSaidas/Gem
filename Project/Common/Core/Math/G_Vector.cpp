@@ -1,8 +1,7 @@
 #include "G_Vector.h"
 #include "../Reflection/G_Reflection.h"
 #include "G_Math.h"
-#include "G_Quaterion.h"
-#include <pugixml.hpp>
+#include "G_Quaternion.h"
 namespace Gem
 {
     using namespace Reflection;
@@ -24,44 +23,7 @@ namespace Gem
     {
         return typeOf("Vector2");
     }
-    pugi::xml_node Vector2::serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
-    {
-        aNode.append_attribute("X") = x;
-        aNode.append_attribute("Y") = y;
-        return aNode;
-    }
-    bool Vector2::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
-    {
-        int threshHold = 2;
-        //if(aIncludeTypeInfo == true)
-        //{
-        //    
-        //}
-        int count = 0;
-        std::string name = "";
-        for(pugi::xml_attribute_iterator iter = aNode.attributes_begin(); iter != aNode.attributes_end(); ++iter)
-        {
-            if(count > threshHold)
-            {
-                break;
-            }
-
-            name = iter->name();
-            if(name == "X")
-            {
-                x = iter->as_float();
-                count ++;
-            }
-            else if(name == "Y")
-            {
-                y = iter->as_float();
-                count ++;
-            }
-            
-        }
-        return count >= threshHold;
-    }
-
+   
     //Vector3
     Vector3::Vector3()
     {
@@ -108,53 +70,17 @@ namespace Gem
         float rZ = aAxis.z * sinHalfAngle;
         float rW = cosHalfAngle;
 
-        Quaterion rotation(rX,rY,rZ,rW);
-        Quaterion conjugate = rotation.conjugate();
+        Quaternion rotation(rX, rY, rZ, rW);
+        Quaternion conjugate = rotation.conjugate();
 
-        Quaterion w = rotation.multiply((*this)).multiply(conjugate);
+        Quaternion w = rotation.multiply((*this)).multiply(conjugate);
 
         return Vector3(w.x,w.y,w.z);
     }
-    pugi::xml_node Vector3::serialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
-    {
-        aNode.append_attribute("X") = x;
-        aNode.append_attribute("Y") = y;
-        aNode.append_attribute("Z") = z;
-        return aNode;
-    }
-    bool Vector3::deserialize(pugi::xml_node & aNode, bool aIncludeTypeInfo )
-    {
-        int threshHold = 3;
-        int count = 0;
-        std::string name = "";
-        for(pugi::xml_attribute_iterator iter = aNode.attributes_begin(); iter != aNode.attributes_end(); ++iter)
-        {
-            if(count > threshHold)
-            {
-                break;
-            }
-
-            name = iter->name();
-            if(name == "X")
-            {
-                x = iter->as_float();
-                count ++;
-            }
-            else if(name == "Y")
-            {
-                y = iter->as_float();
-                count ++;
-            }
-            else if(name == "Z")
-            {
-                z = iter->as_float();
-                count ++;
-            }
-            
-        }
-        return count >= threshHold;
-    }
-
+	string Vector3::toString()
+	{
+		return string("");
+	}
     Pointer<Reflection::Type> Vector3::getType()
     {
         return typeOf("Vector3");

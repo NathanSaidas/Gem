@@ -2,8 +2,6 @@
 #include "../Reflection/G_Reflection.h"
 #include "../Memory/G_Memory.h"
 #include "G_GameObject.h"
-#include <pugixml.hpp>
-
 
 namespace Gem
 {
@@ -35,39 +33,7 @@ namespace Gem
     {
         return m_GameObject->getComponents(aTypeName);
     }
-
-    pugi::xml_node Component::serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo)
-    {
-        
-        aNode.append_attribute("Flags") = m_Flag;
-        Type * type = getType();
-        if(type != nullptr)
-        {
-            aNode.append_attribute("Typename") = nameOf(type);
-            aNode.append_attribute("TypeID") = typeID(type);
-            Type::freeType(type);
-        }
-
-        
-        return aNode;
-    }
-    bool Component::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
-    {
-        bool success = false;
-        m_Flag = aNode.attribute("Flags").as_int();
-        Type * type = getType();
-        if(type != nullptr)
-        {
-            if(typeID(type) == aNode.attribute("TypeID").as_int())
-            {
-                success = true;
-            }
-            Type::freeType(type);
-        }
-
-        return success;
-    }
-    Pointer<Reflection::Type> getType()
+    Pointer<Reflection::Type> Component::getType()
     {
         return typeOf("Component");
     }

@@ -46,6 +46,22 @@ namespace Gem
         void translatePostRotation(float aX, float aY, float aZ);
         void rotate(float aAngle, float aX, float aY, float aZ);
 
+		inline static Matrix4x4  trs(Vector3 aPosition, Vector3 aRotation, Vector3 aScale)
+		{
+			Matrix4x4 matrix;
+			matrix.setIdentity();
+			//matrix.translatePostRotation(aPosition.x, aPosition.y, aPosition.z);
+			matrix.setPosition(aPosition);
+			matrix.scale(aScale.x, aScale.y, aScale.z);
+			matrix.rotate(aRotation.x, 1.0f, 0.0f, 0.0f);
+			matrix.rotate(aRotation.y, 0.0f, 1.0f, 0.0f);
+			matrix.rotate(aRotation.z, 0.0f, 0.0f, 1.0f);
+			
+			
+			
+			return matrix;
+		}
+
         Vector3 transformVector3(const Vector3 & aVec)
         {
             Vector4 result = transformVector4( Vector4(aVec.x, aVec.y, aVec.z, 1.0f));
@@ -163,7 +179,7 @@ namespace Gem
     };
 
 
-    class Matrix3x3 : Object
+    class Matrix3x3 : public Object
     {
     public:
 

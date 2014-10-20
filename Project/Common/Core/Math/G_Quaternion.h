@@ -5,12 +5,11 @@
 #include "G_Matrix.h"
 
 #include "../Primitives/G_PrimitiveObjects.h"
-#include "../Utilities/G_IXmlSerializable.h"
 
 namespace Gem
 {
 
-    class Quaternion : Object, IXmlSerializable
+    class Quaternion : public Object
     {
     public:
 
@@ -139,8 +138,6 @@ namespace Gem
 
             return Quaternion(localX,localY,localZ,localW);
         }
-        virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
-        virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
         virtual Pointer<Reflection::Type> getType() override;
     private:
     };

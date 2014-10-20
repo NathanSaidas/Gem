@@ -168,7 +168,7 @@ namespace Gem
                 xml_node node(iter->internal_object());
                 xml_attribute objname = node.attribute("_Name_");
 
-                if(string(objname.as_string()) == string::Empty)
+                if(string(objname.as_string()) == string::empty())
                 {
                     continue;
                 }

@@ -51,15 +51,7 @@ namespace Gem
     }
 
 
-    pugi::xml_node DebugComponent::serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo)
-    {
-        return Component::serialize(aNode);
-    }
-    bool DebugComponent::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
-    {
-        return Component::deserialize(aNode);
-    }
-    Pointer<Reflection::Type> getType()
+    Pointer<Reflection::Type> DebugComponent::getType()
     {
         return typeOf("DebugComponent");
     }

@@ -1,7 +1,7 @@
 #ifndef G_SCREEN_H
 #define G_SCREEN_H
 
-#include "../Base Objects/G_Object.h"
+#include "../Primitives/G_Object.h"
 #include <string>
 #include <vector>
 
@@ -60,7 +60,7 @@ namespace Gem
         void setIsEditing(bool aValue);
 
 
-        virtual Reflection::Type * getType();
+        virtual Pointer<Reflection::Type> getType();
     private:
         std::string m_Name;
         std::string m_Filename;

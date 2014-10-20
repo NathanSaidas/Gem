@@ -1,57 +1,57 @@
 #include "G_Quaternion.h"
 #include "../Reflection/G_Reflection.h"
 #include "G_Math.h"
-#include <pugixml.hpp>
 namespace Gem
 {
     using namespace Reflection;
 
+
     Quaternion::Quaternion(float aX, float aY, float aZ)
     {
-        double tX = Math::degreesToRad(aX);
-        double tY = Math::degreesToRad(aY);
-        double tZ = Math::degreesToRad(aZ);
+        double radX = Math::degreesToRad(aX);
+        double radY = Math::degreesToRad(aY);
+        double radZ = Math::degreesToRad(aZ);
 
-        double c1 = cos(tX* 0.5);
-        double c2 = cos(tY* 0.5);
-        double c3 = cos(tZ* 0.5);
-        
-        double s1 = sin(tX* 0.5);
-        double s2 = sin(tY* 0.5);
-        double s3 = sin(tZ* 0.5);
+        double sZ = sin(radZ* 0.5);
+        double cZ = cos(radZ* 0.5);
 
-        double c1c2 = c1*c2;
-        double s1s2 = s1*s2;
+        double cY = cos(radY* 0.5);
+        double sY = sin(radY* 0.5);
 
-        w = c1c2 * c3 - s1s2 * s3;
-        x = s1s2 * c3 + c1c2 * s3;
-        y = s1 * c2 * c3  + c1 * s2 * s3;
-        z = c1 * s2 * c3  - s1 * c2 * s3;
+        double cX = cos(radX* 0.5);
+        double sX = sin(radX* 0.5);
 
+        double c1c2 = cX*cY;
+        double s1s2 = sX*sY;
+
+        //z = sX * sY * cZ - cX * cY * sZ;
+        w = cX * cY * cZ + sX * sY * sZ;
+        x = sX * cY * cZ - cX * sY * sZ;
+        y = cX * sY * cZ + sX * cY * sZ;
+        z = cX * cY * sZ - sX * sY * cZ;
     }
     Quaternion::Quaternion(const Vector3 & aVec)
     {
-        double tX = Math::degreesToRad(aVec.x);
-        double tY = Math::degreesToRad(aVec.y);
-        double tZ = Math::degreesToRad(aVec.z);
+        double radX = Math::degreesToRad(aVec.x);
+        double radY = Math::degreesToRad(aVec.y);
+        double radZ = Math::degreesToRad(aVec.z);
 
-        double c1 = cos(tX* 0.5);
-        double c2 = cos(tY* 0.5);
-        double c3 = cos(tZ* 0.5);
-        
-        double s1 = sin(tX* 0.5);
-        double s2 = sin(tY* 0.5);
-        double s3 = sin(tZ* 0.5);
+        double sZ = sin(radZ* 0.5);
+        double cZ = cos(radZ* 0.5);
 
-        double c1c2 = c1*c2;
-        double s1s2 = s1*s2;
+        double cY = cos(radY* 0.5);
+        double sY = sin(radY* 0.5);
 
-        w = c1c2 * c3 - s1s2 * s3;
-        x = s1s2 * c3 + c1c2 * s3;
-        y = s1 * c2 * c3  + c1 * s2 * s3;
-        z = c1 * s2 * c3  - s1 * c2 * s3;
+        double cX = cos(radX* 0.5);
+        double sX = sin(radX* 0.5);
 
+        double c1c2 = cX*cY;
+        double s1s2 = sX*sY;
 
+        z = sX * sY * cZ + cX * cY * sZ;
+        y = sX * cY * cZ + cX * sY * sZ;
+        x = cX * sY * cZ - sX * cY * sZ;
+        w = cX * cY * cZ - sX * sY * sZ;
 
     }
     Quaternion::~Quaternion()
@@ -87,50 +87,7 @@ namespace Gem
 
         return Math::radToDegrees(eulerAngle);
     }
-    pugi::xml_node Quaternion::serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo )
-    {
-        aNode.append_attribute("X") = x;
-        aNode.append_attribute("Y") = y;
-        aNode.append_attribute("Z") = z;
-        aNode.append_attribute("W") = w;
-        return aNode;
-    }
-    bool Quaternion::deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo)
-    {
-        int threshHold = 4;
-        int count = 0;
-        std::string name = "";
-        for(pugi::xml_attribute_iterator iter = aNode.attributes_begin(); iter != aNode.attributes_end(); ++iter)
-        {
-            if(count > threshHold)
-            {
-                break;
-            }
-
-            name = iter->name();
-            if(name == "X")
-            {
-                x = iter->as_float();
-                count ++;
-            }
-            else if(name == "Y")
-            {
-                y = iter->as_float();
-                count ++;
-            }
-            else if(name == "Z")
-            {
-                z = iter->as_float();
-                count ++;
-            }
-            else if(name == "W")
-            {
-                w = iter->as_float();
-                count ++;
-            }
-        }
-        return count >= threshHold;
-    }
+    
     Pointer<Reflection::Type> Quaternion::getType()
     {
         return typeOf("Quaternion");

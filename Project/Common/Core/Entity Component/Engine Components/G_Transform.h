@@ -14,8 +14,6 @@ namespace Gem
         ~Transform();
 
 
-        virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
-        virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
         virtual Pointer<Reflection::Type> getType() override;
 
     private:

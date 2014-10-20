@@ -71,7 +71,7 @@ namespace Gem
             {
                 continue;
             }
-            m_GameObjects[i]->deserialize(gameObjectsNode.append_child("GameObject"));
+            //m_GameObjects[i]->deserialize(gameObjectsNode.append_child("GameObject"));
         }
 
         if(doc.save_file(file.c_str()) == false)
@@ -111,9 +111,9 @@ namespace Gem
                 continue;
             }
 
-            GameObject * gameObject = GameObject::instantiate("Empty_GameObject");
-            gameObject->deserialize(gameObjectNode);
-            placeGameObject(gameObject);
+            //GameObject * gameObject = GameObject::instantiate("Empty_GameObject");
+            //gameObject->deserialize(gameObjectNode);
+            //placeGameObject(gameObject);
         }
     }
 
@@ -163,9 +163,9 @@ namespace Gem
         m_IsEditing = aValue;
     }
 
-    Type * Scene::getType()
+    Pointer<Reflection::Type> Scene::getType()
     {
-        return Type::create("Scene",TypeID::SCENE,sizeof(Scene),Object::getType());
+		return typeOf("Scene");
     }
 
 }

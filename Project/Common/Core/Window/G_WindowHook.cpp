@@ -87,32 +87,32 @@ namespace Gem
 
         if(Input::instance()->getKeyDown(KeyCode::Q))
         {
-            log("---Memory Report(Used)---");
-            log(" Total      = " + I2S(MemoryManager::instance()->getTotalBytesUsed()));
-            log(" Block_8    = " + I2S(MemoryManager::instance()->getBytesUsed(8)));
-            log(" Block_16   = " + I2S(MemoryManager::instance()->getBytesUsed(16)));
-            log(" Block_32   = " + I2S(MemoryManager::instance()->getBytesUsed(32)));
-            log(" Block_64   = " + I2S(MemoryManager::instance()->getBytesUsed(64)));
-            log(" Block_128  = " + I2S(MemoryManager::instance()->getBytesUsed(128)));
-            log(" Block_256  = " + I2S(MemoryManager::instance()->getBytesUsed(256)));
-            log(" Block_512  = " + I2S(MemoryManager::instance()->getBytesUsed(512)));
-            log(" Block_1024 = " + I2S(MemoryManager::instance()->getBytesUsed(1024)));
-            log(" Block_User = " + I2S(MemoryManager::instance()->getBytesUsed(1025)));
+            //log("---Memory Report(Used)---");
+            //log(" Total      = " + I2S(MemoryManager::instance()->getTotalBytesUsed()));
+            //log(" Block_8    = " + I2S(MemoryManager::instance()->getBytesUsed(8)));
+            //log(" Block_16   = " + I2S(MemoryManager::instance()->getBytesUsed(16)));
+            //log(" Block_32   = " + I2S(MemoryManager::instance()->getBytesUsed(32)));
+            //log(" Block_64   = " + I2S(MemoryManager::instance()->getBytesUsed(64)));
+            //log(" Block_128  = " + I2S(MemoryManager::instance()->getBytesUsed(128)));
+            //log(" Block_256  = " + I2S(MemoryManager::instance()->getBytesUsed(256)));
+            //log(" Block_512  = " + I2S(MemoryManager::instance()->getBytesUsed(512)));
+            //log(" Block_1024 = " + I2S(MemoryManager::instance()->getBytesUsed(1024)));
+            //log(" Block_User = " + I2S(MemoryManager::instance()->getBytesUsed(1025)));
         }
 
         if(Input::instance()->getKeyDown(KeyCode::E))
         {
-            log("---Memory Report(Free)(Kb)---");
-            log(" Total      = " + I2S(MemoryManager::instance()->getTotalBytesFree(Memory::ByteSize::KILOBYTE)));
-            log(" Block_8    = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_8,Memory::ByteSize::KILOBYTE)));
-            log(" Block_16   = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_16,Memory::ByteSize::KILOBYTE)));
-            log(" Block_32   = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_32,Memory::ByteSize::KILOBYTE)));
-            log(" Block_64   = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_64,Memory::ByteSize::KILOBYTE)));
-            log(" Block_128  = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_128,Memory::ByteSize::KILOBYTE)));
-            log(" Block_256  = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_256,Memory::ByteSize::KILOBYTE)));
-            log(" Block_512  = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_512,Memory::ByteSize::KILOBYTE)));
-            log(" Block_1024 = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_1024,Memory::ByteSize::KILOBYTE)));
-            log(" Block_User = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_BIG,Memory::ByteSize::KILOBYTE)));
+            //log("---Memory Report(Free)(Kb)---");
+            //log(" Total      = " + I2S(MemoryManager::instance()->getTotalBytesFree(Memory::ByteSize::KILOBYTE)));
+            //log(" Block_8    = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_8,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_16   = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_16,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_32   = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_32,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_64   = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_64,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_128  = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_128,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_256  = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_256,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_512  = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_512,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_1024 = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_1024,Memory::ByteSize::KILOBYTE)));
+            //log(" Block_User = " + I2S(MemoryManager::instance()->getBytesFree(Memory::BlockSize::BLOCK_BIG,Memory::ByteSize::KILOBYTE)));
         }
 
 

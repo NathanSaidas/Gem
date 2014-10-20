@@ -74,7 +74,7 @@ namespace Gem
             }
             return boost::filesystem::create_directory(aPath);
         }
-        Pointer<Reflection::Type> Directory::getType()
+        Pointer<Reflection::Type> IO::getType()
         {
             return typeOf("IO");
         }

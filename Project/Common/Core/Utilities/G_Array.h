@@ -18,7 +18,7 @@ namespace Gem
         }
         ~Array()
         {
-            m_Array = Memory::destroy<TYPE>(m_Array,m_Size);
+            //m_Array = Memory::destroy<TYPE>(m_Array,m_Size);
         }
 
         
@@ -55,14 +55,14 @@ namespace Gem
             m_Size ++;
 
             //Allocate for new size
-            TYPE * newArray = Memory::instantiate<TYPE>(m_Size);
+			TYPE * newArray = nullptr; //Memory::instantiate<TYPE>(m_Size);
             //Copy elements over
             for(int i = 0; i < prevSize; i++)
             {
                 newArray[i] = m_Array[i];
             }
             //Deallocate the old array
-            m_Array = Memory::destroy<TYPE>(m_Array,prevSize);
+			m_Array = nullptr;//Memory::destroy<TYPE>(m_Array,prevSize);
             m_Array = newArray;
 
             m_Array[m_Size - 1] = aValue;
@@ -81,7 +81,7 @@ namespace Gem
 
             //Memory::destroy<DEREFERENCED_TYPE>(m_Array[aIndex]);
             //Allocate for new array
-            TYPE * newArray = Memory::instantiate<TYPE>(m_Size);
+			TYPE * newArray = nullptr;//Memory::instantiate<TYPE>(m_Size);
             int indexModifier = 0;
             //Copy every element except the one at the specified index
             for(int i = 0; i < prevSize; i++)
@@ -93,7 +93,7 @@ namespace Gem
                 }
                 newArray[i - indexModifier] = m_Array[i];
             }
-            m_Array = Memory::destroy<TYPE>(m_Array,prevSize);
+			m_Array = nullptr; // Memory::destroy<TYPE>(m_Array, prevSize);
             m_Array = newArray;
 
         }

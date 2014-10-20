@@ -18,21 +18,44 @@ namespace Gem
             return registry;
         }
 
-        //Invokes Constructor of Type
-        template<class T>
-        Primitive * createPrimitive(Primitive * aAddress)
-        {
-            return new(aAddress)T();
-        }
-        //Invokes Destroy of Type
-        template<class T>
-        Primitive * destroyPrimitive(Primitive * aAddress)
-        {
-            T * typeObj = (T*)aAddress;
-            typeObj->T::~T();
-            return nullptr;
-        }
+		//October,20,2014 - Use ReflectionFactory instead.
+        ////Invokes Constructor of Type
+        //template<class T>
+        //Primitive * createPrimitive(Primitive * aAddress)
+        //{
+        //    return new(aAddress)T();
+        //}
+        ////Invokes Destroy of Type
+        //template<class T>
+        //Primitive * destroyPrimitive(Primitive * aAddress)
+        //{
+        //    T * typeObj = (T*)aAddress;
+        //    typeObj->T::~T();
+        //    return nullptr;
+        //}
 
+#pragma region ChangeLog
+		/* October,20,2014 - Nathan Hanlan - Added Reflection Factory. Friend this class to house private constructors / destructors
+		*
+		*/
+#pragma endregion EndChangeLog
+		class ReflectionFactory
+		{
+		public:
+			template<class T>
+			static Primitive * createPrimitive(Primitive * aAddress)
+			{
+				return new(aAddress)T();
+			}
+
+			template<class T>
+			static Primitive * destroyPrimitive(Primitive * aAddress)
+			{
+				T * typeObj = (T*)aAddress;
+				typeObj->T::~T();
+				return nullptr;
+			}
+		};
 
 
         //Functions get the function pointer of type
@@ -66,7 +89,8 @@ namespace Gem
             RegistryEntry(const std::string& name,const std::string & baseclass)
             {
                 TypeList & reg = getTypeRegistry();
-                reg.addKey(TypeInfo::create(name, reg.getTypeCount(), sizeof(T), __alignof(T), createPrimitive<T>, destroyPrimitive<T>, baseclass));
+				reg.addKey(TypeInfo::create(name, reg.getTypeCount(), sizeof(T), __alignof(T), ReflectionFactory::createPrimitive<T>, ReflectionFactory::destroyPrimitive<T>, baseclass));
+                std::cout << "Registering " << name << std::endl;
                 //ComponentRegistry& reg = getComponentRegistry();
                 //CreateComponentFunc func = createComponent<T>;
                 //int i = g_Ung.getUniqueNumber();

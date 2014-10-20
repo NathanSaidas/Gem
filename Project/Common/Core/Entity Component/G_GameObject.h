@@ -20,7 +20,7 @@ namespace Gem
         const int DYNAMIC_STATE         = 1 << 4; //16 A flag for determining whether or not a game object has a dynamic state that can be changed during "Play Time". 
     }
 
-    class GameObject : public Object, IXmlSerializable
+    class GameObject : public Object
     {
     public:
         GameObject();
@@ -32,9 +32,9 @@ namespace Gem
         static void destroy(Component * aComponent);
 
         Component * addComponent(Component * aComponent);
-        Component * getComponent(Reflection::Type * aComponent);
+        Component * getComponent(Pointer<Reflection::Type> aComponent);
         Component * getComponent(string aTypeName);
-        std::vector<Component*> getComponents(Reflection::Type * aComponent);
+        std::vector<Component*> getComponents(Pointer<Reflection::Type> aComponent);
         std::vector<Component*> getComponents(string aTypeName);
 
         std::string name();
@@ -42,9 +42,6 @@ namespace Gem
         void setName(std::string aName);
         void setEnable(bool aFlag);
         void dontDestroyOnLoad();
-
-        virtual pugi::xml_node serialize(pugi::xml_node & aNode, bool aIncludeTypeInfo = false);
-        virtual bool deserialize(pugi::xml_node & aNode,bool aIncludeTypeInfo = false);
 
         virtual Pointer<Reflection::Type> getType() override;
     private:
