@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5D34B51A-6050-4AC3-8383-60CCB248ADA2}</ProjectGuid>
+    <RootNamespace>Windows</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)..\\..\\Common\\Libraries\\;$(ProjectDir)..\\..\\Common\\Libraries\\GLFW_3.0.4\\include;$(ProjectDir)..\\..\\Common\\Libraries\\glew-1.10.0\\include;$(ProjectDir)..\\..\\Common\\Libraries\\stbimage;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\\..\\Common\\Libraries\\GLFW_3.0.4\\lib;$(ProjectDir)..\\..\\Common\\Libraries\\glew-1.10.0\\lib;$(IncludePath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\\Builds\\Windows\\Debug\</OutDir>
+    <IntDir>$(SolutionDir)..\\Builds\\Windows\\Debug\\Int\</IntDir>
+    <TargetName>Gem_Engine</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_SHADER_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Common\Input\G_Input.cpp" />
+    <ClCompile Include="..\..\Common\Input\G_InputAxis.cpp" />
+    <ClCompile Include="..\..\Common\Input\G_Key.cpp" />
+    <ClCompile Include="..\..\Common\Math\G_Math.cpp" />
+    <ClCompile Include="..\..\Common\Math\Matrix.cpp" />
+    <ClCompile Include="..\..\Common\Math\Vector.cpp" />
+    <ClCompile Include="..\..\Common\Memory\G_Allocator.cpp" />
+    <ClCompile Include="..\..\Common\Memory\G_DynamicAllocator.cpp" />
+    <ClCompile Include="..\..\Common\Memory\G_MemoryManager.cpp" />
+    <ClCompile Include="..\..\Common\Primitives\G_boolean.cpp" />
+    <ClCompile Include="..\..\Common\Primitives\G_integer.cpp" />
+    <ClCompile Include="..\..\Common\Primitives\G_Object.cpp" />
+    <ClCompile Include="..\..\Common\Primitives\G_real.cpp" />
+    <ClCompile Include="..\..\Common\Primitives\G_string.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_Class.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_Primitive.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_ReflectionOperators.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_ReflectionRegristration.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_ReflectionRuntime.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_Type.cpp" />
+    <ClCompile Include="..\..\Common\Reflection\G_TypeList.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_Camera.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_DualMesh.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_FrameBuffer.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_Graphics.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_Mesh.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_Shader.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_Texture.cpp" />
+    <ClCompile Include="..\..\Common\Renderer\G_VertexInfo.cpp" />
+    <ClCompile Include="..\..\Common\Testing\G_GameObject.cpp" />
+    <ClCompile Include="..\..\Common\Testing\G_RenderableObject.cpp" />
+    <ClCompile Include="..\..\Common\Testing\G_TestObj.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\Collections\G_Collection.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\G_Functor.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\G_Time.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\G_UniqueNumberGenerator.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\G_Utilities.cpp" />
+    <ClCompile Include="..\..\Common\Window\G_Application.cpp" />
+    <ClCompile Include="..\..\Common\Window\G_Window.cpp" />
+    <ClCompile Include="..\..\Common\Window\G_WindowHook.cpp" />
+    <ClCompile Include="..\..\Common\Window\G_WindowManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Input\G_Input.h" />
+    <ClInclude Include="..\..\Common\Input\G_InputAxis.h" />
+    <ClInclude Include="..\..\Common\Input\G_Key.h" />
+    <ClInclude Include="..\..\Common\Input\G_KeyDef.h" />
+    <ClInclude Include="..\..\Common\Math\G_Math.h" />
+    <ClInclude Include="..\..\Common\Math\Matrix.h" />
+    <ClInclude Include="..\..\Common\Math\Vector.h" />
+    <ClInclude Include="..\..\Common\Memory\G_Allocator.h" />
+    <ClInclude Include="..\..\Common\Memory\G_DynamicAllocator.h" />
+    <ClInclude Include="..\..\Common\Memory\G_Memory.h" />
+    <ClInclude Include="..\..\Common\Memory\G_MemoryHandle.h" />
+    <ClInclude Include="..\..\Common\Memory\G_MemoryManager.h" />
+    <ClInclude Include="..\..\Common\Memory\G_Pointer.h" />
+    <ClInclude Include="..\..\Common\Primitives\G_boolean.h" />
+    <ClInclude Include="..\..\Common\Primitives\G_integer.h" />
+    <ClInclude Include="..\..\Common\Primitives\G_Object.h" />
+    <ClInclude Include="..\..\Common\Primitives\G_PrimitiveObjects.h" />
+    <ClInclude Include="..\..\Common\Primitives\G_real.h" />
+    <ClInclude Include="..\..\Common\Primitives\G_string.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_Class.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_Primitive.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_Reflection.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_ReflectionOperators.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_ReflectionRegristration.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_ReflectionRuntime.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_Type.h" />
+    <ClInclude Include="..\..\Common\Reflection\G_TypeList.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_Camera.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_Color.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_DualMesh.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_FrameBuffer.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_Graphics.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_Mesh.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_Shader.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_Texture.h" />
+    <ClInclude Include="..\..\Common\Renderer\G_VertexInfo.h" />
+    <ClInclude Include="..\..\Common\Testing\G_GameObject.h" />
+    <ClInclude Include="..\..\Common\Testing\G_TestObj.h" />
+    <ClInclude Include="..\..\Common\Testing\G_RenderableObject.h" />
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_Collection.h" />
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_Collections.h" />
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_Iterators.h" />
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_List.h" />
+    <ClInclude Include="..\..\Common\Utilities\G_Functor.h" />
+    <ClInclude Include="..\..\Common\Utilities\G_Time.h" />
+    <ClInclude Include="..\..\Common\Utilities\G_UniqueNumberGenerator.h" />
+    <ClInclude Include="..\..\Common\Utilities\Utilities.h" />
+    <ClInclude Include="..\..\Common\Window\G_Application.h" />
+    <ClInclude Include="..\..\Common\Window\G_Window.h" />
+    <ClInclude Include="..\..\Common\Window\G_WindowHook.h" />
+    <ClInclude Include="..\..\Common\Window\G_WindowManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Assets\Shaders\Basic.glsl" />
+    <Text Include="..\..\Assets\Shaders\DefaultShader.glsl" />
+    <Text Include="..\..\Assets\Shaders\DirectionalBlur.glsl" />
+    <Text Include="..\..\Assets\Shaders\SimpleBlur.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Assets\Shaders\Shader.glsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

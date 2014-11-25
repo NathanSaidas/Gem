@@ -1,0 +1,45 @@
+OpenGL Review
+
+//Vertex Data Creation
+• glGenBuffers
+• glBindBuffer
+• glBufferData
+
+//Shadows 
+• glBindFramebuffer
+
+//Draw Call
+• glGetAttribLocation
+• glGetUniformLocation
+• glEnableVertexAttribArray
+• glActiveTexture
+• glBindTexture
+• glUniform...
+• glDrawElements
+• glDisableVertexAttribArray
+
+//Vertex Array Mode
+• glEnableClientState
+• glTexCoordPointer
+• glVertexPointer
+• glColorPointer
+• glDisableClientState
+
+
+//States
+• glFrontFace
+• glCullFace
+• glEnable
+• glClearColor
+• glClearDepth
+• glClearColor
+
+• glViewport
+
+
+
+
+
+
+
+

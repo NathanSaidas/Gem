@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{ff4b18d5-f41d-4c5b-af2d-f1a6165900f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Reflection">
+      <UniqueIdentifier>{c5aa3d74-550e-478d-9eb5-605d2d440905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Memory">
+      <UniqueIdentifier>{751b1199-5b16-4f80-a5f5-7aa6312f4625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Primitives">
+      <UniqueIdentifier>{e79fb08c-e70e-44a7-9b1d-f9f02cc225aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Utilities">
+      <UniqueIdentifier>{51248676-977d-49f9-95e6-f7401ed728d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Utilities\Collections">
+      <UniqueIdentifier>{6dc2bb48-d8ef-4880-b8af-2036f20b228f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Testing">
+      <UniqueIdentifier>{1ab50495-22b9-4529-bc33-4ce39b5f444e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Window">
+      <UniqueIdentifier>{1c3c179b-bffe-41c4-a0a6-d172cfcc607c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Input">
+      <UniqueIdentifier>{083a38b7-90b9-41a1-9f25-d6b57fd1e88b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Math">
+      <UniqueIdentifier>{cdabe92e-d85c-4800-ada2-ebc3d8736219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Rendering">
+      <UniqueIdentifier>{3eebec01-01b5-450e-ba4d-5dc04045e371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{bdd27529-d002-479f-8130-1160b2ab6705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{3faeae7c-d6e8-43b3-92ff-92f62ea45e6c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\G_Allocator.cpp">
+      <Filter>Core\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\G_MemoryManager.cpp">
+      <Filter>Core\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Primitives\G_boolean.cpp">
+      <Filter>Core\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Primitives\G_integer.cpp">
+      <Filter>Core\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Primitives\G_Object.cpp">
+      <Filter>Core\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Primitives\G_real.cpp">
+      <Filter>Core\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Primitives\G_string.cpp">
+      <Filter>Core\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_Class.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_Primitive.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_ReflectionOperators.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_ReflectionRegristration.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_ReflectionRuntime.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_Type.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\G_TypeList.cpp">
+      <Filter>Core\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Testing\G_TestObj.cpp">
+      <Filter>Core\Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\Collections\G_Collection.cpp">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Window\G_Window.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Window\G_WindowHook.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Window\G_WindowManager.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Input\G_Input.cpp">
+      <Filter>Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Input\G_InputAxis.cpp">
+      <Filter>Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Input\G_Key.cpp">
+      <Filter>Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\G_Time.cpp">
+      <Filter>Core\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Window\G_Application.cpp">
+      <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\G_DynamicAllocator.cpp">
+      <Filter>Core\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\G_UniqueNumberGenerator.cpp">
+      <Filter>Core\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\G_Functor.cpp">
+      <Filter>Core\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_Camera.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_Graphics.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_Mesh.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_VertexInfo.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\G_Utilities.cpp">
+      <Filter>Core\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_Texture.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_Shader.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Matrix.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Vector.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\G_Math.cpp">
+      <Filter>Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_DualMesh.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Testing\G_RenderableObject.cpp">
+      <Filter>Core\Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Renderer\G_FrameBuffer.cpp">
+      <Filter>Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Testing\G_GameObject.cpp">
+      <Filter>Core\Testing</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Memory\G_Allocator.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\G_Memory.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\G_MemoryManager.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\G_Pointer.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Primitives\G_boolean.h">
+      <Filter>Core\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Primitives\G_integer.h">
+      <Filter>Core\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Primitives\G_Object.h">
+      <Filter>Core\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Primitives\G_PrimitiveObjects.h">
+      <Filter>Core\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Primitives\G_real.h">
+      <Filter>Core\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Primitives\G_string.h">
+      <Filter>Core\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_Class.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_Primitive.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_Reflection.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_ReflectionOperators.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_ReflectionRegristration.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_ReflectionRuntime.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_Type.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\G_TypeList.h">
+      <Filter>Core\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_Collections.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Testing\G_TestObj.h">
+      <Filter>Core\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_Iterators.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_List.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Collections\G_Collection.h">
+      <Filter>Core\Utilities\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Window\G_Window.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Window\G_WindowHook.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Window\G_WindowManager.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Input\G_Input.h">
+      <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Input\G_InputAxis.h">
+      <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Input\G_Key.h">
+      <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Input\G_KeyDef.h">
+      <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\G_Math.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\G_Time.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\G_MemoryHandle.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Window\G_Application.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\G_DynamicAllocator.h">
+      <Filter>Core\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\G_UniqueNumberGenerator.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\G_Functor.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_Graphics.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_Camera.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_Mesh.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_VertexInfo.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_Color.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Utilities.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_Texture.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_Shader.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Matrix.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Vector.h">
+      <Filter>Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_DualMesh.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Testing\G_RenderableObject.h">
+      <Filter>Core\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Renderer\G_FrameBuffer.h">
+      <Filter>Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Testing\G_GameObject.h">
+      <Filter>Core\Testing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Assets\Shaders\DefaultShader.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </Text>
+    <Text Include="..\..\Assets\Shaders\Basic.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </Text>
+    <Text Include="..\..\Assets\Shaders\SimpleBlur.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </Text>
+    <Text Include="..\..\Assets\Shaders\DirectionalBlur.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Assets\Shaders\Shader.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
