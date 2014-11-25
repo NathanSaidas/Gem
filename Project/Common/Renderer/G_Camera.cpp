@@ -18,6 +18,10 @@ namespace Gem
 		m_CullingMask = 1;
 		m_Depth = 0;
 		m_ClearDepth = true;
+		m_WindowRect.x = 0.0f;
+		m_WindowRect.y = 0.0f;
+		m_WindowRect.width = 1024.0f;
+		m_WindowRect.height = 768.0f;
 
 		samples = 10;
 		blurDirection = Vector2(1.0f/1024.0f, 1.0f/1024.0f);
@@ -82,6 +86,7 @@ namespace Gem
 
 		//TODO: Render for PostProcessing
 		Graphics::Clear();
+		glViewport(m_WindowRect.x, m_WindowRect.y, m_WindowRect.width, m_WindowRect.height);
 		PostProcessRender();
 		
 		s_CurrentCamera = nullptr;
@@ -157,6 +162,14 @@ namespace Gem
 	void Camera::SetProjection(float aFov, float aAspect, float aNear, float aFar)
 	{
 		m_Projection.SetPerspective(aFov, aAspect, aNear, aFar);
+	}
+	Rect Camera::WindowRect()
+	{
+		return m_WindowRect;
+	}
+	Rect Camera::WindowRect(Rect & aWindowRec)
+	{
+		return m_WindowRect = aWindowRec;
 	}
 	void Camera::PostProcessRender()
 	{

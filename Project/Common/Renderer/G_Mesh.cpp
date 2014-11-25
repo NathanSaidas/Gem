@@ -6,7 +6,7 @@
 #include <vector>
 
 #include <fstream>
-
+#include "../Reflection/G_ReflectionRuntime.h"
 
 namespace Gem
 {
@@ -77,12 +77,10 @@ namespace Gem
 		{
 			return;
 		}
-		
 		glGenBuffers(1, &m_VBOHandle);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBOHandle);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(VertexInfo)* m_VertexCount, vertices, GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
 		glGenBuffers(1, &m_IBOHandle);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBOHandle);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned short)* m_IndexCount, m_Indices, GL_STATIC_DRAW);
@@ -108,7 +106,6 @@ namespace Gem
 		{
 			m_Indices = Memory::DestroyArrayHandle<unsigned short>(m_Indices, m_IndexCount);
 		}
-
 		m_VertexCount = 0;
 		m_IndexCount = 0;
 
@@ -218,7 +215,6 @@ namespace Gem
 			printf("This file does not contain any faces");
 			return;
 		}
-
 		m_Vertices = Memory::InstantiateArray<VertexInfo>(m_VertexCount);
 		m_Indices = Memory::InstantiateArray<unsigned short>(m_VertexCount);
 		VertexInfo * vertices = m_Vertices;

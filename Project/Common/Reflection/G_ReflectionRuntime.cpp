@@ -111,7 +111,7 @@ namespace Gem
 
             //Create the array of types dynamically
             m_TypeCount = typeList.size();
-            m_Types = Memory::InstantiateArray<Type*>(m_TypeCount);
+			m_Types = new Type*[m_TypeCount];//Memory::InstantiateArray<Type*>(m_TypeCount);
 
             int currentIndex = 0;
             while (typeList.size() > 0)
@@ -142,7 +142,7 @@ namespace Gem
             {
                 m_Types[i] = Memory::Destroy<Type>(m_Types[i]);
             }
-            m_Types = Memory::DestroyArray<Type*>(m_Types, m_TypeCount);
+			delete[] m_Types; //Memory::DestroyArray<Type*>(m_Types, m_TypeCount);
         }
     }
 }

@@ -176,6 +176,39 @@ namespace Gem
 			return MemoryHandle<T>(Memory::HANDLE_BLOCK_FIXED, allocator->Allocate<T>());
         }
 
+		template<class T>
+		MemoryHandle<T> Allocate(const T & aInitializer)
+		{
+			int size = sizeof(T);
+			Allocator * allocator = GetAllocator(size);
+			if (allocator == nullptr)
+			{
+				return MemoryHandle<T>(Memory::HANDLE_INVALID_MEMORY, nullptr);
+			}
+			if (allocator->OutOfMemory())
+			{
+				DynamicAllocator * dynAllocator = GetDynamicAllocator(size);
+				if (dynAllocator != nullptr)
+				{
+					return MemoryHandle<T>(dynAllocator->GetID(), dynAllocator->Allocate<T>(aInitializer));
+				}
+				else
+				{
+					dynAllocator = CreateDynamicAllocator(size);
+					if (dynAllocator == nullptr)
+					{
+						return MemoryHandle<T>(Memory::HANDLE_INVALID_MEMORY, nullptr);
+					}
+					else
+
+					{
+						return MemoryHandle<T>(dynAllocator->GetID(), dynAllocator->Allocate<T>(aInitializer));
+					}
+				}
+			}
+			return MemoryHandle<T>(Memory::HANDLE_BLOCK_FIXED, allocator->Allocate<T>(aInitializer));
+		}
+
 		//template<class T>
 		//MemoryHandle<Collections::Iterator<T>> SomeFunc()
 		//{
@@ -522,6 +555,11 @@ namespace Gem
         {
             return MemoryManager::Instance()->Allocate<T>();
         }
+		template<class T>
+		MemoryHandle<T> Instantiate(const T & aInitializer)
+		{
+			return MemoryManager::Instance()->Allocate<T>(aInitializer);
+		}
         template<class T>
 		T * Destroy(T * aAddress)
         {

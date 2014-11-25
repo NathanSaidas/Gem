@@ -66,6 +66,27 @@ namespace Gem
 
             return obj;
         }
+		template<class T>
+		T * Allocate(const T & aInitializer)
+		{
+			ASSERT(m_FreeList != nullptr);
+			if (m_FreeList == nullptr)
+			{
+				return nullptr;
+			}
+
+			void * ptr = m_FreeList;
+
+			m_FreeList = (void**)(*m_FreeList);
+
+			m_UsedMemory += m_ObjectSize;
+			m_Allocations++;
+
+			T * obj = new(ptr)T(aInitializer);
+
+			return obj;
+		}
+
         template<class T>
         T * Deallocate(T * aPtr)
         {

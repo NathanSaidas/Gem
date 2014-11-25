@@ -8,14 +8,45 @@
 
 namespace Gem
 {
+	struct SomeUnionThing
+	{
+		union
+		{
+			float x;
+			float r;
+		};
+		union
+		{
+			char charA;
+			char charB;
+			char charC;
+			char charD;
+			float y;
+			float g;
+		};
+
+		union
+		{
+			short dataA;
+			short dataB;
+			float z;
+			float b;
+		};
+
+		
+	};
+
     class TestObj : public Object
     {
     public:
         int someData;
-        //string someName;
+        string someName;
+		std::string stdSomeName;
 		float floatingData;
         int operation;
+		SomeUnionThing unionGuy;
         TestObj();
+		TestObj(const TestObj & aInitializer);
         ~TestObj();
         virtual Pointer<Reflection::Type> GetType() override;
     };

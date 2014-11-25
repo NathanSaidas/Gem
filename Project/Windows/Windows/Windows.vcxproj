@@ -50,7 +50,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_SHADER_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_DEBUG_TRACE_OFF;_SHADER_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -106,10 +106,13 @@
     <ClCompile Include="..\..\Common\Testing\G_RenderableObject.cpp" />
     <ClCompile Include="..\..\Common\Testing\G_TestObj.cpp" />
     <ClCompile Include="..\..\Common\Utilities\Collections\G_Collection.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\G_Debug.cpp" />
     <ClCompile Include="..\..\Common\Utilities\G_Functor.cpp" />
     <ClCompile Include="..\..\Common\Utilities\G_Time.cpp" />
     <ClCompile Include="..\..\Common\Utilities\G_UniqueNumberGenerator.cpp" />
     <ClCompile Include="..\..\Common\Utilities\G_Utilities.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\IO\G_Directory.cpp" />
+    <ClCompile Include="..\..\Common\Utilities\IO\G_File.cpp" />
     <ClCompile Include="..\..\Common\Window\G_Application.cpp" />
     <ClCompile Include="..\..\Common\Window\G_Window.cpp" />
     <ClCompile Include="..\..\Common\Window\G_WindowHook.cpp" />
@@ -160,10 +163,15 @@
     <ClInclude Include="..\..\Common\Utilities\Collections\G_Collections.h" />
     <ClInclude Include="..\..\Common\Utilities\Collections\G_Iterators.h" />
     <ClInclude Include="..\..\Common\Utilities\Collections\G_List.h" />
+    <ClInclude Include="..\..\Common\Utilities\G_Debug.h" />
     <ClInclude Include="..\..\Common\Utilities\G_Functor.h" />
     <ClInclude Include="..\..\Common\Utilities\G_Time.h" />
     <ClInclude Include="..\..\Common\Utilities\G_UniqueNumberGenerator.h" />
-    <ClInclude Include="..\..\Common\Utilities\Utilities.h" />
+    <ClInclude Include="..\..\Common\Utilities\IO\G_Directory.h" />
+    <ClInclude Include="..\..\Common\Utilities\IO\G_File.h" />
+    <ClInclude Include="..\..\Common\Utilities\IO\G_FileAccess.h" />
+    <ClInclude Include="..\..\Common\Utilities\IO\G_FileMode.h" />
+    <ClInclude Include="..\..\Common\Utilities\G_Utilities.h" />
     <ClInclude Include="..\..\Common\Window\G_Application.h" />
     <ClInclude Include="..\..\Common\Window\G_Window.h" />
     <ClInclude Include="..\..\Common\Window\G_WindowHook.h" />

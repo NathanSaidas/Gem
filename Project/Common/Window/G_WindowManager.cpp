@@ -117,13 +117,14 @@ namespace Gem
         }
         if(window != nullptr)
         {
-            glfwDestroyWindow(window->m_Handle);
+            
             WindowHook * hook = window->m_WindowHook;
             if(hook != nullptr)
             {
                 hook->OnDetachFromWindow(window->m_HandleID);
                 hook->m_Window = nullptr;
             }
+			glfwDestroyWindow(window->m_Handle);
             window = Memory::Destroy<Window>(window);
         }
     }
@@ -288,7 +289,7 @@ namespace Gem
     }
 	void WindowManager::WindowResize(GLFWwindow * aWindow, int aWidth, int aHeight)
 	{
-		Application::Instance()->OnWindowResize(aWidth, aHeight);
+		Application::Instance()->OnWindowResize((float)aWidth, (float)aHeight);
 		Instance()->ProcessWindowResize(aWindow, aWidth, aHeight);
 	}
 
@@ -331,7 +332,7 @@ namespace Gem
     }
     void WindowManager::ProcessMouseMove(GLFWwindow* aWindow, double aX, double aY)
     {
-        Input::Instance()->ProcessMouseMove(aX,aY);
+        Input::Instance()->ProcessMouseMove((float)aX,(float)aY);
         Window * window = nullptr;
         for(int i = 0; i < m_Windows.size(); i++)
         {

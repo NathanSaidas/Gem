@@ -62,8 +62,8 @@ namespace Gem
     }
 	void Window::OnWindowResize(float aWidth, float aHeight)
 	{
-		m_Width = aWidth;
-		m_Height = aHeight;
+		m_Width = (int)aWidth;
+		m_Height = (int)aHeight;
 	}
     void Window::Update()
     {

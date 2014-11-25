@@ -136,6 +136,15 @@ namespace Gem
 		}
 		return Color();
 	}
+	void Graphics::Init()
+	{
+		glDepthMask(GL_TRUE);
+		glDepthFunc(GL_LEQUAL);
+		glEnable(GL_DEPTH_TEST);
+		glFrontFace(GL_CW);
+		glCullFace(GL_BACK);
+		glEnable(GL_CULL_FACE);
+	}
 	void Graphics::EnableBlending(BlendMode aSource, BlendMode aDestination)
 	{
 		glEnable(GL_BLEND);

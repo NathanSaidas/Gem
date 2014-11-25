@@ -40,6 +40,9 @@
     <Filter Include="Assets\Shaders">
       <UniqueIdentifier>{3faeae7c-d6e8-43b3-92ff-92f62ea45e6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Utilities\IO">
+      <UniqueIdentifier>{094382bc-54fb-4ace-b311-54d9102fa39e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -167,6 +170,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Common\Testing\G_GameObject.cpp">
       <Filter>Core\Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\IO\G_Directory.cpp">
+      <Filter>Core\Utilities\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\IO\G_File.cpp">
+      <Filter>Core\Utilities\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\G_Debug.cpp">
+      <Filter>Core\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -296,9 +308,6 @@
     <ClInclude Include="..\..\Common\Renderer\G_Color.h">
       <Filter>Core\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Common\Utilities\Utilities.h">
-      <Filter>Core\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Common\Renderer\G_Texture.h">
       <Filter>Core\Rendering</Filter>
     </ClInclude>
@@ -322,6 +331,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Common\Testing\G_GameObject.h">
       <Filter>Core\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IO\G_Directory.h">
+      <Filter>Core\Utilities\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IO\G_File.h">
+      <Filter>Core\Utilities\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IO\G_FileAccess.h">
+      <Filter>Core\Utilities\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IO\G_FileMode.h">
+      <Filter>Core\Utilities\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\G_Debug.h">
+      <Filter>Core\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\G_Utilities.h">
+      <Filter>Core\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

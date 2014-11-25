@@ -54,6 +54,8 @@ namespace Gem
 		///Projection Setup
 		ClassUtils::Matrix Projection();
 		void SetProjection(float aFov, float aAspect, float aNear, float aFar);
+		Rect WindowRect();
+		Rect WindowRect(Rect & aWindowRec);
     private:
 		static Camera * s_CurrentCamera;
 		///The name of the camera for lookups
@@ -72,6 +74,9 @@ namespace Gem
 		ClassUtils::Vector3 m_Target;
 		///The projection matrix for the camera
 		ClassUtils::Matrix m_Projection;
+		
+		///The area to render in.
+		Rect m_WindowRect;
 
 		MemoryHandle<FrameBuffer> m_FrameBuffer;
 

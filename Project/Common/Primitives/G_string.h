@@ -21,7 +21,6 @@ namespace Gem
         string(string & aString);
         string(const string & aString);
         string(const char * aString);
-        string(char aString[]);
         string();
         ~string();
         //Setters

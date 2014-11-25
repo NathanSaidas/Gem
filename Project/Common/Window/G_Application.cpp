@@ -73,14 +73,13 @@ namespace Gem
 		WindowManager::Instance();
 		Input::Instance();
 		Graphics::Instance();
-
     }
     //called after init
     void Application::OnExecute()
     {
         WindowManager * windowManager = WindowManager::Instance();
         Input * input = Input::Instance();
-        
+
         int mainWindowHandle = windowManager->CreateWindow("Main Window", 1280, 768);
         if (mainWindowHandle == INVALID_WINDOW_HANDLE)
         {
@@ -88,7 +87,9 @@ namespace Gem
             m_ExitStatus = -1;
             return;
         }
+		
         MemoryHandle<WindowHook> windowHookHandle = Memory::Instantiate<WindowHook>();
+
         windowManager->AttachHook(windowHookHandle, mainWindowHandle);
 
         while (WindowManager::Instance()->HasWindows() && m_ShouldQuit == false)
@@ -97,23 +98,23 @@ namespace Gem
 			float lastTime = Time::s_CurrentTime;
 			Time::s_DeltaTime = currentTime - lastTime;
 			Time::s_CurrentTime = currentTime;
-
+		
 			Input::Instance()->Update();
             WindowManager::Instance()->Update();
 			Graphics::Instance()->Render();
 			
-
+		
 			//Give time for memory manager to update.
 			MemoryManager::Instance()->Update();
 		}
-
         WindowManager::Instance()->DestroyWindow(mainWindowHandle);
-        windowHookHandle = Memory::DestroyHandle(windowHookHandle);
+		
+        
     }
     //called after run
     void Application::OnApplicationClose()
     {
-		Graphics::Destroy();
+		//Graphics::Destroy();
         Input::Destroy();
         WindowManager::Destroy();
 		WindowManager::DeInit();

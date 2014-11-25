@@ -9,5 +9,5 @@
 
 
 typedef unsigned char byte;
-
+typedef char sbyte;
 #endif

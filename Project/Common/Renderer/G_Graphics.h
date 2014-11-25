@@ -59,6 +59,8 @@ namespace Gem
 		static Color ForegroundColor(Color & aColor);
 		static Color ForegroundColor(float aRed, float aGreen, float aBlue);
 
+
+		static void Init();
 		static void EnableBlending(BlendMode aSource = BlendMode::SRC_ALPHA, BlendMode aDestination = BlendMode::ONE_MINUS_SRC_ALPHA);
 		static void DisableBlending();
 		static void Clear();

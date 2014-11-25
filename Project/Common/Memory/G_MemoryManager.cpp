@@ -210,6 +210,8 @@ namespace Gem
 		free(m_CollectionsBlock1024);
 
 		free(m_ReservedBlock);
+
+		system("pause");
     }
     Reflection::Primitive * MemoryManager::Allocate(string & aTypeName)
     {

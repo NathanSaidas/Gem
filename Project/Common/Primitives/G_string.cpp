@@ -32,12 +32,6 @@ namespace Gem
         m_Characters = 0;
         SetString(aString);
     }
-    string::string(char aCharacters[])
-    {
-        m_Length = 0;
-        m_Characters = 0;
-        SetString(aCharacters);
-    }
     string::string()
     {
         m_Length = 0;
