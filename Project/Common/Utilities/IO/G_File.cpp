@@ -26,11 +26,12 @@ namespace Gem
 {
 	namespace FileIO
 	{
+		G_CLASS_IMPLEMENTATION(File,object)
 		File::File()
 		{
 		
 		}
-		File::File(string & aPath)
+		File::File(std::string & aPath)
 		{
 
 		}
@@ -46,7 +47,7 @@ namespace Gem
 		bool File::Open(FileMode aFileMode)
 		{
 			FILE * file = nullptr;
-			string fileMode = string::Empty();
+			std::string fileMode = "";
 			switch (aFileMode)
 			{
 			case FileMode::READ:
@@ -68,7 +69,7 @@ namespace Gem
 				return false;
 			}
 			//Try and open the file
-			file = fopen(m_Path.C_Str(), fileMode.C_Str());
+			file = fopen(m_Path.c_str(), fileMode.c_str());
 			if (file == nullptr)
 			{
 				return false;
@@ -97,7 +98,7 @@ namespace Gem
 			int closeStatus = fclose(file);
 			return closeStatus == 0;
 		}
-		bool File::Open(string & aPath, FileMode aFileMode)
+		bool File::Open(std::string & aPath, FileMode aFileMode)
 		{
 			m_Path = aPath;
 			return Open(aFileMode);
@@ -109,19 +110,19 @@ namespace Gem
 		}
 		void File::Close()
 		{
-			m_ReadStream.ref()->Set("");
-			m_WriteStream.ref()->Set("");
+			m_ReadStream = "";
+			m_WriteStream = "";
 		}
-		bool File::Create(string & aPath, string & aFilename, string & aExtension)
+		bool File::Create(std::string & aPath, std::string & aFilename, std::string & aExtension)
 		{
-			string path = aPath + aFilename + aExtension;
+			std::string path = aPath + aFilename + aExtension;
             struct stat status;
-            stat(aPath.C_Str(), &status);
+            stat(aPath.c_str(), &status);
 			if (!Directory::exists(aPath) || Exists(path))
 			{
 				return false;
 			}
-			FILE * file = fopen(path.C_Str(), "w");
+			FILE * file = fopen(path.c_str(), "w");
 			if (file != nullptr)
 			{
 				return fclose(file) == 0;
@@ -129,10 +130,10 @@ namespace Gem
 			return false;
 		}
         
-		bool File::Exists(string & aFilename)
+		bool File::Exists(std::string & aFilename)
 		{
 #if _WIN32
-            DWORD file = GetFileAttributes(aFilename.C_Str());
+            DWORD file = GetFileAttributes(aFilename.c_str());
             if(file == INVALID_FILE_ATTRIBUTES)
             {
                 return false;
@@ -151,9 +152,9 @@ namespace Gem
             return result == 0;
 #endif 
 		}
-		bool File::Exists(string & aFilename, string & aExtension)
+		bool File::Exists(std::string & aFilename, std::string & aExtension)
 		{
-            return Exists(string(aFilename + aExtension));
+			return Exists(std::string(aFilename + aExtension));
 		}
 		bool File::Exists(File * aFile)
 		{
@@ -163,64 +164,57 @@ namespace Gem
 			}
 			return Exists(aFile->Path());
 		}
-		string File::Extension(string & aFilename)
+		std::string File::Extension(std::string & aFilename)
 		{
-			return string::Empty();
+			return "";
 		}
-		string File::Extension(File * aFile)
+		std::string File::Extension(File * aFile)
 		{
-			return string::Empty();
-		}
-
-		string ReplaceExtension(string aFilename, string aNewExtension)
-		{
-			return string::Empty();
+			return "";
 		}
 
-		string ReplaceExtension(File * aFile, string aNewExtension)
+		std::string ReplaceExtension(std::string aFilename, std::string aNewExtension)
+		{
+			return "";
+		}
+
+		std::string ReplaceExtension(File * aFile, std::string aNewExtension)
 		{
 			if (aFile == nullptr)
 			{
-				return string::Empty();
+				return "";
 			}
 			return ReplaceExtension(aFile->Path(),aNewExtension);
 		}
 
-		string File::ReadStream()
+		std::string File::ReadStream()
 		{
 			return m_ReadStream.data();
 		}
-		string File::WriteStream()
+		std::string File::WriteStream()
 		{
 			return m_WriteStream.data();
 		}
-		void File::SetWriteStream(string & aData)
+		void File::SetWriteStream(std::string & aData)
 		{
-			m_WriteStream.ref()->Set(aData);
-			m_WriteStream.ref()->Append("\n");
+			m_WriteStream = aData + "\n";
 		}
-		void File::AddWriteStream(string & aData)
+		void File::AddWriteStream(std::string & aData)
 		{
-			m_WriteStream.ref()->Append(aData);
-			m_WriteStream.ref()->Append("\n");
+			m_WriteStream = aData + "\n";
 		}
 		void File::ClearWriteStream()
 		{
-			m_WriteStream.ref()->Set("");
+			m_WriteStream = "";
 		}
-		string File::Path()
+		std::string File::Path()
 		{
 			return m_Path;
 		}
-		boolean File::Verify()
+		bool File::Verify()
 		{
 			return false;
 		}
-		Pointer<Reflection::Type> File::GetType()
-		{
-			return typeOf("File");
-		}
-
 		void File::Read(FILE * aFile)
 		{
 			if (aFile == nullptr)
@@ -228,21 +222,21 @@ namespace Gem
 				return;
 			}
 			//Clear Read Stream
-			m_ReadStream.ref()->Set("");
+			m_ReadStream = "";
 			char buffer[100];
 			//Read into buffer then append read stream
 			while (fgets(buffer, 100, aFile) != nullptr)
 			{
-				m_ReadStream.ref()->Append(buffer);
+				m_ReadStream.append(buffer);
 			}
 		}
 		void File::Write(FILE * aFile)
 		{
-			if (aFile == nullptr || m_WriteStream.ref()->Length() == 0)
+			if (aFile == nullptr || m_WriteStream.size() == 0)
 			{
 				return;
 			}
-			int status = fputs(m_WriteStream.ref()->C_Str(), aFile);
+			int status = fputs(m_WriteStream.c_str(), aFile);
 			if (status == EOF)
 			{
 				//Error, End of File?

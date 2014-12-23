@@ -1,19 +1,19 @@
 #ifndef G_COLLECTION_H
 #define G_COLLECTION_H
 
-#include "../../Primitives/G_PrimitiveObjects.h"
+#include "../../G_Object.h"
 
 namespace Gem
 {
     namespace Collections
     {
-        class Collection : public Object
+        class Collection : public object
         {
+			G_CLASS_DEF(Collection)
         public:
-            virtual Pointer<Reflection::Type> GetType() override;
+			Collection();
+			virtual ~Collection();
         };
     }
 }
-
-GEM_CLASS(Collections::Collection, Object)
 #endif

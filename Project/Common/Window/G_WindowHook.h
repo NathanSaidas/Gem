@@ -1,8 +1,9 @@
 #ifndef G_WINDOW_HOOK_H
 #define G_WINDOW_HOOK_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
+
 #include "../Math/G_Math.h"
+#include "../G_Object.h"
 #include <vector>
 
 namespace Gem
@@ -17,15 +18,15 @@ namespace Gem
 	class Camera;
 	///----------------------------
 
-    class WindowHook : public Object
+    class WindowHook : public object
     {
+		G_CLASS_DEF(WindowHook)
     public:
         WindowHook();
         virtual ~WindowHook();
         //Gets invoked by the window
         virtual void Update();
 
-        virtual Pointer<Reflection::Type> GetType() override;
 
     protected:
         bool IsFocused();
@@ -37,16 +38,6 @@ namespace Gem
         Window * m_Window;
         friend class WindowManager;
 
-		///Temp stuff for adding objects
-		RenderableObject * AddObject(MemoryHandle<Mesh> aMesh, MemoryHandle<Texture> aTexture, MemoryHandle<Shader> aShader);
-		std::vector<MemoryHandle<RenderableObject>> m_Objects;
-
-		///Temp Stuff for graphics
-		MemoryHandle<Camera> m_Camera;
-		MemoryHandle<Shader> m_SimpleBlur;
-		MemoryHandle<Mesh> m_Plane;
-
     };
 }
-GEM_CLASS(WindowHook,Object)
 #endif

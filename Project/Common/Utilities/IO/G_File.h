@@ -1,9 +1,9 @@
 #ifndef G_FILE_H
 #define G_FILE_H
 
-#include "../../Primitives/G_PrimitiveObjects.h" //For Object / Type
 #include "G_FileMode.h" //For FileMode enum
 #include "G_FileAccess.h" //Fore FileAccess enum
+#include "../../G_Object.h"
 
 namespace Gem
 {
@@ -18,15 +18,16 @@ namespace Gem
 		/// <summary>
 		/// A data structure used to handle file operations. Open, Close, Create, Exists etc.
 		/// </summary>
-		class File : public Object
+		class File : public object
 		{
+			G_CLASS_DEF(File)
 		public:
 			File();
 			/// <summary>
 			/// Construct the file with the following path.
 			/// </summary>
 			/// <param name="aPath">The location of the file.</param>
-			File(string & aPath);
+			File(std::string & aPath);
 			/// <summary>
 			/// Construct the file with the following path.
 			/// </summary>
@@ -49,7 +50,7 @@ namespace Gem
 			/// <param name="aPath">The file path to open.</param>
 			/// <param name="aFileMode">The filemode to use.</param>
 			/// <returns>Returns true if successful. False if not.</returns>
-			bool Open(string & aPath, FileMode aFileMode);
+			bool Open(std::string & aPath, FileMode aFileMode);
 			/// <summary>
 			/// Opens the file and reads and/or writes to the file with the current read / write streams
 			/// </summary>
@@ -71,28 +72,28 @@ namespace Gem
 			/// <param name="aFilename">The name of the file to create.</param>
 			/// <param name="aPath">The extension to give the file,".txt" by default.</param>
 			/// <returns>Returns true if successful. False if not.</returns>
-			bool Create(string & aPath, string & aFilename, string & aExtension = string(".txt"));
+			bool Create(std::string & aPath, std::string & aFilename, std::string & aExtension = std::string(".txt"));
 
 			/// <summary>
 			/// Determines if the file exists or not.
 			/// </summary>
 			/// <param name="aFilename">The file to check for.</param>
 			/// <returns>Returns true if exists. False if not.</returns>
-			static bool Exists(string & aFilename);
+			static bool Exists(std::string & aFilename);
 			/// <summary>
 			/// Determines if the file exists or not with the given extension
 			/// </summary>
 			/// <param name="aFilename">The file to check for.</param>
 			/// <param name="aExtension">The extension to check for.</param>
 			/// <returns>Returns true if exists. False if not.</returns>
-			static bool Exists(string & aFilename, string & aExtension);
+			static bool Exists(std::string & aFilename, std::string & aExtension);
 			static bool Exists(File * aFile);
 
-			static string Extension(string & aFilename);
-			static string Extension(File * aFile);
+			static std::string Extension(std::string & aFilename);
+			static std::string Extension(File * aFile);
 
-			static string ReplaceExtension(string & aFilename, string & aNewExtension);
-			static string ReplaceExtension(File * aFile, string & aNewExtension);
+			static std::string ReplaceExtension(std::string & aFilename, std::string & aNewExtension);
+			static std::string ReplaceExtension(File * aFile, std::string & aNewExtension);
 			/// <summary>
 			///October,20,2014 std::string no longer supported.
 			/// </summary>
@@ -103,27 +104,25 @@ namespace Gem
 
 
 
-			string ReadStream();
-			string WriteStream();
-			void SetWriteStream(string & aData);
-			void AddWriteStream(string & aData);
+			std::string ReadStream();
+			std::string WriteStream();
+			void SetWriteStream(std::string & aData);
+			void AddWriteStream(std::string & aData);
 			void ClearWriteStream();
-			string Path();
+			std::string Path();
 
-			boolean Verify();
-			virtual Pointer<Reflection::Type> GetType();
+			bool Verify();
 		private:
 
 			void Read(FILE * aFile);
 			void Write(FILE * aFile);
 			void ReadWrite(FILE * aFile);
 
-			string m_Path;
-			Pointer<string> m_ReadStream;
-			Pointer<string> m_WriteStream;
+			std::string m_Path;
+			std::string m_ReadStream;
+			std::string m_WriteStream;
 		};
 	}
 }
-GEM_CLASS(FileIO::File, Object)
 
 #endif

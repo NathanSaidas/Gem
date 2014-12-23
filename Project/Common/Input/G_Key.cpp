@@ -5,7 +5,7 @@
 namespace Gem
 {
     using namespace Reflection;
-
+	G_CLASS_IMPLEMENTATION(Key,object)
     Key::Key()
     {
         m_CurrentState = ButtonState::UP;
@@ -56,11 +56,6 @@ namespace Gem
     ButtonState Key::CurrentState()
     {
         return m_CurrentState;
-    }
-
-    Pointer<Reflection::Type> Key::GetType()
-    {
-        return typeOf("Key");
     }
 
 }

@@ -4,8 +4,9 @@
 #include <GLFW\glfw3.h>
 namespace Gem
 {
+	G_CLASS_IMPLEMENTATION(Window,object)
     using namespace Reflection;
-    Window::Window() : Object()
+    Window::Window() : object()
     {
         m_Title = "";
         m_Width = 0;
@@ -36,13 +37,6 @@ namespace Gem
     {
         return m_Title;
     }
-
-    //Reflection Virtuals
-    Pointer<Reflection::Type> Window::GetType()
-    {
-        return typeOf("Window");
-    }
-
     //These are events that will be sent from a window manager
     void Window::KeyEvent(int aKey, int aScanCode, int aAction, int aMods)
     {

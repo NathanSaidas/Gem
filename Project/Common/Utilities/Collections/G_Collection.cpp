@@ -5,9 +5,14 @@ namespace Gem
 {
     namespace Collections
     {
-        Pointer<Reflection::Type> Collection::GetType()
-        {
-            return typeOf("Collections::Collection");
-        }
+		G_CLASS_IMPLEMENTATION(Collection,object)
+		Collection::Collection() : object()
+		{
+
+		}
+		Collection::~Collection()
+		{
+
+		}
     }
 }

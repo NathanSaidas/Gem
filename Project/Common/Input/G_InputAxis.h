@@ -1,38 +1,37 @@
 #ifndef G_INPUT_AXIS_H
 #define G_INPUT_AXIS_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_Key.h"
+#include "../G_Object.h"
 
 namespace Gem
 {
 
 
-    class InputAxis : public Object
+    class InputAxis : public object
     {
+		G_CLASS_DEF(InputAxis,object)
     public:
         InputAxis();
         ~InputAxis();
 
         void Update();
 
-        void SetName(string aName);
+        void SetName(std::string & aName);
         void SetResetOnRelease(bool aReSetFlag);
         void SetPositiveKey(AxisCode aCode, int aKey);
         void SetNegativeKey(AxisCode aCode, int aKey);
 
-        string Name();
+        std::string Name();
         bool ReSetOnRelease();
         AxisCode PositiveKey(int aKey);
         AxisCode NegativeKey(int aKey);
         float AxisValue();
-
-        virtual Pointer<Reflection::Type> GetType() override;
     private:
         static const int MAX_AXIS_KEYS = 2;
         static const float AXIS_INCREMENT_SPEED;
         
-        string m_Name;
+        std::string m_Name;
         bool m_ReSetOnRelease;
         float m_CurrentValue;
         
@@ -43,6 +42,5 @@ namespace Gem
 
     };
 }
-GEM_CLASS(InputAxis,Object)
 
 #endif

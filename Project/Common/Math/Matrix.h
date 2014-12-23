@@ -2,7 +2,7 @@
 #define __Matrix_H__
 
 #include "Vector.h"
-
+#include "../G_Object.h"
 namespace ClassUtils
 {
 

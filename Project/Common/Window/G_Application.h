@@ -1,12 +1,13 @@
 #ifndef G_APPLICATION_H
 #define G_APPLICATION_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
+#include "../G_Object.h"
 
 namespace Gem
 {
-    class Application : public Object
+    class Application : public object
     {
+		G_CLASS_DEF(Application)
     public:
         Application();
         ~Application();
@@ -19,7 +20,6 @@ namespace Gem
 		static void Exit(int aStatus = 0);
 		static void PauseOnExit();
 
-        virtual Pointer<Reflection::Type> GetType() override;
     private:
 
 		void OnApplicationStart();
@@ -38,8 +38,6 @@ namespace Gem
 		friend class WindowManager;
     };
 }
-
-GEM_CLASS(Application,Object)
 
 
 #endif

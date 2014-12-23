@@ -7,15 +7,16 @@
 */
 #pragma endregion
 
-#include "../Primitives/G_PrimitiveObjects.h"
 #include "Collections\G_List.h"
+#include "../G_Object.h"
 
 namespace Gem
 {
 	///A class to generate unique numbers
 	///See Get and Free methods.
-	class UniqueNumberGenerator : public Object
+	class UniqueNumberGenerator : public object
 	{
+		G_CLASS_DEF(UniqueNumberGenerator)
 	public:
 		UniqueNumberGenerator();
 		UniqueNumberGenerator(int aStartID);
@@ -46,5 +47,4 @@ namespace Gem
 		int m_LargestNumber;
 	};
 }
-GEM_CLASS(UniqueNumberGenerator,Object)
 #endif

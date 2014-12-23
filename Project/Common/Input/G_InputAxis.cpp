@@ -9,8 +9,8 @@ namespace Gem
     using namespace Reflection;
 
     const float InputAxis::AXIS_INCREMENT_SPEED = 5.0f;
-
-    InputAxis::InputAxis() : Object()
+	G_CLASS_IMPLEMENTATION(InputAxis,object)
+    InputAxis::InputAxis() : object()
     {
         m_CurrentValue = 0.0f;
         m_ReSetOnRelease = false;
@@ -31,9 +31,6 @@ namespace Gem
         bool PositiveKeyDown = false;
         bool NegativeKeyDown = false;
         Input * input = Input::Instance();
-
-        
-
         //Find out which keys are down
         for(int i = 0; i < MAX_AXIS_KEYS; i++)
         {
@@ -107,7 +104,7 @@ namespace Gem
         
     }
 
-    void InputAxis::SetName(string aName)
+    void InputAxis::SetName(std::string & aName)
     {
         m_Name = aName;
     }
@@ -131,7 +128,7 @@ namespace Gem
         }
     }
 
-    string InputAxis::Name()
+    std::string InputAxis::Name()
     {
         return m_Name;
     }
@@ -156,11 +153,6 @@ namespace Gem
     float InputAxis::AxisValue()
     {
         return m_CurrentValue;
-    }
-
-    Pointer<Reflection::Type> InputAxis::GetType()
-    {
-        return typeOf("InputAxis");
     }
 
 }

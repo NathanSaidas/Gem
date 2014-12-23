@@ -1,18 +1,19 @@
 #ifndef OL_INPUT_H
 #define OL_INPUT_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_KeyDef.h"
 #include "G_Key.h"
 #include <vector>
 #include <string>
 #include "../Math/G_Math.h"
+#include "../G_Object.h"
 
 namespace Gem
 {
     class InputAxis;
-    class Input : public Object
+    class Input : public object
     {
+		G_CLASS_DEF(Input)
     public:
 
         static Input * Instance();
@@ -21,8 +22,7 @@ namespace Gem
         //int GetKeyState(KeyCode aKeyCode);
 
         //returns true if key is down (press)
-        inline
-        bool GetKeyDown(KeyCode aKeyCode)
+        inline bool GetKeyDown(KeyCode aKeyCode)
         {
             if(m_Keys[(int)aKeyCode] != nullptr)
             {
@@ -43,7 +43,6 @@ namespace Gem
 
         //returns true if the key is down or pressed
         //returns false if the key is up or released
-        
         inline bool GetKey(KeyCode aKeyCode)
         {
             if(m_Keys[(int)aKeyCode] != nullptr)
@@ -94,19 +93,18 @@ namespace Gem
         }
 
         ///Input Axis Functions
-        void DestroyAxis(string aName);
-        void CreateAxis(string aName);
-        void CreateAxis(string aName, AxisCode aPositiveKey, AxisCode aNegativeKey);
-        void SetAxisPositiveKey(string aName, AxisCode aKeyCode, int aKey);
-        void SetAxisNegativeKey(string aName, AxisCode aKeyCode, int aKey);
-        void SetAxisReSetOnRelease(string, bool aReSetflag);
+        void DestroyAxis(std::string & aName);
+        void CreateAxis(std::string & aName);
+        void CreateAxis(std::string & aName, AxisCode aPositiveKey, AxisCode aNegativeKey);
+        void SetAxisPositiveKey(std::string & aName, AxisCode aKeyCode, int aKey);
+        void SetAxisNegativeKey(std::string & aName, AxisCode aKeyCode, int aKey);
+        void SetAxisReSetOnRelease(std::string & aName, bool aReSetflag);
 
-        float GetAxis(string aName);
-        AxisCode GetAxisPositiveKey(string aName , int aKey);
-        AxisCode GetAxisNegativeKey(string aName , int aKey);
-        bool GetAxisReSetOnRelease(string aName );
+        float GetAxis(std::string & aName);
+        AxisCode GetAxisPositiveKey(std::string & aName , int aKey);
+        AxisCode GetAxisNegativeKey(std::string & aName , int aKey);
+        bool GetAxisReSetOnRelease(std::string & aName );
 
-        virtual Pointer<Reflection::Type> GetType() override;
         Input();
         ~Input();
     private:
@@ -141,6 +139,4 @@ namespace Gem
     };
 
 }
-GEM_CLASS(Input,Object)
-
 #endif

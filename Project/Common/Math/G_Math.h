@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include "Matrix.h"
 #include "Vector.h"
+#include "../G_Object.h""
 
 namespace Gem
 {
@@ -15,8 +16,9 @@ namespace Gem
     typedef glm::fquat Quaternion;
 
 
-    class Math
+    class Math : public object
     {
+		G_CLASS_DEF(Math)
     public:
 		static const float PI;
 
@@ -63,8 +65,9 @@ namespace Gem
     };
 
 
-	class Rect
+	class Rect : public object
 	{
+		G_CLASS_DEF(Rect)
 	public:
 		float x;
 		float y;

@@ -1,4 +1,7 @@
 #include "G_RenderableObject.h"
+
+///Obsolete Code
+/*
 #include "../Renderer/G_VertexInfo.h"
 
 #include <glm\common.hpp>
@@ -291,4 +294,4 @@ namespace Gem
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 	}
-}
+}*/

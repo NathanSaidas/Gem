@@ -1,6 +1,5 @@
 #include "Matrix.h"
 #include "G_Math.h"
-#include "../Renderer/G_Graphics.h"
 
 
 namespace ClassUtils
@@ -149,7 +148,7 @@ namespace ClassUtils
 
 	void Matrix::SetPerspective(float fovy, float aspect, float nearZ, float farZ)
 	{
-		GLfloat frustumW, frustumH;
+		float frustumW, frustumH;
 		assert(fovy >= 1.0 && fovy <= 179);
 		frustumH = tanf(fovy / 360.0f * Gem::Math::PI) * nearZ;
 		frustumW = frustumH * aspect;

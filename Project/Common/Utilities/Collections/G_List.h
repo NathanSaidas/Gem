@@ -3,7 +3,8 @@
 
 #include "G_Collection.h"
 #include "G_Iterators.h"
-#include "../G_Functor.h"
+#include "../../Memory/G_Memory.h"
+#include "../../Reflection/G_Function.h"
 #include <type_traits>
 
 namespace Gem
@@ -60,21 +61,22 @@ namespace Gem
             {
                 if (m_Front == nullptr)
                 {
-					m_Front = MemoryManager::Instance()->AllocateIterator<T>();
-                    //m_Front = Memory::Instantiate<Iterator<T>>();
+					//m_Front = MemoryManager::Instance()->AllocateIterator<T>();
+                    m_Front = Memory::Instantiate<Iterator<T>>();
                     m_Front->Initialize(nullptr, nullptr, aElement);
                     m_Back = m_Front;
                 }
                 else if (m_Front == m_Back)
                 {
-					m_Back = MemoryManager::Instance()->AllocateIterator<T>();
-                    //m_Back = Memory::Instantiate<Iterator<T>>();
+					//m_Back = MemoryManager::Instance()->AllocateIterator<T>();
+                    m_Back = Memory::Instantiate<Iterator<T>>();
                     m_Back->Initialize(nullptr, m_Front, aElement);
                     m_Front->Initialize(m_Back, nullptr, m_Front->Current());
                 }
                 else
                 {
-					Iterator<T> * iterator = MemoryManager::Instance()->AllocateIterator<T>();
+					Iterator<T> * iterator = Memory::Instantiate<Iterator<T>>();
+					//Iterator<T> * iterator = MemoryManager::Instance()->AllocateIterator<T>();
                     iterator->Initialize(nullptr, m_Back, aElement);
                     m_Back->Initialize(iterator, m_Back->GetPrevious(), m_Back->Current());
                     m_Back = iterator;
@@ -85,19 +87,22 @@ namespace Gem
 			{
 				if (m_Front == nullptr)
 				{
-					m_Front = MemoryManager::Instance()->AllocateIterator<T>();
+					//m_Front = MemoryManager::Instance()->AllocateIterator<T>();
+					m_Front = Memory::Instantiate<Iterator<T>>();
 					m_Front->Initialize(aMemoryHandle,nullptr, nullptr, aElement);
 					m_Back = m_Front;
 				}
 				else if (m_Front == m_Back)
 				{
-					m_Back = MemoryManager::Instance()->AllocateIterator<T>();
+					//m_Back = MemoryManager::Instance()->AllocateIterator<T>();
+					m_Back = Memory::Instantiate<Iterator<T>>();
 					m_Back->Initialize(aMemoryHandle,nullptr, m_Front, aElement);
 					m_Front->Initialize(m_Back, nullptr, m_Front->Current());
 				}
 				else
 				{
-					Iterator<T> * iterator = MemoryManager::Instance()->AllocateIterator<T>();
+					//Iterator<T> * iterator = MemoryManager::Instance()->AllocateIterator<T>();
+					Iterator<T> * iterator = Memory::Instantiate<Iterator<T>>();
 					iterator->Initialize(aMemoryHandle,nullptr, m_Back, aElement);
 					m_Back->Initialize(iterator, m_Back->GetPrevious(), m_Back->Current());
 					m_Back = iterator;
@@ -152,7 +157,8 @@ namespace Gem
                         {
 							
                             Iterator<T> * first = m_Front->GetNext();
-							MemoryManager::Instance()->DeallocateIterator<T>(m_Front);
+							//MemoryManager::Instance()->DeallocateIterator<T>(m_Front);
+							Memory::Destroy<Iterator<T>>(m_Front);
 							if (m_Count == 1)
 							{
 								m_Back = nullptr;
@@ -173,7 +179,8 @@ namespace Gem
                         else if (aElement == m_Back->Current())
                         {
                             Iterator<T> * previous = m_Back->GetPrevious();
-							MemoryManager::Instance()->DeallocateIterator<T>(m_Back);
+							//MemoryManager::Instance()->DeallocateIterator<T>(m_Back);
+							Memory::Destroy<Iterator<T>>(m_Back);
                             m_Back = previous;
                             if (m_Back != nullptr)
                             {
@@ -184,7 +191,8 @@ namespace Gem
                         {
                             Iterator<T> * previous = enumerator->GetPrevious();
                             Iterator<T> * next = enumerator->GetNext();
-							MemoryManager::Instance()->DeallocateIterator<T>(enumerator);
+							//MemoryManager::Instance()->DeallocateIterator<T>(enumerator);
+							Memory::Destroy<Iterator<T>>(enumerator);
                             if (previous != nullptr)
                             {
                                 previous->Initialize(next, previous->GetPrevious(), previous->Current());
@@ -213,7 +221,8 @@ namespace Gem
                         if (enumerator == m_Front)
                         {
                             Iterator<T> * first = m_Front->GetNext();
-							MemoryManager::Instance()->DeallocateIterator<T>(m_Front);
+							//MemoryManager::Instance()->DeallocateIterator<T>(m_Front);
+							Memory::Destroy<Iterator<T>>(m_Front);
                             m_Front = first;
                             //Is the list not empty?
                             if (m_Front != nullptr)
@@ -230,7 +239,8 @@ namespace Gem
                         else if (enumerator == m_Back)
                         {
                             Iterator<T> * previous = m_Back->GetPrevious();
-							MemoryManager::Instance()->DeallocateIterator<T>(m_Back);
+							//MemoryManager::Instance()->DeallocateIterator<T>(m_Back);
+							Memory::Destroy<Iterator<T>>(m_Back);
                             m_Back = previous;
                             if (m_Back != nullptr)
                             {
@@ -245,7 +255,8 @@ namespace Gem
                         {
                             Iterator<T> * previous = enumerator->GetPrevious();
                             Iterator<T> * next = enumerator->GetNext();
-							MemoryManager::Instance()->DeallocateIterator<T>(enumerator);
+							//MemoryManager::Instance()->DeallocateIterator<T>(enumerator);
+							Memory::Destroy<Iterator<T>>(enumerator);
                             if (previous != nullptr)
                             {
                                 previous->Initialize(next, previous->GetPrevious(), previous->Current());
@@ -266,9 +277,9 @@ namespace Gem
 
             ///Removes elements from the list where the condition is met
 			///Use with Primitives only.
-            bool RemoveWhere(ConditionalFunction & aCondition)
+            bool RemoveWhere(Reflection::Func<bool,T*,T*> & aCondition, T * aElement)
             {
-                if (aCondition.argument1() == nullptr)
+                if (aElement == nullptr)
                 {
                     return false;
                 }
@@ -276,13 +287,15 @@ namespace Gem
                 bool conditionMet = false;
                 while (enumerator != nullptr)
                 {
-                    bool conditionResult = aCondition.Invoke(aCondition.argument1(), enumerator->Current());
+					
+					bool conditionResult = aCondition.Invoke(aElement, enumerator->Current());
                     if (conditionResult == true)
                     { 
                         if (enumerator == m_Front)
                         {
                             Iterator<T> * next = m_Front->GetNext();
-							MemoryManager::Instance()->DeallocateIterator<T>(m_Front);
+							//MemoryManager::Instance()->DeallocateIterator<T>(m_Front);
+							Memory::Destroy<Iterator<T>>(m_Front);
                             m_Front = next;
                             if (m_Front != nullptr)
                             {
@@ -292,7 +305,8 @@ namespace Gem
                         else if (enumerator == m_Back)
                         {
                             Iterator<T> * previous = m_Back->GetPrevious();
-							MemoryManager::Instance()->DeallocateIterator<T>(m_Back);
+							//MemoryManager::Instance()->DeallocateIterator<T>(m_Back);
+							Memory::Destroy<Iterator<T>>(m_Back);
                             m_Back = previous;
                             if (m_Back != nullptr)
                             {
@@ -303,7 +317,8 @@ namespace Gem
                         {
                             Iterator<T> * next = enumerator->GetNext();
                             Iterator<T> * previous = enumerator->GetPrevious();
-							MemoryManager::Instance()->DeallocateIterator<T>(enumerator);
+							//MemoryManager::Instance()->DeallocateIterator<T>(enumerator);
+							Memory::Destroy<Iterator<T>>(enumerator);
                             next->Initialize(next->GetNext(), previous, next->Current());
                             previous->Initialize(next, previous->GetPrevious(), previous->Current());
                             enumerator = previous;
@@ -333,7 +348,8 @@ namespace Gem
                     {
                         Iterator<T> * next = enumerator;
                         enumerator = enumerator->GetNext();
-						MemoryManager::Instance()->DeallocateIterator<T>(next);
+						//MemoryManager::Instance()->DeallocateIterator<T>(next);
+						Memory::Destroy<Iterator<T>>(next);
                     }
                 }
                 else if (m_Back != nullptr)
@@ -343,7 +359,8 @@ namespace Gem
                     {
                         Iterator<T> * previous = enumerator;
                         enumerator = enumerator->GetPrevious();
-						MemoryManager::Instance()->DeallocateIterator<T>(previous);
+						//MemoryManager::Instance()->DeallocateIterator<T>(previous);
+						Memory::Destroy<Iterator<T>>(previous);
                     }
                 }
             }
@@ -352,34 +369,34 @@ namespace Gem
             template<class _T>
             void DestroyAll()
             {
-				Iterator<T> * enumerator = m_Front;
-				while (enumerator != nullptr)
-				{
-					Iterator<T> * temp = enumerator;
-					enumerator = enumerator->GetNext();
-					if (temp != nullptr)
-					{
-						if (temp->SubObjectHandle() == 0)
-						{
-							Memory::GCFlag(MemoryHandle<Reflection::Primitive>(temp->SubObjectHandle(), temp->Current()));
-						}
-						else
-						{
-							Memory::DestroyHandle(MemoryHandle<Reflection::Primitive>(temp->SubObjectHandle(), temp->Current()));
-						}
-						if (temp->MemoryHandle() == 0)
-						{
-							MemoryManager::Instance()->GCFlag<T>(temp);
-						}
-						else
-						{
-							MemoryManager::Instance()->DeallocateIterator<T>(temp);
-						}
-					}
-				}
-                m_Count = 0;
-				m_Front = nullptr;
-				m_Back = nullptr;
+				//Iterator<T> * enumerator = m_Front;
+				//while (enumerator != nullptr)
+				//{
+				//	Iterator<T> * temp = enumerator;
+				//	enumerator = enumerator->GetNext();
+				//	if (temp != nullptr)
+				//	{
+				//		if (temp->SubObjectHandle() == 0)
+				//		{
+				//			Memory::GCFlag(MemoryHandle<Reflection::Primitive>(temp->SubObjectHandle(), temp->Current()));
+				//		}
+				//		else
+				//		{
+				//			Memory::DestroyHandle(MemoryHandle<Reflection::Primitive>(temp->SubObjectHandle(), temp->Current()));
+				//		}
+				//		if (temp->MemoryHandle() == 0)
+				//		{
+				//			MemoryManager::Instance()->GCFlag<T>(temp);
+				//		}
+				//		else
+				//		{
+				//			MemoryManager::Instance()->DeallocateIterator<T>(temp);
+				//		}
+				//	}
+				//}
+                //m_Count = 0;
+				//m_Front = nullptr;
+				//m_Back = nullptr;
             }
 
 			bool Contains(T aValue)

@@ -2,6 +2,7 @@
 
 namespace Gem
 {
+	G_CLASS_IMPLEMENTATION(GameObject,Object)
 	GameObject::GameObject()
 	{
 

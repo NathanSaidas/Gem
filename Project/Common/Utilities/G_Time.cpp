@@ -4,6 +4,7 @@
 
 namespace Gem
 {
+	G_CLASS_IMPLEMENTATION(Time,object)
     float Time::s_CurrentTime = 0.0f;
     float Time::s_DeltaTime = 0.0f;
     float Time::GetTime()
@@ -17,9 +18,5 @@ namespace Gem
     float Time::DeltaTime()
     {
         return s_DeltaTime; 
-    }
-    Pointer<Reflection::Type> Time::GetType()
-    {
-        return typeOf("Time");
     }
 }

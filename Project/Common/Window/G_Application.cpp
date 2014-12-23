@@ -5,12 +5,12 @@
 #include "../Utilities/G_Time.h"
 #include "G_WindowManager.h"
 #include "G_WindowHook.h"
-#include "../Renderer/G_Graphics.h"
 
 
 
 namespace Gem
 {
+	G_CLASS_IMPLEMENTATION(Application,object)
     using namespace Reflection;
 
     Application * Application::s_Instance = nullptr;
@@ -30,7 +30,7 @@ namespace Gem
 			s_Instance = nullptr;
         }
     }
-    Application::Application()
+	Application::Application() : object()
     {
 		m_ShouldQuit = false;
 		m_ExitStatus = 0;
@@ -61,8 +61,8 @@ namespace Gem
     //called before run
     void Application::OnApplicationStart()
     {
-		MemoryManager::Instance();
-        Runtime::Instance();
+		Memory::Initialize();
+		Reflection::Initialize();
         //Initialize things
         if(WindowManager::Init() == false)
         {
@@ -72,7 +72,6 @@ namespace Gem
         }
 		WindowManager::Instance();
 		Input::Instance();
-		Graphics::Instance();
     }
     //called after init
     void Application::OnExecute()
@@ -88,7 +87,7 @@ namespace Gem
             return;
         }
 		
-        MemoryHandle<WindowHook> windowHookHandle = Memory::Instantiate<WindowHook>();
+        WindowHook * windowHookHandle = Memory::Instantiate<WindowHook>();
 
         windowManager->AttachHook(windowHookHandle, mainWindowHandle);
 
@@ -101,11 +100,11 @@ namespace Gem
 		
 			Input::Instance()->Update();
             WindowManager::Instance()->Update();
-			Graphics::Instance()->Render();
 			
 		
 			//Give time for memory manager to update.
-			MemoryManager::Instance()->Update();
+			Memory::GCCollect();
+			Memory::Hidden::MemoryManager::Instance()->Update();
 		}
         WindowManager::Instance()->DestroyWindow(mainWindowHandle);
 		
@@ -118,8 +117,8 @@ namespace Gem
         Input::Destroy();
         WindowManager::Destroy();
 		WindowManager::DeInit();
-		Runtime::Destroy();
-		MemoryManager::Destroy();
+		Reflection::CleanUp();
+		Memory::CleanUp();
 		if (m_PauseOnExit == true)
 		{
 #ifdef WIN32
@@ -132,10 +131,4 @@ namespace Gem
 	{
 		
 	}
-
-    Pointer<Reflection::Type> Application::GetType()
-    {
-        return typeOf("Application");
-    }
-    
 }

@@ -2,6 +2,9 @@
 
 namespace Gem
 {
+
+	G_CLASS_IMPLEMENTATION(UniqueNumberGenerator,object)
+
 	UniqueNumberGenerator::UniqueNumberGenerator()
 	{
 		m_NextNumber = 0;

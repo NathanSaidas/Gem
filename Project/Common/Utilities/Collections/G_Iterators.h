@@ -7,7 +7,7 @@
 */
 #pragma endregion CHANGE LOG
 
-#include "../../Primitives/G_PrimitiveObjects.h"
+#include "../../G_Object.h"
 
 namespace Gem
 {
@@ -18,7 +18,7 @@ namespace Gem
         //Points to the next member
         //Points to the previous member
         template<class T>
-        class Iterator : public Object
+        class Iterator : public object
         {
         public:
             Iterator()
@@ -105,7 +105,7 @@ namespace Gem
 
         ///Points to the next iterator in the list
         template<class T>
-        class ForwardIterator : public Object
+        class ForwardIterator : public object
         {
         public:
             ForwardIterator()
@@ -143,7 +143,7 @@ namespace Gem
 
         ///Points to the previous iterator in the list
         template<class T>
-        class BackwardIterator : public Object
+        class BackwardIterator : public object
         {
         public:
             BackwardIterator()

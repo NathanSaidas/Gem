@@ -4,21 +4,22 @@
 
 namespace Gem
 {
-	string Utilities::I2S(int & aInt)
+	G_CLASS_IMPLEMENTATION(Utilities,object)
+	std::string Utilities::I2S(int & aInt)
 	{
-		string result;
+		std::string result;
 		std::stringstream stream;
 		stream << aInt;
 		if (stream.fail())
 		{
-			return string::Empty();
+			return "";
 		}
 		return stream.str().c_str();
 	}
-	int Utilities::S2I(string & aString)
+	int Utilities::S2I(std::string & aString)
 	{
 		int result;
-		std::stringstream stream(aString.C_Str());
+		std::stringstream stream(aString.c_str());
 		stream >> result;
 		if (stream.fail())
 		{
@@ -26,21 +27,21 @@ namespace Gem
 		}
 		return result;
 	}
-	string Utilities::F2S(float & aFloat)
+	std::string Utilities::F2S(float & aFloat)
 	{
-		string result;
+		std::string result;
 		std::stringstream stream;
 		stream << aFloat;
 		if (stream.fail())
 		{
-			return string::Empty();
+			return "";
 		}
 		return stream.str().c_str();
 	}
-	float Utilities::S2F(string & aString)
+	float Utilities::S2F(std::string & aString)
 	{
 		float result;
-		std::stringstream stream(aString.C_Str());
+		std::stringstream stream(aString.c_str());
 		stream >> result;
 		if (stream.fail())
 		{

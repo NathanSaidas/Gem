@@ -1,9 +1,8 @@
 #include "G_WindowManager.h"
 #include "G_Window.h"
 #include "G_WindowHook.h"
-#include "../Renderer/G_Graphics.h"
-//#include <GL\glew.h>
-//#include <GLFW\glfw3.h>
+#include <GL\glew.h>
+#include <GLFW\glfw3.h>
 #include "../Memory/G_Memory.h"
 #include "../Reflection/G_Reflection.h"
 #include "../Input/G_Input.h"
@@ -13,6 +12,7 @@ namespace Gem
     const int INVALID_WINDOW_HANDLE = -1;
 
     using namespace Reflection;
+	G_CLASS_IMPLEMENTATION(WindowManager,object)
     WindowManager * WindowManager::s_Instance = 0;
     bool WindowManager::Init()
     {
@@ -42,7 +42,7 @@ namespace Gem
             s_Instance = Memory::Destroy<WindowManager>(s_Instance);
         }
     }
-    WindowManager::WindowManager() : Object()
+    WindowManager::WindowManager() : object()
     {
         //GLFW should be initialized by now
         m_HasInitGlew = false;
@@ -203,10 +203,6 @@ namespace Gem
 		}
 		return Vector2(0.0f, 0.0f);
 	}
-    Pointer<Reflection::Type> WindowManager::GetType()
-    {
-        return typeOf("WindowManager");
-    }
 
 
 

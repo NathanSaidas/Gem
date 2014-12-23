@@ -1,14 +1,14 @@
 #ifndef G_DEBUG_H
 #define G_DEBUG_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+#include "../G_Object.h"
 namespace Gem
 {
-	class Debug : public Object
+	class Debug : public object
 	{
+		G_CLASS_DEF(Debug)
 	public:
 		///Logs a message out to the console in log format.
 		inline static void Log(const char * aMessage, const char * aFile = "", int aLine = -1)
@@ -42,7 +42,5 @@ namespace Gem
 
 
 }
-
-GEM_CLASS(Debug,Object)
 
 #endif

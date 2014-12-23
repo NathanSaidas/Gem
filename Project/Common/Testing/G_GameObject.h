@@ -1,12 +1,13 @@
 #ifndef G_GAME_OBJECT_H
 #define G_GAME_OBJECT_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
+#include "../G_Object.h"
 
 namespace Gem
 {
 	class GameObject : public Object
 	{
+		G_CLASS_DEF(GameObject)
 	public:
 		GameObject();
 		~GameObject();
@@ -14,7 +15,5 @@ namespace Gem
 	};
 
 }
-
-GEM_CLASS(GameObject,Object)
 
 #endif

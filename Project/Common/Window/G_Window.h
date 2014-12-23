@@ -1,7 +1,7 @@
 #ifndef G_WINDOW_H
 #define G_WINDOW_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
+#include "../G_Object.h"
 
 //glfw window struct def
 struct GLFWwindow;
@@ -12,8 +12,9 @@ namespace Gem
 {
     class WindowHook;
 
-    class Window : public Object
+    class Window : public object
     {
+		G_CLASS_DEF(Window)
     public:
         Window();
         virtual ~Window();
@@ -22,9 +23,6 @@ namespace Gem
         int Width();
         int Height();
         char * Title();
-
-        //Reflection Virtuals
-        virtual Pointer<Reflection::Type> GetType() override;
     protected:
         //These are events that will be sent from a window manager
         virtual void KeyEvent(int aKey, int aScanCode, int aAction, int aMods);
@@ -57,5 +55,4 @@ namespace Gem
 
     };
 }
-GEM_CLASS(Window,Object)
 #endif

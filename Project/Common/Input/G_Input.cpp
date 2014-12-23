@@ -1,13 +1,13 @@
 #include "G_Input.h"
 #include "../Reflection/G_Reflection.h"
 #include "../Memory/G_Memory.h"
-#include <GLFW\glfw3.h>
 #include "../Window/G_WindowManager.h"
 #include "G_InputAxis.h"
+#include <GLFW\glfw3.h>
 namespace Gem
 {
     using namespace Reflection;
-
+	G_CLASS_IMPLEMENTATION(Input,object)
     Input * Input::s_Instance = nullptr;
     Input * Input::Instance()
     {
@@ -147,7 +147,7 @@ namespace Gem
         m_MouseScrollWheel.y = aY;
     }
 
-    void Input::DestroyAxis(string aName)
+    void Input::DestroyAxis(std::string & aName)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -160,11 +160,11 @@ namespace Gem
             }
         }
     }
-    void Input::CreateAxis(string aName)
+    void Input::CreateAxis(std::string & aName)
     {
         CreateAxis(aName,AxisCode::NONE,AxisCode::NONE);
     }
-    void Input::CreateAxis(string aName, AxisCode aPositiveKey, AxisCode aNegativeKey)
+    void Input::CreateAxis(std::string & aName, AxisCode aPositiveKey, AxisCode aNegativeKey)
     {
         InputAxis * inputAxis = Memory::Instantiate<InputAxis>();
         inputAxis->SetName(aName);
@@ -172,7 +172,7 @@ namespace Gem
         inputAxis->SetNegativeKey(aNegativeKey,0);
         m_Axis.push_back(inputAxis);
     }
-    void Input::SetAxisPositiveKey(string aName, AxisCode aKeyCode, int aKey)
+    void Input::SetAxisPositiveKey(std::string & aName, AxisCode aKeyCode, int aKey)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -183,7 +183,7 @@ namespace Gem
             }
         }
     }
-    void Input::SetAxisNegativeKey(string aName, AxisCode aKeyCode, int aKey)
+    void Input::SetAxisNegativeKey(std::string & aName, AxisCode aKeyCode, int aKey)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -194,7 +194,7 @@ namespace Gem
             }
         }
     }
-    void Input::SetAxisReSetOnRelease(string aName, bool aReSetflag)
+    void Input::SetAxisReSetOnRelease(std::string & aName, bool aReSetflag)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -206,7 +206,7 @@ namespace Gem
         }
     }
 
-    float Input::GetAxis(string aName)
+    float Input::GetAxis(std::string & aName)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -217,7 +217,7 @@ namespace Gem
         }
         return 0.0f;
     }
-    AxisCode Input::GetAxisPositiveKey(string aName, int aKey)
+    AxisCode Input::GetAxisPositiveKey(std::string & aName, int aKey)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -228,7 +228,7 @@ namespace Gem
         }
         return AxisCode::NONE;
     }
-    AxisCode Input::GetAxisNegativeKey(string aName, int aKey)
+    AxisCode Input::GetAxisNegativeKey(std::string & aName, int aKey)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -239,7 +239,7 @@ namespace Gem
         }
         return AxisCode::NONE;
     }
-    bool Input::GetAxisReSetOnRelease(string aName)
+    bool Input::GetAxisReSetOnRelease(std::string & aName)
     {
         for(int i = 0; i < m_Axis.size(); i++)
         {
@@ -250,11 +250,6 @@ namespace Gem
         }
         return true;
     }
-
-    Pointer<Reflection::Type> Input::GetType()
-    {
-        return typeOf("Input");
-    }
-        
+  
 
 }

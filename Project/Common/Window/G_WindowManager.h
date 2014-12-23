@@ -1,10 +1,11 @@
 #ifndef G_WINDOW_MANAGER_H
 #define G_WINDOW_MANAGER_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
 #include "../Math/G_Math.h"
+#include "../G_Object.h"
 //#include "../Utilities/G_UniqueNumberGenerator.h"
 #include <vector>
+
 
 struct GLFWwindow;
 
@@ -15,8 +16,9 @@ namespace Gem
     class Window;
     class WindowHook;
 
-    class WindowManager : public Object
+    class WindowManager : public object
     {
+		G_CLASS_DEF(WindowManager)
     public:
         WindowManager();
         ~WindowManager();
@@ -37,8 +39,6 @@ namespace Gem
         }
 
 		Vector2 GetWindowSize(int aHandle);
-
-        virtual Pointer<Reflection::Type> GetType() override;
     private:
         static WindowManager * s_Instance;
         
@@ -72,5 +72,4 @@ namespace Gem
 
 
 }
-GEM_CLASS(WindowManager,Object)
 #endif

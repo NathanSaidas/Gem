@@ -21,14 +21,15 @@ namespace Gem
 {
     namespace FileIO
     {
-        bool Directory::exists(string & aPath)
+		G_CLASS_IMPLEMENTATION(Directory,object)
+			bool Directory::exists(std::string & aPath)
         {
-            if (aPath.Length() == 0)
+            if (aPath.size() == 0)
             {
                 return false;
             }
 #if _WIN32
-            DWORD directory = GetFileAttributes(aPath.C_Str());
+            DWORD directory = GetFileAttributes(aPath.c_str());
             if (directory == INVALID_FILE_ATTRIBUTES)
             {
                 return false;
@@ -48,7 +49,7 @@ namespace Gem
             return false;
 #endif
         }
-        Directory Directory::create(string & aPath)
+		Directory Directory::create(std::string & aPath)
         {
 #if _WIN32
 			return Directory();
@@ -62,7 +63,7 @@ namespace Gem
         {
 
         }
-        Directory::Directory(string aPath) 
+		Directory::Directory(std::string aPath)
             :m_Path(aPath)
         {
 
@@ -72,19 +73,19 @@ namespace Gem
 
         }
 
-        std::vector<string> Directory::getFiles()
+		std::vector<std::string> Directory::getFiles()
         {
 #ifdef _WIN32
             HANDLE fileHandle = INVALID_HANDLE_VALUE;
             WIN32_FIND_DATA fileData;
-            std::vector<string> files;
+			std::vector<std::string> files;
 
-            if (m_Path.Length() == 0)
+            if (m_Path.size() == 0)
             {
                 return files;
             }
 
-            fileHandle = FindFirstFile(m_Path.C_Str(), &fileData);
+            fileHandle = FindFirstFile(m_Path.c_str(), &fileData);
             if (fileHandle == INVALID_HANDLE_VALUE)
             {
                 return files;
@@ -107,19 +108,19 @@ namespace Gem
 
 #endif
         }
-        std::vector<string> Directory::getDirectories()
+		std::vector<std::string> Directory::getDirectories()
         {
 #ifdef _WIN32
             HANDLE fileHandle = INVALID_HANDLE_VALUE;
             WIN32_FIND_DATA fileData;
-            std::vector<string> directories;
+			std::vector<std::string> directories;
 
-            if (m_Path.Length() == 0)
+            if (m_Path.size() == 0)
             {
                 return directories;
             }
 
-            fileHandle = FindFirstFile(m_Path.C_Str(), &fileData);
+            fileHandle = FindFirstFile(m_Path.c_str(), &fileData);
             if (fileHandle == INVALID_HANDLE_VALUE)
             {
                 return directories;
@@ -146,10 +147,6 @@ namespace Gem
         bool Directory::verify()
         {
             return exists(m_Path);
-        }
-        Pointer<Reflection::Type> Directory::GetType()
-        {
-            return typeOf("Directory");
         }
     }
 }

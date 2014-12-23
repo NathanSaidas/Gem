@@ -1,13 +1,14 @@
 #ifndef G_KEY_H
 #define G_KEY_H
 
-#include "../Primitives/G_PrimitiveObjects.h"
 #include "G_KeyDef.h"
+#include "../G_Object.h"
 
 namespace Gem
 {
-    class Key : public Object
+    class Key : public object
     {
+		G_CLASS_DEF(Key)
     public:
         Key();
         virtual ~Key();
@@ -18,14 +19,11 @@ namespace Gem
         bool IsDown();
         bool IsUp();
         ButtonState CurrentState();
-
-        virtual Pointer<Reflection::Type> GetType() override;
         
     protected:
         ButtonState m_CurrentState;
     };
     typedef Key Button;
 }
-GEM_CLASS(Key,Object)
 
 #endif

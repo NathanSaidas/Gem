@@ -1,9 +1,9 @@
 #ifndef G_DIRECTORY_H
 #define G_DIRECTORY_H
 
-#include "../../Primitives/G_PrimitiveObjects.h" //For Object / Type
 #include "G_FileMode.h" //For FileMode enum
 #include "G_FileAccess.h" //Fore FileAccess enum
+#include "../../G_Object.h"
 
 #include <vector>
 
@@ -20,40 +20,35 @@ namespace Gem
         /// <summary>
         /// A data structure used to handle directory operations. Create, Exists etc.
         /// </summary>
-        class Directory : public Object
+        class Directory : public object
         {
+			G_CLASS_DEF(Directory)
             public:
-                static bool exists(string & aPath);
-                static Directory create(string & aPath);
+                static bool exists(std::string & aPath);
+				static Directory create(std::string & aPath);
                 Directory();
-                Directory(string aPath);
+				Directory(std::string aPath);
                 ~Directory();
 
-                std::vector<string> getFiles();
-                std::vector<string> getDirectories();
+				std::vector<std::string> getFiles();
+				std::vector<std::string> getDirectories();
 
-                inline string directoryName()
+				inline std::string directoryName()
                 {
                     return m_Path;
                 }
-                inline string path()
+				inline std::string path()
                 {
-                    return string(m_Path);
+					return std::string(m_Path);
                 }
                 ///Returns true if the directory is a directory
                 bool verify();
                 //static std::vector<Directory> toDirectories(std::vector<std::string> aDirectoryList);
-                virtual Pointer<Reflection::Type> GetType();
-
-
-
-
             private:
-                string m_Path;
+				std::string m_Path;
         };
     }
 }
-GEM_CLASS(FileIO::Directory, Object)
 
 
 #endif
