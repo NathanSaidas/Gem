@@ -1,7 +1,7 @@
 #ifndef G_TYPE_H
 #define G_TYPE_H
 
-#include "G_ReflectionDefinitions.h"
+//#include "G_ReflectionDefinitions.h"
 #include "G_Function.h"
 #include <vector>
 

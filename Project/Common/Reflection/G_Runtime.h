@@ -5,7 +5,7 @@
 #include "G_IntegerAttribute.h"
 #include "G_StringAttribute.h"
 #include "G_ObjectFuncAttribute.h"
-
+#include "G_Type.h"
 #include <map>
 
 namespace Gem
@@ -28,6 +28,11 @@ namespace Gem
 
 
 			Type GetType(char * aName);
+			template<class ARG1 = void, class ARG2 = void, class ARG3 = void, class ARG4 = void, class ARG5>
+			Type GetTemplateType(char * aName)
+			{
+				return Type();
+			}
 			bool IsBadType(Type & aType);
 			bool IsBaseOf(Type & aBase, Type & aDerived);
 			

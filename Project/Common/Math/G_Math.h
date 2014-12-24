@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 #include "Matrix.h"
 #include "Vector.h"
-#include "../G_Object.h""
+#include "../G_Object.h"
 
 namespace Gem
 {

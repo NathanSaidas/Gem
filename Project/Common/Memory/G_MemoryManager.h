@@ -21,9 +21,7 @@
 
 namespace Gem
 {
-#ifdef GEM_REFLECTION
 	class Type;
-#endif
 	namespace Memory
 	{
 
@@ -173,7 +171,9 @@ namespace Gem
 				FixedAllocator * m_Allocators[12];
 				std::vector<FixedAllocator*> m_DynamicAllocators;
 				std::map<uintptr_t, Memory::ArrayAlloc> m_ArrayAllocations;
+#ifdef GEM_REFLECTION
 				std::vector<GCItem> m_GarbageList;
+#endif
 				unsigned char m_DynamicID;
 			private:
 				MemoryManager();

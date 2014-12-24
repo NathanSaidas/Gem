@@ -11,6 +11,7 @@
 #include "../Utilities/G_Debug.h"
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
+#include "../Testing/G_GameObject.h"
 
 namespace Gem
 {
@@ -61,6 +62,16 @@ namespace Gem
     void WindowHook::OnAttachToWindow(int aHandle)
     {
         printf("Attached to window %d\n", aHandle);
+		
+		TestTemplate<int> intTemplate;
+		TestTemplate<float> floatTemplate;
+		TestTemplate<Rect> rectTemplate;
+
+		Type intType = intTemplate.GetType();
+		Type floatType = floatTemplate.GetType();
+		Type rectType = rectTemplate.GetType();
+
+
     }
 
     void WindowHook::OnDetachFromWindow(int aHandle)

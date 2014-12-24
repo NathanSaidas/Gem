@@ -815,6 +815,7 @@ namespace Gem
 
 			void MemoryManager::Collect(void * aAddress)
 			{
+#ifdef GEM_REFLECTION
 				for (std::vector<GCItem>::iterator it = m_GarbageList.begin(); it != m_GarbageList.end(); ++it)
 				{
 					if ((*it).address == aAddress)
@@ -823,6 +824,7 @@ namespace Gem
 						break;
 					}
 				}
+#endif
 			}
 
 #pragma region OBSOLETE

@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include <array>
 #include "G_IntegerAttribute.h"
 #include "G_StringAttribute.h"
 #include "G_ObjectFuncAttribute.h"
@@ -23,6 +24,11 @@ namespace Gem
 	{
 		namespace Hidden
 		{
+			template<typename T>
+			class TypeName { public: static const char* name; };
+
+			template<typename T>
+			const char * TypeName<T>::name = "unknown";
 			///Static methods for different types.
 			template<class T>
 			class ObjectFactory
@@ -83,6 +89,8 @@ namespace Gem
 				return GetInstance();
 			}
 
+			
+
 			///Defines a classes interface in the reflection system.
 			static TypeEntry & InterfaceAttribute(char * aClassName, char * aInterfaceName)
 			{
@@ -120,37 +128,86 @@ namespace Gem
 			}
 		};
 
+		template<class T, class ARG1 = void, class ARG2 = void, class ARG3 = void, class ARG4 = void, class ARG5 = void>
+		class TemplateTypeEntry
+		{
+		public:
+			static TemplateTypeEntry & TemplateDefinition(char * aName, char * aBaseClass)
+			{
+				std::string name = aName;
+				name.append("<");
+				char * arg1 = const_cast<char*>(Hidden::TypeName<ARG1>::name);
+				char * arg2 = const_cast<char*>(Hidden::TypeName<ARG2>::name);
+				char * arg3 = const_cast<char*>(Hidden::TypeName<ARG3>::name);
+				char * arg4 = const_cast<char*>(Hidden::TypeName<ARG1>::name);
+				char * arg5 = const_cast<char*>(Hidden::TypeName<ARG1>::name);
+				if (!(strcmp(arg1, "void") == 0 || strcmp(arg1, "unknown") == 0))
+				{
+					name.append(arg1);
+				}
+				name.append(">");
+
+				std::vector<char *> & types = Hidden::TypeRegistry::GetTypes();
+				StringMMap & stringAttributes = Hidden::TypeRegistry::GetStringAttributes();
+				IntegerMMap & integerAttributes = Hidden::TypeRegistry::GetIntegerAttributes();
+				ObjectFuncMMap & objectFuncAttributes = Hidden::TypeRegistry::GetObjectFuncAttributes();
+
+				return GetInstance();
+			}
+		private:
+			///This creates a single instance of the TypeEntry.
+			static TemplateTypeEntry & GetInstance()
+			{
+				static TemplateTypeEntry classDefinition;
+				return classDefinition;
+			}
+			///Default constructor of the type entry
+			TemplateTypeEntry()
+			{
+
+			}
+		};
+
 		
 
 	}
 }
 
+#define G_REFLECT(TYPE) template<> const char * Gem::Reflection::Hidden::TypeName<TYPE>::name = #TYPE;
+
 ///Defines the class attribute
-#define G_CLASS_ATTRIBUTE_DEF(CLASS_TYPE);									\
+#define G_CLASS_ATTRIBUTE_DEF(CLASS_TYPE);										\
 	static const Gem::Reflection::TypeEntry<CLASS_TYPE> GEM_CLASS_DEFINITION;	\
-public:																		\
+public:																			\
 	virtual Gem::Type GetType();												\
-private:																	\
+private:																		\
 
 ///Implements the class attribute
 #define G_CLASS_ATTRIBUTE_IMPLEMENTATION(CLASS_TYPE,BASE_CLASS)																											\
 	const Gem::Reflection::TypeEntry<CLASS_TYPE> CLASS_TYPE::GEM_CLASS_DEFINITION = Gem::Reflection::TypeEntry<CLASS_TYPE>::ClassDefinition(#CLASS_TYPE, #BASE_CLASS);	\
 	Gem::Type CLASS_TYPE::GetType()																																		\
 	{																																									\
-		static Gem::Type classType = Gem::Reflection::Runtime::Instance()->GetType(#CLASS_TYPE);																		\
-		return classType;																																				\
-	}																																									\
+	static Gem::Type classType = Gem::Reflection::Runtime::Instance()->GetType(#CLASS_TYPE);																		\
+	return classType;																																				\
+}																																									\
 
 
-//#define G_TEMPLATE_CLASS(CLASS_TYPE,BASE_CLASS)																													\
-//static const Gem::Reflection::TypeEntry<CLASS_TYPE> GEM_CLASS_DEFINITION = Gem::Reflection::TypeEntry<CLASS_TYPE>::ClassDefinition(#CLASS_TYPE, #BASE_CLASS);	\
-//public:																																							\
-//	virtual Gem::Type GetType()																																	\
-//	{																																							\
-//		static Gem::type classType = Gem::Reflection::Runtime::Instance()->GetType(#CLASS_TYPE);																\
-//		return classType;																																		\
-//	}																																							\
+#define G_TEMPLATE_CLASS(CLASS_TYPE)																\
+	static const Gem::Reflection::TypeEntry<CLASS_TYPE> GEM_CLASS_DEFINITION;						\
+public:																								\
+	virtual Gem::Type GetType()																		\
+	{																								\
+		static Gem::Type classType = Gem::Reflection::Runtime::Instance()->GetType(#CLASS_TYPE);	\
+		return classType;																			\
+	}																								\
+private:																							\
 
+
+#define G_TEMPLATE_CLASS_IMPLEMENTATION(CLASS_TYPE,BASE_CLASS)	const Gem::Reflection::TypeEntry<CLASS_TYPE> CLASS_TYPE::GEM_CLASS_DEFINITION = Gem::Reflection::TypeEntry<CLASS_TYPE>::ClassDefinition(#CLASS_TYPE, #BASE_CLASS);																																																							  \
+	
+
+
+#define GT_SRING(CLASS_TYPE) #CLASS_TYPE
 ///Short Hand Methods
 #define G_CLASS_DEF(CLASS_TYPE) G_CLASS_ATTRIBUTE_DEF(CLASS_TYPE)
 #define G_CLASS_IMPLEMENTATION(CLASS_TYPE,BASE_CLASS) G_CLASS_ATTRIBUTE_IMPLEMENTATION(CLASS_TYPE,BASE_CLASS)

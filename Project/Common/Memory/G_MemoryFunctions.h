@@ -117,6 +117,24 @@ namespace Gem
 		{
 			Hidden::MemoryManager::Instance()->GCCollectAll();
 		}
+#else
+		class Gem::Type;
+		inline void FlagGC(void * aAddress, Type & aType)
+		{
+			static_assert(false, "FlagGC does not have an implementation without GEM_REFLECTION");
+		}
+		inline bool IsFlaggedGC(void * aAddress)
+		{
+			static_assert(false, "IsFlaggedGC does not have an implementation without GEM_REFLECTION");
+		}
+		inline void GCCollect()
+		{
+			static_assert(false, "GCCollect does not have an implementation without GEM_REFLECTION");
+		}
+		inline void GCCollectAll()
+		{
+			static_assert(false, "GCCollectAll does not have an implementation without GEM_REFLECTION");
+		}
 #endif
 	}
 }
