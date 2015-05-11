@@ -12,6 +12,10 @@
 #pragma endregion
 
 #include "GemAPI.h"
+#include "InvalidArgument.h"
+#include "ArgumentNull.h"
+#include "Error.h"
+#include "Trace.h"
 
 namespace Gem
 {
@@ -53,7 +57,7 @@ namespace Gem
 			* @param aFilename The name of the file to log to.
 			* @param ... The arguments associated with aFormat.
 			*/
-			static void LogFormat(const char * aHeader, const char * aFormat, const char * aFilename, ...);
+			static void LogFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...);
 
 			/**
 			* Writes a message to the console in Log format, allows the caller to specify a format to log with. (Just like printf)
@@ -70,7 +74,7 @@ namespace Gem
 			* @param aFilename The name of the file to log a warning to.
 			* @param ... The arguments associated with aFormat.
 			*/
-			static void WarningFormat(const char * aHeader, const char * aFormat, const char * aFilename, ...);
+			static void WarningFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...);
 
 			/**
 			* Writes a message to the console in Warning format, allows the caller to specify a format to log with. (Just like printf)
@@ -87,7 +91,7 @@ namespace Gem
 			* @param aFilename The name of the file to log a error to.
 			* @param ... The arguments associated with aFormat.
 			*/
-			static void ErrorFormat(const char * aHeader, const char * aFormat, const char * aFilename, ...);
+			static void ErrorFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...);
 
 			/**
 			* Writes a message to the console in Error format, allows the caller to specify a format to log with. (Just like printf)
@@ -96,6 +100,19 @@ namespace Gem
 			* @param ... The arguments associated with aFormat.
 			*/
 			static void ErrorFormat(const char * aHeader, const char * aFormat, ...);
+
+			/**
+			* Writes out a formatted message for an argument null error.
+			* @param aError The error object with information about the argument being null.
+			*/
+			static void ArgumentNull(const Debugging::ArgumentNull & aError);
+
+			/**
+			* Writes out a formatted message for an invalid argument error.
+			* @param aError The error object with information about the argument being invalid.
+			*/
+			static void InvalidArgument(const Debugging::InvalidArgument & aError);
+
 
 		private:
 			Debug();

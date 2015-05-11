@@ -73,9 +73,13 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\Core\ArgumentNull.h" />
     <ClInclude Include="..\..\Common\Core\Debug.h" />
+    <ClInclude Include="..\..\Common\Core\Error.h" />
     <ClInclude Include="..\..\Common\Core\GemAPI.h" />
+    <ClInclude Include="..\..\Common\Core\InvalidArgument.h" />
     <ClInclude Include="..\..\Common\Core\Time.h" />
+    <ClInclude Include="..\..\Common\Core\Trace.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

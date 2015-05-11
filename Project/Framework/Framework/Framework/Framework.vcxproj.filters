@@ -25,6 +25,18 @@
     <ClInclude Include="..\..\..\Common\Core\GemAPI.h">
       <Filter>API\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Error.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Trace.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\ArgumentNull.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\InvalidArgument.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">

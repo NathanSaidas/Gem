@@ -57,7 +57,7 @@ namespace Gem
 			}
 		}
 
-		void Debug::LogFormat(const char * aHeader, const char * aFormat, const char * aFilename, ...)
+		void Debug::LogFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...)
 		{
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
@@ -91,7 +91,7 @@ namespace Gem
 				printf("[%d:%d:%d][Log]: %s\n", time.hours, time.minutes, time.seconds, tempbuffer);
 			}
 		}
-		void Debug::WarningFormat(const char * aHeader, const char * aFormat, const char * aFilename, ...)
+		void Debug::WarningFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...)
 		{
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
@@ -125,7 +125,7 @@ namespace Gem
 				printf("[%d:%d:%d][Warning]: %s\n", time.hours, time.minutes, time.seconds, tempbuffer);
 			}
 		}
-		void Debug::ErrorFormat(const char * aHeader, const char * aFormat, const char * aFilename, ...)
+		void Debug::ErrorFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...)
 		{
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
@@ -158,6 +158,28 @@ namespace Gem
 			{
 				printf("[%d:%d:%d][Error]: %s\n", time.hours, time.minutes, time.seconds, tempbuffer);
 			}
+		}
+
+		void Debug::ArgumentNull(const Debugging::ArgumentNull & aError)
+		{
+			ErrorFormat(nullptr, nullptr, 
+				"Argument Null[%d]: %s at %s\nFile: %s\nLine: %d", 
+				aError.GetErrorCode(), 
+				aError.GetArgumentName(), 
+				aError.GetMethodFullName(), 
+				aError.GetErrorTrace().filename, 
+				aError.GetErrorTrace().line);
+		}
+
+		void Debug::InvalidArgument(const Debugging::InvalidArgument & aError)
+		{
+			ErrorFormat(nullptr, nullptr,
+				"Invalid Argument[%d]: %s at %s\nFile: %s\nLine: %d",
+				aError.GetErrorCode(),
+				aError.GetArgumentName(),
+				aError.GetMethodFullName(),
+				aError.GetErrorTrace().filename,
+				aError.GetErrorTrace().line);
 		}
 	}
 }
