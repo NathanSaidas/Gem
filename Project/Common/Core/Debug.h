@@ -9,6 +9,7 @@
 #pragma  region CHANGE LOG
 // -- Nathan Hanlan	- Stubbed Out Class Methods
 // -- Nathan Hanlan - Implemented console output features.
+// -- Nathan Hanlan - Provided support for Error objects, Added macros for easy creation.
 #pragma endregion
 
 #include "GemAPI.h"
@@ -21,6 +22,8 @@ namespace Gem
 {
 	namespace Debugging
 	{
+
+		
 
 		class GEM_API Debug
 		{
@@ -121,9 +124,16 @@ namespace Gem
 			* The maximum length of the debug string for [LogType]Format methods.. (Currently set to 2048).
 			*/
 			static const int MAX_DEBUG_STRING_LENGTH;
-			
-
 		};
+
+#ifndef GENERATE_INVALID_ARGUMENT
+#define GENERATE_INVALID_ARGUMENT(NAME, FULLNAME, TRACE_BACK) Gem::Debugging::InvalidArgument(NAME,nullptr,-1,Gem::Debugging::GET_TRACE(TRACE_BACK), FULLNAME)
+#endif
+
+#ifndef GENERATE_ARGUMENT_NULL
+#define GENERATE_ARGUMENT_NULL(NAME, FULLNAME, TRACE_BACK) Gem::Debugging::ArgumentNull(NAME, nullptr, -1,Gem::Debugging::GET_TRACE(TRACE_BACK),FULLNAME)
+#endif
+
 	}
 }
 
