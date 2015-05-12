@@ -14,6 +14,7 @@
 
 //Using Attribute to inherit from.
 #include "Attribute.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
@@ -22,7 +23,7 @@ namespace Gem
 		/**
 		* Defines the attribute for boolean values.
 		*/
-        class BoolAttribute : public Attribute
+        class GEM_API BoolAttribute : public Attribute
         {
         public:
 			/**

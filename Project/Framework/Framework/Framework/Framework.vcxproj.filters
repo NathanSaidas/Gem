@@ -151,6 +151,9 @@
     <ClInclude Include="..\..\..\Common\Core\Method.h">
       <Filter>API\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\Instantiator.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">

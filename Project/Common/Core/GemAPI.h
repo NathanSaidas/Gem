@@ -9,6 +9,12 @@
 #define GEM_API
 #endif
 
+#include <string>
+#include <vector>
 
+//std::string export
+template class GEM_API std::basic_string<char, std::char_traits<char>, std::allocator<char>>;
+//std::vector<string> export
+template class GEM_API std::vector<std::string>;
 
 #endif

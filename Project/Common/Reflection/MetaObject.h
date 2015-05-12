@@ -15,6 +15,7 @@
 #include <limits>
 #include "TypeTrait.h"
 #include "MetaObjectLinker.h"
+#include "../Core/GemAPI.h"
 
 
 namespace Gem

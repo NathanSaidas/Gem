@@ -18,7 +18,12 @@
 #include "Func.h"
 #include "../Reflection/MemberInfo.h"
 #include "../Utilities/Array.h"
+#include "GemAPI.h"
 
+
+
+template class GEM_API std::vector<Gem::Reflection::MemberInfo>;
+template class GEM_API Gem::Func<void*, void*>;
 
 namespace Gem
 {
@@ -29,7 +34,7 @@ namespace Gem
     }
 
 
-    class Type
+    class GEM_API Type
     {
     public:
         Type()

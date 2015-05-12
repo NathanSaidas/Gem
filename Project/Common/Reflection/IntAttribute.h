@@ -12,6 +12,7 @@
 
 //Using Attribute to inherit from.
 #include "Attribute.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
@@ -20,7 +21,7 @@ namespace Gem
 		/**
 		* Defines the attribute for integer values.
 		*/
-        class IntAttribute : public Attribute
+        class GEM_API IntAttribute : public Attribute
         {
         public:
 			/**

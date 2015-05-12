@@ -147,6 +147,7 @@
     <ClInclude Include="..\..\..\Common\Memory\Allocator.h" />
     <ClInclude Include="..\..\..\Common\Memory\AllocatorType.h" />
     <ClInclude Include="..\..\..\Common\Memory\FrameAllocator.h" />
+    <ClInclude Include="..\..\..\Common\Memory\Instantiator.h" />
     <ClInclude Include="..\..\..\Common\Memory\Memory.h" />
     <ClInclude Include="..\..\..\Common\Memory\MemoryConfig.h" />
     <ClInclude Include="..\..\..\Common\Memory\MemoryFlags.h" />

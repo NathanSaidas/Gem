@@ -10,6 +10,8 @@
 #include "Core\GemAPI.h"
 #include "Core\Debug.h"
 #include "Core\Time.h"
+#include "Memory\Memory.h"
+#include "Reflection\Reflection.h"
 
 //Namespaces Used.
 

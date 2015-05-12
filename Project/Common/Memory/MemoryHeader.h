@@ -7,6 +7,7 @@
 #pragma endregion
 
 #include "../Core/ValueTypes.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
@@ -17,7 +18,7 @@ namespace Gem
         ///
         /// Use the Clear, Read, and Write methods for accessing members as opposed to accessing the bytes directly.
         /// </summary>
-        struct MemoryHeader
+        struct GEM_API MemoryHeader
         {
         public:
             /// <summary>

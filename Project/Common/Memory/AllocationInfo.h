@@ -8,6 +8,7 @@
 #pragma endregion
 
 #include <string>
+#include "../Core/GemAPI.h"
 #include "../Core/ValueTypes.h"
 #include "AllocatorType.h"
 
@@ -19,7 +20,7 @@ namespace Gem
 		/**
 		* The class used to represent allocation info. The filename the line and information regarding the allocator responsible for the allocation.
 		*/
-        class AllocationInfo
+        class GEM_API AllocationInfo
         {
         public:
 			/**

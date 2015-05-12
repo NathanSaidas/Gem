@@ -11,14 +11,18 @@
 /// -- April    3, 2015 - Nathan Hanlan - Added MetaObjectLinker::ATTRIBUTE_TYPE_IS_ENUM attribute type
 #pragma endregion
 
+#include <map>
+#include <vector>
+
+#include "../Core/GemAPI.h"
+
 #include "BoolAttribute.h"
 #include "FloatAttribute.h"
 #include "FunctionAttribute.h"
 #include "IntAttribute.h"
 #include "StringAttribute.h"
 #include "MemberAttribute.h"
-#include <map>
-#include <vector>
+
 
 namespace Gem
 {
@@ -47,7 +51,7 @@ namespace Gem
 
 
         ///MetaObjectLinker is a class which holds a set of attributes for the Runtime to Compile into useful MetaData Type objects.
-        class MetaObjectLinker
+        class GEM_API MetaObjectLinker
         {
         public:
 

@@ -6,13 +6,14 @@
 #pragma endregion
 
 #include "../Core/ValueTypes.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
     namespace Memory
     {
         ///Defines information about memory usage.
-        struct MemoryInfo
+        struct GEM_API MemoryInfo
         {
         public:
             UInt32 allocations;

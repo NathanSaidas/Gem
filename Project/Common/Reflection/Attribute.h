@@ -13,6 +13,7 @@
 /// -- April, 1, 2015 - Nathan Hanlan - Defined a type trait for Attribute.
 #pragma endregion
 
+#include "../Core/GemAPI.h"
 //Using cstring library for strcmp function
 #include <cstring>
 //Using TypeTrait to add some reflection information to this class.
@@ -25,7 +26,7 @@ namespace Gem
 		/**
 		*	Attributes define raw meta data for class types. Attributes get compiled and linked into Type objects later using AttributeBinders.
 		*/
-        class Attribute
+        class GEM_API Attribute
         {
         public:
 			/**

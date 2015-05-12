@@ -9,6 +9,7 @@
 #pragma endregion
 
 #include "Allocator.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
@@ -23,7 +24,7 @@ namespace Gem
         /// • Deallocate
         /// • Rollback
         /// </summary>
-        class StackAllocator : public Allocator
+        class GEM_API StackAllocator : public Allocator
         {
         public:
 

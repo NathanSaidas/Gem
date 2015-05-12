@@ -14,6 +14,7 @@
 
 //Using Attribute to inherit from.
 #include "Attribute.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
@@ -22,7 +23,7 @@ namespace Gem
 		/**
 		* Defines the attribute for float values.
 		*/
-        class FloatAttribute : public Attribute
+        class GEM_API FloatAttribute : public Attribute
         {
         public:
 			/**

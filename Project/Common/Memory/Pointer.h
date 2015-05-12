@@ -11,6 +11,7 @@
 #pragma endregion
 
 #include "MemoryManager.h"
+#include "../Core/GemAPI.h"
 #include "../Reflection/Reflection.h"
 //#include "../Utilities/Utilities.h"
 //#include "../SystemAssert.h"
@@ -22,7 +23,7 @@ namespace Gem
 	//This class is designed to keep track of references to a pointer. 
 	//
 	template<typename TYPE>
-	class Pointer
+	class GEM_API Pointer
 	{
 	public:
 		///Default Constructor will allocate a instance of the TYPE and set the reference count to 1.

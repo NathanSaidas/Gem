@@ -10,13 +10,16 @@
 #include <map>
 #include "AttributeBinder.h"
 #include "TypeTrait.h"
+#include "../Core/GemAPI.h"
+
+template class GEM_API std::map<std::string, Gem::Type>;
 
 namespace Gem
 {
     namespace Reflection
     {
 
-        class Runtime
+        class GEM_API Runtime
         {
         public:
             static void Initialize();

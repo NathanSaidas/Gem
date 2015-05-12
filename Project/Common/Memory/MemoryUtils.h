@@ -6,6 +6,7 @@
 #pragma endregion
 
 #include <new>
+#include "../Core/GemAPI.h"
 #include "AllocatorType.h"
 #include "MemoryFlags.h"
 #include "MemoryHeader.h"
@@ -14,7 +15,7 @@ namespace Gem
 {
     namespace Memory
     {
-        class MemoryUtils
+        class GEM_API MemoryUtils
         {
         public:
             inline static void Free(void * aMemory)

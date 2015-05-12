@@ -39,7 +39,17 @@ OpenGL Review
 
 
 
+xcopy /y /d "$(SolutionDir)..\Common\Libraries\glew-1.10.0\bin\*.dll"  "$(TargetDir)"
 
 
 
 
+Core
+
+
+Memory - Contains files / classes for custom allocators 
+
+Reflection
+
+
+Varience ShadowMapping

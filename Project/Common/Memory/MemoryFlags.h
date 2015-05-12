@@ -1,11 +1,13 @@
 #ifndef GAME_ENGINE_MEMORY_FLAGS_H
 #define GAME_ENGINE_MEMORY_FLAGS_H
 
+#include "../Core/GemAPI.h"
+
 namespace Gem
 {
     namespace Memory
     {
-        class MemoryFlags
+        class GEM_API MemoryFlags
         {
         public:
             static const int INVALID = 0;

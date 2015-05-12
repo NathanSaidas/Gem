@@ -7,10 +7,13 @@
 /// -- April, 1, 2015 - Nathan Hanlan - Defined a type trait for BoolAttribute.
 #pragma endregion
 
-//Using Attribute to inherit from.
-#include "Attribute.h"
 //Using string as the value of the attribute.
 #include <string>
+//Using Attribute to inherit from.
+#include "Attribute.h"
+#include "../Core/GemAPI.h"
+
+
 
 namespace Gem
 {
@@ -19,7 +22,7 @@ namespace Gem
 		/**
 		* Defines the attribute for boolean values.
 		*/
-        class StringAttribute : public Attribute
+        class GEM_API StringAttribute : public Attribute
         {
         public:
 			/**

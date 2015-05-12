@@ -22,7 +22,7 @@ namespace Gem
         /// • Allocate
         /// • Reset
         /// </summary>
-        class FrameAllocator : public Allocator
+        class GEM_API FrameAllocator : public Allocator
         {
         public:
             /// <summary>

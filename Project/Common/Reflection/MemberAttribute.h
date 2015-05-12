@@ -9,12 +9,13 @@
 
 #include "Attribute.h"
 #include "MemberInfo.h"
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
     namespace Reflection
     {
-        class MemberAttribute : public Attribute
+        class GEM_API MemberAttribute : public Attribute
         {
         public:
             /**

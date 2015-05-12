@@ -6,6 +6,7 @@
 #pragma endregion
 
 #include "../Core/ValueTypes.h"
+#include "../Core/GemAPI.h"
 #include "AllocatorType.h"
 #include "MemoryInfo.h"
 
@@ -23,7 +24,7 @@ namespace Gem
         /// • CanAlloc
         /// • OutOfMemory
         /// </summary>
-        class Allocator
+        class GEM_API Allocator
         {
         public:
             /// <summary>

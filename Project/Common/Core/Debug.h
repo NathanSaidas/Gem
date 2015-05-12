@@ -22,9 +22,6 @@ namespace Gem
 {
 	namespace Debugging
 	{
-
-		
-
 		class GEM_API Debug
 		{
 		public:

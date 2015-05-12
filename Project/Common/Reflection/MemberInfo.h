@@ -7,6 +7,7 @@
 //============================================================
 
 #include <string>
+#include "../Core/GemAPI.h"
 
 namespace Gem
 {
@@ -17,7 +18,7 @@ namespace Gem
 		/**
 		* This class provides information on a member of a class.
 		*/
-        class MemberInfo
+        class GEM_API MemberInfo
         {
         public:
             MemberInfo(char * aClassTypeName, char * aMemberName, char * aMemberTypename, size_t aOffset, bool aIsPublic);

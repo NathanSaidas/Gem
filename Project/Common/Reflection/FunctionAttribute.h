@@ -16,6 +16,9 @@
 #include "Attribute.h"
 //Using Func to define Function objects.
 #include "../Core/Func.h"
+#include "../Core/GemAPI.h"
+
+template class GEM_API Gem::Func<void*, void*>;
 
 namespace Gem
 {
@@ -25,7 +28,7 @@ namespace Gem
 		* Defines the attribute for Func values.
 		* Func has a void * return type and void * argument
 		*/
-        class FunctionAttribute : public Attribute
+        class GEM_API FunctionAttribute : public Attribute
         {
         public:
 			/**

@@ -14,8 +14,9 @@
 
 #include <map> //For Memory Tracking
 
-// -- Include basic types for UInt and SInt and IntPtr
+// -- Include basic types for UInt and SInt and IntPtr, and GemAPI for API export/import macro
 #include "../Core/ValueTypes.h"
+#include "../Core/GemAPI.h"
 
 // -- Memory Standard Includes
 #include "MemoryConfig.h"
@@ -23,11 +24,16 @@
 #include "MemoryHeader.h"
 #include "MemoryFlags.h"
 #include "AllocationInfo.h"
+#include "Instantiator.h"
 
 // -- Allocator Includes
 #include "PoolAllocator.h"
 #include "StackAllocator.h"
 #include "FrameAllocator.h"
+
+
+//Export this template class.
+template class GEM_API std::map<Gem::IntPtr, Gem::Memory::AllocationInfo>;
 
 // -- Alloc Defines. Use these to avoid writing __FILE__ and __LINE__ and wrapping it in ifdefs
 
@@ -72,7 +78,7 @@
 #endif
 
 #ifndef MEM_POOL_ALLOC_T
-#define MEM_POOL_ALLOC_T(TYPE) new (MEM_POOL_ALLOC(sizeof(TYPE), __alignof(TYPE)))TYPE()
+#define MEM_POOL_ALLOC_T(TYPE,...) Gem::Memory::Instantiator<TYPE>::Construct(MEM_POOL_ALLOC(sizeof(TYPE),__alignof(TYPE)),__VA_A_ARGS__)
 #endif
 
 #ifndef MEM_STACK_ALLOC_T
@@ -150,7 +156,7 @@ namespace Gem
 		/// In the future there will be automatic and semi automatic garbage collection.
 		/// 
 		/// </summary>
-        class MemoryManager
+        class GEM_API MemoryManager
         {
         public:                  
             
@@ -402,7 +408,7 @@ namespace Gem
             Allocator * m_LockedAllocator;
             // Memory Leak Detection
 			Allocator * m_RecentAllocator;
-            std::map<IntPtr, AllocationInfo> m_RecordedAllocations;
+			std::map<IntPtr, AllocationInfo> m_RecordedAllocations;
 
 			/// <summary>
 			/// Allocates memory from the stack.

@@ -21,6 +21,7 @@
 #include "MemberAttribute.h"
 //Included Type class to add type. 
 #include "../Core/Type.h"
+#include "../Core/GemAPI.h"
 
 
 namespace Gem
@@ -32,7 +33,7 @@ namespace Gem
 		* Use AttributeBinder with Runtime::Compile() function.
 		* Inherit from this class to define a custom AttributeBinder.
 		*/
-        class AttributeBinder
+        class GEM_API AttributeBinder
         {
         public:
 			/**
