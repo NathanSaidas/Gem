@@ -78,15 +78,15 @@ template class GEM_API std::map<Gem::IntPtr, Gem::Memory::AllocationInfo>;
 #endif
 
 #ifndef MEM_POOL_ALLOC_T
-#define MEM_POOL_ALLOC_T(TYPE,...) Gem::Memory::Instantiator<TYPE>::Construct(MEM_POOL_ALLOC(sizeof(TYPE),__alignof(TYPE)),__VA_A_ARGS__)
+#define MEM_POOL_ALLOC_T(TYPE,...) Gem::Memory::Instantiator<TYPE>::Construct(MEM_POOL_ALLOC(sizeof(TYPE),__alignof(TYPE)),__VA_ARGS__)
 #endif
 
 #ifndef MEM_STACK_ALLOC_T
-#define MEM_STACK_ALLOC_T(TYPE) new (MEM_STACK_ALLOC(sizeof(TYPE),__alignof(TYPE)))TYPE()
+#define MEM_STACK_ALLOC_T(TYPE,...) Gem::Memory::Instantiator<TYPE>::Construct(MEM_STACK_ALLOC(sizeof(TYPE),__alignof(TYPE)),__VA_ARGS__)
 #endif
 
 #ifndef MEM_FRAME_ALLOC_T
-#define MEM_FRAME_ALLOC_T(TYPE) new (MEM_FRAME_ALLOC(sizeof(TYPE),__alignof(TYPE)))TYPE()
+#define MEM_FRAME_ALLOC_T(TYPE,...) Gem::Memory::Instantiator<TYPE>::Construct(MEM_FRAME_ALLOC(sizeof(TYPE),__alignof(TYPE)),__VA_ARGS__)
 #endif
 
 #ifndef NEW_POOL

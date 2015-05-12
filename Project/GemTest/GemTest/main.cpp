@@ -112,6 +112,7 @@ class FuncTesterYea
 {
 public:
 	FuncTesterYea(){};
+	FuncTesterYea(int x, int y) :a(x), b(y){}
 	~FuncTesterYea(){};
 
 	void Add();
@@ -149,12 +150,13 @@ int main(int argc, char ** argv)
 	Gem::Reflection::Runtime::Compile(nullptr);
 
 	
+	
 
 	
 	Func<void> t = Voidtest;
 	t();
 
-	FuncTesterYea tObject;
+	
 
 	Method<FuncTesterYea, void> tAdd = &FuncTesterYea::Add;
 	Method<FuncTesterYea, void, int, int> tSet = &FuncTesterYea::Set;
@@ -162,14 +164,32 @@ int main(int argc, char ** argv)
 
 	Method<FuncTesterYea, void>::Delegate tAddDelegate = &FuncTesterYea::Add;
 
-
+	//Normal Test
+	FuncTesterYea tObject;
 	tSet(tObject, 10, 5);
 	tAdd(tObject);
 	int sum = tSum(tObject);
-
 	Gem::Debugging::Debug::LogFormat("Test", "Sum = %d", sum);
 
+	//Dynamic Test
+	FuncTesterYea * tPtrObject = MEM_FRAME_ALLOC_T(FuncTesterYea);
+	tSet(tPtrObject, 5, 7);
+	tAdd(tPtrObject);
+	sum = tSum(tPtrObject);
+	Gem::Debugging::Debug::LogFormat("Test", "Sum = %d", sum);
+	//MEM_FRAME_DEALLOC_T(tPtrObject, FuncTesterYea);
+
+	//Other Constructor Test
+	tPtrObject = MEM_FRAME_ALLOC_T(FuncTesterYea, 20, 15);
+	tAdd(tPtrObject);
+	sum = tSum(tPtrObject);
+	Gem::Debugging::Debug::LogFormat("Test", "Sum = %d", sum);
+	//MEM_STACK_DEALLOC_T(tPtrObject, FuncTesterYea);
+
+
 	//MethodTest<FuncTesterYea, void, int, int> tSet = &FuncTesterYea::Set;
+
+	Gem::Memory::MemoryManager::GetInstance()->ResetFrame();
 
 	Gem::Reflection::Runtime::Terminate();
 	Gem::Memory::MemoryManager::Terminate();
