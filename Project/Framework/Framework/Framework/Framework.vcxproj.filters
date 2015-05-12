@@ -20,6 +20,9 @@
     <Filter Include="API\Math">
       <UniqueIdentifier>{5545e9d7-d547-4c12-9229-7ff05bd81444}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Application">
+      <UniqueIdentifier>{ce6bf96e-a1e5-413a-8efd-bbcb439e0e17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -181,6 +184,21 @@
     <ClInclude Include="..\..\..\Common\Math\MathTypes.h">
       <Filter>API\Math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Singleton.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\ApplicationType.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\Application.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Event.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\ApplicationEventType.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -242,6 +260,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Utilities\StringExtensions.cpp">
       <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\Application.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\ApplicationType.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\ApplicationEventType.cpp">
+      <Filter>API\Application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

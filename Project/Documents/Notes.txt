@@ -51,5 +51,8 @@ Memory - Contains files / classes for custom allocators
 
 Reflection
 
+Stream Notes:
+• Varience ShadowMapping
+• DLL Importing / Exporting Problem http://www.codesynthesis.com/~boris/blog/2010/01/18/dll-export-cxx-templates/
 
-Varience ShadowMapping
+• The project now copy's dll and lib files from the framework.

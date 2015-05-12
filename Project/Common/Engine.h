@@ -13,6 +13,7 @@
 #include "Memory\Memory.h"
 #include "Reflection\Reflection.h"
 #include "Math\Math.h"
+#include "Application\Application.h"
 
 //Namespaces Used.
 

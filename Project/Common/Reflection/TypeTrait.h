@@ -12,7 +12,7 @@ namespace Gem
 	namespace Reflection
 	{
 		template<typename T>
-		struct GEM_API TypeTrait
+		struct TypeTrait
 		{
 		public:
 			static inline const char * Name()
@@ -25,7 +25,7 @@ namespace Gem
 
 	#define TYPE_DEFINE(TYPE)										\
 		template<>													\
-		struct GEM_API Gem::Reflection::TypeTrait < TYPE >			\
+		struct Gem::Reflection::TypeTrait < TYPE >			\
 		{															\
 		public:														\
 		static inline const char * Name()							\
@@ -35,7 +35,7 @@ namespace Gem
 		static const bool IS_POINTER = false;						\
 		};															\
 		template<>													\
-		struct GEM_API Gem::Reflection::TypeTrait< TYPE ## *>		\
+		struct Gem::Reflection::TypeTrait< TYPE ## *>		\
 		{															\
 		public:														\
 		static inline const char * Name()							\
@@ -45,7 +45,7 @@ namespace Gem
 		static const bool IS_POINTER = true;						\
 		};															\
 		template<>													\
-		struct GEM_API Gem::Reflection::TypeTrait< TYPE ## **>		\
+		struct Gem::Reflection::TypeTrait< TYPE ## **>		\
 		{															\
 		public:														\
 		static inline const char * Name()							\

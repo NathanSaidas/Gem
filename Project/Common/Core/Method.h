@@ -7,6 +7,7 @@
 /// -- May,     12, 2015 - Nathan Hanlan - Removed MethodAction class. Use method instead.
 #pragma endregion
 
+//#include "BasicTypes.h"
 
 namespace Gem
 {
@@ -26,7 +27,7 @@ namespace Gem
 	///
 
 	template<typename CLASS,typename RETURN, typename ... ARGS>
-	class Method
+	class Method //: public object
 	{
 	public:
 		typedef RETURN(CLASS::*Delegate)(ARGS...);

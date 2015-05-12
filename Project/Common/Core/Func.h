@@ -7,6 +7,8 @@
 /// -- May,     12, 2015 - Nathan Hanlan - Removed Action class use Func instead.
 #pragma endregion
 
+//#include "BasicTypes.h"
+
 namespace Gem
 {
     ///Func Class Description:
@@ -23,7 +25,7 @@ namespace Gem
     /// Action classes have been removed, used Func instead.
 
 	template<typename RETURN, typename ... ARGS>
-	class Func
+	class Func //: public object
 	{
 	public:
 		typedef RETURN(*Delegate)(ARGS...);
@@ -39,13 +41,23 @@ namespace Gem
 		{
 	
 		}
+
+		inline bool operator==(Func aFunc)
+		{
+			return m_Function == aFunc.m_Function;
+		}
+
+		inline bool operator !=(Func aFunc)
+		{
+			return m_Function != aFunc.m_Function;
+		}
 	
-		Delegate operator=(Delegate aFunction)
+		inline Delegate operator=(Delegate aFunction)
 		{
 			return m_Function = aFunction;
 		}
 	
-		RETURN operator()(ARGS ... args)
+		inline RETURN operator()(ARGS ... args)
 		{
 			if (m_Function != nullptr)
 			{
@@ -54,7 +66,7 @@ namespace Gem
 			return RETURN();
 		}
 	
-		RETURN Invoke(ARGS ... args)
+		inline RETURN Invoke(ARGS ... args)
 		{
 			if (m_Function != nullptr)
 			{

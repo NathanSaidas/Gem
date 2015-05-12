@@ -124,11 +124,11 @@ namespace Gem
 		};
 
 #ifndef GENERATE_INVALID_ARGUMENT
-#define GENERATE_INVALID_ARGUMENT(NAME, FULLNAME, TRACE_BACK) Gem::Debugging::InvalidArgument(NAME,nullptr,-1,Gem::Debugging::GET_TRACE(TRACE_BACK), FULLNAME)
+#define GENERATE_INVALID_ARGUMENT(NAME, FULLNAME, TRACE_BACK) Gem::Debugging::InvalidArgument(NAME,nullptr,1,Gem::Debugging::GET_TRACE(TRACE_BACK), FULLNAME)
 #endif
 
 #ifndef GENERATE_ARGUMENT_NULL
-#define GENERATE_ARGUMENT_NULL(NAME, FULLNAME, TRACE_BACK) Gem::Debugging::ArgumentNull(NAME, nullptr, -1,Gem::Debugging::GET_TRACE(TRACE_BACK),FULLNAME)
+#define GENERATE_ARGUMENT_NULL(NAME, FULLNAME, TRACE_BACK) Gem::Debugging::ArgumentNull(NAME, nullptr, 1,Gem::Debugging::GET_TRACE(TRACE_BACK),FULLNAME)
 #endif
 
 	}

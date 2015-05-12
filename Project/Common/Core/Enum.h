@@ -1,5 +1,5 @@
-#ifndef GAME_ENGINE_ENUM_H
-#define GAME_ENGINE_ENUM_H
+#ifndef GEM_ENUM_H
+#define GEM_ENUM_H
 
 #pragma region CHANGE LOG
 /// -- April	3, 2015 - Nathan Hanlan - Added class Enum. This will be the base class of all future enums.
@@ -12,10 +12,13 @@
 
 namespace Gem
 {
+	class Enum;
+	template class GEM_API Gem::Reflection::MetaObject<Enum>;
+
 	/**
 	* Base class for enum types.
 	*/
-	class Enum : public object
+	class GEM_API Enum : public object
 	{
 		RDECLARE_ENUM(Enum)
 	protected:
@@ -39,6 +42,8 @@ namespace Gem
 		* @return Returns the available values.
 		*/
 		virtual Array<SInt32> GetValues();
+
+		
 	public:
 		/**
 		* Returns the string version of the enum.
@@ -58,6 +63,7 @@ namespace Gem
 		* @return Returns the value in an integer format.
 		*/
 		static SInt32 GetValue(Enum * aEnum);
+		static SInt32 Enum::GetValue(const Enum * aEnum);
 		/**
 		* Returns the available values of the enum in integer format.
 		* @param enum The enum to get the values from.
@@ -74,16 +80,16 @@ namespace Gem
 	};
 }
 
-#define RENUM_H(TYPE,VALUES) private: VALUES m_Value;  \
+#define RENUM_H(TYPE,VALUES) private: VALUES m_Value;						\
 	protected:																\
 		std::string GetName();												\
-		Engine::Array<std::string> GetNames();								\
-		Engine::SInt32 GetValue();											\
-		Engine::Array<Engine::SInt32> GetValues();							\
+		Gem::Array<std::string> GetNames();									\
+		Gem::SInt32 GetValue();												\
+		Gem::Array<Gem::SInt32> GetValues();								\
 	public:																	\
 		TYPE();																\
 		TYPE(const TYPE::VALUES & aValue);									\
-		TYPE(Engine::SInt32 aValue);										\
+		TYPE(Gem::SInt32 aValue);											\
 																			\
 		inline TYPE operator=(const TYPE::VALUES & aValue)					\
 		{																	\
@@ -111,9 +117,13 @@ namespace Gem
 		{																	\
 			return m_Value != aEnum.m_Value;								\
 		}																	\
+		inline operator Gem::SInt32() const									\
+		{																	\
+			return m_Value;													\
+		}
 
 
-#define RENUM_CPP(TYPE,VALUES,COUNT,VALUE_NAMES)	TYPE::TYPE()	\
+#define RENUM_CPP(TYPE,VALUES,COUNT,VALUE_NAMES)	TYPE::TYPE()					\
 	{																				\
 		m_Value = (VALUES)0;														\
 	}																				\
@@ -121,30 +131,30 @@ namespace Gem
 	{																				\
 		m_Value = aValue;															\
 	}																				\
-	TYPE::TYPE(Engine::SInt32 aValue)												\
+	TYPE::TYPE(Gem::SInt32 aValue)													\
 	{																				\
 		m_Value = (VALUES)aValue;													\
 	}																				\
 	std::string TYPE::GetName()														\
 	{																				\
-		return VALUE_NAMES[(Engine::SInt32)m_Value];								\
+		return VALUE_NAMES[(Gem::SInt32)m_Value];									\
 	}																				\
-	Engine::Array<std::string> TYPE::GetNames()										\
+	Gem::Array<std::string> TYPE::GetNames()										\
 	{																				\
-		Engine::Array<std::string> names(COUNT);									\
+		Gem::Array<std::string> names(COUNT);										\
 		for (int i = 0; i < COUNT; i++)												\
 		{																			\
 			names[i] = VALUE_NAMES[i];												\
 		}																			\
 		return names;																\
 	}																				\
-	Engine::SInt32 TYPE::GetValue()													\
+	Gem::SInt32 TYPE::GetValue()													\
 	{																				\
-		return (Engine::SInt32)m_Value;												\
+		return (Gem::SInt32)m_Value;												\
 	}																				\
-	Engine::Array<Engine::SInt32> TYPE::GetValues()									\
+	Gem::Array<Gem::SInt32> TYPE::GetValues()										\
 	{																				\
-		Engine::Array<Engine::SInt32> values(COUNT);								\
+		Gem::Array<Gem::SInt32> values(COUNT);										\
 		for (int i = 0; i < COUNT; i++)												\
 		{																			\
 			values[i] = i;															\
@@ -152,4 +162,4 @@ namespace Gem
 		return values;																\
 	}																				\
 
-#endif
+#endif // GEM_ENUM_H
