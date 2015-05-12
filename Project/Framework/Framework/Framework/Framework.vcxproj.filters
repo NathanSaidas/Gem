@@ -17,6 +17,9 @@
     <Filter Include="API\Utilities">
       <UniqueIdentifier>{ac858af0-f401-4207-a15c-aed3a8926195}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Math">
+      <UniqueIdentifier>{5545e9d7-d547-4c12-9229-7ff05bd81444}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -154,6 +157,30 @@
     <ClInclude Include="..\..\..\Common\Memory\Instantiator.h">
       <Filter>API\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\Math.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\Matrix4x4.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\Quaternion.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\Vector2.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\Vector3.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\Vector4.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\StringExtensions.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Math\MathTypes.h">
+      <Filter>API\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -197,6 +224,24 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Memory\StackAllocator.cpp">
       <Filter>API\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Math\Matrix4x4.cpp">
+      <Filter>API\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Math\Quaternion.cpp">
+      <Filter>API\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Math\Vector2.cpp">
+      <Filter>API\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Math\Vector3.cpp">
+      <Filter>API\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Math\Vector4.cpp">
+      <Filter>API\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\StringExtensions.cpp">
+      <Filter>API\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

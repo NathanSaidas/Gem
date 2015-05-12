@@ -98,6 +98,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GEM_FRAMEWORK_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\Common\Libraries</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -143,6 +144,13 @@
     <ClInclude Include="..\..\..\Common\Core\Type.h" />
     <ClInclude Include="..\..\..\Common\Core\ValueTypes.h" />
     <ClInclude Include="..\..\..\Common\Engine.h" />
+    <ClInclude Include="..\..\..\Common\Math\Math.h" />
+    <ClInclude Include="..\..\..\Common\Math\MathTypes.h" />
+    <ClInclude Include="..\..\..\Common\Math\Matrix4x4.h" />
+    <ClInclude Include="..\..\..\Common\Math\Quaternion.h" />
+    <ClInclude Include="..\..\..\Common\Math\Vector2.h" />
+    <ClInclude Include="..\..\..\Common\Math\Vector3.h" />
+    <ClInclude Include="..\..\..\Common\Math\Vector4.h" />
     <ClInclude Include="..\..\..\Common\Memory\AllocationInfo.h" />
     <ClInclude Include="..\..\..\Common\Memory\Allocator.h" />
     <ClInclude Include="..\..\..\Common\Memory\AllocatorType.h" />
@@ -174,6 +182,7 @@
     <ClInclude Include="..\..\..\Common\Reflection\StringAttribute.h" />
     <ClInclude Include="..\..\..\Common\Reflection\TypeTrait.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Array.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\StringExtensions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\BasicTypes.cpp" />
@@ -181,6 +190,11 @@
     <ClCompile Include="..\..\..\Common\Core\Enum.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Time.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Type.cpp" />
+    <ClCompile Include="..\..\..\Common\Math\Matrix4x4.cpp" />
+    <ClCompile Include="..\..\..\Common\Math\Quaternion.cpp" />
+    <ClCompile Include="..\..\..\Common\Math\Vector2.cpp" />
+    <ClCompile Include="..\..\..\Common\Math\Vector3.cpp" />
+    <ClCompile Include="..\..\..\Common\Math\Vector4.cpp" />
     <ClCompile Include="..\..\..\Common\Memory\Allocator.cpp" />
     <ClCompile Include="..\..\..\Common\Memory\FrameAllocator.cpp" />
     <ClCompile Include="..\..\..\Common\Memory\MemoryHeader.cpp" />
@@ -190,6 +204,7 @@
     <ClCompile Include="..\..\..\Common\Reflection\MemberInfo.cpp" />
     <ClCompile Include="..\..\..\Common\Reflection\MetaObjectLinker.cpp" />
     <ClCompile Include="..\..\..\Common\Reflection\Runtime.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\StringExtensions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
