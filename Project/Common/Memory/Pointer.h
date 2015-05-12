@@ -12,11 +12,11 @@
 
 #include "MemoryManager.h"
 #include "../Reflection/Reflection.h"
-#include "../Utilities/Utilities.h"
-#include "../SystemAssert.h"
-#include "../SystemError.h"
+//#include "../Utilities/Utilities.h"
+//#include "../SystemAssert.h"
+//#include "../SystemError.h"
 
-namespace Engine
+namespace Gem
 {
 
 	//This class is designed to keep track of references to a pointer. 

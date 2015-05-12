@@ -5,9 +5,9 @@
 /// -- January, 31, 2015 - Nathan Hanlan - Added MemoryInfo struct/file
 #pragma endregion
 
-#include "../ValueTypes.h"
+#include "../Core/ValueTypes.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {

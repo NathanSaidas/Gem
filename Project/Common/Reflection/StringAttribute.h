@@ -12,7 +12,7 @@
 //Using string as the value of the attribute.
 #include <string>
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

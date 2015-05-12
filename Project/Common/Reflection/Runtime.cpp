@@ -2,7 +2,7 @@
 
 #include "MetaObjectLinker.h"
 
-namespace Engine
+namespace Gem
 {
     bool Type::s_IsCompiling = false;
 

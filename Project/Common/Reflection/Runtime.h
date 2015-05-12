@@ -11,7 +11,7 @@
 #include "AttributeBinder.h"
 #include "TypeTrait.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

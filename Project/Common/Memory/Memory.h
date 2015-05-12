@@ -25,7 +25,7 @@
 // -- SystemAssert.h
 // -- SystemError.h
 
-namespace Engine
+namespace Gem
 {
 	namespace Memory
 	{

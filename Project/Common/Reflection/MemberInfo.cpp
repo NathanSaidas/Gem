@@ -1,7 +1,7 @@
 #include "MemberInfo.h"
 #include "../Memory/Memory.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

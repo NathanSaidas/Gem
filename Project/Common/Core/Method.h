@@ -5,7 +5,7 @@
 /// -- January, 29, 2015 - Nathan Hanlan - Added Func classes
 #pragma endregion
 
-namespace Engine
+namespace Gem
 {
     ///Func Class Description:
     ///(January, 29, 2015)

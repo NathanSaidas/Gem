@@ -10,7 +10,7 @@
 
 #include "Allocator.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {

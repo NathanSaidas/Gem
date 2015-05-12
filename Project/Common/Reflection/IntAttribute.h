@@ -1,6 +1,11 @@
 #ifndef GAME_ENGINE_INT_ATTRIBUTE_H
 #define GAME_ENGINE_INT_ATTRIBUTE_H
 
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Contains the IntAttribute class.
+//============================================================
+
 #pragma region CHANGE LOG
 /// -- January, 29, 2015 - Nathan Hanlan - Added IntAttribute class/file
 #pragma endregion
@@ -8,7 +13,7 @@
 //Using Attribute to inherit from.
 #include "Attribute.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

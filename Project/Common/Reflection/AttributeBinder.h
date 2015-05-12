@@ -1,6 +1,11 @@
 #ifndef GAME_ENGINE_ATTRIBUTE_BINDER_H
 #define GAME_ENGINE_ATTRIBUTE_BINDER_H
 
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Contains the AttributeBinder class.
+//============================================================
+
 #pragma region CHANGE LOG
 /// -- January, 30, 2015 - Nathan Hanlan - Added AttributeBinder class/file 
 /// -- April, 1, 2015 - Nathan Hanlan - Added Doxygen Style Comments.
@@ -15,10 +20,10 @@
 #include "FunctionAttribute.h"
 #include "MemberAttribute.h"
 //Included Type class to add type. 
-#include "../Type.h"
+#include "../Core/Type.h"
 
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

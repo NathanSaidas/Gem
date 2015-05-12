@@ -1,13 +1,13 @@
 #include "FrameAllocator.h"
-#include "../SystemAssert.h"
-#include "../SystemError.h"
+//#include "../SystemAssert.h"
+//#include "../SystemError.h"
 #include "MemoryUtils.h"
 #include "MemoryHeader.h"
 #include "MemoryFlags.h"
 #include "MemoryConfig.h"
-#include "../Utilities/Utilities.h"
+//#include "../Utilities/Utilities.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {
@@ -24,7 +24,7 @@ namespace Engine
 
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-                Assert(aMemorySize > 0, Error::BAD_FRAME_ALLOCATOR_INIT);
+                //Assert(aMemorySize > 0, Error::BAD_FRAME_ALLOCATOR_INIT);
     #endif
 #endif
             m_Memory = malloc(aMemorySize);
@@ -60,12 +60,13 @@ namespace Engine
             // Error Handle the size
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-                ASSERT(aSize > 0, Error::BAD_FRAME_ALLOCATOR_ALLOCATION);
+                //ASSERT(aSize > 0, Error::BAD_FRAME_ALLOCATOR_ALLOCATION);
     #endif
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
                 if (aSize <= 0)
                 {
-                    DEBUG_LOG(Error::BAD_FRAME_ALLOCATOR_ALLOCATION);
+					//TODO(Nathan): Create error constant/object.
+                    //DEBUG_LOG(Error::BAD_FRAME_ALLOCATOR_ALLOCATION);
                     return nullptr;
                 }
     #endif
@@ -79,10 +80,11 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-                ASSERT(false, Error::OUT_OF_FRAME_MEMORY);
+                //ASSERT(false, Error::OUT_OF_FRAME_MEMORY);
     #endif
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::OUT_OF_FRAME_MEMORY);
+				//TODO(Nathan): Create error constant/object
+                //DEBUG_LOG(Error::OUT_OF_FRAME_MEMORY);
     #endif  
 #endif
                 return nullptr;
@@ -119,10 +121,10 @@ namespace Engine
         {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-                ASSERT(false, Error::BAD_FRAME_ALLOCATOR_DEALLOCATION);
+                //ASSERT(false, Error::BAD_FRAME_ALLOCATOR_DEALLOCATION);
     #endif
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::BAD_FRAME_ALLOCATOR_DEALLOCATION);
+                //DEBUG_LOG(Error::BAD_FRAME_ALLOCATOR_DEALLOCATION);
     #endif
 #endif
             return aAddress;

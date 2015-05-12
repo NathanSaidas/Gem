@@ -1,11 +1,13 @@
 #include "Allocator.h"
 #include <stdio.h>
-#include "../Utilities/Utilities.h"
+#include "../Core/Debug.h"
 #include "MemoryConfig.h"
 #include "PoolAllocator.h"
 #include <exception>
 
-namespace Engine
+using namespace Gem::Debugging;
+
+namespace Gem
 {
     namespace Memory
     {
@@ -37,11 +39,11 @@ namespace Engine
 					try
 					{
 						PoolAllocator * pool = (PoolAllocator*)(this);
-						DEBUG_LOG("Allocator(%u,%u) leaked memory: %u(bytes) %u(allocations)\n", m_ID, pool->GetObjectSize(), m_MemoryInfo.memoryUsed, m_MemoryInfo.allocations);
+						Debug::ErrorFormat("Memory",nullptr, "Allocator(%u,%u) leaked memory: %u(bytes) %u(allocations)\n", m_ID, pool->GetObjectSize(), m_MemoryInfo.memoryUsed, m_MemoryInfo.allocations);
 					}
 					catch (std::exception aException)
 					{
-						DEBUG_LOG("Allocator(%u) leaked memory: %u(bytes) %u(allocations)\n", m_ID, m_MemoryInfo.memoryUsed, m_MemoryInfo.allocations);
+						Debug::ErrorFormat("Memory", nullptr, "Allocator(%u) leaked memory: %u(bytes) %u(allocations)\n", m_ID, m_MemoryInfo.memoryUsed, m_MemoryInfo.allocations);
 					}
 
                 }
@@ -51,7 +53,7 @@ namespace Engine
             {
                 if (!m_ForceDestroy)
                 {
-                    DEBUG_LOG("Allocator(%u) was not deallocated.", m_ID);
+					Debug::ErrorFormat("Memory", nullptr, "Allocator(%u) was not deallocated.", m_ID);
                 }
                 free(m_Memory);
             }

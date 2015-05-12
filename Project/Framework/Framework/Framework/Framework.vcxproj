@@ -130,16 +130,65 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\ArgumentNull.h" />
+    <ClInclude Include="..\..\..\Common\Core\BasicTypes.h" />
     <ClInclude Include="..\..\..\Common\Core\Debug.h" />
+    <ClInclude Include="..\..\..\Common\Core\Enum.h" />
     <ClInclude Include="..\..\..\Common\Core\Error.h" />
+    <ClInclude Include="..\..\..\Common\Core\Func.h" />
     <ClInclude Include="..\..\..\Common\Core\GemAPI.h" />
     <ClInclude Include="..\..\..\Common\Core\InvalidArgument.h" />
+    <ClInclude Include="..\..\..\Common\Core\Method.h" />
     <ClInclude Include="..\..\..\Common\Core\Time.h" />
     <ClInclude Include="..\..\..\Common\Core\Trace.h" />
+    <ClInclude Include="..\..\..\Common\Core\Type.h" />
+    <ClInclude Include="..\..\..\Common\Core\ValueTypes.h" />
+    <ClInclude Include="..\..\..\Common\Engine.h" />
+    <ClInclude Include="..\..\..\Common\Memory\AllocationInfo.h" />
+    <ClInclude Include="..\..\..\Common\Memory\Allocator.h" />
+    <ClInclude Include="..\..\..\Common\Memory\AllocatorType.h" />
+    <ClInclude Include="..\..\..\Common\Memory\FrameAllocator.h" />
+    <ClInclude Include="..\..\..\Common\Memory\Memory.h" />
+    <ClInclude Include="..\..\..\Common\Memory\MemoryConfig.h" />
+    <ClInclude Include="..\..\..\Common\Memory\MemoryFlags.h" />
+    <ClInclude Include="..\..\..\Common\Memory\MemoryHeader.h" />
+    <ClInclude Include="..\..\..\Common\Memory\MemoryInfo.h" />
+    <ClInclude Include="..\..\..\Common\Memory\MemoryManager.h" />
+    <ClInclude Include="..\..\..\Common\Memory\MemoryUtils.h" />
+    <ClInclude Include="..\..\..\Common\Memory\Pointer.h" />
+    <ClInclude Include="..\..\..\Common\Memory\PoolAllocator.h" />
+    <ClInclude Include="..\..\..\Common\Memory\StackAllocator.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\Attribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\AttributeBinder.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\BoolAttribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\FloatAttribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\FunctionAttribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\IntAttribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\MemberAttribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\MemberInfo.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\MetaObject.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\MetaObjectLinker.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\MethodInfo.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\Reflection.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\Runtime.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\StringAttribute.h" />
+    <ClInclude Include="..\..\..\Common\Reflection\TypeTrait.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\Array.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Common\Core\BasicTypes.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp" />
+    <ClCompile Include="..\..\..\Common\Core\Enum.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Time.cpp" />
+    <ClCompile Include="..\..\..\Common\Core\Type.cpp" />
+    <ClCompile Include="..\..\..\Common\Memory\Allocator.cpp" />
+    <ClCompile Include="..\..\..\Common\Memory\FrameAllocator.cpp" />
+    <ClCompile Include="..\..\..\Common\Memory\MemoryHeader.cpp" />
+    <ClCompile Include="..\..\..\Common\Memory\MemoryManager.cpp" />
+    <ClCompile Include="..\..\..\Common\Memory\PoolAllocator.cpp" />
+    <ClCompile Include="..\..\..\Common\Memory\StackAllocator.cpp" />
+    <ClCompile Include="..\..\..\Common\Reflection\MemberInfo.cpp" />
+    <ClCompile Include="..\..\..\Common\Reflection\MetaObjectLinker.cpp" />
+    <ClCompile Include="..\..\..\Common\Reflection\Runtime.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

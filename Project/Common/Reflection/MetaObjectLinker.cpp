@@ -1,6 +1,6 @@
 #include "MetaObjectLinker.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

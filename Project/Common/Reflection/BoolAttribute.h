@@ -1,6 +1,11 @@
 #ifndef GAME_ENGINE_BOOL_ATTRIBUTE_H
 #define GAME_ENGINE_BOOL_ATTRIBUTE_H
 
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Contains the BoolAttribute class.
+//============================================================
+
 #pragma region CHANGE LOG
 /// -- January, 29, 2015 - Nathan Hanlan - Added BoolAttribute class/file
 /// -- April, 1, 2015 - Nathan Hanlan - Added Doxygen Style Comments.
@@ -10,7 +15,7 @@
 //Using Attribute to inherit from.
 #include "Attribute.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

@@ -5,11 +5,11 @@
 /// -- January, 31, 2015 - Nathan Hanlan - Added Allocator class/file
 #pragma endregion
 
-#include "../ValueTypes.h"
+#include "../Core/ValueTypes.h"
 #include "AllocatorType.h"
 #include "MemoryInfo.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {

@@ -5,7 +5,7 @@
 /// -- January, 31, 2015 - Nathan Hanlan - Added AllocatorType enum/file
 #pragma endregion
 
-namespace Engine
+namespace Gem
 {
 	namespace Memory
 	{

@@ -6,9 +6,9 @@
 /// -- February 22  2015 - Nathan Hanlan - Changed the Layout of the MemoryHeader. Added additional helper functions.
 #pragma endregion
 
-#include "../ValueTypes.h"
+#include "../Core/ValueTypes.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {

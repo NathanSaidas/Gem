@@ -5,10 +5,10 @@
 /// -- January, 30, 2015 - Nathan Hanlan - Added MethodInfo file and MethodInfo / MethodActionInfo classes 
 #pragma region
 
-#include "../Method.h"
+#include "../Core/Method.h"
 #include "Runtime.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

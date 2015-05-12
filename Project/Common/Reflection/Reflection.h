@@ -24,7 +24,7 @@
 #include "MethodInfo.h"
 #include "MemberAttribute.h"
 #include "MemberInfo.h"
-#include "../Type.h"
+#include "../Core/Type.h"
 
 // -- Dependencies
 // -- <cstring>
@@ -88,7 +88,7 @@
 
 //CLASS_ATTRIBUTE_INTERFACE_ (HEADER/CPP) - Replaced with RDECLARE_ATTRIBUTE_INTERFACE / RDEFINE_ATTRIBUTE_INTERFACE
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {
@@ -99,9 +99,9 @@ namespace Engine
 		*/
 #define RDECLARE_CLASS(TYPE)														\
 	private:																		\
-		static const Engine::Reflection::MetaObject<TYPE> HIDDEN_CLASS;             \
+		static const Gem::Reflection::MetaObject<TYPE> HIDDEN_CLASS;             \
 	public:                                                                         \
-		virtual Engine::Type GetType();                                             \
+		virtual Gem::Type GetType();                                             \
 	private:                                                                        \
 
 		/**
@@ -110,49 +110,49 @@ namespace Engine
 		* @param BASECLASS The name of the baseclass. If there is no baseclass a empty string can be used in substitution.
 		*/
 #define RDEFINE_CLASS(TYPE,BASECLASS)																										\
-	const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_CLASS = Engine::Reflection::MetaObject<TYPE>::DefineClass(#TYPE, #BASECLASS);   \
-	Engine::Type TYPE::GetType() { static Engine::Type type = Engine::Reflection::Runtime::TypeOf(#TYPE); return type; }					\
+	const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_CLASS = Gem::Reflection::MetaObject<TYPE>::DefineClass(#TYPE, #BASECLASS);   \
+	Gem::Type TYPE::GetType() { static Gem::Type type = Gem::Reflection::Runtime::TypeOf(#TYPE); return type; }					\
 
 		/**
 		* Declares the meta data object for an abstract class. Uses the name HIDDEN_ABSTRACT_CLASS
 		* @param TYPE The name of the class being reflected.
 		*/
-#define RDECLARE_ABSTRACT_CLASS(TYPE) private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_ABSTRACT_CLASS;
+#define RDECLARE_ABSTRACT_CLASS(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ABSTRACT_CLASS;
 		
 		/**
 		* Defines the meta data object info for an abstract class.
 		* @param TYPE The name of the class being reflected.
 		* @param BASECLASS The name of the baseclass. If there is no baseclass a empty string can be used in substitution.
 		*/
-#define RDEFINE_ABSTRACT_CLASS(TYPE,BASECLASS) const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ABSTRACT_CLASS = Engine::Reflection::MetaObject<TYPE>::DefineAbstractClass(#TYPE, #BASECLASS);
+#define RDEFINE_ABSTRACT_CLASS(TYPE,BASECLASS) const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ABSTRACT_CLASS = Gem::Reflection::MetaObject<TYPE>::DefineAbstractClass(#TYPE, #BASECLASS);
 
 		/**
 		* Declares the meta object for an interface.
 		* @param TYPE The name of the interface being reflected.
 		*/
-#define RDECLARE_INTERFACE(TYPE) private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE; public: virtual Engine::Type GetType(); private:
+#define RDECLARE_INTERFACE(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE; public: virtual Gem::Type GetType(); private:
 
 		/**
 		* Defines the meta data object info for an interface.
 		* @param TYPE The name of the class being reflected.
 		*/
 #define RDEFINE_INTERFACE(TYPE)																												\
-		const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_INTERFACE = Engine::Reflection::MetaObject<TYPE>::DefineInterface(#TYPE);	\
-		Engine::Type TYPE::GetType() { static Engine::Type type = Engine::Reflection::Runtime::TypeOf(#TYPE); return type; }                \
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_INTERFACE = Gem::Reflection::MetaObject<TYPE>::DefineInterface(#TYPE);	\
+		Gem::Type TYPE::GetType() { static Gem::Type type = Gem::Reflection::Runtime::TypeOf(#TYPE); return type; }                \
 
 		/**
 		* Declares the meta data object info for an inherited interface.
 		* @param TYPE The name of the class being reflected.
 		* @param INTERFACE The an interface of the class.
 		*/
-#define RDECLARE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE_ ## INTERFACE;
+#define RDECLARE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE_ ## INTERFACE;
 
 		/**
 		* Define the meta data object info for an inherited interface.
 		* @param TYPE The name of the class being reflected.
 		* @param INTERFACE The an interface of the class.
 		*/
-#define RDEFINE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) const Engine::Reflection::MetaObject<TYPE> TYPE:: ## HIDDEN_INTERFACE_ ## INTERFACE = Engine::Reflection::MetaObject<TYPE>::DefineClassInterface(#TYPE,#INTERFACE);
+#define RDEFINE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) const Gem::Reflection::MetaObject<TYPE> TYPE:: ## HIDDEN_INTERFACE_ ## INTERFACE = Gem::Reflection::MetaObject<TYPE>::DefineClassInterface(#TYPE,#INTERFACE);
 
 		/**
 		* Declare a meta object for a public reflected member.
@@ -160,7 +160,7 @@ namespace Engine
 		* @param MEMBER The name of the member being reflected.
 		*/
 #define DECLARE_PUBLIC_MEMBER(TYPE,MEMBER)														\
-    private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; public:       \
+	private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; public:       \
 
 		/**
 		* Define a meta object for a public reflected member.
@@ -169,7 +169,7 @@ namespace Engine
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PUBLIC_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																				\
-        const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Engine::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE,#MEMBER, offsetof(TYPE,MEMBER), #MEMBER_TYPE, true);     \
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, true);     \
 
 
 		/**
@@ -178,7 +178,7 @@ namespace Engine
 		* @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PROTECTED_MEMBER(TYPE,MEMBER)													\
-    private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; protected:    \
+		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; protected:    \
 
 		/**
 		* Define a meta object for a protected reflected member.
@@ -187,7 +187,7 @@ namespace Engine
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PROTECTED_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																			\
-        const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Engine::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE,#MEMBER, offsetof(TYPE,MEMBER), #MEMBER_TYPE, false);    \
+        const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE,#MEMBER, offsetof(TYPE,MEMBER), #MEMBER_TYPE, false);    \
 
 		/**
 		* Declare a meta object for a private reflected member.
@@ -195,7 +195,7 @@ namespace Engine
 		* @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PRIVATE_MEMBER(TYPE,MEMBER)													\
-    private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; private:      \
+		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; private:      \
 
 		/**
 		* Define a meta object for a private reflected member.
@@ -204,23 +204,23 @@ namespace Engine
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PRIVATE_MEMBER(TYPE,MEMBER,MEMBER_TYPE)                                                                                                                                             \
-        const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Engine::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE,#MEMBER, offsetof(TYPE,MEMBER), #MEMBER_TYPE, false);    \
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, false);    \
 
 		/**
 		* Declare a meta object for a reflected enum
 		* @param TYPE The name of the enum being reflected.
 		*/
-#define RDECLARE_ENUM(TYPE) private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_ENUM;
+#define RDECLARE_ENUM(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ENUM;
 
 		/**
 		* Define the meta object into for the reflected enum.
 		* @param TYPE The name of the enum being reflected.
 		*/
-#define RDEFINE_ENUM(TYPE) const Engine::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ENUM = Engine::Reflection::MetaObject<TYPE>::DefineEnum(#TYPE);
+#define RDEFINE_ENUM(TYPE) const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ENUM = Gem::Reflection::MetaObject<TYPE>::DefineEnum(#TYPE);
 
         ///Define Primitive Types to allow for limited reflection info.
 
-#define TYPE_NAME(TYPE) Engine::Reflection::TypeTrait<TYPE>::Name()
+#define TYPE_NAME(TYPE) Gem::Reflection::TypeTrait<TYPE>::Name()
 
 #define CLASS_HEADER(TYPE) RDECLARE_CLASS(TYPE) //private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE; public: virtual Engine::Type GetType(); private:
 #define CLASS_CPP(TYPE,BASECLASS) RDEFINE_CLASS(TYPE,BASECLASS)

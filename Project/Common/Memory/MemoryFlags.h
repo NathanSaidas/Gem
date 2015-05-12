@@ -1,7 +1,7 @@
 #ifndef GAME_ENGINE_MEMORY_FLAGS_H
 #define GAME_ENGINE_MEMORY_FLAGS_H
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {

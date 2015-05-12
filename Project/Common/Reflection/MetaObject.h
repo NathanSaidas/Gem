@@ -1,6 +1,11 @@
 #ifndef GAME_ENGINE_META_OBJECT__H
 #define GAME_ENGINE_META_OBJECT__H
 
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Contains the MetaObject class.
+//============================================================
+
 #pragma region CHANGE LOG
 /// -- January, 29, 2015 - Nathan Hanlan - Added MetaObject file.
 /// -- Janaury, 29, 2015 - Nathan Hanlan - Added DefineInterface, DefineClassInterface and DefineMember methods to MetaObject class.
@@ -12,11 +17,13 @@
 #include "MetaObjectLinker.h"
 
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {
-        ///MetaObject classes define meta deta to a class.
+		/**
+		* Defines meta data of a class which can be retrieved at runtime through reflection.
+		*/
         template<class T>
         class MetaObject
         {

@@ -5,7 +5,7 @@
 /// -- January, 29, 2015 - Nathan Hanlan - Added TypeTrait class/file
 #pragma endregion
 
-namespace Engine
+namespace Gem
 {
 	namespace Reflection
 	{
@@ -23,7 +23,7 @@ namespace Engine
 
 	#define TYPE_DEFINE(TYPE)										\
 	template<>														\
-		struct Engine::Reflection::TypeTrait < TYPE >				\
+		struct Gem::Reflection::TypeTrait < TYPE >					\
 		{															\
 		public:														\
 		static inline const char * Name()							\
@@ -33,7 +33,7 @@ namespace Engine
 		static const bool IS_POINTER = false;						\
 		};															\
 		template<>													\
-		struct Engine::Reflection::TypeTrait< TYPE ## *>			\
+		struct Gem::Reflection::TypeTrait< TYPE ## *>				\
 		{															\
 		public:														\
 		static inline const char * Name()							\
@@ -43,7 +43,7 @@ namespace Engine
 		static const bool IS_POINTER = true;						\
 		};															\
 		template<>													\
-		struct Engine::Reflection::TypeTrait< TYPE ## **>			\
+		struct Gem::Reflection::TypeTrait< TYPE ## **>				\
 		{															\
 		public:														\
 		static inline const char * Name()							\

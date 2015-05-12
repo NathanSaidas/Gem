@@ -1,6 +1,12 @@
 #ifndef GAME_ENGINE_ATTRIBUTE_H
 #define GAME_ENGINE_ATTRIBUTE_H
 
+
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Contains the Attribute class.
+//============================================================
+
 #pragma region CHANGE LOG
 /// -- January, 29, 2015 - Nathan Hanlan - Added Attribute class/file
 /// -- April, 1, 2015 - Nathan Hanlan - Added Doxygen Style Comments.
@@ -12,7 +18,7 @@
 //Using TypeTrait to add some reflection information to this class.
 #include "TypeTrait.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

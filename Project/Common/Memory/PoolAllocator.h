@@ -10,9 +10,9 @@
 
 #include "Allocator.h"
 
-namespace Engine
+namespace Gem
 {
-    namespace Memory
+	namespace Memory
     {
         /// <summary>
         /// The PoolAllocator is designed to make small allocations of a fixed size/alignment.

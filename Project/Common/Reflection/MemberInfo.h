@@ -1,15 +1,22 @@
 #ifndef GAME_ENGINE_MEMBER_INFO_H
 #define GAME_ENGINE_MEMBER_INFO_H
 
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Contains the MemberInfo class.
+//============================================================
 
 #include <string>
 
-namespace Engine
+namespace Gem
 {
     class object;
 
     namespace Reflection
     {
+		/**
+		* This class provides information on a member of a class.
+		*/
         class MemberInfo
         {
         public:

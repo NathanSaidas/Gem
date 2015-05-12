@@ -37,6 +37,12 @@ namespace Gem
 			{
 
 			}
+			Error(const Error & aError, const Trace aErrorTrace)
+				: m_ErrorString(aError.GetErrorString()), m_ErrorCode(aError.GetErrorCode()), m_ErrorTrace(aErrorTrace), m_MethodFullname(aError.GetMethodFullName())
+			{
+
+			}
+
 			virtual ~Error(){}
 
 			/**

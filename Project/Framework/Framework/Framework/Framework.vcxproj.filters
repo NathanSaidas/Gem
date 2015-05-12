@@ -14,6 +14,9 @@
     <Filter Include="API\Memory">
       <UniqueIdentifier>{583ca467-fc4a-4fe2-a67e-09a240091856}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Utilities">
+      <UniqueIdentifier>{ac858af0-f401-4207-a15c-aed3a8926195}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -37,6 +40,117 @@
     <ClInclude Include="..\..\..\Common\Core\InvalidArgument.h">
       <Filter>API\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Engine.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\Attribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\AttributeBinder.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\BoolAttribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\FloatAttribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\FunctionAttribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\IntAttribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\MemberAttribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\MemberInfo.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\MetaObject.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\MetaObjectLinker.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\MethodInfo.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\Reflection.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\Runtime.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\StringAttribute.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\TypeTrait.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\BasicTypes.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Enum.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Type.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\ValueTypes.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\Array.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\AllocationInfo.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\Allocator.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\AllocatorType.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\FrameAllocator.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\Memory.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\MemoryConfig.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\MemoryFlags.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\MemoryHeader.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\MemoryInfo.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\MemoryManager.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\MemoryUtils.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\Pointer.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\PoolAllocator.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Memory\StackAllocator.h">
+      <Filter>API\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Func.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\Method.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -44,6 +158,42 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Core\Time.cpp">
       <Filter>API\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Reflection\MemberInfo.cpp">
+      <Filter>API\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Reflection\MetaObjectLinker.cpp">
+      <Filter>API\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Reflection\Runtime.cpp">
+      <Filter>API\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Core\BasicTypes.cpp">
+      <Filter>API\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Core\Enum.cpp">
+      <Filter>API\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Core\Type.cpp">
+      <Filter>API\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Memory\Allocator.cpp">
+      <Filter>API\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Memory\FrameAllocator.cpp">
+      <Filter>API\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Memory\MemoryHeader.cpp">
+      <Filter>API\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Memory\MemoryManager.cpp">
+      <Filter>API\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Memory\PoolAllocator.cpp">
+      <Filter>API\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Memory\StackAllocator.cpp">
+      <Filter>API\Memory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

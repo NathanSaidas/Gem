@@ -8,11 +8,11 @@
 #pragma endregion
 
 #include <string>
-#include "../ValueTypes.h"
+#include "../Core/ValueTypes.h"
 #include "AllocatorType.h"
 
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {		

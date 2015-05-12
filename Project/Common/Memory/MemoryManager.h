@@ -15,7 +15,7 @@
 #include <map> //For Memory Tracking
 
 // -- Include basic types for UInt and SInt and IntPtr
-#include "../ValueTypes.h"
+#include "../Core/ValueTypes.h"
 
 // -- Memory Standard Includes
 #include "MemoryConfig.h"
@@ -132,7 +132,7 @@
 
 
 
-namespace Engine
+namespace Gem
 {    
     namespace Memory
     {		

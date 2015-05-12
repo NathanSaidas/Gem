@@ -1,13 +1,13 @@
 #include "PoolAllocator.h"
-#include "../SystemAssert.h"
-#include "../SystemError.h"
+//#include "../SystemAssert.h"
+//#include "../SystemError.h"
 #include "MemoryHeader.h"
 #include "MemoryUtils.h"
 #include "MemoryFlags.h"
 #include "MemoryConfig.h"
-#include "../Utilities/Utilities.h"
+//#include "../Utilities/Utilities.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {
@@ -24,7 +24,7 @@ namespace Engine
         {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-            ASSERT(aSize > 0, Error::BAD_POOL_ALLOCATOR_INIT);
+            //ASSERT(aSize > 0, Error::BAD_POOL_ALLOCATOR_INIT);
     #endif
 #endif
             
@@ -86,7 +86,7 @@ namespace Engine
             //Verify valid allocation request
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-            ASSERT(aSize + sizeof(MemoryHeader) == m_ObjectSize && aAlignment == m_ObjectAlignment, Error::BAD_POOL_ALLOCATOR_ALLOCATION);
+            //ASSERT(aSize + sizeof(MemoryHeader) == m_ObjectSize && aAlignment == m_ObjectAlignment, Error::BAD_POOL_ALLOCATOR_ALLOCATION);
     #endif
 #endif
             //Check current state
@@ -94,7 +94,7 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::OUT_OF_POOL_MEMORY);
+                //DEBUG_LOG(Error::OUT_OF_POOL_MEMORY);
     #endif
 #endif
                 return nullptr;
@@ -105,10 +105,10 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-                ASSERT(false, Error::OUT_OF_POOL_MEMORY);
+                //ASSERT(false, Error::OUT_OF_POOL_MEMORY);
     #endif
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::OUT_OF_POOL_MEMORY);
+                //DEBUG_LOG(Error::OUT_OF_POOL_MEMORY);
     #endif
 #endif
                 return nullptr;
@@ -144,14 +144,14 @@ namespace Engine
         {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_ASSERT
-            ASSERT(aAddress != nullptr, Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
+            //ASSERT(aAddress != nullptr, Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
     #endif
 #endif
             if (aAddress == nullptr)
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
+                //DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
     #endif
 #endif
                 return nullptr;
@@ -167,7 +167,7 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
+                //DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
     #endif
 #endif
                 return aAddress;
@@ -176,7 +176,7 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
+                //DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
     #endif
 #endif
                 return aAddress;
@@ -185,7 +185,7 @@ namespace Engine
 			{
 #ifdef CONFIG_MEMORY_DEBUG
 	#ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-				DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
+				//DEBUG_LOG(Error::BAD_POOL_ALLOCATOR_DEALLOCATION);
 	#endif
 #endif
 				return aAddress;

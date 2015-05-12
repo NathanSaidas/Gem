@@ -2,7 +2,7 @@
 #define GAME_ENGINE_MEMORY_CONFIG_H
 
 
-namespace Engine
+namespace Gem
 {
 	namespace Config
 	{

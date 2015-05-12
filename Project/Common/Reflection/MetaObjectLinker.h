@@ -1,6 +1,10 @@
 #ifndef GAME_ENGINE_META_OBJECT_LINKER_H
 #define GAME_ENGINE_META_OBJECT_LINKER_H
 
+//============================================================
+// Date:			May,	11,		2015
+// Description:		Typedefs a bunch of multimap types and interators for atttributes.
+//============================================================
 
 #pragma region CHANGE LOG
 /// -- January 29, 2015 - Nathan Hanlan - Added class/file MetaObjectLinker
@@ -16,7 +20,7 @@
 #include <map>
 #include <vector>
 
-namespace Engine
+namespace Gem
 {
     namespace Reflection
     {

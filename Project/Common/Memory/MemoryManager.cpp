@@ -1,10 +1,10 @@
 #include "MemoryManager.h"
-#include "../SystemAssert.h"
-#include "../SystemError.h"
-#include "../BasicTypes.h"
-#include "../Utilities/Utilities.h"
+//#include "../SystemAssert.h"
+//#include "../SystemError.h"
+#include "../Core/BasicTypes.h"
+//#include "../Utilities/Utilities.h"
 
-namespace Engine
+namespace Gem
 {
     namespace Memory
     {
@@ -113,7 +113,7 @@ namespace Engine
 			{
 #ifdef CONFIG_MEMORY_DEBUG
 	#ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-				DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
+				//DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
 	#endif
 #endif
 				return nullptr;
@@ -153,7 +153,7 @@ namespace Engine
 				default:
 #ifdef CONFIG_MEMORY_DEBUG
 	#ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-					DEBUG_LOG(Error::INVALID_ALLOCATOR_TYPE);
+					//DEBUG_LOG(Error::INVALID_ALLOCATOR_TYPE);
 	#endif
 #endif
 					break;
@@ -185,7 +185,7 @@ namespace Engine
 			{
 #ifdef CONFIG_MEMORY_DEBUG
 	#ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-				DEBUG_LOG(Error::INVALID_DEALLOCATION_ADDRESS);
+				//DEBUG_LOG(Error::INVALID_DEALLOCATION_ADDRESS);
 	#endif
 #endif
 				return nullptr;
@@ -213,7 +213,7 @@ namespace Engine
 				default:
 #ifdef CONFIG_MEMORY_DEBUG
 	#ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-					DEBUG_LOG(Error::INVALID_ALLOCATOR_TYPE);
+					//DEBUG_LOG(Error::INVALID_ALLOCATOR_TYPE);
 	#endif
 #endif
 					break;
@@ -658,7 +658,7 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
+                //DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
     #endif
 #endif
                 return nullptr;
@@ -703,7 +703,7 @@ namespace Engine
             {
 #ifdef CONFIG_MEMORY_DEBUG
     #ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-                DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
+                //DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
     #endif
 #endif
                 return nullptr;
@@ -875,7 +875,7 @@ namespace Engine
 			{
 #ifdef CONFIG_MEMORY_DEBUG
 	#ifdef CONFIG_MEMORY_VERBOSE_LOGGING
-				DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
+				//DEBUG_LOG(Error::INVALID_ALLOCATION_SIZE);
 	#endif
 #endif
 				return nullptr;
