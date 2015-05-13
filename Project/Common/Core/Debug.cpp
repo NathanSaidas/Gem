@@ -3,12 +3,18 @@
 #include <stdarg.h>
 #include "Time.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#include <io.h>
+#endif
+
 namespace Gem
 {
 	namespace Debugging
 	{
 
 		const int Debug::MAX_DEBUG_STRING_LENGTH = 2048;
+		bool Debug::s_IsCreated = false;
 
 		Debug::Debug()
 		{
@@ -22,6 +28,7 @@ namespace Gem
 
 		void Debug::Log(const char * aHeader, const char * aMessage, const char * aFilename)
 		{
+			CreateConsole();
 			TimeStruct time = Time::GetTimeStruct();
 			if (aHeader != nullptr)
 			{
@@ -34,6 +41,7 @@ namespace Gem
 		}
 		void Debug::Warning(const char * aHeader, const char * aMessage, const char * aFilename )
 		{
+			CreateConsole();
 			TimeStruct time = Time::GetTimeStruct();
 			if (aHeader != nullptr)
 			{
@@ -46,6 +54,7 @@ namespace Gem
 		}
 		void Debug::Error(const char * aHeader, const char * aMessage, const char * aFilename)
 		{
+			CreateConsole();
 			TimeStruct time = Time::GetTimeStruct();
 			if (aHeader != nullptr)
 			{
@@ -59,6 +68,7 @@ namespace Gem
 
 		void Debug::LogFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...)
 		{
+			CreateConsole();
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
 			va_start(args, aFormat);
@@ -76,6 +86,7 @@ namespace Gem
 		}
 		void Debug::LogFormat(const char * aHeader, const char * aFormat, ...)
 		{
+			CreateConsole();
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
 			va_start(args, aFormat);
@@ -93,6 +104,7 @@ namespace Gem
 		}
 		void Debug::WarningFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...)
 		{
+			CreateConsole();
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
 			va_start(args, aFormat);
@@ -110,6 +122,7 @@ namespace Gem
 		}
 		void Debug::WarningFormat(const char * aHeader, const char * aFormat, ...)
 		{
+			CreateConsole();
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
 			va_start(args, aFormat);
@@ -127,6 +140,7 @@ namespace Gem
 		}
 		void Debug::ErrorFormat(const char * aHeader, const char * aFilename, const char * aFormat, ...)
 		{
+			CreateConsole();
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
 			va_start(args, aFormat);
@@ -144,6 +158,7 @@ namespace Gem
 		}
 		void Debug::ErrorFormat(const char * aHeader, const char * aFormat, ...)
 		{
+			CreateConsole();
 			char tempbuffer[MAX_DEBUG_STRING_LENGTH];
 			va_list args;
 			va_start(args, aFormat);
@@ -180,6 +195,35 @@ namespace Gem
 				aError.GetMethodFullName(),
 				aError.GetErrorTrace().filename,
 				aError.GetErrorTrace().line);
+		}
+
+		void Debug::Error(const char * aHeader, const Debugging::Error & aError)
+		{
+			Debug::LogFormat(aHeader, nullptr, "Message[%d]: %s at %s\nFile: %s\nLine%d",
+				aError.GetErrorCode(),
+				aError.GetErrorString(),
+				aError.GetMethodFullName(),
+				aError.GetErrorTrace().filename,
+				aError.GetErrorTrace().line);
+		}
+
+		void Debug::CreateConsole()
+		{
+			if (s_IsCreated)
+			{
+				return;
+			}
+#ifdef WIN32
+			AllocConsole();
+			SetConsoleTitle("Debug Console");
+
+			int consoleHandle = _open_osfhandle((long)GetStdHandle(STD_OUTPUT_HANDLE), 0x400);
+			FILE * filePointer = _fdopen(consoleHandle, "w");
+			*stdout = *filePointer;
+			setvbuf(stdout, NULL, _IONBF, 0);
+#endif
+
+			s_IsCreated = true;
 		}
 	}
 }

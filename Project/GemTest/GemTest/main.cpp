@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <utility>
 #include <memory>
+#include <Windows.h>
 #include "../../Common/Engine.h"
 
 using namespace Gem;
@@ -22,27 +23,33 @@ void OnInitialized()
 	Debugging::Debug::Log("Test","Initialize Stuff Here...");
 }
 
-int main(int argc, char ** argv)
+int WINAPI WinMain(HINSTANCE aCurrentInstance, HINSTANCE aPreviousInstance, LPSTR aCommandLineArgs, int aShowCommand)
 {
-
-	Application::RegisterEvent(ApplicationEventType::OnStart, OnStart);
-	Application::RegisterEvent(ApplicationEventType::OnStop, OnStop);
-	Application::RegisterEvent(ApplicationEventType::OnSystemsInitialized, OnInitialized);
-	int code = Gem::Application::Execute("Test App", Gem::ApplicationType::Console);
-
-	//Gem::Memory::MemoryManager::Initialize();
-	//Gem::Reflection::Runtime::Compile(nullptr);
-	//
-	//Gem::Vector2 vec1;
-	//vec1.Set(72.0f, 16.0f);
-	//Gem::Vector2 vec2 = vec1.Normalized();
-	//
-	//Gem::Debugging::Debug::LogFormat("Math", "Vec1 = %s", vec1.ToString().c_str());
-	//Gem::Debugging::Debug::LogFormat("Math", "Vec2 = %s", vec2.ToString().c_str());
-	//
-	//Gem::Reflection::Runtime::Terminate();
-	//Gem::Memory::MemoryManager::Terminate();
+	try
+	{
+		Application::RegisterEvent(ApplicationEventType::OnStart, OnStart);
+		Application::RegisterEvent(ApplicationEventType::OnStop, OnStop);
+		Application::RegisterEvent(ApplicationEventType::OnSystemsInitialized, OnInitialized);
+		int code = Gem::Application::Execute("Test App", Gem::ApplicationType::Window, aCurrentInstance);
+		system("pause");
+		return code;
+	}
+	catch (std::exception & aException)
+	{
+		MessageBox(NULL, aException.what(), "Error", MB_OK | MB_ICONEXCLAMATION);
+	}
 	system("pause");
-
-	return code;
+	return EXIT_FAILURE;
 }
+
+//int main(int argc, char ** argv)
+//{
+//
+//	Application::RegisterEvent(ApplicationEventType::OnStart, OnStart);
+//	Application::RegisterEvent(ApplicationEventType::OnStop, OnStop);
+//	Application::RegisterEvent(ApplicationEventType::OnSystemsInitialized, OnInitialized);
+//	int code = Gem::Application::Execute("Test App", Gem::ApplicationType::Console, NULL);
+//	system("pause");
+//
+//	return code;
+//}

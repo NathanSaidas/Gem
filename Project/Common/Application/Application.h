@@ -17,6 +17,10 @@
 #include "ApplicationType.h"
 #include "ApplicationEventType.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 
 namespace Gem
 {
@@ -62,7 +66,12 @@ namespace Gem
 		* @param aType The type of application this is.
 		* @return returns a UInt32 value which specifys how the Application got terminated.
 		*/
+		
+#ifdef _WIN32
+		static UInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType, HINSTANCE aHandleInstance);
+#else
 		static UInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType);
+#endif
 
 		/**
 		* Register for ApplicationEvents with this method.
@@ -126,6 +135,10 @@ namespace Gem
 		* The code for exit.
 		*/
 		UInt32 m_ExitCode;
+
+#ifdef _WIN32
+		HINSTANCE m_HandleInstance;
+#endif
 
 		/**
 		* Starts the application as if it were a window.

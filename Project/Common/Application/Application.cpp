@@ -1,5 +1,7 @@
+#include <glew-1.10.0\include\GL\glew.h>
 #include "Application.h"
 #include "../Engine.h"
+
 
 using namespace Gem::Debugging;
 
@@ -20,8 +22,11 @@ namespace Gem
 	{
 
 	}
-
+#ifdef _WIN32
+	UInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType, HINSTANCE aHandleInstance)
+#else
 	UInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType)
+#endif
 	{
 		if (s_Instance == nullptr)
 		{
@@ -29,6 +34,9 @@ namespace Gem
 			s_Instance->m_ApplicationName = aApplicationName;
 			s_Instance->m_ApplicationType = aType;
 			s_Instance->m_ExitCode = EXIT_SUCCESS;
+#ifdef _WIN32
+			s_Instance->m_HandleInstance = aHandleInstance;
+#endif
 			switch (aType)
 			{
 			case ApplicationType::Console:
@@ -120,6 +128,35 @@ namespace Gem
 		s_OnSystemsInitialized.Invoke();
 
 		//TODO(Nathan): Create Window, begin game loop
+
+		Win32Window * window = MEM_POOL_ALLOC_T(Win32Window,m_ApplicationName, m_HandleInstance);
+		window->Open();
+
+		Time::Initialize();
+		MSG msg;
+		msg.message = ~WM_QUIT;
+		while (msg.message != WM_QUIT)
+		{
+			if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+			else
+			{
+				Time::Update();
+				//Update
+				glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+				window->SwapBuffer();
+
+				Memory::MemoryManager::GetInstance()->ResetFrame();
+			}
+		}
+		window->Close();
+		MEM_POOL_DEALLOC_T(window, Win32Window);
+
+		m_ExitCode = static_cast<int>(msg.wParam);
 
 		//Terminate Systems
 		Reflection::Runtime::Terminate();

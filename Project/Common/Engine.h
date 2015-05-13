@@ -14,6 +14,7 @@
 #include "Reflection\Reflection.h"
 #include "Math\Math.h"
 #include "Application\Application.h"
+#include "Window\Win32Window.h"
 
 //Namespaces Used.
 

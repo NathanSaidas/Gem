@@ -102,6 +102,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Lib|Win32'">
@@ -138,6 +139,7 @@
     <ClInclude Include="..\..\..\Common\Core\Debug.h" />
     <ClInclude Include="..\..\..\Common\Core\Enum.h" />
     <ClInclude Include="..\..\..\Common\Core\Error.h" />
+    <ClInclude Include="..\..\..\Common\Core\ErrorConstants.h" />
     <ClInclude Include="..\..\..\Common\Core\Event.h" />
     <ClInclude Include="..\..\..\Common\Core\Func.h" />
     <ClInclude Include="..\..\..\Common\Core\GemAPI.h" />
@@ -188,6 +190,7 @@
     <ClInclude Include="..\..\..\Common\Reflection\TypeTrait.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Array.h" />
     <ClInclude Include="..\..\..\Common\Utilities\StringExtensions.h" />
+    <ClInclude Include="..\..\..\Common\Window\Win32Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Application\Application.cpp" />
@@ -213,6 +216,7 @@
     <ClCompile Include="..\..\..\Common\Reflection\MetaObjectLinker.cpp" />
     <ClCompile Include="..\..\..\Common\Reflection\Runtime.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\StringExtensions.cpp" />
+    <ClCompile Include="..\..\..\Common\Window\Win32Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -23,6 +23,9 @@
     <Filter Include="API\Application">
       <UniqueIdentifier>{ce6bf96e-a1e5-413a-8efd-bbcb439e0e17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Window">
+      <UniqueIdentifier>{0036d576-28b8-4894-a6b2-06fdf51cc1ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -199,6 +202,12 @@
     <ClInclude Include="..\..\..\Common\Application\ApplicationEventType.h">
       <Filter>API\Application</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Window\Win32Window.h">
+      <Filter>API\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Core\ErrorConstants.h">
+      <Filter>API\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -269,6 +278,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Application\ApplicationEventType.cpp">
       <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Window\Win32Window.cpp">
+      <Filter>API\Window</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -113,14 +113,17 @@ namespace Gem
 			*/
 			static void InvalidArgument(const Debugging::InvalidArgument & aError);
 
+			static void Error(const char * aHeader, const Debugging::Error & aError);
 
 		private:
 			Debug();
-			
+			static bool s_IsCreated;
 			/**
 			* The maximum length of the debug string for [LogType]Format methods.. (Currently set to 2048).
 			*/
 			static const int MAX_DEBUG_STRING_LENGTH;
+
+			static void CreateConsole();
 		};
 
 #ifndef GENERATE_INVALID_ARGUMENT
