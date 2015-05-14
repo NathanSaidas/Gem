@@ -7,10 +7,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GemTest", "GemTest\GemTest.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_DLL|Win32 = Debug_DLL|Win32
+		Debug_Lib|Win32 = Debug_Lib|Win32
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Debug_DLL|Win32.ActiveCfg = Debug|Win32
+		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Debug_DLL|Win32.Build.0 = Debug|Win32
+		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Debug_Lib|Win32.ActiveCfg = Debug|Win32
+		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Debug_Lib|Win32.Build.0 = Debug|Win32
 		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Debug|Win32.ActiveCfg = Debug|Win32
 		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Debug|Win32.Build.0 = Debug|Win32
 		{26F63CF7-B9B7-4F1E-B313-767CA5DF5714}.Release|Win32.ActiveCfg = Release|Win32

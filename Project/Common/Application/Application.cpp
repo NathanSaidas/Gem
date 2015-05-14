@@ -1,6 +1,9 @@
 #include <glew-1.10.0\include\GL\glew.h>
 #include "Application.h"
+#include <mutex>
 #include "../Engine.h"
+#include <Windows.h>
+
 
 
 using namespace Gem::Debugging;
@@ -14,6 +17,8 @@ namespace Gem
 	Event<> Application::s_OnSystemsInitialized = Event<>();
 
 	Application::Application()
+		: m_DefaultWindow(nullptr),
+		m_ShouldQuit(false)
 	{
 
 	}
@@ -23,9 +28,9 @@ namespace Gem
 
 	}
 #ifdef _WIN32
-	UInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType, HINSTANCE aHandleInstance)
+	SInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType, void * aHandleInstance)
 #else
-	UInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType)
+	SInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType)
 #endif
 	{
 		if (s_Instance == nullptr)
@@ -117,6 +122,14 @@ namespace Gem
 		return s_Instance->m_ApplicationName;
 	}
 
+	void Application::Quit()
+	{
+		if (s_Instance != nullptr)
+		{
+			s_Instance->m_ShouldQuit = true;
+		}
+	}
+
 	Scene * Application::GetCurrentScene()
 	{
 		return nullptr;
@@ -124,8 +137,105 @@ namespace Gem
 
 	Window * Application::GetDefaultWindow()
 	{
+		return s_Instance != nullptr ? s_Instance->m_DefaultWindow : nullptr;
+	}
+
+	void Application::StartThread(ThreadEntryCallback aCallback)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+
+		Pointer<Thread> thread;
+		s_Instance->m_Threads.push_back(thread);
+		thread->Start(aCallback);
+	}
+
+#ifdef CreateWindow
+#undef CreateWindow
+
+	void Application::CreateWindow(const std::string & aName)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+#ifdef _WIN32
+		Pointer<Win32Window> win32Window = Pointer<Win32Window>(aName, (HINSTANCE)s_Instance->m_HandleInstance);
+		Pointer<Window>  window = win32Window.Cast<Window>();
+		//
+		if (!window->Open())
+		{
+			Error error = Error("Failed to create window", ErrorConstants::FAILED_WINDOW_CREATION, GET_TRACE(2), "Application::CreateWindow");
+			Debug::Error("Gem", error);
+		}
+		else
+		{
+			s_Instance->m_Windows.push_back(window);
+		}
+#else
+
+#endif
+	}
+
+#define CreateWindow CreateWindowA
+#endif
+
+	Window * Application::GetWindow(void * aHandle)
+	{
+		if (s_Instance == nullptr)
+		{
+			return nullptr;
+		}
+
+		for (std::vector<Pointer<Window>>::iterator it = s_Instance->m_Windows.begin();
+			it != s_Instance->m_Windows.end();
+			it++)
+		{
+			if ((*it)->GetHandle() == aHandle)
+			{
+				return (*it).Raw();
+			}
+		}
 		return nullptr;
 	}
+
+	void Application::Win32SendMessage(const Win32Message & aMessage, Window * aWindow)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+
+		switch (aMessage)
+		{
+		case Win32Message::Destroy:
+			{
+				//Handle window unregister.
+				for (std::vector<Pointer<Window>>::iterator it = s_Instance->m_Windows.begin();
+					it != s_Instance->m_Windows.end();
+					it++)
+				{
+					if ((*it).Raw() == aWindow)
+					{
+						s_Instance->m_Windows.erase(it);
+						break;
+					}
+				}
+			}
+			break;
+		case Win32Message::Resize:
+
+			if (aWindow != nullptr)
+			{
+
+			}
+
+			break;
+		}
+	}
+
 
 	void Application::StartWindow()
 	{
@@ -139,13 +249,18 @@ namespace Gem
 
 		//TODO(Nathan): Create Window, begin game loop
 
-		Win32Window * window = MEM_POOL_ALLOC_T(Win32Window,m_ApplicationName, m_HandleInstance);
-		window->Open();
+		//Win32Window * window = MEM_POOL_ALLOC_T(Win32Window,m_ApplicationName, (HINSTANCE)m_HandleInstance);
+		//window->Open();
+
+		Pointer<Win32Window> win32Window = Pointer<Win32Window>(m_ApplicationName, (HINSTANCE)m_HandleInstance);
+		win32Window->Open();
+
+		m_DefaultWindow = win32Window.Raw();
 
 		Time::Initialize();
 		MSG msg;
 		msg.message = ~WM_QUIT;
-		while (msg.message != WM_QUIT)
+		while (!m_ShouldQuit)
 		{
 			if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE))
 			{
@@ -158,16 +273,35 @@ namespace Gem
 				//Update
 				glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				window->SwapBuffer();
+				win32Window->SwapBuffer();
 
+				//Poll Input
+
+				//World Loading ? Load World... 
+
+				//World Not Loading ? Update Game World...
+					//Start Thread - Update Game World
+					//Start Thread - Physics Simulation
+
+					//Render Task Already Queued ? Ignore 
+					//Else Queue Render Task - Render Game World
+
+				CheckThreads();
 				Memory::MemoryManager::GetInstance()->ResetFrame();
 			}
 		}
-		window->Close();
-		MEM_POOL_DEALLOC_T(window, Win32Window);
+		win32Window->Close();
+		win32Window.Terminate();
+		m_DefaultWindow = nullptr;
+		//MEM_POOL_DEALLOC_T(window, Win32Window);
 
-		m_ExitCode = static_cast<int>(msg.wParam);
+		//m_ExitCode = static_cast<int>(msg.wParam);
 
+		while (m_Threads.size() > 0)
+		{
+			//Waiting for threads to quit.
+			CheckThreads();
+		}
 		//Terminate Systems
 		Reflection::Runtime::Terminate();
 		Memory::MemoryManager::Terminate();
@@ -184,13 +318,41 @@ namespace Gem
 		//Invoke callback for OnSystemsInitialized.
 		s_OnSystemsInitialized.Invoke();
 
-
+		while (m_Threads.size() > 0)
+		{
+			CheckThreads();
+		}
 
 		//Terminate Systems
 		Reflection::Runtime::Terminate();
 		Memory::MemoryManager::Terminate();
 		//Invoke callback OnStopWindow
 		s_OnStop.Invoke();
+	}
+
+	bool Application::FindThread(const size_t & aID, Pointer<Thread> & aThread) const
+	{
+		for (std::vector<Pointer<Thread>>::const_iterator it = m_Threads.begin(); it != m_Threads.end(); it++)
+		{
+			if ((*it)->GetID() == aID)
+			{
+				aThread = *it;
+				return true;
+			}
+		}
+		return false;
+	}
+	void Application::CheckThreads()
+	{
+		std::mutex mu;
+		std::lock_guard<std::mutex> guard(mu);
+		for (SInt32 i = (SInt32)m_Threads.size() - 1; i >= 0; i--)
+		{
+			if (!m_Threads[i]->IsExecuting())
+			{
+				m_Threads.erase(m_Threads.begin() + i);
+			}
+		}
 	}
 
 }

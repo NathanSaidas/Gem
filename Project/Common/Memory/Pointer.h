@@ -28,17 +28,17 @@ namespace Gem
 	{
 	public:
 		///Default Constructor will allocate a instance of the TYPE and set the reference count to 1.
-		Pointer()
-		{
-			//Set Defaults
-			m_Pointer = nullptr;
-			m_Count = nullptr;
-
-			//Allocate and set count to 1.
-			m_Count = new int;
-			*m_Count = 1;
-			Alloc();
-		}
+		//Pointer()
+		//{
+		//	//Set Defaults
+		//	m_Pointer = nullptr;
+		//	m_Count = nullptr;
+		//
+		//	//Allocate and set count to 1.
+		//	m_Count = new int;
+		//	*m_Count = 1;
+		//	Alloc();
+		//}
 		///Copy Constructor will take the pointer from the incoming pointer and increment the reference count.
 		Pointer(const Pointer & aPointer)
 		{
@@ -49,6 +49,21 @@ namespace Gem
 			m_Pointer = aPointer.m_Pointer;
 			m_Count = aPointer.m_Count;
 			AddReference();
+		}
+
+		/**
+		* A constructor for pointer which accepts arguments for the construction of the type.
+		*/
+		template<typename ... ARGS>
+		Pointer(ARGS ... args)
+		{
+			m_Pointer = nullptr;
+			m_Count = nullptr;
+			
+			m_Count = new int;
+			*m_Count = 1;
+		
+			m_Pointer = MEM_POOL_ALLOC_T(TYPE,args...);
 		}
 		
 		///Destructor decrements a reference.
@@ -109,6 +124,15 @@ namespace Gem
 			return *m_Count;
 		}
 
+		TYPE * Raw()
+		{
+			return m_Pointer;
+		}
+
+		const TYPE * CRaw() const
+		{
+			return m_Pointer;
+		}
 		
 		/**
 		* Removes a reference from the pointer and sets the count / pointer to nullptr;
@@ -292,12 +316,15 @@ namespace Gem
 			m_Pointer = MEM_POOL_ALLOC_T(TYPE);
 		}
 
+
 		///Deallocates the memory associated with the pointer.
 		void Dealloc()
 		{
-			Type type = m_Pointer->GetType();
-			type.GetDestructor()(m_Pointer);
-			m_Pointer = (TYPE*)MEM_POOL_DEALLOC(m_Pointer,type.GetSize());
+			//Type type = m_Pointer->GetType();
+			//type.GetDestructor()(m_Pointer);
+			//m_Pointer = (TYPE*)MEM_POOL_DEALLOC(m_Pointer,type.GetSize());
+
+			MEM_POOL_DEALLOC_T(m_Pointer, TYPE);
 		}
 
 	

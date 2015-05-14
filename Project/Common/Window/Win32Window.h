@@ -6,7 +6,22 @@
 #include "Window.h"
 
 #ifdef _WIN32
-#include <Windows.h>
+//#include <Windows.h>
+
+//#define DECLARE_HANDLE(name) struct name##__{int unused;}; typedef struct name##__ *name
+
+struct HINSTANCE__;
+typedef struct HINSTANCE__ *HINSTANCE;
+
+struct HWND__;
+typedef struct HWND__ *HWND;
+
+struct HDC__;
+typedef struct HDC__ *HDC;
+
+struct HGLRC__;
+typedef struct HGLRC__ *HGLRC;
+
 #endif
 
 namespace Gem
@@ -35,6 +50,10 @@ namespace Gem
 		void Show() override;
 		void Hide() override;
 
+		void * GetHandle() override;
+
+		void OnResize(UInt32 aWidth, UInt32 aHeight) override;
+		void OnDestroy() override;
 	protected:
 		void OnSetFullscreen() override;
 		void OnSetWindowMode() override;
@@ -48,19 +67,6 @@ namespace Gem
 		HGLRC m_OpenGLContext;
 		std::string m_WindowClassName;
 #endif
-		//std::string m_WindowName;
-		//UInt32 m_WindowWidth;
-		//UInt32 m_WindowHeight;
-		//
-		//SInt32 m_RedBits;
-		//SInt32 m_GreenBits;
-		//SInt32 m_BlueBits;
-		//SInt32 m_AlphaBits;
-		//SInt32 m_DepthBits;
-		//SInt32 m_StencilBits;
-		//bool m_IsFullscreen;
-		//bool m_IsOpen;
-		
 	};
 
 	TYPE_DEFINE(Win32Window)

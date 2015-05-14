@@ -325,6 +325,12 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\TestComponent.h">
       <Filter>API\Entity Component</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\Thread.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Window\Win32Message.h">
+      <Filter>API\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -491,6 +497,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\EntityComponent\TestComponent.cpp">
       <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\Thread.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Window\Win32Message.cpp">
+      <Filter>API\Window</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

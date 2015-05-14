@@ -13,11 +13,16 @@
 #include "Core\GemAPI.h"
 #include "Core\Debug.h"
 #include "Core\Time.h"
+#include "Core\ErrorConstants.h"
 #include "Memory\Memory.h"
 #include "Reflection\Reflection.h"
 #include "Math\Math.h"
 #include "Application\Application.h"
+//Window
+#include "Window\Window.h"
 #include "Window\Win32Window.h"
+#include "Window\Win32Message.h"
+//Utils
 #include "Utilities\Utilities.h"
 #include "EntityComponent\EntityComponent.h"
 #include "Resource\ResourceDatabase.h"
@@ -28,6 +33,10 @@
 namespace Gem
 {
 	namespace Debugging
+	{
+
+	}
+	namespace Memory
 	{
 
 	}

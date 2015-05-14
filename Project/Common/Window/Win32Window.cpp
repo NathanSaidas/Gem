@@ -1,6 +1,13 @@
 #include "Win32Window.h"
 #include "../Core/ErrorConstants.h"
 #include "../Core/Debug.h"
+#include "../Application/Application.h"
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
+
 
 using namespace Gem::Debugging;
 
@@ -16,7 +23,30 @@ namespace Gem
 		switch (aMessage)
 		{
 		case WM_DESTROY:
-			PostQuitMessage(0);
+			{
+				Application::Quit();
+			}
+			return 0;
+		case WM_ACTIVATE:
+			{
+				if (!HIWORD(aWParam))
+				{
+					//active == true
+				}
+				else
+				{
+					//active == false
+				}
+			}
+			return 0;
+		case WM_SIZE:
+			{
+				Window * window = Application::GetWindow(aHandle);
+				if (window != nullptr)
+				{
+					window->OnResize(LOWORD(aLParam), HIWORD(aLParam));
+				}
+			}
 			return 0;
 			
 		}
@@ -250,16 +280,20 @@ namespace Gem
 			m_OpenGLContext = NULL;
 		}
 
-		if (m_WindowDeviceContext != NULL)
+		if (m_WindowDeviceContext != NULL && m_WindowHandle != NULL)
 		{
 			ReleaseDC(m_WindowHandle, m_WindowDeviceContext);
 			m_WindowDeviceContext = NULL;
 		}
 
-		DestroyWindow(m_WindowHandle);
-		UnregisterClass(m_WindowClassName.c_str(), GetModuleHandle(NULL));
+		if (m_WindowHandle != NULL)
+		{
+			DestroyWindow(m_WindowHandle);
+			UnregisterClass(m_WindowClassName.c_str(), GetModuleHandle(NULL));
+		}
 
 		m_IsOpen = false;
+		m_IsShowing = false;
 
 		return true;
 #else
@@ -326,6 +360,55 @@ namespace Gem
 				}
 			}
 		}
+#endif
+	}
+
+	void * Win32Window::GetHandle()
+	{
+#ifdef _WIN32
+		return m_WindowHandle;
+#else
+		return Window::GetHandle();
+#endif
+	}
+
+	void Win32Window::OnResize(UInt32 aWidth, UInt32 aHeight)
+	{
+		Window::OnResize(aWidth, aHeight);
+		Application::Win32SendMessage(Win32Message::Resize, this);
+	}
+
+	void Win32Window::OnDestroy()
+	{
+		Application::Win32SendMessage(Win32Message::Destroy, this);
+#ifdef _WIN32
+		if (m_IsFullscreen)
+		{
+			ChangeDisplaySettings(NULL, 0);
+			ShowCursor(TRUE);
+		}
+
+		if (m_OpenGLContext != NULL)
+		{
+			wglMakeCurrent(NULL, NULL);
+			wglDeleteContext(m_OpenGLContext);
+			m_OpenGLContext = NULL;
+		}
+
+		if (m_WindowDeviceContext != NULL && m_WindowHandle != NULL)
+		{
+			ReleaseDC(m_WindowHandle, m_WindowDeviceContext);
+			m_WindowDeviceContext = NULL;
+		}
+
+		if (m_WindowHandle != NULL)
+		{
+			DestroyWindow(m_WindowHandle);
+			UnregisterClass(m_WindowClassName.c_str(), GetModuleHandle(NULL));
+		}
+
+		m_IsOpen = false;
+		m_IsShowing = false;
 #endif
 	}
 

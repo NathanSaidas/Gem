@@ -76,6 +76,22 @@ namespace Gem
 
 	}
 
+	void * Window::GetHandle()
+	{
+		return this;
+	}
+
+	void Window::OnResize(UInt32 aWidth, UInt32 aHeight)
+	{
+		m_Width = aWidth;
+		m_Height = aHeight;
+	}
+
+	void Window::OnDestroy()
+	{
+
+	}
+
 	void Window::OnSetFullscreen()
 	{
 

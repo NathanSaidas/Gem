@@ -71,6 +71,24 @@ namespace Gem
 		* Hides the window making it not visible.
 		*/
 		virtual void Hide();
+
+		/**
+		* Returns a handle to the window instance. This is used for comparing windows.
+		* @return Returns a handle to the window instance.
+		*/
+		virtual void * GetHandle();
+
+		/**
+		* Call to resize the window, or notify that it has been resized.
+		*/
+		virtual void OnResize(UInt32 aWidth, UInt32 aHeight);
+
+		/**
+		* Call to notify the window about it being destroyed.
+		*/
+		virtual void OnDestroy();
+
+		
 		
 #pragma region ACCESSORS
 
@@ -118,6 +136,8 @@ namespace Gem
 		{
 			return m_StencilBits;
 		}
+
+		
 
 		void SetFullscreen(bool aFullscreen)
 		{

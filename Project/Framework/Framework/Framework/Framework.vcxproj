@@ -224,7 +224,9 @@
     <ClInclude Include="..\..\..\Common\Utilities\ISerializeable.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Stream.h" />
     <ClInclude Include="..\..\..\Common\Utilities\StringExtensions.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\Thread.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Utilities.h" />
+    <ClInclude Include="..\..\..\Common\Window\Win32Message.h" />
     <ClInclude Include="..\..\..\Common\Window\Win32Window.h" />
     <ClInclude Include="..\..\..\Common\Window\Window.h" />
   </ItemGroup>
@@ -281,7 +283,9 @@
     <ClCompile Include="..\..\..\Common\Utilities\ISerializeable.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\Stream.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\StringExtensions.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\Thread.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\Utilities.cpp" />
+    <ClCompile Include="..\..\..\Common\Window\Win32Message.cpp" />
     <ClCompile Include="..\..\..\Common\Window\Win32Window.cpp" />
     <ClCompile Include="..\..\..\Common\Window\Window.cpp" />
   </ItemGroup>

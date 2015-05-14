@@ -16,10 +16,12 @@
 #include "../Core/Event.h"
 #include "ApplicationType.h"
 #include "ApplicationEventType.h"
+#include "../Utilities/Thread.h"
+#include "../Memory/Memory.h"
+#include "../Window/Window.h"
+#include "../Window/Win32Message.h"
 
-#ifdef _WIN32
-#include <Windows.h>
-#endif
+
 
 
 namespace Gem
@@ -44,10 +46,13 @@ namespace Gem
 	* Export ApplicationEvent type.
 	*/
 	template class GEM_API Event<>;
+	
+	
 
 	class Scene;
-	class Window;
-	
+
+	template class GEM_API std::vector<Pointer<Thread>>;
+	template class GEM_API std::vector<Pointer<Window>>;
 	/**
 	* The class that runs the entire application.
 	*
@@ -71,9 +76,9 @@ namespace Gem
 		*/
 		
 #ifdef _WIN32
-		static UInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType, HINSTANCE aHandleInstance);
+		static SInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType, void * aHandleInstance);
 #else
-		static UInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType);
+		static SInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType);
 #endif
 
 		/**
@@ -101,9 +106,40 @@ namespace Gem
 		*/
 		static const std::string GetApplicationName();
 
+		/**
+		* Tell the application to quit at the next frame.
+		*/
+		static void Quit();
+
 
 		static Scene * GetCurrentScene();
+		
+
+		//Thread Management
+		/**
+		* Start a thread at the specified entry point.
+		*/
+		static void StartThread(ThreadEntryCallback aCallback);
+
+		//Window Management
+		/**
+		* Creates a window with the given name [untested].
+		*/
+		static void CreateWindow(const std::string & aName);
+		/**
+		* Gets the window with the matching handle. (On Windows this is the equiv of the Win32Window::m_WindowHandle)
+		*/
+		static Window * GetWindow(void * aHandle);
+		/**
+		* Gets the default window of the application.
+		*/
 		static Window * GetDefaultWindow();
+		/**
+		* This method is used by the Win32Window system to send message from the WNDPROC method.
+		*/
+		static void Win32SendMessage(const Win32Message & aMessage, Window * aWindow);
+
+		
 
 	protected:
 		/**
@@ -141,11 +177,21 @@ namespace Gem
 		/**
 		* The code for exit.
 		*/
-		UInt32 m_ExitCode;
+		SInt32 m_ExitCode;
+		/**
+		* Whether or not the application should quit.
+		*/
+		bool m_ShouldQuit;
 
 #ifdef _WIN32
-		HINSTANCE m_HandleInstance;
+		void * m_HandleInstance;
 #endif
+		std::vector<Pointer<Thread>> m_Threads;
+		
+		Window * m_DefaultWindow;
+		std::vector<Pointer<Window>> m_Windows;
+
+	
 
 		/**
 		* Starts the application as if it were a window.
@@ -155,6 +201,9 @@ namespace Gem
 		* Starts the application as if it were a console.
 		*/
 		void StartConsole();
+
+		bool FindThread(const size_t & aID, Pointer<Thread> & aThread) const;
+		void CheckThreads();
 
 		
 

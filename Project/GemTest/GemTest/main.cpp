@@ -1,13 +1,29 @@
 #include <stdlib.h>
 #include <utility>
 #include <memory>
-#include <Windows.h>
+#include <chrono>
 #include "../../Common/Engine.h"
+#include <Windows.h>
 
 using namespace Gem;
 
+void RenderThread(Thread & aThread)
+{
+	for (int i = 0; i < 10; i++)
+	{
+		Debugging::Debug::Log("Render Thread", "Slow Render Frame");
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+	}
+}
+
+void OnStart();
+void OnStop();
+void OnInitialized();
+
 void OnStart()
 {
+	Application::RegisterEvent(ApplicationEventType::OnStop, OnStop);
+	Application::RegisterEvent(ApplicationEventType::OnSystemsInitialized, OnInitialized);
 	Gem::ApplicationType appType = Gem::Application::GetApplicationType();
 	Gem::Debugging::Debug::LogFormat("Test", nullptr, "Starting Application Type %s", appType.ToString().c_str());
 }
@@ -20,30 +36,17 @@ void OnStop()
 
 void OnInitialized()
 {
-	Type type = Reflection::Runtime::TypeOf<Application>();
-	Debugging::Debug::Log("Test","Initialize Stuff Here...");
+	Gem::Application::StartThread(RenderThread);
 
-	IniFileStream iniFile;
-	Array<int> ints(5);
-	
-	iniFile.AddSection("Types");
-	iniFile.BindSection("Types");
-	Array<Type> types = Reflection::Runtime::GetAllTypes();
-	for (UInt32 i = 0; i < types.GetCount(); i++)
-	{
-		iniFile.AddString(types[i].GetName().append("_Name"), types[i].GetName());
-		iniFile.AddInt(types[i].GetName().append("_TypeID"), types[i].GetTypeID());
-	}
-	iniFile.LogConsole();
 }
+
+
 
 int WINAPI WinMain(HINSTANCE aCurrentInstance, HINSTANCE aPreviousInstance, LPSTR aCommandLineArgs, int aShowCommand)
 {
 	try
 	{
 		Application::RegisterEvent(ApplicationEventType::OnStart, OnStart);
-		Application::RegisterEvent(ApplicationEventType::OnStop, OnStop);
-		Application::RegisterEvent(ApplicationEventType::OnSystemsInitialized, OnInitialized);
 		int code = Gem::Application::Execute("Test App", Gem::ApplicationType::Window, aCurrentInstance);
 		system("pause");
 		return code;
