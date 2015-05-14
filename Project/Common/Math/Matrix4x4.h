@@ -9,8 +9,8 @@ namespace Gem
 #ifdef _MSC_VER
 #pragma warning (push)
 #pragma warning (disable : 4251)
-#pragma warning (disable : 4018)
 #endif
+
 
 	template class GEM_API Gem::Reflection::MetaObject<Gem::Matrix4x4>;
 

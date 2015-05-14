@@ -97,12 +97,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GEM_FRAMEWORK_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GEM_FRAMEWORK_EXPORT;_DEBUG;_CRT_SECURE_NO_WARNINGS;GRAPHICS_OPEN_GL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\Common\Libraries</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)..\..\..\Common\Libraries\glew-1.10.0\lib\glew32.lib;opengl32.lib;Rpcrt4.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Lib|Win32'">
@@ -151,6 +151,27 @@
     <ClInclude Include="..\..\..\Common\Core\Type.h" />
     <ClInclude Include="..\..\..\Common\Core\ValueTypes.h" />
     <ClInclude Include="..\..\..\Common\Engine.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Bounds.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Camera.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Component.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\EntityComponent.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\GameObject.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\GameObjectTree.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Renderer.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Scene.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\TestComponent.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Color.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\DrawCall.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Geometry.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\GraphicEnums.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Graphics.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\ImageTexture.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Material.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Mesh.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\PrimitiveShapeBuffer.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\RenderTexture.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Shader.h" />
+    <ClInclude Include="..\..\..\Common\Graphics\Texture.h" />
     <ClInclude Include="..\..\..\Common\Math\Math.h" />
     <ClInclude Include="..\..\..\Common\Math\MathTypes.h" />
     <ClInclude Include="..\..\..\Common\Math\Matrix4x4.h" />
@@ -188,9 +209,24 @@
     <ClInclude Include="..\..\..\Common\Reflection\Runtime.h" />
     <ClInclude Include="..\..\..\Common\Reflection\StringAttribute.h" />
     <ClInclude Include="..\..\..\Common\Reflection\TypeTrait.h" />
+    <ClInclude Include="..\..\..\Common\Resource\Resource.h" />
+    <ClInclude Include="..\..\..\Common\Resource\ResourceDatabase.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Array.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\BinaryFormatter.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\Directory.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\Guid.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\IFormatter.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\IniFileStream.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\IniSection.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\IniVariables.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\IniVector3.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\IniVector4.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\ISerializeable.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\Stream.h" />
     <ClInclude Include="..\..\..\Common\Utilities\StringExtensions.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\Utilities.h" />
     <ClInclude Include="..\..\..\Common\Window\Win32Window.h" />
+    <ClInclude Include="..\..\..\Common\Window\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Application\Application.cpp" />
@@ -201,6 +237,25 @@
     <ClCompile Include="..\..\..\Common\Core\Enum.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Time.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Type.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\Bounds.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\Camera.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\Component.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\GameObject.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\GameObjectTree.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\Renderer.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\Scene.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\TestComponent.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Color.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\DrawCall.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Geometry.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Graphics.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\ImageTexture.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Material.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Mesh.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\PrimitiveShapeBuffer.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\RenderTexture.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Shader.cpp" />
+    <ClCompile Include="..\..\..\Common\Graphics\Texture.cpp" />
     <ClCompile Include="..\..\..\Common\Math\Matrix4x4.cpp" />
     <ClCompile Include="..\..\..\Common\Math\Quaternion.cpp" />
     <ClCompile Include="..\..\..\Common\Math\Vector2.cpp" />
@@ -215,8 +270,20 @@
     <ClCompile Include="..\..\..\Common\Reflection\MemberInfo.cpp" />
     <ClCompile Include="..\..\..\Common\Reflection\MetaObjectLinker.cpp" />
     <ClCompile Include="..\..\..\Common\Reflection\Runtime.cpp" />
+    <ClCompile Include="..\..\..\Common\Resource\Resource.cpp" />
+    <ClCompile Include="..\..\..\Common\Resource\ResourceDatabase.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\BinaryFormatter.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\Directory.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\Guid.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\IFormatter.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\IniFileStream.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\IniSection.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\ISerializeable.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\Stream.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\StringExtensions.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\Utilities.cpp" />
     <ClCompile Include="..\..\..\Common\Window\Win32Window.cpp" />
+    <ClCompile Include="..\..\..\Common\Window\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

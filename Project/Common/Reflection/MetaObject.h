@@ -13,6 +13,7 @@
 
 
 #include <limits>
+#include <type_traits>
 #include "../Core/GemAPI.h"
 #include "TypeTrait.h"
 #include "MetaObjectLinker.h"
@@ -41,13 +42,15 @@ namespace Gem
 
                 types.push_back(const_cast<char*>(aClassName));
 
+				//static_assert(!std::is_abstract<T>::value, "Abstract Type");
+
 
                 ///Insert class name and base class attributes into the registry
                 stringAttributes.insert(StringAttribPair(const_cast<char*>(aClassName), StringAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_NAME, aClassName)));
                 stringAttributes.insert(StringAttribPair(const_cast<char*>(aClassName), StringAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_BASE_CLASS_NAME, aBaseClass)));
                 ///Insert compile time class information such as size and alignment into the registry
                 intAttributes.insert(IntAttribPair(const_cast<char*>(aClassName), IntAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_SIZE, sizeof(T))));
-                intAttributes.insert(IntAttribPair(const_cast<char*>(aClassName), IntAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_ALIGNMENT, __alignof(T))));
+				intAttributes.insert(IntAttribPair(const_cast<char*>(aClassName), IntAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_ALIGNMENT, __alignof(T))));
                 boolAttributes.insert(BoolAttribPair(const_cast<char*>(aClassName), BoolAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_IS_CLASS, true)));
                 boolAttributes.insert(BoolAttribPair(const_cast<char*>(aClassName), BoolAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_IS_INTERFACE, false)));
                 boolAttributes.insert(BoolAttribPair(const_cast<char*>(aClassName), BoolAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_IS_ABSTRACT, false)));

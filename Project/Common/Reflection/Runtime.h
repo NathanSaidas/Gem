@@ -32,6 +32,7 @@ namespace Gem
             {
                 return TypeOf(TypeTrait<T>::Name());
             }
+			static Array<Type> GetAllTypes();
             static bool IsBaseOf(Type & aDerived, Type & aBaseClass);
             static bool IsBadType(const Type & aType);
             static bool IsCompiling();

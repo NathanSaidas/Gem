@@ -158,6 +158,23 @@ namespace Gem
             }
             return (*type).second;
         }
+		Array<Type> Runtime::GetAllTypes()
+		{
+			if (s_Instance == nullptr)
+			{
+				return Array<Type>();
+			}
+			Array<Type> types = s_Instance->m_CompiledTypes.size();
+			int index = 0;
+			for (std::map<std::string, Type>::iterator it = s_Instance->m_CompiledTypes.begin();
+				it != s_Instance->m_CompiledTypes.end();
+				it++)
+			{
+				types[index] = (*it).second;
+				index++;
+			}
+			return types;
+		}
         bool Runtime::IsBaseOf(Type & aDerived, Type & aBaseClass)
         {
             Type type = aDerived;

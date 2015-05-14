@@ -11,10 +11,10 @@
 
 namespace Gem
 {
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable : 4018)
-#endif
+//#ifdef _MSC_VER
+//#pragma warning (push)
+//#pragma warning (disable : 4018)
+//#endif
 
 	template class GEM_API Gem::Reflection::MetaObject<Gem::Quaternion>;
 
@@ -47,9 +47,9 @@ namespace Gem
     };
 
     TYPE_DEFINE(Quaternion)
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
+//#ifdef _MSC_VER
+//#pragma warning (pop)
+//#endif
 
 }
 

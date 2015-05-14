@@ -26,6 +26,8 @@
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
 
+#pragma warning ( disable : 4018)
+
 namespace glm{
 namespace detail
 {

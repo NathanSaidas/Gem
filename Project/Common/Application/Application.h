@@ -44,6 +44,9 @@ namespace Gem
 	* Export ApplicationEvent type.
 	*/
 	template class GEM_API Event<>;
+
+	class Scene;
+	class Window;
 	
 	/**
 	* The class that runs the entire application.
@@ -97,6 +100,10 @@ namespace Gem
 		* @return Returns the type of application this is.
 		*/
 		static const std::string GetApplicationName();
+
+
+		static Scene * GetCurrentScene();
+		static Window * GetDefaultWindow();
 
 	protected:
 		/**

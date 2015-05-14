@@ -1,5 +1,5 @@
-#ifndef GAME_ENGINE_STRING_EXTENSIONS_H
-#define GAME_ENGINE_STRING_EXTENSIONS_H
+#ifndef GEM_STRING_EXTENSIONS_H
+#define GEM_STRING_EXTENSIONS_H
 
 #include "../Core/BasicTypes.h"
 #include <string>

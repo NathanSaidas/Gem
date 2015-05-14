@@ -26,6 +26,15 @@
     <Filter Include="API\Window">
       <UniqueIdentifier>{0036d576-28b8-4894-a6b2-06fdf51cc1ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Graphics">
+      <UniqueIdentifier>{6e8493f5-506f-4f89-a790-c33bee001832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Resource">
+      <UniqueIdentifier>{e702eb6d-ea5d-4f2c-a8b2-cd86f47cc607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\Entity Component">
+      <UniqueIdentifier>{6bfef947-f742-4ccc-a0a6-c0f5417559f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -208,6 +217,114 @@
     <ClInclude Include="..\..\..\Common\Core\ErrorConstants.h">
       <Filter>API\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\BinaryFormatter.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\Directory.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\Guid.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\IFormatter.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\IniFileStream.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\IniSection.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\IniVariables.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\IniVector3.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\IniVector4.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\ISerializeable.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\Stream.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\Utilities.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Color.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\DrawCall.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Geometry.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\GraphicEnums.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Graphics.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\ImageTexture.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Material.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Mesh.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\PrimitiveShapeBuffer.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\RenderTexture.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Shader.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Graphics\Texture.h">
+      <Filter>API\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Resource\Resource.h">
+      <Filter>API\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Resource\ResourceDatabase.h">
+      <Filter>API\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Window\Window.h">
+      <Filter>API\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Bounds.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Camera.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Component.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\EntityComponent.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\GameObject.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\GameObjectTree.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Renderer.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Scene.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\TestComponent.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -281,6 +398,99 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Window\Win32Window.cpp">
       <Filter>API\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\BinaryFormatter.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\Directory.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\Guid.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\IFormatter.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\IniFileStream.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\IniSection.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\ISerializeable.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\Stream.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\Utilities.cpp">
+      <Filter>API\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Color.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\DrawCall.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Geometry.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Graphics.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\ImageTexture.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Material.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Mesh.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\PrimitiveShapeBuffer.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\RenderTexture.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Shader.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Graphics\Texture.cpp">
+      <Filter>API\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Resource\Resource.cpp">
+      <Filter>API\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Resource\ResourceDatabase.cpp">
+      <Filter>API\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Window\Window.cpp">
+      <Filter>API\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\Bounds.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\Camera.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\Component.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\GameObject.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\GameObjectTree.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\Renderer.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\Scene.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\TestComponent.cpp">
+      <Filter>API\Entity Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

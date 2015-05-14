@@ -24,26 +24,33 @@ namespace Gem
 		return DefWindowProc(aHandle, aMessage, aWParam, aLParam);
 	}
 
-	Win32Window::Win32Window(const std::string & aWindowName, HINSTANCE aHandleInstance)
-		: m_WindowName(aWindowName),
-		m_HandleInstance(m_HandleInstance),
+	RDEFINE_CLASS(Win32Window,Window)
+
+	Win32Window::Win32Window()
+		: Window(),
+		m_HandleInstance(NULL),
 		m_WindowHandle(NULL),
 		m_WindowDeviceContext(NULL),
-		m_OpenGLContext(NULL),
-		m_WindowWidth(1024),
-		m_WindowHeight(768),
-		m_RedBits(8),
-		m_GreenBits(8),
-		m_BlueBits(8),
-		m_AlphaBits(8),
-		m_DepthBits(8),
-		m_StencilBits(8),
-		m_IsFullscreen(false),
-		m_IsOpen(false)
+		m_OpenGLContext(NULL)
 	{
 
 	}
 
+	Win32Window::Win32Window(const std::string & aWindowName, HINSTANCE aHandleInstance)
+		: Window(aWindowName),
+		m_HandleInstance(m_HandleInstance),
+		m_WindowHandle(NULL),
+		m_WindowDeviceContext(NULL),
+		m_OpenGLContext(NULL)
+	{
+
+	}
+
+#else
+	Win32Window::Win32Window() : Window()
+	{
+
+	}
 #endif
 	Win32Window::~Win32Window()
 	{
@@ -52,14 +59,17 @@ namespace Gem
 
 	bool Win32Window::Open()
 	{
+		//Checks the state, any incorrect settings will get fixed.
+		CheckState();
+
+		//If the window is already open, ignore this call.
 		if (m_IsOpen)
 		{
 			return true;
 		}
 		//Register Window Class
-
 #ifdef _WIN32
-		m_WindowClassName = m_WindowName;
+		m_WindowClassName = m_Name;
 		WNDCLASS wc;
 		ZeroMemory(&wc, sizeof(WNDCLASS));
 		wc.style = 0;
@@ -80,7 +90,8 @@ namespace Gem
 			return false;
 		}
 
-		RECT windowRect = { 0, 0, m_WindowWidth, m_WindowHeight };
+		//Create the Window
+		RECT windowRect = { 0, 0, m_Width, m_Height };
 
 		DWORD exStyle;
 		DWORD style;
@@ -119,7 +130,7 @@ namespace Gem
 		}
 
 		
-
+		//Setup the OpenGL context
 		PIXELFORMATDESCRIPTOR pixelFormatDescriptor;
 		ZeroMemory(&pixelFormatDescriptor, sizeof(PIXELFORMATDESCRIPTOR));
 		pixelFormatDescriptor.nSize				= sizeof(PIXELFORMATDESCRIPTOR);
@@ -214,6 +225,7 @@ namespace Gem
 
 	bool Win32Window::Close()
 	{
+		CheckState();
 		if (!m_IsOpen)
 		{
 			return true;
@@ -263,6 +275,157 @@ namespace Gem
 		SwapBuffers(m_WindowDeviceContext);
 #else
 
+#endif
+	}
+
+	bool Win32Window::IsOpen()
+	{
+		CheckState();
+		return m_IsOpen;
+	}
+
+	bool Win32Window::IsFullscreen()
+	{
+		return m_IsFullscreen;
+	}
+
+	bool Win32Window::IsShowing()
+	{
+		CheckState();
+		return m_IsShowing;
+	}
+
+	void Win32Window::Show()
+	{
+		CheckState();
+#ifdef _WIN32
+		if (m_WindowHandle != NULL)
+		{
+			if (!m_IsShowing)
+			{
+				if (ShowWindow(m_WindowHandle, SW_RESTORE) == TRUE)
+				{
+					m_IsShowing = true;
+				}
+			}
+		}
+#endif
+	}
+
+	void Win32Window::Hide()
+	{
+		CheckState();
+#ifdef _WIN32
+		if (m_WindowHandle != NULL)
+		{
+			if (m_IsShowing)
+			{
+				if (ShowWindow(m_WindowHandle, SW_MINIMIZE) == TRUE)
+				{
+					m_IsShowing = false;
+				}
+			}
+		}
+#endif
+	}
+
+	void Win32Window::OnSetFullscreen()
+	{
+		if (!m_IsFullscreen)
+		{
+#ifdef _WIN32
+			DEVMODE newSettings;
+			EnumDisplaySettings(NULL, 0, &newSettings);
+			newSettings.dmPelsWidth = m_Width;
+			newSettings.dmPelsHeight = m_Height;
+			newSettings.dmBitsPerPel = 32;
+			newSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+
+			if (ChangeDisplaySettings(&newSettings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
+			{
+				m_IsFullscreen = false;
+			}
+			else
+			{
+				m_IsFullscreen = true;
+			}
+#endif
+		}
+	}
+
+	void Win32Window::OnSetWindowMode()
+	{
+		if (m_IsFullscreen)
+		{
+#ifdef _WIN32
+			ChangeDisplaySettings(NULL, 0);
+			ShowCursor(TRUE);
+#endif
+		}
+	}
+
+
+	void Win32Window::CheckState()
+	{
+#ifdef _WIN32
+		//If one of the handles is null, everything is null. This could result in leaked memory.
+		if (m_WindowHandle == NULL
+			|| m_WindowDeviceContext == NULL
+			|| m_OpenGLContext == NULL)
+		{
+			bool leakedMemory = false;
+
+			if (m_WindowHandle != NULL)
+			{
+				leakedMemory = true;
+			}
+			m_WindowHandle = NULL;
+			if (m_WindowDeviceContext != NULL)
+			{
+				leakedMemory = true;
+			}
+			m_WindowDeviceContext = NULL;
+			if (m_OpenGLContext != NULL)
+			{
+				leakedMemory = true;
+			}
+			m_OpenGLContext = NULL;
+
+			m_WindowClassName = "";
+
+			m_IsOpen = false;
+			m_IsShowing = false;
+
+			if (leakedMemory)
+			{
+				Error error = Error("Error checking window state, possible memory leaked.", ErrorConstants::LEAKED_WINDOW_MEMORY, GET_TRACE(2), "Win32Window::CheckState");
+				Debug::Error("Window",error);
+			}
+		}
+		
+		//Check if the window exists. (m_IsOpen)
+		if (m_WindowHandle != NULL)
+		{
+			BOOL result = IsWindow(m_WindowHandle);
+			if (result == FALSE)
+			{
+				m_WindowHandle = NULL;
+				CheckState();
+			}
+			else
+			{
+				//Check if minimized or not.
+				result = IsIconic(m_WindowHandle);
+				if (result == FALSE && m_IsShowing)
+				{
+					m_IsShowing = false;
+				}
+				else if (result == TRUE && !m_IsShowing)
+				{
+					m_IsShowing = true;
+				}
+			}
+		}
 #endif
 	}
 }

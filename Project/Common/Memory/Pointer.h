@@ -12,6 +12,7 @@
 
 #include "MemoryManager.h"
 #include "../Core/GemAPI.h"
+#include "../Core/Debug.h"
 #include "../Reflection/Reflection.h"
 //#include "../Utilities/Utilities.h"
 //#include "../SystemAssert.h"
@@ -108,7 +109,10 @@ namespace Gem
 			return *m_Count;
 		}
 
-		///Removes a reference from the pointer and sets the count / pointer to nullptr;
+		
+		/**
+		* Removes a reference from the pointer and sets the count / pointer to nullptr;
+		*/
 		void Release()
 		{
 			RemoveReference();
@@ -132,7 +136,7 @@ namespace Gem
 				header->Read(flags, id, size);
 				if (!((flags & Memory::MemoryFlags::POOL) == Memory::MemoryFlags::POOL))
 				{
-					DEBUG_LOG("Managed pointers can only terminate memory allocated through a pool allocator.");
+					Debugging::Debug::Error("Memory", "Managed pointers can only terminate memory allocated through a pool allocator.");
 					return;
 				}
 				Dealloc();
@@ -177,7 +181,7 @@ namespace Gem
 
 			if (!((flags & Memory::MemoryFlags::POOL) == Memory::MemoryFlags::POOL))
 			{
-				DEBUG_LOG("Cannot make a pointer not allocated through a pool a managed pointer.");
+				Debugging::Debug::Error("Memory", "Cannot make a pointer that is not allocated through a pool a managed pointer.");
 				return;
 			}
 
@@ -282,7 +286,7 @@ namespace Gem
 		{
 			if (m_Pointer != nullptr)
 			{
-				DEBUG_LOG("Pointer has not been deallocated yet.");
+				Debugging::Debug::Error("Memory", "Pointer has not been deallocated yet.");
 				Dealloc();
 			}
 			m_Pointer = MEM_POOL_ALLOC_T(TYPE);

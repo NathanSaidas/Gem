@@ -11,10 +11,10 @@
 
 namespace Gem
 {
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable : 4018)
-#endif
+//#ifdef _MSC_VER
+//#pragma warning (push)
+//#pragma warning (disable : 4018)
+//#endif
 
 	RDEFINE_CLASS(Matrix4x4, object)
     Matrix4x4::Matrix4x4() : object(), glm::mat4x4()
@@ -209,9 +209,9 @@ namespace Gem
         mat[3] = (*this)[3];
         return mat;
     }
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+//#ifdef _MSC_VER
+//#pragma warning(pop)
+//#endif
 
 }
 

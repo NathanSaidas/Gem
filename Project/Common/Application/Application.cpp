@@ -117,6 +117,16 @@ namespace Gem
 		return s_Instance->m_ApplicationName;
 	}
 
+	Scene * Application::GetCurrentScene()
+	{
+		return nullptr;
+	}
+
+	Window * Application::GetDefaultWindow()
+	{
+		return nullptr;
+	}
+
 	void Application::StartWindow()
 	{
 		//Invoke callback OnStartWindow

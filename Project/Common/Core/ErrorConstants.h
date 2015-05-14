@@ -20,6 +20,7 @@ namespace Gem
 
 			//Window
 			static const int FAILED_WINDOW_CREATION = 3;
+			static const int LEAKED_WINDOW_MEMORY = 4;
 		};
 	}
 }

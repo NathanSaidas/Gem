@@ -1,12 +1,11 @@
-#ifndef GAME_ENGINE_ARRAY_H
-#define GAME_ENGINE_ARRAY_H
+#ifndef GEM_ARRAY_H
+#define GEM_ARRAY_H
 
 //============================================================
 // Date:			May,	11,		2015
 // Description:		Contains a template class called Array. Helps manage dynamic arrays
 //============================================================
 
-#include "../Core/GemAPI.h"
 #include "../Core/ValueTypes.h"
 #include <vector>
 
@@ -16,7 +15,7 @@ namespace Gem
     //A basic class for array data types.
     //Any memory allocated with Allocate method needs to be released with the Release method to prevent memory leaks.
     template<typename TYPE>
-    class GEM_API Array
+    class Array
     {
     public:
         Array()
@@ -111,4 +110,4 @@ namespace Gem
 
 }
 
-#endif
+#endif // GEM_ARRAY_H
