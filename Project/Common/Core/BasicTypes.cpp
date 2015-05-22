@@ -2,8 +2,9 @@
 
 namespace Gem
 {
-	CLASS_CPP(object, "");
-	CLASS_CPP(Object, object);
+	RDEFINE_CLASS(object,)
+	RDEFINE_CLASS(Object,object)
+	RDEFINE_PRIVATE_MEMBER(Object,m_Name,std::string)
 
 	object::object()
 	{
@@ -13,7 +14,8 @@ namespace Gem
 	{
 
 	}
-	string object::ToString()
+	RDEFINE_PUBLIC_FUNCTION(object, ToString, std::string)
+	std::string object::ToString()
 	{
         return GetType().GetName();
 	}
@@ -27,16 +29,20 @@ namespace Gem
 
 	}
 
-	string Object::ToString()
+	RDEFINE_PUBLIC_FUNCTION(Object,ToString,std::string)
+	std::string Object::ToString()
 	{
         return GetType().GetName();
 	}
 
-	string Object::GetName()
+	RDEFINE_PUBLIC_FUNCTION(Object,GetName,std::string)
+	std::string Object::GetName()
 	{
 		return m_Name;
 	}
-	void Object::SetName(const string & aName)
+
+	RDEFINE_PUBLIC_FUNCTION(Object,SetName,void, const std::string&)
+	void Object::SetName(const std::string & aName)
 	{
 		m_Name = aName;
 	}

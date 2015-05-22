@@ -159,6 +159,8 @@ namespace Gem
         std::vector<std::string> m_Interfaces;
         std::vector<Reflection::MemberInfo> m_Members;
 		std::vector<Reflection::Member*> m_Methods;
+		std::vector<Reflection::MemberInfo> m_InheritedMembers;
+		std::vector<Reflection::Member*> m_InheritedMethods;
         //std::vector<Property> m_Properties;
         Func<void*, void*> m_Constructor;
         Func<void*, void*> m_Destructor;

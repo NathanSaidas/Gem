@@ -53,6 +53,20 @@ namespace Gem
 		return Array<SInt32>();
 	}
 
+	bool Enum::IsValid(Enum * aEnum)
+	{
+		if (aEnum != nullptr)
+		{
+			return aEnum->GetValue() != InvalidEnum();
+		}
+		return false;
+	}
+
+	int Enum::InvalidEnum()
+	{
+		return -1;
+	}
+
 	std::string Enum::ToString()
 	{
 		return GetName();

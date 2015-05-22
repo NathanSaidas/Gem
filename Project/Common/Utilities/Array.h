@@ -41,6 +41,23 @@ namespace Gem
             }
         }
 
+		static void CopyAppend(const Array & aSource, Array & aDest)
+		{
+			UInt32 totalSize = aSource.GetCount() + aDest.GetCount();
+			UInt32 index = 0;
+			Array<TYPE> buffer(totalSize);
+
+			for (; index < aSource.GetCount(); index++)
+			{
+				buffer[index] = aSource[index];
+			}
+			for (UInt32 i = 0; index < totalSize; index++, i++)
+			{
+				buffer[index] = aDest[i];
+			}
+			Copy(buffer, aDest);
+		}
+
 		static void Copy(const std::vector<TYPE> & aSource, Array & aDest)
 		{
 			aDest.Allocate(aSource.size());
@@ -48,6 +65,23 @@ namespace Gem
 			{
 				aDest[i] = aSource[i];
 			}
+		}
+
+		static void CopyAppend(const std::vector<TYPE> & aSource, Array & aDest)
+		{
+			UInt32 totalSize = aSource.size() + aDest.GetCount();
+			UInt32 index = 0;
+			Array<TYPE> buffer(totalSize);
+			
+			for (; index < aSource.size(); index++)
+			{
+				buffer[index] = aSource[index];
+			}
+			for (UInt32 i = 0; index < totalSize; index++, i++)
+			{
+				buffer[index] = aDest[i];
+			}
+			Copy(buffer, aDest);
 		}
 
         UInt32 GetCount() const

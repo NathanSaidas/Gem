@@ -5,7 +5,6 @@
 #include <iostream>
 #include "../../Common/Engine.h"
 #include <Windows.h>
-#include "ReflTest.h"
 
 using namespace Gem;
 
@@ -149,33 +148,6 @@ void OnTestHash(Gem::Thread & aThread)
 void OnInitialized()
 {
 	Application::StartThread(OnTestHash);
-
-	BaseTest btest;
-	ExtendedClass etest;
-
-	btest.SomeVirtualMethod();
-	etest.SomeVirtualMethod();
-
-	Type bTestType = btest.GetType();
-	Type eTestType = etest.GetType();
-
-	Reflection::Member * member = bTestType.GetMethodInfo("SomeVirtualMethod");
-	Reflection::MethodInfo<BaseTest, void> * methodInfo = dynamic_cast<Reflection::MethodInfo<BaseTest, void>*>(member);
-	
-	if (methodInfo != nullptr)
-	{
-		methodInfo->GetMethod().Invoke(etest);
-	}
-
-	member = eTestType.GetMethodInfo("OtherVirtualMethod");
-	Reflection::MethodInfo<BaseTest, void> * methodInfo2 = dynamic_cast<Reflection::MethodInfo<BaseTest, void>*>(member);
-
-	if (methodInfo2 != nullptr)
-	{
-		methodInfo2->GetMethod().Invoke(&etest);
-	}
-	
-	Array<Type> types = Reflection::Runtime::GetAllTypes();
 
 	bool read = true;
 

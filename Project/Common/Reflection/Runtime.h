@@ -36,6 +36,7 @@ namespace Gem
             static bool IsBaseOf(Type & aDerived, Type & aBaseClass);
             static bool IsBadType(const Type & aType);
             static bool IsCompiling();
+			static bool IsCompiled();
         private:
             static Runtime * s_Instance;
             Runtime();
@@ -44,7 +45,7 @@ namespace Gem
             bool m_IsCompiling;
             bool m_IsCompiled;
             std::map<std::string, Type> m_CompiledTypes;
-
+			int m_CompileErrorFlags;
 
             void BindIntegerAttributes(IntAttribute & aAttribute, Type & aType);
             void BindFloatAttributes(FloatAttribute & aAttribute, Type & aType);
@@ -52,6 +53,8 @@ namespace Gem
             void BindStringAttributes(StringAttribute & aAttribute, Type & aType);
             void BindFunctionAttributes(FunctionAttribute & aAttribute, Type & aType);
             void BindMemberInfoAttribute(MemberAttribute & aAttribute, Type & aType);
+
+			void LinkBaseClassMembers(Type & aChild, bool * typeLinkComplete);
         };
     }
 	

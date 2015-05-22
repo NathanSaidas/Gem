@@ -1,5 +1,4 @@
 #include "MemberInfo.h"
-#include "../Memory/Memory.h"
 
 namespace Gem
 {
@@ -26,7 +25,7 @@ namespace Gem
 
         object * MemberInfo::GetOffsetPointer(object * aObject)
         {
-            return (object*)Memory::MemoryUtils::AddPtr(aObject, m_Offset);
+			return (object*)(reinterpret_cast<uintptr_t>(aObject)+m_Offset);
         }
     }
     

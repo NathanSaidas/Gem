@@ -1,5 +1,4 @@
 #include "Runtime.h"
-#include "../Utilities/Utilities.h"
 #include "MetaObjectLinker.h"
 
 namespace Gem
@@ -10,7 +9,7 @@ namespace Gem
     {
         
         Runtime * Runtime::s_Instance = nullptr;
-        Runtime::Runtime()
+		Runtime::Runtime() : m_CompileErrorFlags(0)
         {
 
         }
@@ -135,7 +134,7 @@ namespace Gem
                     s_Instance->BindMemberInfoAttribute((*it).second, type);
                 }
 
-                printf("Compiled Type: %s\n", type.GetName().c_str());
+                //printf("Compiled Type: %s\n", type.GetName().c_str());
                 s_Instance->m_CompiledTypes.insert(std::pair<std::string, Type>(type.GetName(), type));
             }
 
@@ -154,53 +153,22 @@ namespace Gem
 
 			//Go through each created type and inherit the members... (Functions / Members)
 
-			for (std::map<std::string, Type>::iterator it = s_Instance->m_CompiledTypes.begin(); it != s_Instance->m_CompiledTypes.end(); it++)
+			int size = s_Instance->m_CompiledTypes.size();
+			bool * typeLinkComplete = new bool[size];
+			for (int i = 0; i < size; i++)
 			{
-				std::string baseclassName = (*it).second.GetBaseClass();
-				if (baseclassName == "")
-				{
-					continue;
-				}
-
-				std::map<std::string, Type>::iterator typeIter = s_Instance->m_CompiledTypes.find(baseclassName);
-				if (typeIter == s_Instance->m_CompiledTypes.end())
-				{
-					continue;
-				}
-
-				Array<MemberInfo> members = typeIter->second.GetMembers();
-				Array<Member*> methods = typeIter->second.GetMethods();
-
-				Type & const currentType = (*it).second;
-				
-				for (int i = 0; i < members.GetCount(); i++)
-				{
-					if (std::find(currentType.m_Members.begin(), currentType.m_Members.end(), members[i]) == currentType.m_Members.end())
-					{
-						currentType.m_Members.push_back(members[i]);
-					}
-				}
-
-				for (int i = 0; i < methods.GetCount(); i++)
-				{
-					bool exists = false;
-					for (std::vector<Member*>::iterator it = currentType.m_Methods.begin();
-						it != currentType.m_Methods.end();
-						it++)
-					{
-						if (strcmp((*it)->GetMemberName(), methods[i]->GetMemberName()) == 0)
-						{
-							exists = true;
-							break;
-						}
-					}
-					if (!exists)
-					{
-						currentType.m_Methods.push_back(methods[i]);
-					}
-				}
+				typeLinkComplete[i] = false;
 			}
 
+
+			for (std::map<std::string, Type>::iterator it = s_Instance->m_CompiledTypes.begin(); it != s_Instance->m_CompiledTypes.end(); it++)
+			{
+				//printf("Linking Type %s (%d)\n", (*it).second.GetName().c_str(), (*it).second.GetTypeID());
+
+				s_Instance->LinkBaseClassMembers((*it).second, typeLinkComplete);
+			}
+
+			delete[] typeLinkComplete;
 
             s_Instance->m_IsCompiled = true;
             s_Instance->m_IsCompiling = false;
@@ -242,11 +210,22 @@ namespace Gem
 
             while (!IsBadType(type))
             {
+				Array<Type> interfaces = type.GetInterfaces();
+
+				for (int i = 0; i < interfaces.GetCount(); i++)
+				{
+					if (aBaseClass == interfaces[i])
+					{
+						return true;
+					}
+				}
+
                 type = TypeOf(type.GetBaseClass());
                 if (aBaseClass == type)
                 {
                     return true;
                 }
+
             }
 
             return false;
@@ -259,6 +238,10 @@ namespace Gem
         {
             return s_Instance->m_IsCompiling;
         }
+		bool Runtime::IsCompiled()
+		{
+			return s_Instance->m_IsCompiled;
+		}
         void Runtime::BindIntegerAttributes(IntAttribute & aAttribute, Type & aType)
         {
             if (aAttribute.Is(Attribute("",MetaObjectLinker::ATTRIBUTE_TYPE_ALIGNMENT)))
@@ -336,7 +319,81 @@ namespace Gem
             }
         }
 
+		void Runtime::LinkBaseClassMembers(Type & aChild, bool * typeLinkComplete)
+		{
+			//Get Baseclass Type...
+			//Check if its been linked.
+			//If not recursively call this method on that type.
 
+			std::string baseclassName = aChild.GetBaseClass();
+			if (baseclassName == "")
+			{
+				typeLinkComplete[aChild.GetTypeID() - 1] = true;
+				return;
+			}
+
+			std::map<std::string, Type>::iterator typeIter = s_Instance->m_CompiledTypes.find(baseclassName);
+			if (typeIter == s_Instance->m_CompiledTypes.end())
+			{
+				typeLinkComplete[aChild.GetTypeID() - 1] = true;
+				//Error: Type doesnt exist.
+				return;
+			}
+
+			Type & baseClass = typeIter->second;
+
+			//If the type is not linked, link it then grab its members.
+			if (typeLinkComplete[baseClass.GetTypeID() - 1] == false)
+			{
+				LinkBaseClassMembers(baseClass, typeLinkComplete);
+			}
+			
+			Array<MemberInfo> members = baseClass.GetMembers();
+			Array<Member*> methods = baseClass.GetMethods();
+			Array<std::string> interfaces = baseClass.m_Interfaces.size();
+			Array<std::string>::Copy(baseClass.m_Interfaces, interfaces);
+
+			//Add all members from the base class if they dont exist in the child class.
+			for (int i = 0; i < members.GetCount(); i++)
+			{
+				if (std::find(aChild.m_Members.begin(), aChild.m_Members.end(), members[i]) == aChild.m_Members.end())
+				{
+					aChild.m_InheritedMembers.push_back(members[i]);
+				}
+			}
+
+			//Add all methods from the base class if they dont exist in the child class.
+			for (int i = 0; i < methods.GetCount(); i++)
+			{
+				bool exists = false;
+				for (std::vector<Member*>::iterator it = aChild.m_Methods.begin();
+					it != aChild.m_Methods.end();
+					it++)
+				{
+					if (strcmp((*it)->GetMemberName(), methods[i]->GetMemberName()) == 0)
+					{
+						exists = true;
+						break;
+					}
+				}
+				if (!exists)
+				{
+					aChild.m_InheritedMethods.push_back(methods[i]);
+				}
+			}
+
+			//Add all interfaces...
+			for (int i = 0; i < interfaces.GetCount(); i++)
+			{
+				if(std::find(aChild.m_Interfaces.begin(), aChild.m_Interfaces.end(), interfaces[i]) == aChild.m_Interfaces.end())
+				{
+					aChild.m_Interfaces.push_back(interfaces[i]);
+				}
+			}
+
+			//Type Link Complete
+			typeLinkComplete[aChild.GetTypeID() - 1] = true;
+		}
     }
 
 }

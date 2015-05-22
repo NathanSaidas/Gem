@@ -3,18 +3,16 @@
 
 #include "GemAPI.h"
 #include "ValueTypes.h"
-#include "..\Reflection\Reflection.h"
+#include "../Reflection/Reflection.h"
 
 namespace Gem
 {    
 	//Explicit Export of Types.
-	class object;
-	class Object;
-	template class GEM_API Gem::Reflection::MetaObject<Gem::object>;
-	template class GEM_API Gem::Reflection::MetaObject<Gem::Object>;
+	FORCE_EXPORT_META(object);
+	FORCE_EXPORT_META(Object);
 
 	/// <summary>
-	/// This is the base class of all objects within the engine.
+	/// This is the base class of all objects within the reflection framework.
 	/// </summary>
 	class GEM_API object
 	{
@@ -23,8 +21,8 @@ namespace Gem
 		object();
 		~object();
 
-
-		virtual string ToString();
+		RDECLARE_PUBLIC_FUNCTION(object,ToString)
+		virtual std::string ToString();
 	};
 
 	/// <summary>
@@ -36,13 +34,18 @@ namespace Gem
 	public:
 		Object();
 		~Object();
+
+		RDECLARE_PUBLIC_FUNCTION(Object, GetName)
 		string GetName();
-		void SetName(const string & aName);
+		RDECLARE_PUBLIC_FUNCTION(Object, SetName)
+		void SetName(const std::string & aName);
 		void SetName(const char * aName);
 
-		string ToString();
+		RDECLARE_PUBLIC_FUNCTION(Object, ToString)
+		std::string ToString();
 	private:
-		string m_Name;
+		RDECLARE_PRIVATE_MEMBER(Object,m_Name)
+		std::string m_Name;
 
 	};
 

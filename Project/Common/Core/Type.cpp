@@ -1,5 +1,5 @@
 #include "Type.h"
-#include "..\Reflection\Reflection.h"
+#include "../Reflection/Reflection.h"
 
 namespace Gem
 {
@@ -33,6 +33,7 @@ namespace Gem
     {
         Array<Reflection::MemberInfo> members;
         Array<Reflection::MemberInfo>::Copy(m_Members, members);
+		Array<Reflection::MemberInfo>::CopyAppend(m_InheritedMembers, members);
         return members;
     }
 
@@ -46,6 +47,14 @@ namespace Gem
                 return (*it);
             }
         }
+		for (std::vector<Reflection::MemberInfo>::const_iterator it = m_InheritedMembers.begin(); it != m_InheritedMembers.end(); it++)
+		{
+			if (aName == (*it).GetMemberName())
+			{
+				return (*it);
+			}
+		}
+
         return Reflection::MemberInfo();
     }
 
@@ -53,12 +62,20 @@ namespace Gem
 	{
 		Array<Reflection::Member*> methods;
 		Array<Reflection::Member*>::Copy(m_Methods, methods);
+		Array<Reflection::Member*>::CopyAppend(m_InheritedMethods, methods);
 		return methods;
 	}
 
 	Reflection::Member * Type::GetMethodInfo(const std::string & aName) const
 	{
 		for (std::vector<Reflection::Member*>::const_iterator it = m_Methods.begin(); it != m_Methods.end(); it++)
+		{
+			if (aName == (*it)->GetMemberName())
+			{
+				return *it;
+			}
+		}
+		for (std::vector<Reflection::Member*>::const_iterator it = m_InheritedMethods.begin(); it != m_InheritedMethods.end(); it++)
 		{
 			if (aName == (*it)->GetMemberName())
 			{

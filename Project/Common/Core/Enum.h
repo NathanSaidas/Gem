@@ -8,12 +8,12 @@
 //TODO(Nathan): Create proper name for enum DECLARE
 
 #include "BasicTypes.h"
-#include "..\Utilities\Array.h"
+#include "../Utilities/Array.h"
 
 namespace Gem
 {
-	class Enum;
-	template class GEM_API Gem::Reflection::MetaObject<Enum>;
+
+	FORCE_EXPORT_META(Enum);
 
 	/**
 	* Base class for enum types.
@@ -70,6 +70,10 @@ namespace Gem
 		* @return Returns the available values.
 		*/
 		static Array<SInt32> GetValues(Enum * aEnum);
+
+		static bool IsValid(Enum * aEnum);
+		
+		static int InvalidEnum();
 
 		/**
 		* Returns the name of the enum. 

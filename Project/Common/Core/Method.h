@@ -31,13 +31,21 @@ namespace Gem
 	{
 	public:
 		typedef RETURN(CLASS::*Delegate)(ARGS...);
+		typedef RETURN(CLASS::*ConstDelegate)(ARGS...) const;
 		Method()
 		{
 			m_Function = nullptr;
+			m_ConstFunction = nullptr;
 		}
 		Method(Delegate aFunction)
 		{
 			m_Function = aFunction;
+			m_ConstFunction = nullptr;
+		}
+		Method(ConstDelegate aFunction)
+		{
+			m_ConstFunction = aFunction;
+			m_Function = nullptr;
 		}
 		~Method()
 		{
@@ -46,46 +54,83 @@ namespace Gem
 
 		Delegate operator=(Delegate aFunction)
 		{
+			m_ConstFunction = nullptr;
 			return m_Function = aFunction;
+		}
+
+		ConstDelegate operator=(ConstDelegate aFunction)
+		{
+			m_Function = nullptr;
+			return m_ConstFunction = aFunction;
 		}
 
 		RETURN operator()(CLASS& aInstance, ARGS ... args)
 		{
-			if (m_Function != nullptr)
+			if (aInstance != nullptr)
 			{
-				return (aInstance.*m_Function)(args...);
+				if (m_Function != nullptr)
+				{
+					return (aInstance.*m_Function)(args...);
+				}
+				else if (m_ConstFunction != nullptr)
+				{
+					return (aInstance.*m_ConstFunction)(args...);
+				}
 			}
 			return RETURN();
 		}
 
 		RETURN operator()(CLASS* aInstance, ARGS ... args)
 		{
-			if (m_Function != nullptr && aInstance != nullptr)
+			if (aInstance != nullptr)
 			{
-				return (aInstance->*m_Function)(args...);
+				if (m_Function != nullptr)
+				{
+					return (aInstance->*m_Function)(args...);
+				}
+				else if (m_ConstFunction != nullptr)
+				{
+					return (aInstance->*m_ConstFunction)(args...);
+				}
 			}
 			return RETURN();
 		}
 
 		RETURN Invoke(CLASS& aInstance, ARGS ... args)
 		{
-			if (m_Function != nullptr)
+			if (aInstance != nullptr)
 			{
-				return (aInstance.*m_Function)(args...);
+				if (m_Function != nullptr)
+				{
+					return (aInstance.*m_Function)(args...);
+				}
+				else if (m_ConstFunction != nullptr)
+				{
+					return (aInstance.*m_ConstFunction)(args...);
+				}
 			}
 			return RETURN();
 		}
 		RETURN Invoke(CLASS* aInstance, ARGS ... args)
 		{
-			if (m_Function != nullptr && aInstance != nullptr)
+			if (aInstance != nullptr)
 			{
-				return (aInstance->*m_Function)(args...);
+				if (m_Function != nullptr)
+				{
+					return (aInstance->*m_Function)(args...);
+				}
+				else if (m_ConstFunction != nullptr)
+				{
+					return (aInstance->*m_ConstFunction)(args...);
+				}
 			}
+			
 			return RETURN();
 		}
 
 	private:
 		Delegate m_Function;
+		ConstDelegate m_ConstFunction;
 	};
 }
 

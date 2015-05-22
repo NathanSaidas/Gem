@@ -99,7 +99,7 @@ namespace Gem
 		*/
 #define RDECLARE_CLASS(TYPE)														\
 	private:																		\
-		static const Gem::Reflection::MetaObject<TYPE> HIDDEN_CLASS;             \
+		static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_CLASS;             \
 	public:                                                                         \
 		virtual Gem::Type GetType();                                             \
 	private:                                                                        \
@@ -110,34 +110,34 @@ namespace Gem
 		* @param BASECLASS The name of the baseclass. If there is no baseclass a empty string can be used in substitution.
 		*/
 #define RDEFINE_CLASS(TYPE,BASECLASS)																										\
-	const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_CLASS = Gem::Reflection::MetaObject<TYPE>::DefineClass(#TYPE, #BASECLASS);   \
+	const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_CLASS = Gem::Reflection::MetaObject<TYPE>::DefineClass(#TYPE, #BASECLASS);   \
 	Gem::Type TYPE::GetType() { static Gem::Type type = Gem::Reflection::Runtime::TypeOf(#TYPE); return type; }					\
 
 		/**
 		* Declares the meta data object for an abstract class. Uses the name HIDDEN_ABSTRACT_CLASS
 		* @param TYPE The name of the class being reflected.
 		*/
-#define RDECLARE_ABSTRACT_CLASS(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ABSTRACT_CLASS;
+#define RDECLARE_ABSTRACT_CLASS(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ABSTRACT_CLASS;
 		
 		/**
 		* Defines the meta data object info for an abstract class.
 		* @param TYPE The name of the class being reflected.
 		* @param BASECLASS The name of the baseclass. If there is no baseclass a empty string can be used in substitution.
 		*/
-#define RDEFINE_ABSTRACT_CLASS(TYPE,BASECLASS) const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ABSTRACT_CLASS = Gem::Reflection::MetaObject<TYPE>::DefineAbstractClass(#TYPE, #BASECLASS);
+#define RDEFINE_ABSTRACT_CLASS(TYPE,BASECLASS) const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ABSTRACT_CLASS = Gem::Reflection::MetaObject<TYPE>::DefineAbstractClass(#TYPE, #BASECLASS);
 
 		/**
 		* Declares the meta object for an interface.
 		* @param TYPE The name of the interface being reflected.
 		*/
-#define RDECLARE_INTERFACE(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE; public: virtual Gem::Type GetType(); private:
+#define RDECLARE_INTERFACE(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_INTERFACE; public: virtual Gem::Type GetType(); private:
 
 		/**
 		* Defines the meta data object info for an interface.
 		* @param TYPE The name of the class being reflected.
 		*/
 #define RDEFINE_INTERFACE(TYPE)																												\
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_INTERFACE = Gem::Reflection::MetaObject<TYPE>::DefineInterface(#TYPE);	\
+		const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_INTERFACE = Gem::Reflection::MetaObject<TYPE>::DefineInterface(#TYPE);	\
 		Gem::Type TYPE::GetType() { static Gem::Type type = Gem::Reflection::Runtime::TypeOf(#TYPE); return type; }                \
 
 		/**
@@ -145,22 +145,22 @@ namespace Gem
 		* @param TYPE The name of the class being reflected.
 		* @param INTERFACE The an interface of the class.
 		*/
-#define RDECLARE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE_ ## INTERFACE;
+#define RDECLARE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_INTERFACE_ ## INTERFACE;
 
 		/**
 		* Define the meta data object info for an inherited interface.
 		* @param TYPE The name of the class being reflected.
 		* @param INTERFACE The an interface of the class.
 		*/
-#define RDEFINE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) const Gem::Reflection::MetaObject<TYPE> TYPE:: ## HIDDEN_INTERFACE_ ## INTERFACE = Gem::Reflection::MetaObject<TYPE>::DefineClassInterface(#TYPE,#INTERFACE);
+#define RDEFINE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE) const Gem::Reflection::MetaObject<TYPE> & TYPE:: ## HIDDEN_INTERFACE_ ## INTERFACE = Gem::Reflection::MetaObject<TYPE>::DefineClassInterface(#TYPE,#INTERFACE);
 
 		/**
 		* Declare a meta object for a public reflected member.
 		* @param TYPE The name of the class being reflected
 		* @param MEMBER The name of the member being reflected.
 		*/
-#define DECLARE_PUBLIC_MEMBER(TYPE,MEMBER)														\
-	private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; public:       \
+#define RDECLARE_PUBLIC_MEMBER(TYPE,MEMBER)														\
+	private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ ## MEMBER; public:       \
 
 		/**
 		* Define a meta object for a public reflected member.
@@ -169,7 +169,7 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PUBLIC_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																				\
-	const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Public);     \
+	const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Public);     \
 
 
 		/**
@@ -178,7 +178,7 @@ namespace Gem
 		* @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PROTECTED_MEMBER(TYPE,MEMBER)													\
-		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; protected:    \
+		private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ ## MEMBER; protected:    \
 
 		/**
 		* Define a meta object for a protected reflected member.
@@ -187,7 +187,7 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PROTECTED_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																			\
-	const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Protected);    \
+	const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Protected);    \
 
 		/**
 		* Declare a meta object for a private reflected member.
@@ -195,7 +195,7 @@ namespace Gem
 		* @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PRIVATE_MEMBER(TYPE,MEMBER)													\
-		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; private:      \
+		private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ ## MEMBER; private:      \
 
 		/**
 		* Define a meta object for a private reflected member.
@@ -204,7 +204,7 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PRIVATE_MEMBER(TYPE,MEMBER,MEMBER_TYPE)                                                                                                                                             \
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Private);    \
+		const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Private);    \
 
 		
 
@@ -214,7 +214,7 @@ namespace Gem
 		*   @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PUBLIC_FUNCTION(TYPE,MEMBER) \
-		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; public:
+		private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ ## MEMBER; public:
 
 		/**
 		*	Declare a meta object for a public function
@@ -224,7 +224,7 @@ namespace Gem
 		*   @param ... (VA_ARGS) Specify the argument types of the method.
 		*/
 #define RDEFINE_PUBLIC_FUNCTION(TYPE,MEMBER,RETURN, ...)	\
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Public, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
+		const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Public, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
 
 
 		/**
@@ -233,7 +233,7 @@ namespace Gem
 		*   @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PROTECTED_FUNCTION(TYPE,MEMBER) \
-		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; protected:
+		private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ ## MEMBER; protected:
 
 		/**
 		*	Declare a meta object for a protected function
@@ -243,7 +243,7 @@ namespace Gem
 		*   @param ... (VA_ARGS) Specify the argument types of the method.
 		*/
 #define RDEFINE_PROTECTED_FUNCTION(TYPE,MEMBER,RETURN, ...)	\
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Protected, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
+		const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Protected, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
 
 		/**
 		*	Declare a meta object for a private function
@@ -251,7 +251,7 @@ namespace Gem
 		*   @param MEMBER The name of the member being reflected.
 		*/
 #define RDECLARE_PRIVATE_FUNCTION(TYPE,MEMBER) \
-		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; private:
+		private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ ## MEMBER; private:
 
 		/**
 		*	Declare a meta object for a private function
@@ -261,7 +261,7 @@ namespace Gem
 		*   @param ... (VA_ARGS) Specify the argument types of the method.
 		*/
 #define RDEFINE_PRIVATE_FUNCTION(TYPE,MEMBER,RETURN, ...)	\
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Private, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
+		const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Private, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
 
 
 
@@ -269,27 +269,31 @@ namespace Gem
 		* Declare a meta object for a reflected enum
 		* @param TYPE The name of the enum being reflected.
 		*/
-#define RDECLARE_ENUM(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ENUM;
+#define RDECLARE_ENUM(TYPE) private: static const Gem::Reflection::MetaObject<TYPE> & HIDDEN_ENUM;
 
 		/**
 		* Define the meta object into for the reflected enum.
 		* @param TYPE The name of the enum being reflected.
 		*/
-#define RDEFINE_ENUM(TYPE) const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ENUM = Gem::Reflection::MetaObject<TYPE>::DefineEnum(#TYPE);
+#define RDEFINE_ENUM(TYPE) const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ENUM = Gem::Reflection::MetaObject<TYPE>::DefineEnum(#TYPE);
 
         ///Define Primitive Types to allow for limited reflection info.
 
 #define TYPE_NAME(TYPE) Gem::Reflection::TypeTrait<TYPE>::Name()
 
+//Obsolete
 #define CLASS_HEADER(TYPE) RDECLARE_CLASS(TYPE) //private: static const Engine::Reflection::MetaObject<TYPE> HIDDEN_INTERFACE; public: virtual Engine::Type GetType(); private:
 #define CLASS_CPP(TYPE,BASECLASS) RDEFINE_CLASS(TYPE,BASECLASS)
 
+//Obsolete
 #define ABSTRACT_CLASS_HEADER(TYPE) RDECLARE_ABSTRACT_CLASS
 #define ABSTRACT_CLASS_CPP(TYPE,BASECLASS) RDEFINE_ABSTRACT_CLASS(TYPE,BASECLASS)
 
+//Obsolete
 #define INTERFACE_HEADER(TYPE) RDECLARE_INTERFACE(TYPE)
 #define INTERFACE_CPP(TYPE) RDEFINE_INTERFACE(TYPE)
 
+//Obsolete
 #define CLASS_ATTRIBUTE_INTERFACE_HEADER(TYPE,INTERFACE) RDECLARE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE)
 #define CLASS_ATTRIBUTE_INTERFACE_CPP(TYPE,INTERFACE) RDEFINE_ATTRIBUTE_INTERFACE(TYPE,INTERFACE)
 
@@ -306,20 +310,20 @@ namespace Gem
 		TYPE_DEFINE(unsigned int)
 		TYPE_DEFINE(unsigned long)
 		TYPE_DEFINE(std::string)
-		
+
 
 
 		template<typename A,typename B>
 		class TypeEqual
 		{
 		public:
-			static bool IsEqual()
+			static const bool IsEqual()
 			{
 				const char * a = TypeTrait<A>::Name();
 				const char * b = TypeTrait<B>::Name();
 				return strcmp(a, b) == 0;
 			}
-			
+
 		};
 
 		
