@@ -15,6 +15,7 @@
 #include <limits>
 #include <type_traits>
 #include "../Core/GemAPI.h"
+#include "../Core/Method.h"
 #include "TypeTrait.h"
 #include "MetaObjectLinker.h"
 
@@ -194,9 +195,11 @@ namespace Gem
             //    return GetInstance();
             //}
 
-            static MetaObject DeclareMemberType(const char * aClassName, const char * aMemberName, size_t aOffset, const char * aTypename, bool aPublic)
+            static MetaObject DeclareMemberType(const char * aClassName, const char * aMemberName, size_t aOffset, const char * aTypename, const MemberFlags & aFlags)
             {
-                MemberInfo info = MemberInfo(const_cast<char*>(aClassName), const_cast<char*>(aMemberName), const_cast<char*>(aTypename), aOffset, aPublic);
+                //MemberInfo info = MemberInfo(const_cast<char*>(aClassName), const_cast<char*>(aMemberName), const_cast<char*>(aTypename), aOffset, aPublic);
+
+				MemberInfo info = MemberInfo(aClassName, aMemberName, aFlags, aTypename, aOffset);
 
                 MemberAttribMap & memberAttributes = MetaObjectLinker::GetMemberAttributes();
                 memberAttributes.insert(
@@ -206,6 +209,25 @@ namespace Gem
 
                 return GetInstance();
             }
+
+			template<typename RETURN,typename ... ARGS>
+			static MetaObject DeclareFunction(const char * aClassName, const char * aFunctionName, MemberFlags aFlags, Method<T,RETURN,ARGS...> aFunction)
+			{
+
+				MethodInfo<T, RETURN, ARGS...> * methodInfo = new MethodInfo<T, RETURN, ARGS...>(aFunction, aClassName, aFunctionName, aFlags);
+
+				FuncAttribMap & functionAttributes = MetaObjectLinker::GetFuncAttributes();
+				functionAttributes.insert(
+					FuncAttribPair(const_cast<char*>(aClassName),
+					FunctionAttribute(aClassName, MetaObjectLinker::ATTRIBUTE_TYPE_METHOD_INFO, methodInfo)));
+
+				return GetInstance();
+			}
+
+			static MetaObject Empty()
+			{
+				return GetInstance();
+			}
 
         private:
             static void * CreateObject(void * aMemoryAddress)

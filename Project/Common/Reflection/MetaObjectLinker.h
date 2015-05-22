@@ -133,6 +133,7 @@ namespace Gem
 			static const char * ATTRIBUTE_TYPE_IS_ENUM;
 
             static const char * ATTRIBUTE_TYPE_MEMBER_INFO;
+			static const char * ATTRIBUTE_TYPE_METHOD_INFO;
         };
 
     }

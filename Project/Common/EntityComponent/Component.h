@@ -78,6 +78,25 @@ namespace Gem
 			return (COMPONENT*)GetComponentsInParent(Reflection::Runtime::TypeOf<COMPONENT>());
 		}
 
+		template<typename ... ARGS>
+		void SendMessage(std::string aFunctionName, ARGS ... args)
+		{
+			Type type = GetType();
+			Reflection::MethodInfo<Component, void, ARGS...> * method = dynamic_cast<Reflection::Member<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
+			if (method != nullptr)
+			{
+				method->GetMethod().Invoke(this, args...);
+			}
+		}
+
+		inline bool IsReceivingGameObjectMessages() const
+		{
+			return m_ReceiveGameObjectMessages;
+		}
+		inline void SetReceiveGameObjectMessages(bool aValue)
+		{
+			m_ReceiveGameObjectMessages = aValue;
+		}
 
 	protected:
 		///Gets called immediately when the component is added.
@@ -107,6 +126,7 @@ namespace Gem
         virtual void OnDeserializeEditor(IFormatter * aFormatter, Stream & aStream);
 	private:
 		GameObject * m_GameObject;
+		bool m_ReceiveGameObjectMessages;
 		friend GameObject;
 	};
 

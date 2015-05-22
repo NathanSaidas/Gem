@@ -1,0 +1,58 @@
+
+//Component Types
+//Renderer
+//PathFinder
+//AudioEmitter
+//Light
+
+//Stage One - Create GameObjects
+//Objects created are added to an array preallocated
+
+add gameobject [0] [-1] (Name = Lefty)
+add gameobject [1] [0]  (Name = Lefty-Left)
+add gameobject [2] [0]  (Name = Lefty-Righty)
+add gameobject [3] [-1] (Name = Center-Boi)
+add gameobject [4] [3]  (Name = Only)
+add gameobject [5] [4]  (Name = Only-Left)
+add gameobject [6] [4]  (Name = Only-Right)
+add gameobject [7] [-1] (Name = Righty)
+
+//Stage Two - Link GameObjects and Set Params
+link gameobject [0] {Parent = -1, this object has no parent, Set Name to "Lefty"}
+link gameobject [1] {Set Parent to gameobject[0], Set Name to "Lefty-Left"}
+link gameobject [2] {Set Parent to gameobject[0], Set Name to "Lefty-Righty"}
+link gameobject [3] {Parent = -1, this object has no parent, Set Name to "Center-Boi"}
+link gameobject [4] {Set Parent to gameobject[3], Set Name to "Only"}
+link gameobject [5] {Set Parent to gameobject[4], Set Name to "Only-Left"}
+link gameobject [6] {Set Parent to gameobject[4], Set Name to "Only-Right"}
+link gameobject [7] {Parent = -1, this object has no parent, Set Name to "Righty"}
+
+//Stage Three - Add Components
+
+//Add Components (ID,GameObject-Index,typename)
+add component [0] [0] [AudioEmitter] (Volume = 0.66) {Add AudioEmitter component to gameobject[0]}
+add component [1] [0] [Renderer] (Mesh = Cube.obj, Material = White.mat) {Add Renderer component to gameobject[0]}
+add component [2] [3] [Renderer] (Mesh = Human.obj) {Add Renderer component to gameobject[3]}
+add component [3] [3] [PathFinder] (Speed = 3.4) {Add PathFinder component to gameobject[3]}
+add component [4] [5] [AudioEmitter] (Volume = 0.88) {Add AudioEmitter component to gameobject[5]}
+add component [5] [6] [AudioEmitter] (Volume = 0.32) {Add AudioEmitter component to gameobject[6]}
+add component [6] [7] [Light] (Type = Directional, Intensity = 3.34) {Add Light component to gameobject[7]}
+
+
+//Stage Four - Link Components
+link component [0] {Set Volume to 0.66}
+link component [1] {Set Mesh to Result of Resources.Load<Mesh>(Cube.obj), Set Material to Result of Resources.Load<Material>(White.mat)}
+link component [2] {Set Mesh to Result of Resources.Load<Mesh>(Human.obj)}
+link component [3] {Set Speed to 3.4}
+link component [4] {Set Volume to 0.88}
+link component [5] {Set Volume to 0.32}
+link component [6] {Set Type to Directional, Set Intesity to 3.34}
+
+//Stage Five - Call Pre-Init on all GameObjects
+
+//Stage Six - Call Ini on all Game Objects
+
+//Scene Load Complete
+
+
+http://gamedev.stackexchange.com/questions/51820/how-can-i-convert-screen-coordinatess-to-world-coordinates-in-opentk

@@ -28,6 +28,9 @@ namespace Gem
 
     typedef uintptr_t           IntPtr;
 
+	typedef char *				String;
+	typedef const char *		CString;
+
     typedef std::string string;
 }
 

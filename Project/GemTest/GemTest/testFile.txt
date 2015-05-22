@@ -1,0 +1,6 @@
+add gameobject [0] [-1]
+count = 3 {
+name = (std::string)Chelsea
+tag = (std::string)Alien
+position = (Vector3)67,212,128,0,66,151,51,51,195,56,0,0
+}

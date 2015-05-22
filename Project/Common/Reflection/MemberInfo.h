@@ -6,8 +6,13 @@
 // Description:		Contains the MemberInfo class.
 //============================================================
 
+#pragma region CHANGE LOG
+// -- Nathan Hanlan, Added Member as base class. Refactored to use CString typedef as opposed to char *.
+// -- Nathan Hanlan, Inlined some members to make the class more clear.
+#pragma endregion
+
 #include <string>
-#include "../Core/GemAPI.h"
+#include "Member.h"
 
 namespace Gem
 {
@@ -18,26 +23,44 @@ namespace Gem
 		/**
 		* This class provides information on a member of a class.
 		*/
-        class GEM_API MemberInfo
+        class GEM_API MemberInfo : public Member
         {
         public:
-            MemberInfo(char * aClassTypeName, char * aMemberName, char * aMemberTypename, size_t aOffset, bool aIsPublic);
+			MemberInfo(CString aClassName, CString aMemberName, const MemberFlags & aFlags, CString aMemberTypename, size_t aOffset);
             MemberInfo();
             ~MemberInfo();
-            char * GetClassTypeName() const;
-            char * GetMemberName() const;
-            char * GetMemberTypename() const;
-            size_t GetOffset() const;
-            bool IsPublic() const;
 
+			/** 
+			* @return Returns the name of the member type.
+			*/
+			inline CString GetMemberTypename() const
+			{
+				return m_MemberTypename;
+			}
+			/**
+			* @return Returns the offset of the member in memory.
+			*/
+			inline size_t GetOffset() const
+			{
+				return m_Offset;
+			}
+
+			inline bool operator==(const MemberInfo & aInfo) const
+			{
+				return strcmp(GetMemberName(), aInfo.GetMemberName()) == 0;
+			}
+
+			/**
+			* @param aObject The object to use for the adjustment
+			* @return Returns a pointer of where this member would be located from the specified object.
+			*/
             object * GetOffsetPointer(object * aObject);
 
         private:
-            char * m_ClassTypeName;
-            char * m_MemberName;
-            char * m_MemberTypename;
+			/** The name of the member type*/
+            CString m_MemberTypename;
+			/** The offset of the member in memory from the class*/
             size_t m_Offset;
-            bool m_IsPublic;
         };
     }
 }

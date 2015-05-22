@@ -169,7 +169,7 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PUBLIC_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																				\
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, true);     \
+	const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Public);     \
 
 
 		/**
@@ -187,7 +187,7 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PROTECTED_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																			\
-        const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE,#MEMBER, offsetof(TYPE,MEMBER), #MEMBER_TYPE, false);    \
+	const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Protected);    \
 
 		/**
 		* Declare a meta object for a private reflected member.
@@ -204,7 +204,66 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PRIVATE_MEMBER(TYPE,MEMBER,MEMBER_TYPE)                                                                                                                                             \
-		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, false);    \
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Private);    \
+
+		
+
+		/**
+		*	Declare a meta object for a public function
+		*   @param TYPE The name of the class being reflected
+		*   @param MEMBER The name of the member being reflected.
+		*/
+#define RDECLARE_PUBLIC_FUNCTION(TYPE,MEMBER) \
+		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; public:
+
+		/**
+		*	Declare a meta object for a public function
+		*   @param TYPE The name of the class being reflected
+		*   @param MEMBER The name of the member being reflected.
+		*   @param RETURN The return type of the method
+		*   @param ... (VA_ARGS) Specify the argument types of the method.
+		*/
+#define RDEFINE_PUBLIC_FUNCTION(TYPE,MEMBER,RETURN, ...)	\
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Public, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
+
+
+		/**
+		*	Declare a meta object for a protected function
+		*   @param TYPE The name of the class being reflected
+		*   @param MEMBER The name of the member being reflected.
+		*/
+#define RDECLARE_PROTECTED_FUNCTION(TYPE,MEMBER) \
+		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; protected:
+
+		/**
+		*	Declare a meta object for a protected function
+		*   @param TYPE The name of the class being reflected
+		*   @param MEMBER The name of the member being reflected.
+		*   @param RETURN The return type of the method
+		*   @param ... (VA_ARGS) Specify the argument types of the method.
+		*/
+#define RDEFINE_PROTECTED_FUNCTION(TYPE,MEMBER,RETURN, ...)	\
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Protected, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
+
+		/**
+		*	Declare a meta object for a private function
+		*   @param TYPE The name of the class being reflected
+		*   @param MEMBER The name of the member being reflected.
+		*/
+#define RDECLARE_PRIVATE_FUNCTION(TYPE,MEMBER) \
+		private: static const Gem::Reflection::MetaObject<TYPE> HIDDEN_ ## MEMBER; private:
+
+		/**
+		*	Declare a meta object for a private function
+		*   @param TYPE The name of the class being reflected
+		*   @param MEMBER The name of the member being reflected.
+		*   @param RETURN The return type of the method
+		*   @param ... (VA_ARGS) Specify the argument types of the method.
+		*/
+#define RDEFINE_PRIVATE_FUNCTION(TYPE,MEMBER,RETURN, ...)	\
+		const Gem::Reflection::MetaObject<TYPE> TYPE::HIDDEN_## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareFunction<RETURN, __VA_ARGS__>(#TYPE, #MEMBER, Gem::Reflection::MemberFlags::Private, Gem::Method<TYPE, RETURN, __VA_ARGS__>(&##TYPE##::MEMBER));  \
+
+
 
 		/**
 		* Declare a meta object for a reflected enum

@@ -16,211 +16,89 @@ namespace Gem
 		}
 		Scene::~Scene()
 		{
-			for (int i = m_GameObjects.size() - 1; i >= 0; i--)
-			{
-				GameObject * gameObject = m_GameObjects[i];
-				Memory::AllocatorType allocType = Memory::MemoryUtils::GetAllocatorType(gameObject);
-				switch (allocType)
-				{
-					case Memory::AllocatorType::Pool:
-						MEM_POOL_DEALLOC_T(gameObject, GameObject);
-						break;
-					case Memory::AllocatorType::Stack:
-						MEM_STACK_DEALLOC_T(gameObject, GameObject);
-						break;
-					default:
-						Debug::Error("Scene", "Invalid GameObject allocation made.");
-						break;
-				}
-			}
-			
-			m_GameObjects.clear();
-			m_InitializationQueue.clear();
-			m_LateInitializationQueue.clear();
+			//Scene Graph Destroys the Top GameObject,  therefore destroying every other gameobject created.
 		}
 
 		void Scene::Register(GameObject * aGameObject)
 		{
-			if (!Utilities::Exists<GameObject*>(m_GameObjects, aGameObject))
-			{
-				aGameObject->OnRegistered();
-				m_GameObjects.push_back(aGameObject);
-				m_InitializationQueue.push_back(aGameObject);
-			}
+			m_SceneGraph.Insert(aGameObject);
 		}
 		void Scene::Unregister(GameObject * aGameObject)
 		{
-			Utilities::Remove<GameObject*>(m_GameObjects, aGameObject);
+			m_SceneGraph.Remove(aGameObject);
+		}
+
+		void Scene::Save()
+		{
+			//Mark All GameObjects
+
+
+
 		}
 
 
 		void Scene::Update()
 		{
-			for (unsigned int i = 0; i < m_InitializationQueue.size();)
-			{
-				GameObject * gameObject = m_InitializationQueue[i];
+			GameObject * top = m_SceneGraph.m_Top;
 
-				if (gameObject != nullptr && gameObject->IsActive())
-				{
-					gameObject->OnInitialize();
-					m_LateInitializationQueue.push_back(gameObject);
-					m_InitializationQueue.erase(m_InitializationQueue.begin() + i);
-				}
-				else
-				{
-					i++;
-				}
-			}
-
-			//for (std::vector<GameObject*>::iterator it = m_InitializationQueue.begin();m_InitializationQueue.size() > 0 && it != m_InitializationQueue.end();)
-			//{
-			//	if ((*it)->IsActive())
-			//	{
-			//		(*it)->OnInitialize();
-			//		m_LateInitializationQueue.push_back(*it);
-			//		std::vector<GameObject*>::iterator prev = it;
-			//		it++;
-			//		m_InitializationQueue.erase(prev);
-			//	}
-			//	else
-			//	{
-			//		it++;
-			//	}
-			//}
-
-			for (unsigned int i = 0; i < m_LateInitializationQueue.size();)
-			{
-				GameObject * gameObject = m_LateInitializationQueue[i];
-				if (gameObject != nullptr && gameObject->IsActive())
-				{
-					gameObject->OnLateInitialize();
-					m_LateInitializationQueue.erase(m_LateInitializationQueue.begin() + i);
-				}
-				else
-				{
-					i++;
-				}
-			}
-
-			//for (std::vector<GameObject*>::iterator it = m_LateInitializationQueue.begin();m_LateInitializationQueue.size() > 0 && it != m_LateInitializationQueue.end();)
-			//{
-			//	if ((*it)->IsActive())
-			//	{
-			//		(*it)->OnLateInitialize();
-			//		std::vector<GameObject*>::iterator prev = it;
-			//		it++;
-			//		m_LateInitializationQueue.erase(prev);
-			//	}
-			//	else
-			//	{
-			//		it++;
-			//	}
-			//}
-
-
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->Update();
-				}
-			}
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->LateUpdate();
-				}
-				
-			}
+			top->BroadcastMessage<>("InternalOnUpdateState");
+			top->BroadcastMessage<int>("InternalOnUpdate", 0);
+			top->BroadcastMessage<int>("InternalOnUpdate", 1);
 		}
 		void Scene::FixedUpdate()
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->FixedUpdate();
-				}
-				
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<int>("InternalOnPhysicsUpdate", 0);
+			top->BroadcastMessage<int>("InternalOnRenderUpdate", 0);
+			top->BroadcastMessage<int>("InternalOnRenderUpdate", 1);
+			top->BroadcastMessage<int>("InternalOnRenderUpdate", 2);
 		}
 		void Scene::PreRender()
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnPreRender();
-				}
-				
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<int>("InternalOnRenderUpdate", 0);
 		}
 		void Scene::Render()
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnRender();
-				}
-				
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<int>("InternalOnRenderUpdate", 1);
 		}
 		void Scene::PostRender()
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnPostRender();
-				}
-				
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<int>("InternalOnRenderUpdate", 2);
 		}
 
 		
 
-		void Scene::OnWindowFocus(OpenGLWindow * aWindow)
+		void Scene::OnWindowFocus(Window * aWindow)
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnWindowFocus(aWindow);
-				}
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<Window*>("OnWindowFocus", aWindow);
 		}
-		void Scene::OnWindowUnfocus(OpenGLWindow * aWindow)
+		void Scene::OnWindowUnfocus(Window * aWindow)
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnWindowUnfocus(aWindow);
-				}
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<Window*>("OnWindowUnfocus", aWindow);
 		}
-		void Scene::OnWindowClose(OpenGLWindow * aWindow)
+		void Scene::OnWindowClose(Window * aWindow)
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnWindowClose(aWindow);
-				}
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<Window*>("OnWindowClose", aWindow);
 		}
-		void Scene::OnWindowChangeSize(OpenGLWindow * aWindow, int aWidth, int aHeight)
+		void Scene::OnWindowChangeSize(Window * aWindow, int aWidth, int aHeight)
 		{
-			for (std::vector<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-			{
-				if ((*it)->IsActive())
-				{
-					(*it)->OnWindowChangeSize(aWindow, aWidth, aHeight);
-				}
-			}
+			GameObject * top = m_SceneGraph.m_Top;
+			top->BroadcastMessage<Window*,int,int>("OnWindowClose", aWindow, aWidth, aHeight);
 		}
 
+		void Scene::Insert(GameObject * aGameObject)
+		{
+			m_SceneGraph.Insert(aGameObject);
+		}
+		void Scene::Remove(GameObject * aGameObject)
+		{
+			m_SceneGraph.Remove(aGameObject);
+		}
 	
 }

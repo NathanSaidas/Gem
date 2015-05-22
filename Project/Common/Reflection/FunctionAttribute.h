@@ -18,6 +18,8 @@
 #include "../Core/Func.h"
 #include "../Core/GemAPI.h"
 
+#include "Member.h"
+
 template class GEM_API Gem::Func<void*, void*>;
 
 namespace Gem
@@ -42,6 +44,14 @@ namespace Gem
             {
                 m_Value = aValue;
             }
+
+			FunctionAttribute(CString aClassName, CString aAttributeName, Member * aMethodInfo)
+				: Attribute(aClassName, aAttributeName),
+				m_MethodInfo(aMethodInfo)
+			{
+
+			}
+
 			/**
 			* Gets the value of the attribute
 			* @return Returns the value.
@@ -50,11 +60,18 @@ namespace Gem
             {
                 return m_Value;
             }
+
+			inline Member * GetMethodInfo()
+			{
+				return m_MethodInfo;
+			}
         private:
 			/**
 			* The value of the attribute
 			*/
             Func<void*, void*> m_Value;
+
+			Member * m_MethodInfo; 
         };
 
 		TYPE_DEFINE(FunctionAttribute);

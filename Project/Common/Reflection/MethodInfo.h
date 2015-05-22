@@ -8,7 +8,7 @@
 
 #include "../Core/GemAPI.h"
 #include "../Core/Method.h"
-#include "MemberInfo.h"
+#include "Member.h"
 
 namespace Gem
 {
@@ -16,15 +16,15 @@ namespace Gem
     {
 
 		template<typename CLASS, typename RETURN, typename ... ARGS>
-		class GEM_API MethodInfo : public MemberInfo
+		class MethodInfo : public Member
 		{
 		public:
-			MethodInfo()
+			MethodInfo() : Member(nullptr, nullptr, MemberFlags::Empty)
 			{
 				m_Method = nullptr;
 			}
-			MethodInfo(Method<CLASS,RETURN,ARGS...> aFunction, const char * aClassTypename, const char * aMemberName, const char * aMemberTypename, size_t aOffset, bool aIsPublic)
-				: MemberInfo(aClassTypename,aMemberName,aMemberTypename,aOffset,aIsPublic)
+			MethodInfo(Method<CLASS,RETURN,ARGS...> aFunction, CString aClassTypename, CString aMemberName, const MemberFlags & aFlags)
+				: Member(aClassTypename,aMemberName,aFlags)
 			{
 				m_Method = aFunction;
 			}

@@ -16,7 +16,7 @@ namespace Gem
 	/**
 	*	IFormatter represents the interface class for marshalling data in and out of streams.
 	*/
-	class IFormatter
+	class GEM_API IFormatter
 	{
 		RDECLARE_INTERFACE(IFormatter);
 	public:

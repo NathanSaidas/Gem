@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../Core/Debug.h"
+#include "../Utilities/Utilities.h"
 
 using namespace Gem::Debugging;
 
@@ -12,6 +13,35 @@ namespace Gem
 	Stream::Stream()
 	{
 
+	}
+	Stream::Stream(std::string & aBytes)
+	{
+		m_Bytes.clear();
+		int startIndex = 0;
+		int currentIndex = 0;
+
+		while (true)
+		{
+			for (; currentIndex < aBytes.size(); currentIndex++)
+			{
+				if (aBytes[currentIndex] == ',')
+				{
+					int length = currentIndex - startIndex;
+					std::string substring = aBytes.substr(startIndex, length);
+					if (substring.size() > 0)
+					{
+						m_Bytes.push_back(Utilities::StringToByte(substring));
+					}
+					startIndex = currentIndex + 1;
+				}
+			}
+
+			if (currentIndex >= aBytes.size())
+			{
+				break;
+			}
+		}
+		
 	}
 	Stream::~Stream()
 	{
@@ -121,5 +151,20 @@ namespace Gem
 		Array<UInt8> bytes;
 		Array<UInt8>::Copy(m_Bytes, bytes);
 		return bytes;
+	}
+
+	std::string Stream::ToString()
+	{
+		std::string result;
+		for (int i = 0; i < m_Bytes.size(); i++)
+		{
+			std::string stringValue = Utilities::ByteToString(m_Bytes[i]);
+			result.append(stringValue);
+			if (i != m_Bytes.size() - 1)
+			{
+				result.append(",");
+			}
+		}
+		return result;
 	}
 }

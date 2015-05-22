@@ -17,8 +17,7 @@ namespace Gem
 	/**
 	* Export the type.
 	*/
-	class ApplicationEventType;
-	template class GEM_API Gem::Reflection::MetaObject<ApplicationEventType>;
+	FORCE_EXPORT_META(ApplicationEventType);
 
 	/**
 	* Specify's the type of events there are for the Application Class.
@@ -34,9 +33,9 @@ namespace Gem
 			OnSystemsInitialized,
 		};
 		RDECLARE_ENUM(ApplicationEventType)
-			RENUM_H(ApplicationEventType, Values)
-	private:
-		static const std::string NAMES[Values::OnSystemsInitialized + 1];
+		RENUM_H(ApplicationEventType, Values, Values::OnSystemsInitialized + 1)
+	//private:
+	//	static const std::string NAMES[Values::OnSystemsInitialized + 1];
 	};
 
 	TYPE_DEFINE(ApplicationEventType)

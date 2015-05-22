@@ -25,7 +25,7 @@ namespace Gem
 
 	#define TYPE_DEFINE(TYPE)										\
 		template<>													\
-		struct Gem::Reflection::TypeTrait < TYPE >			\
+		struct Gem::Reflection::TypeTrait < TYPE >					\
 		{															\
 		public:														\
 		static inline const char * Name()							\
@@ -35,7 +35,7 @@ namespace Gem
 		static const bool IS_POINTER = false;						\
 		};															\
 		template<>													\
-		struct Gem::Reflection::TypeTrait< TYPE ## *>		\
+		struct Gem::Reflection::TypeTrait< TYPE ## *>				\
 		{															\
 		public:														\
 		static inline const char * Name()							\
@@ -45,12 +45,46 @@ namespace Gem
 		static const bool IS_POINTER = true;						\
 		};															\
 		template<>													\
-		struct Gem::Reflection::TypeTrait< TYPE ## **>		\
+		struct Gem::Reflection::TypeTrait< TYPE ## **>				\
 		{															\
 		public:														\
 		static inline const char * Name()							\
 		{															\
 		return #TYPE;												\
+		}															\
+		static const bool IS_POINTER = true;						\
+		};															\
+
+
+
+#define TYPE_DEFINE_NAMED(TYPE, NAME)								\
+	template<>														\
+		struct Gem::Reflection::TypeTrait < TYPE >					\
+		{															\
+		public:														\
+		static inline const char * Name()							\
+		{															\
+		return NAME;												\
+		}															\
+		static const bool IS_POINTER = false;						\
+		};															\
+		template<>													\
+		struct Gem::Reflection::TypeTrait< TYPE ## *>				\
+		{															\
+		public:														\
+		static inline const char * Name()							\
+		{															\
+		return NAME;												\
+		}															\
+		static const bool IS_POINTER = true;						\
+		};															\
+		template<>													\
+		struct Gem::Reflection::TypeTrait< TYPE ## **>				\
+		{															\
+		public:														\
+		static inline const char * Name()							\
+		{															\
+		return NAME;												\
 		}															\
 		static const bool IS_POINTER = true;						\
 		};															\

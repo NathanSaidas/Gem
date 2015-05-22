@@ -54,6 +54,13 @@ namespace Gem
 			return stream.str();
 		}
 
+		std::string UI2S(UInt32 aValue)
+		{
+			std::stringstream stream;
+			stream << aValue;
+			return stream.str();
+		}
+
 		Float32 S2F(const std::string & aString)
 		{
 			std::stringstream stream(aString);
@@ -65,6 +72,28 @@ namespace Gem
 		{
 			std::stringstream stream(aString);
 			SInt32 value = 0;
+			stream >> value;
+			return value;
+		}
+
+		UInt32 S2UI(const std::string & aString)
+		{
+			std::stringstream stream(aString);
+			UInt32 value = 0;
+			stream >> value;
+			return value;
+		}
+
+		std::string ByteToString(UInt8 aValue)
+		{
+			std::stringstream stream;
+			stream << aValue;
+			return stream.str();
+		}
+		UInt8 StringToByte(const std::string & aString)
+		{
+			std::stringstream stream(aString);
+			UInt8 value = 0;
 			stream >> value;
 			return value;
 		}

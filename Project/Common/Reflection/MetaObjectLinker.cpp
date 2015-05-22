@@ -17,6 +17,7 @@ namespace Gem
         const char * MetaObjectLinker::ATTRIBUTE_TYPE_IS_ABSTRACT = "IsAbstract";
 		const char * MetaObjectLinker::ATTRIBUTE_TYPE_IS_ENUM = "IsEnum";
         const char * MetaObjectLinker::ATTRIBUTE_TYPE_MEMBER_INFO = "MemberInfo";
+		const char * MetaObjectLinker::ATTRIBUTE_TYPE_METHOD_INFO = "MethodInfo";
     }
     
 }

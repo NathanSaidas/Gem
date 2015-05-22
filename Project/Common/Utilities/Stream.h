@@ -23,6 +23,7 @@ namespace Gem
 	public:
 
 		Stream();
+		Stream(std::string & aBytes);
 		~Stream();
 
 		/**
@@ -70,6 +71,8 @@ namespace Gem
 		* @return Returns an array of bytes.
 		*/
 		Array<UInt8> ToBytes();
+
+		std::string ToString();
 
 	private:
 		/**

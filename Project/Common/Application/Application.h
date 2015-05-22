@@ -16,6 +16,7 @@
 #include "../Core/Event.h"
 #include "ApplicationType.h"
 #include "ApplicationEventType.h"
+#include "BaseAppHandler.h"
 #include "../Utilities/Thread.h"
 #include "../Memory/Memory.h"
 #include "../Window/Window.h"
@@ -77,8 +78,10 @@ namespace Gem
 		
 #ifdef _WIN32
 		static SInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType, void * aHandleInstance);
+		static SInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType, void * aHandleInstance, BaseAppHandler * aAppHandler);
 #else
 		static SInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType);
+		static SInt32 Execute(const std::string & aApplicationName, const ApplicationType & aType, BaseAppHandler * aAppHandler);
 #endif
 
 		/**
@@ -191,6 +194,10 @@ namespace Gem
 		Window * m_DefaultWindow;
 		std::vector<Pointer<Window>> m_Windows;
 
+		/** This will handle all application events. */
+		BaseAppHandler * m_AppHandler;
+
+		Scene * m_CurrentScene;
 	
 
 		/**

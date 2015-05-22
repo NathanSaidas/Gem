@@ -8,5 +8,10 @@
 #include "Camera.h"
 #include "Renderer.h"
 
+#include "ECSerializer.h"
+#include "InstructionTerm.h"
+#include "InstructionData.h"
+#include "InstructionTokenID.h"
+
 #endif // GEM_ENTITY_COMPONENT_H
 

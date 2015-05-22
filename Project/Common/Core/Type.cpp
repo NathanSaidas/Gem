@@ -36,6 +36,7 @@ namespace Gem
         return members;
     }
 
+	
     Reflection::MemberInfo Type::GetMember(const std::string & aName) const
     {
         for (std::vector<Reflection::MemberInfo>::const_iterator it = m_Members.begin(); it != m_Members.end(); it++)
@@ -47,4 +48,23 @@ namespace Gem
         }
         return Reflection::MemberInfo();
     }
+
+	Array<Reflection::Member*> Type::GetMethods() const
+	{
+		Array<Reflection::Member*> methods;
+		Array<Reflection::Member*>::Copy(m_Methods, methods);
+		return methods;
+	}
+
+	Reflection::Member * Type::GetMethodInfo(const std::string & aName) const
+	{
+		for (std::vector<Reflection::Member*>::const_iterator it = m_Methods.begin(); it != m_Methods.end(); it++)
+		{
+			if (aName == (*it)->GetMemberName())
+			{
+				return *it;
+			}
+		}
+		return nullptr;
+	}
 }

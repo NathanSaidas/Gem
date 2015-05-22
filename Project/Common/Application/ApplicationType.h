@@ -33,9 +33,9 @@ namespace Gem
 			Window,
 		};
 		RDECLARE_ENUM(ApplicationType)
-		RENUM_H(ApplicationType,Values)
-	private:
-		static const std::string NAMES[Values::Window + 1];
+		RENUM_H(ApplicationType,Values, Values::Window + 1)
+	//private:
+	//	static const std::string NAMES[Values::Window + 1];
 	};
 
 	TYPE_DEFINE(ApplicationType)

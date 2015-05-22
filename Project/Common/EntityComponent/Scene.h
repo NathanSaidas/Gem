@@ -3,6 +3,7 @@
 
 #include "../Core/GemAPI.h"
 #include "../Core/BasicTypes.h"
+#include "SceneGraph.h"
 #include <vector>
 
 
@@ -10,7 +11,7 @@ namespace Gem
 {
 	class GameObject;
 	class Application;
-	class OpenGLWindow;
+	class Window;
 	class Graphics;
 
 	class Scene;
@@ -28,19 +29,16 @@ namespace Gem
 
 		
 
-		void Register(GameObject * aGameObject);
-		void Unregister(GameObject * aGameObject);
-
-
 		
+
+
+		void Save();
 
 
 
 	private:
-		std::vector<GameObject*> m_GameObjects;
-		std::vector<GameObject*> m_InitializationQueue;
-		std::vector<GameObject*> m_LateInitializationQueue;
 
+		SceneGraph m_SceneGraph;
 
 		void Update();
 		void FixedUpdate();
@@ -48,13 +46,19 @@ namespace Gem
 		void Render();
 		void PostRender();
 
-		void OnWindowFocus(OpenGLWindow * aWindow);
-		void OnWindowUnfocus(OpenGLWindow * aWindow);
-		void OnWindowClose(OpenGLWindow * aWindow);
-		void OnWindowChangeSize(OpenGLWindow * aWindow, int aWidth, int aHeight);
+		void OnWindowFocus(Window * aWindow);
+		void OnWindowUnfocus(Window * aWindow);
+		void OnWindowClose(Window * aWindow);
+		void OnWindowChangeSize(Window * aWindow, int aWidth, int aHeight);
+
+		void Insert(GameObject * aGameObject);
+		void Remove(GameObject * aGameObject);
+
+		void Register(GameObject * aGameObject);
+		void Unregister(GameObject * aGameObject);
 
 		friend Application;
-		friend GameObject;
+		friend class GameObject;
 		friend Graphics;
 
 	};

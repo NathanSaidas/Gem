@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include "Func.h"
+#include "../Reflection/Member.h"
 #include "../Reflection/MemberInfo.h"
 #include "../Utilities/Array.h"
 #include "GemAPI.h"
@@ -23,6 +24,7 @@
 
 
 template class GEM_API std::vector<Gem::Reflection::MemberInfo>;
+template class GEM_API std::vector<Gem::Reflection::Member*>;
 template class GEM_API Gem::Func<void*, void*>;
 
 namespace Gem
@@ -90,19 +92,20 @@ namespace Gem
 		}
 
         Array<Type> GetInterfaces() const;
-        //{
-        //    Array<std::string> info;
-        //    Array<std::string>::Copy(m_Interfaces, info);
-        //    return info;
-        //}
+        
         Type GetInterface(const std::string & aName) const;
         Array<Reflection::MemberInfo> GetMembers() const;
+		/**
+		* Searches for a member by name.
+		* @ param aName The name of the member to search for.
+		*/
         Reflection::MemberInfo GetMember(const std::string & aName) const;
-        //{
-        //    Array<Reflection::MemberInfo> info;
-        //    Array<Reflection::MemberInfo>::Copy(m_Members, info);
-        //    return info;
-        //}
+        
+
+		Array<Reflection::Member*> GetMethods() const;
+
+		Reflection::Member * GetMethodInfo(const std::string & aName) const;
+
         Func<void*, void*> GetConstructor() const
         {
             return m_Constructor;
@@ -155,6 +158,7 @@ namespace Gem
 		bool m_IsEnum;
         std::vector<std::string> m_Interfaces;
         std::vector<Reflection::MemberInfo> m_Members;
+		std::vector<Reflection::Member*> m_Methods;
         //std::vector<Property> m_Properties;
         Func<void*, void*> m_Constructor;
         Func<void*, void*> m_Destructor;

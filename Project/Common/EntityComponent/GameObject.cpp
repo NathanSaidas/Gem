@@ -2,71 +2,70 @@
 #include "Scene.h"
 #include "../Application/Application.h"
 #include "../Memory/Memory.h"
+#include "InstructionTerm.h"
 
 using namespace Gem::Debugging;
+using namespace Gem::EntityComponent;
 
 namespace Gem
 {
 	RDEFINE_CLASS(GameObject, object)
+	RDEFINE_PRIVATE_MEMBER(GameObject, m_SerializerFlag, SInt32)
 
-	GameObject::GameObject()
+
+	
+	
+
+	GameObject::GameObject() : object(),
+		m_Name("New GameObject"),
+		m_Tag(""),
+		m_RenderMask(0),
+		m_PhysicsMask(0),
+		m_IsActive(false),
+		m_Parent(nullptr),
+		m_Position(Vector3::Zero()),
+		m_Rotation(Quaternion::Identity()),
+		m_Scale(Vector3::Zero()),
+		m_SerializerFlag(-1)
 	{
-		m_Name = "New GameObject";
-		m_Tag = "";
-		m_RenderMask = 0;
-		m_PhysicsMask = 0;
-		m_IsActive = true;
-		m_Parent = nullptr;
-		m_Position = Vector3::Zero();
-        m_Rotation = Quaternion::Identity();
-		m_Scale = Vector3::One();
-		m_LocalPosition = Vector3::Zero();
-        m_LocalRotation = Quaternion::Identity();
-
-		Scene * scene = Application::GetCurrentScene();
-		if (scene != nullptr)
-		{
-			scene->Register(this);
-		}
-
-		
-
+		InternalOnCreate();
 	}
-	GameObject::GameObject(const std::string & aName)
+	GameObject::GameObject(const std::string & aName) : object(),
+		m_Name(aName),
+		m_Tag(""),
+		m_RenderMask(0),
+		m_PhysicsMask(0),
+		m_IsActive(false),
+		m_Parent(nullptr),
+		m_Position(Vector3::Zero()),
+		m_Rotation(Quaternion::Identity()),
+		m_Scale(Vector3::Zero()),
+		m_SerializerFlag(-1)
 	{
-		m_Name = aName;
-		m_Tag = "";
-		m_RenderMask = 0;
-		m_PhysicsMask = 0;
-		m_IsActive = true;
-		m_Parent = nullptr;
-		m_Position = Vector3::Zero();
-        m_Rotation = Quaternion::Identity();
-		m_Scale = Vector3::One();
-		m_LocalPosition = Vector3::Zero();
-        m_LocalRotation = Quaternion::Identity();
-
-		Scene * scene = Application::GetCurrentScene();
-		if (scene != nullptr)
-		{
-			scene->Register(this);
-		}
-		
+		InternalOnCreate();
 	}
+
+	GameObject::GameObject(SInt32 aInternalHash) : object(),
+		m_Name("__ROOT__"),
+		m_Tag(""),
+		m_RenderMask(0),
+		m_PhysicsMask(0),
+		m_IsActive(false),
+		m_Parent(nullptr),
+		m_Position(Vector3::Zero()),
+		m_Rotation(Quaternion::Identity()),
+		m_Scale(Vector3::Zero()),
+		m_SerializerFlag(-1)
+	{
+		//Does not call InternalOnCreate this constructor is intended to be used for by SceneGraphs.
+	}
+
 	GameObject::~GameObject()
 	{
-		for (int i = m_Components.size() - 1; i >= 0; i--)
-		{
-			Component * component = m_Components[i];
-			Type type = component->GetType();
-			type.GetDestructor().Invoke(component);
-			MEM_POOL_DEALLOC(component, type.GetSize());
-		}
-		
-		m_Components.clear();
+		InternalOnDestroy();
 	}
 	
-	void Destroy(GameObject * aGameObject)
+	void GameObject::Destroy(GameObject * aGameObject)
 	{
 		if (aGameObject != nullptr)
 		{
@@ -78,118 +77,20 @@ namespace Gem
 		}
 	}
 
-	void GameObject::OnRegistered()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnRegister();
-		}
-	}
-	void GameObject::OnInitialize()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnInitialize();
-		}
-	}
-	void GameObject::OnLateInitialize()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnLateInitialize();
-		}
-	}
-	void GameObject::OnEnable()
-	{
 
-	}
-	void GameObject::OnDisable()
-	{
+	
 
-	}
-	void GameObject::OnDestroy()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnDestroy();
-		}
-	}
-	void GameObject::OnLateDestroy()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnLateDestroy();
-		}
-	}
-	void GameObject::Update()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->Update();
-		}
-	}
-	void GameObject::LateUpdate()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->LateUpdate();
-		}
-	}
-	void GameObject::FixedUpdate()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->FixedUpdate();
-		}
-	}
-	void GameObject::OnPreRender()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnPreRender();
-		}
-	}
-	void GameObject::OnRender()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnRender();
-		}
-	}
-	void GameObject::OnPostRender()
-	{
-		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
-		{
-			(*it)->OnPostRender();
-		}
-	}
-
-	void GameObject::OnWindowFocus(OpenGLWindow * aWindow)
-	{
-
-	}
-	void GameObject::OnWindowUnfocus(OpenGLWindow * aWindow)
-	{
-
-	}
-	void GameObject::OnWindowClose(OpenGLWindow * aWindow)
-	{
-
-	}
-	void GameObject::OnWindowChangeSize(OpenGLWindow * aWindow, int aWidth, int aHeight)
-	{
-
-	}
+	
 
 	void GameObject::SetActive(bool aFlag)
 	{
 		if (!m_IsActive && aFlag)
 		{
-			OnEnable();
+			//OnEnable();
 		}
 		else if (m_IsActive && !aFlag)
 		{
-			OnDisable();
+			//OnDisable();
 		}
 		m_IsActive = aFlag;
 	}
@@ -281,20 +182,36 @@ namespace Gem
 
 	Vector3 GameObject::GetLocalPosition()
 	{
-		return m_LocalPosition;
+		//TODO
+		return m_Position;;
 	}
 	void GameObject::SetLocalPosition(Vector3 aLocalPosition)
 	{
-		m_LocalPosition = aLocalPosition;
+		if (m_Parent != nullptr)
+		{
+			m_Position = m_Parent->GetPosition() + aLocalPosition;
+		}
+		else
+		{
+			m_Position = aLocalPosition;
+		}
 	}
 
     Quaternion GameObject::GetLocalRotation()
 	{
-		return m_LocalRotation;
+		//TODO
+		return m_Rotation;
 	}
     void GameObject::SetLocalRotation(Quaternion aLocalRotation)
 	{
-		m_LocalRotation = aLocalRotation;
+		if (m_Parent != nullptr)
+		{
+			m_Rotation = m_Parent->GetRotation() * aLocalRotation;
+		}
+		else
+		{
+			m_Rotation = aLocalRotation;
+		}
 	}
 
 	Matrix4x4 GameObject::GetLocalToWorldMatrix()
@@ -334,7 +251,16 @@ namespace Gem
 
 				if (aChild->m_Parent != this)
 				{
+					Scene * scene = Application::GetCurrentScene();
+					if (scene != nullptr)
+					{
+						scene->Remove(this);
+					}
 					aChild->m_Parent->RemoveChild(aChild);
+					if (scene != nullptr)
+					{
+						scene->Insert(this);
+					}
 					aChild->m_Parent = this;
 				}
 
@@ -537,5 +463,176 @@ namespace Gem
         m_Bounds = aBounds;
     }
 
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, OnPreSerializeData, int)
+	int GameObject::OnPreSerializeData()
+	{
+		return 8;
+	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, OnSerializeData, void, const int&, EntityComponent::InstructionTerm**)
+	void GameObject::OnSerializeData(const int & aCount, EntityComponent::InstructionTerm** aTerms)
+	{
+		if (aCount != OnPreSerializeData())
+		{
+			Debug::ErrorFormat("Gem", nullptr, "%s", "Failed to serialize data, invalid count.");
+			return;
+		}
+
+		aTerms[0]->SetName("m_Name");
+		aTerms[0]->SetValue(m_Name);
+		aTerms[1]->SetName("m_Tag");
+		aTerms[1]->SetValue(m_Tag);
+		aTerms[2]->SetName("m_RenderMask");
+		aTerms[2]->SetValue(m_RenderMask);
+		aTerms[3]->SetName("m_PhysicsMask");
+		aTerms[3]->SetValue(m_PhysicsMask);
+		aTerms[4]->SetName("m_IsActive");
+		aTerms[4]->SetValue(m_IsActive);
+		aTerms[5]->SetName("m_Position");
+		aTerms[5]->SetComplexValue(m_Position);
+		aTerms[6]->SetName("m_Rotation");
+		aTerms[6]->SetComplexValue(m_Rotation);
+		aTerms[7]->SetName("m_Scale");
+		aTerms[7]->SetComplexValue(m_Scale);
+	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnCreate, void)
+	void GameObject::InternalOnCreate()
+	{
+		Scene * scene = Application::GetCurrentScene();
+		scene->Register(this);
+	}
+	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnDestroy, void)
+	void GameObject::InternalOnDestroy()
+	{
+		Scene * scene = Application::GetCurrentScene();
+		scene->Unregister(this);
+
+		for (int i = 0; i < m_Children.size(); i++)
+		{
+			GameObject * gameObject = m_Children[i];
+			Memory::AllocatorType allocType = Memory::MemoryUtils::GetAllocatorType(gameObject);
+			switch (allocType)
+			{
+			case Memory::AllocatorType::Pool:
+				MEM_POOL_DEALLOC_T(gameObject, GameObject);
+				break;
+			case Memory::AllocatorType::Stack:
+				MEM_STACK_DEALLOC_T(gameObject, GameObject);
+				break;
+			default:
+				Debug::Error("Scene", "Invalid GameObject allocation made.");
+				break;
+			}
+
+		}
+
+		for (int i = m_Components.size() - 1; i >= 0; i--)
+		{
+			Component * component = m_Components[i];
+			Type type = component->GetType();
+			type.GetDestructor().Invoke(component);
+			MEM_POOL_DEALLOC(component, type.GetSize());
+		}
+		m_Components.clear();
+	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnStateUpdate, void)
+	void GameObject::InternalOnStateUpdate()
+	{
+		//Update Components states...
+	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnUpdate, void, int)
+	void GameObject::InternalOnUpdate(int aStep)
+	{
+		if (aStep == 0)
+		{
+			for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+			{
+				if ((*it)->IsReceivingGameObjectMessages())
+				{
+					(*it)->Update();
+				}
+			}
+		}
+		else if (aStep == 1)
+		{
+			for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+			{
+				if ((*it)->IsReceivingGameObjectMessages())
+				{
+					(*it)->LateUpdate();
+				}
+			}
+		}
+	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnPhysicsUpdate, void, int)
+	void GameObject::InternalOnPhysicsUpdate(int aStep)
+	{
+		for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+		{
+			if ((*it)->IsReceivingGameObjectMessages())
+			{
+				(*it)->FixedUpdate();
+			}
+		}
+	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnRenderUpdate, void, int)
+	void GameObject::InternalOnRenderUpdate(int aStep)
+	{
+		if (aStep == 0)
+		{
+			for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+			{
+				if ((*it)->IsReceivingGameObjectMessages())
+				{
+					(*it)->OnPreRender();
+				}
+			}
+		}
+		else if (aStep == 1)
+		{
+			for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+			{
+				if ((*it)->IsReceivingGameObjectMessages())
+				{
+					(*it)->OnRender();
+				}
+			}
+		}
+		else if (aStep == 2)
+		{
+			for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+			{
+				if ((*it)->IsReceivingGameObjectMessages())
+				{
+					(*it)->OnPostRender();
+				}
+			}
+		}
+
+		
+	}
+
+	void GameObject::OnWindowFocus(Window * aWindow)
+	{
+
+	}
+	void GameObject::OnWindowUnfocus(Window * aWindow)
+	{
+
+	}
+	void GameObject::OnWindowClose(Window * aWindow)
+	{
+
+	}
+	void GameObject::OnWindowChangeSize(Window * aWindow, int aWidth, int aHeight)
+	{
+
+	}
 }
 	

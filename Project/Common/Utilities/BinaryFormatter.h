@@ -6,13 +6,13 @@
 namespace Gem
 {
 
-	//class BinaryFormatter;
-	//template class GEM_API Reflection::MetaObject<BinaryFormatter>;
+	class BinaryFormatter;
+	template class GEM_API Reflection::MetaObject<BinaryFormatter>;
 
 	/**
 	* BinaryFormatter formats the primitive data types into a stream in a binary format.
 	*/
-	class BinaryFormatter : public object , public IFormatter
+	class GEM_API BinaryFormatter : public object , public IFormatter
 	{
 		RDECLARE_CLASS(BinaryFormatter)
         RDECLARE_ATTRIBUTE_INTERFACE(BinaryFormatter,IFormatter)

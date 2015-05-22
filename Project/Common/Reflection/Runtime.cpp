@@ -1,5 +1,5 @@
 #include "Runtime.h"
-
+#include "../Utilities/Utilities.h"
 #include "MetaObjectLinker.h"
 
 namespace Gem
@@ -27,6 +27,17 @@ namespace Gem
             //        }
             //    }
             //}
+
+			//Free Memory :)
+			for (std::map<std::string, Type>::iterator typeIt = m_CompiledTypes.begin(); typeIt != m_CompiledTypes.end(); ++typeIt)
+			{
+				std::vector<Member*> methods = typeIt->second.m_Methods;
+
+				for (int i = (int)methods.size() - 1; i >= 0; i--)
+				{
+					delete methods[i];
+				}
+			}
         }
 
         void Runtime::Initialize()
@@ -140,6 +151,56 @@ namespace Gem
                 delete aContext;
                 aContext = nullptr;
             }
+
+			//Go through each created type and inherit the members... (Functions / Members)
+
+			for (std::map<std::string, Type>::iterator it = s_Instance->m_CompiledTypes.begin(); it != s_Instance->m_CompiledTypes.end(); it++)
+			{
+				std::string baseclassName = (*it).second.GetBaseClass();
+				if (baseclassName == "")
+				{
+					continue;
+				}
+
+				std::map<std::string, Type>::iterator typeIter = s_Instance->m_CompiledTypes.find(baseclassName);
+				if (typeIter == s_Instance->m_CompiledTypes.end())
+				{
+					continue;
+				}
+
+				Array<MemberInfo> members = typeIter->second.GetMembers();
+				Array<Member*> methods = typeIter->second.GetMethods();
+
+				Type & const currentType = (*it).second;
+				
+				for (int i = 0; i < members.GetCount(); i++)
+				{
+					if (std::find(currentType.m_Members.begin(), currentType.m_Members.end(), members[i]) == currentType.m_Members.end())
+					{
+						currentType.m_Members.push_back(members[i]);
+					}
+				}
+
+				for (int i = 0; i < methods.GetCount(); i++)
+				{
+					bool exists = false;
+					for (std::vector<Member*>::iterator it = currentType.m_Methods.begin();
+						it != currentType.m_Methods.end();
+						it++)
+					{
+						if (strcmp((*it)->GetMemberName(), methods[i]->GetMemberName()) == 0)
+						{
+							exists = true;
+							break;
+						}
+					}
+					if (!exists)
+					{
+						currentType.m_Methods.push_back(methods[i]);
+					}
+				}
+			}
+
 
             s_Instance->m_IsCompiled = true;
             s_Instance->m_IsCompiling = false;
@@ -262,6 +323,10 @@ namespace Gem
             {
                 aType.m_Destructor = aAttribute.GetValue();
             }
+			else if (aAttribute.Is(Attribute("", MetaObjectLinker::ATTRIBUTE_TYPE_METHOD_INFO)))
+			{
+				aType.m_Methods.push_back(aAttribute.GetMethodInfo());
+			}
         }
         void Runtime::BindMemberInfoAttribute(MemberAttribute & aAttribute, Type & aType)
         {

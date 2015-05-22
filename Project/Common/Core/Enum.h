@@ -75,12 +75,11 @@ namespace Gem
 		* Returns the name of the enum. 
 		* @return Returns the name of the enum.
 		*/
-		virtual std::string ToString();
-
+		std::string ToString();
 	};
 }
 
-#define RENUM_H(TYPE,VALUES) private: VALUES m_Value;						\
+#define RENUM_H(TYPE,VALUES,COUNT) private: VALUES m_Value;					\
 	protected:																\
 		std::string GetName();												\
 		Gem::Array<std::string> GetNames();									\
@@ -120,10 +119,16 @@ namespace Gem
 		inline operator Gem::SInt32() const									\
 		{																	\
 			return m_Value;													\
-		}
+		}																	\
+		inline operator const char *() const								\
+		{																	\
+			return NAMES[(Gem::SInt32)m_Value].c_str();						\
+		}																	\
+		private:															\
+			static const std::string NAMES[COUNT];							\
 
 
-#define RENUM_CPP(TYPE,VALUES,COUNT,VALUE_NAMES)	TYPE::TYPE()					\
+#define RENUM_CPP(TYPE,VALUES,COUNT)	TYPE::TYPE()								\
 	{																				\
 		m_Value = (VALUES)0;														\
 	}																				\
@@ -137,14 +142,14 @@ namespace Gem
 	}																				\
 	std::string TYPE::GetName()														\
 	{																				\
-		return VALUE_NAMES[(Gem::SInt32)m_Value];									\
+		return NAMES[(Gem::SInt32)m_Value];											\
 	}																				\
 	Gem::Array<std::string> TYPE::GetNames()										\
 	{																				\
 		Gem::Array<std::string> names(COUNT);										\
 		for (int i = 0; i < COUNT; i++)												\
 		{																			\
-			names[i] = VALUE_NAMES[i];												\
+			names[i] = NAMES[i];													\
 		}																			\
 		return names;																\
 	}																				\
@@ -161,5 +166,6 @@ namespace Gem
 		}																			\
 		return values;																\
 	}																				\
+	const std::string TYPE::NAMES[COUNT] =											\
 
 #endif // GEM_ENUM_H

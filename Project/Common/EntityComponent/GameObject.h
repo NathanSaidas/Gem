@@ -11,13 +11,19 @@
 #include "../Math/Math.h"
 #include "Component.h"
 #include "Bounds.h"
+#include "InitializationStep.h"
 
 namespace Gem
 {
-	class OpenGLWindow;
+	namespace EntityComponent
+	{
+		class InstructionTerm;
+	}
 
-	class GameObject;
-	template class GEM_API Reflection::MetaObject<GameObject>;
+
+	class Window;
+	
+	FORCE_EXPORT_META(GameObject);
 
 	template class GEM_API std::vector<GameObject*>;
 	template class GEM_API std::vector<Component*>;
@@ -32,29 +38,8 @@ namespace Gem
 
 		static void Destroy(GameObject * aGameObject);
 
-		void OnRegistered();
-		void OnInitialize();
-		void OnLateInitialize();
-
-		void OnEnable();
-		void OnDisable();
-
-		void OnDestroy(); //New
-		void OnLateDestroy();
-
-		void Update();
-		void LateUpdate();
-
-		void FixedUpdate();
-
-		void OnPreRender();
-		void OnRender();
-		void OnPostRender();
-
-		void OnWindowFocus(OpenGLWindow * aWindow);
-		void OnWindowUnfocus(OpenGLWindow * aWindow);
-		void OnWindowClose(OpenGLWindow * aWindow);
-		void OnWindowChangeSize(OpenGLWindow * aWindow, int aWidth, int aHeight);
+		//Getters and Setters
+#pragma region ACCESSORS
 
 		void SetActive(bool aFlag);
 		bool IsActive();
@@ -88,6 +73,8 @@ namespace Gem
 
         Quaternion GetLocalRotation();
         void SetLocalRotation(Quaternion aLocalRotation);
+
+#pragma endregion
 
 		Matrix4x4 GetLocalToWorldMatrix();
 
@@ -164,12 +151,54 @@ namespace Gem
         Bounds GetBounds();
         void SetBounds(Bounds aBounds);
 
+		template<typename ... ARGS>
+		void BroadcastMessage(const std::string & aFunctionName, ARGS... args)
+		{
+			Type type = GetType();
+			Reflection::MethodInfo<GameObject, void, ARGS...> * method = dynamic_cast<Reflection::MethodInfo<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
+			if (method != nullptr)
+			{
+				method->GetMethod().Invoke(this, args...);
+			}
 
-		//TODO: Implement when Serialization has been designed / implemented.
-        //void OnSerialize(IFormatter * aFormatter, Stream & aStream);
-        //void OnDeserialize(IFormatter * aFormatter, Stream & aStream);
+			//for (std::vector<GameObject*>::iterator it = m_Children.begin(); it != m_Children.end(); it++)
+			//{
+			//	(*it)->BroadcastMessage<ARGS...>(aFunctionName, args...);
+			//}
+		}
 
+		template<typename ... ARGS>
+		void BroadcastMessage(const std::string & aFunctionName, bool aSendComponents, ARGS... args)
+		{
+			if (aSendComponents)
+			{
+				Type type = GetType();
+				Reflection::MethodInfo<GameObject, void, ARGS...> * method = dynamic_cast<Reflection::MethodInfo<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
+				if (method != nullptr)
+				{
+					method->GetMethod().Invoke(this, args...);
+				}
+
+				for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
+				{
+					(*it)->SendMessage<ARGS...>(aFunctionName, args...);
+				}
+
+				for (std::vector<GameObject*>::iterator it = m_Children.begin(); it != m_Children.end(); it++)
+				{
+					(*it)->BroadcastMessage<ARGS...>(aFunctionName,aSendComponents, args...);
+				}
+			}
+			else
+			{
+				BroadcastMessage<ARGS...>(aFunctionName, args...);
+			}
+		}
+
+		GameObject(SInt32 aInternalHash);
 	private:
+		
+
 		std::string m_Name;
 		std::string m_Tag;
 		UInt32 m_RenderMask;
@@ -179,15 +208,80 @@ namespace Gem
 		std::vector<GameObject*> m_Children;
 		std::vector<Component*> m_Components;
 
-		//Transform Components
+		//Transform Variables.
 		Vector3 m_Position;
-
         Quaternion m_Rotation;
 		Vector3 m_Scale;
-		Vector3 m_LocalPosition;
-        Quaternion m_LocalRotation;
-        Bounds m_Bounds;
 
+        Bounds m_Bounds;
+		
+		
+		
+		/** This is used by ECSerializer to find its location faster in the data stream.*/
+		SInt32 m_SerializerFlag;
+		RDECLARE_PRIVATE_MEMBER(GameObject, m_SerializerFlag)
+		
+		
+		/**
+		* This method is used to tell the ECSerializer how many instruction terms it will be saving.
+		* @return Return the number of elements to
+		*/
+		int OnPreSerializeData();
+		RDECLARE_PRIVATE_FUNCTION(GameObject, OnPreSerializeData)
+		
+		
+		/**
+		* This method is intended to get called from ECSerializer to gets its instructions data. ("Terms")
+		* @param aCount The amount of terms being passed in.
+		* @param aTerms A dynamic array of terms to modify, they are already allocated but will only last for the frame.
+		*/
+		void OnSerializeData(const int & aCount, EntityComponent::InstructionTerm** aTerms);
+		RDECLARE_PRIVATE_FUNCTION(GameObject, OnSerializeData)
+
+		/**
+		* This method gets called by gameobject itself to register itself with the scene.
+		*/
+		void InternalOnCreate();
+		RDECLARE_PRIVATE_FUNCTION(GameObject, InternalOnCreate)
+		/**
+		* This method gets called by the gameobject itself when it's destroyed. Destroys any attached components and children.
+		*/
+		void InternalOnDestroy();
+		RDECLARE_PRIVATE_FUNCTION(GameObject, InternalOnDestroy)
+
+
+		//Update calls..
+		/**
+		* This method gets called by the active scene through reflection. To update the gameobject's component's state's.
+		*/
+		void InternalOnStateUpdate();
+		RDECLARE_PRIVATE_FUNCTION(GameObject, InternalOnStateUpdate)
+		/**
+		* This method gets called by the active scene through reflection to update the gameobjects components.
+		* @param aStep The current update step. 0 = Normal Update, 1 = Late Update 
+		*/
+		void InternalOnUpdate(int aStep);
+		RDECLARE_PRIVATE_FUNCTION(GameObject, InternalOnUpdate)
+		/**
+		* This method gets called by the active scene through reflection to do a physics update on the gameobjects components.
+		* @param aStep The current update step, There is only one for now...
+		*/
+		void InternalOnPhysicsUpdate(int aStep);
+		RDECLARE_PRIVATE_FUNCTION(GameObject, InternalOnPhysicsUpdate)
+		/**
+		* This method gets called by the active scene through reflection to do a render update.
+		* @param aStep The current render operation. 0 = pre render, 1 = render, 2 = post render.
+		*/
+		void InternalOnRenderUpdate(int aStep);
+		RDECLARE_PRIVATE_FUNCTION(GameObject, InternalOnRenderUpdate)
+
+		
+		void OnWindowFocus(Window * aWindow);
+		void OnWindowUnfocus(Window * aWindow);
+		void OnWindowClose(Window * aWindow);
+		void OnWindowChangeSize(Window * aWindow, int aWidth, int aHeight);
+
+		friend class SceneGraph;
 	};
 
 	TYPE_DEFINE(GameObject)

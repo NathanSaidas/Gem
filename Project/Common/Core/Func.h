@@ -57,7 +57,7 @@ namespace Gem
 			return m_Function = aFunction;
 		}
 	
-		inline RETURN operator()(ARGS ... args)
+		inline RETURN operator()(ARGS ... args) const
 		{
 			if (m_Function != nullptr)
 			{
@@ -66,7 +66,7 @@ namespace Gem
 			return RETURN();
 		}
 	
-		inline RETURN Invoke(ARGS ... args)
+		inline RETURN Invoke(ARGS ... args) const
 		{
 			if (m_Function != nullptr)
 			{

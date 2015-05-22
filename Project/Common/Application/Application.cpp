@@ -10,15 +10,16 @@ using namespace Gem::Debugging;
 
 namespace Gem
 {
-	RDEFINE_CLASS(Application,object)
-	Application * Application::s_Instance = nullptr;
+	RDEFINE_CLASS(Application, object)
+		Application * Application::s_Instance = nullptr;
 	Event<> Application::s_OnStart = Event<>();
 	Event<> Application::s_OnStop = Event<>();
 	Event<> Application::s_OnSystemsInitialized = Event<>();
 
 	Application::Application()
 		: m_DefaultWindow(nullptr),
-		m_ShouldQuit(false)
+		m_ShouldQuit(false),
+		m_CurrentScene(nullptr)
 	{
 
 	}
@@ -29,8 +30,16 @@ namespace Gem
 	}
 #ifdef _WIN32
 	SInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType, void * aHandleInstance)
+	{
+		return Execute(aApplicationName, aType, aHandleInstance, nullptr);
+	}
+	SInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType, void * aHandleInstance, BaseAppHandler * aAppHandler)
 #else
 	SInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType)
+	{
+		Execute(aApplicationName, aType, nullptr);
+	}
+	SInt32 Application::Execute(const std::string & aApplicationName, const ApplicationType & aType, BaseAppHandler * aAppHandler);
 #endif
 	{
 		if (s_Instance == nullptr)
@@ -42,6 +51,7 @@ namespace Gem
 #ifdef _WIN32
 			s_Instance->m_HandleInstance = aHandleInstance;
 #endif
+			s_Instance->m_AppHandler = aAppHandler;
 			switch (aType)
 			{
 			case ApplicationType::Console:
@@ -132,7 +142,7 @@ namespace Gem
 
 	Scene * Application::GetCurrentScene()
 	{
-		return nullptr;
+		return s_Instance != nullptr ? s_Instance->m_CurrentScene : nullptr;
 	}
 
 	Window * Application::GetDefaultWindow()
@@ -152,8 +162,10 @@ namespace Gem
 		thread->Start(aCallback);
 	}
 
+#ifdef _WIN32
 #ifdef CreateWindow
 #undef CreateWindow
+#endif
 
 	void Application::CreateWindow(const std::string & aName)
 	{
@@ -179,7 +191,9 @@ namespace Gem
 #endif
 	}
 
+#ifdef _WIN32
 #define CreateWindow CreateWindowA
+#endif
 #endif
 
 	Window * Application::GetWindow(void * aHandle)
@@ -240,22 +254,28 @@ namespace Gem
 	void Application::StartWindow()
 	{
 		//Invoke callback OnStartWindow
+
+		if (m_AppHandler != nullptr)
+		{
+			m_AppHandler->OnStart();
+		}
 		s_OnStart.Invoke();
 		//Initialize Systems
 		Memory::MemoryManager::Initialize();
 		Reflection::Runtime::Compile(nullptr);
 		//Invoke callback for OnSystemsInitialized.
+		if (m_AppHandler != nullptr)
+		{
+			m_AppHandler->OnSystemsInitialized();
+		}
 		s_OnSystemsInitialized.Invoke();
-
-		//TODO(Nathan): Create Window, begin game loop
-
-		//Win32Window * window = MEM_POOL_ALLOC_T(Win32Window,m_ApplicationName, (HINSTANCE)m_HandleInstance);
-		//window->Open();
 
 		Pointer<Win32Window> win32Window = Pointer<Win32Window>(m_ApplicationName, (HINSTANCE)m_HandleInstance);
 		win32Window->Open();
 
 		m_DefaultWindow = win32Window.Raw();
+
+		//m_CurrentScene = MEM_POOL_ALLOC_T(Scene);
 
 		Time::Initialize();
 		MSG msg;
@@ -270,9 +290,13 @@ namespace Gem
 			else
 			{
 				Time::Update();
-				//Update
 				glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+
+
+
 				win32Window->SwapBuffer();
 
 				//Poll Input
@@ -302,11 +326,19 @@ namespace Gem
 			//Waiting for threads to quit.
 			CheckThreads();
 		}
+		//Invoke callback OnStopWindow
+		if (m_AppHandler != nullptr)
+		{
+			m_AppHandler->OnStop();
+		}
+		s_OnStop.Invoke();
+
+
 		//Terminate Systems
 		Reflection::Runtime::Terminate();
 		Memory::MemoryManager::Terminate();
-		//Invoke callback OnStopWindow
-		s_OnStop.Invoke();
+		
+
 	}
 	void Application::StartConsole()
 	{

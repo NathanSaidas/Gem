@@ -34,9 +34,9 @@ namespace Gem
 			Invalid
 		};
 		RDECLARE_ENUM(Win32Message)
-			RENUM_H(Win32Message, Values)
-	private:
-		static const std::string NAMES[Values::Invalid + 1];
+		RENUM_H(Win32Message, Values, Values::Invalid + 1)
+	//private:
+	//	static const std::string NAMES[Values::Invalid + 1];
 	};
 
 	TYPE_DEFINE(Win32Message)

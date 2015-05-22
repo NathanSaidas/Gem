@@ -331,6 +331,39 @@
     <ClInclude Include="..\..\..\Common\Window\Win32Message.h">
       <Filter>API\Window</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\SceneFileInstruction.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\BaseAppHandler.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\InstructionTokenID.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\InstructionData.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\ECSerializer.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\IComplexTerm.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\Member.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Reflection\MemberFlags.h">
+      <Filter>API\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\InstructionTerm.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\SceneGraph.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\InitializationStep.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -503,6 +536,30 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Window\Win32Message.cpp">
       <Filter>API\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\BaseAppHandler.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\InstructionTokenID.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\ECSerializer.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\IComplexTerm.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\InstructionTerm.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\SceneGraph.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\InitializationStep.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Core\ErrorConstants.cpp">
+      <Filter>API\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
