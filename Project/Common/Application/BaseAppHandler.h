@@ -27,6 +27,8 @@ namespace Gem
 		virtual void OnStop();
 		/** This method gets called when the application has had its systems initialized. */
 		virtual void OnSystemsInitialized();
+		/** This method gets called when the application is updating.*/
+		virtual void Update();
 	};
 
 	/** Define additional meta data for the class.*/

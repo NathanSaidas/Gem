@@ -80,10 +80,12 @@ xcopy /y "$(TargetDir)..\Framework_Lib\*.lib" "$(TargetDir)"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\Gameplay\AppHandler.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\Engine.h" />
+    <ClInclude Include="..\..\Common\Gameplay\AppHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

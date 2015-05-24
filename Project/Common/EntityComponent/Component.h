@@ -78,11 +78,11 @@ namespace Gem
 			return (COMPONENT*)GetComponentsInParent(Reflection::Runtime::TypeOf<COMPONENT>());
 		}
 
-		template<typename ... ARGS>
+		template<typename COMPONENT, typename ... ARGS>
 		void SendMessage(std::string aFunctionName, ARGS ... args)
 		{
 			Type type = GetType();
-			Reflection::MethodInfo<Component, void, ARGS...> * method = dynamic_cast<Reflection::Member<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
+			Reflection::MethodInfo<COMPONENT, void, ARGS...> * method = dynamic_cast<Reflection::Member<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
 			if (method != nullptr)
 			{
 				method->GetMethod().Invoke(this, args...);

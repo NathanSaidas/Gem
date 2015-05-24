@@ -20,7 +20,7 @@ namespace Gem
 			Complete
 		};
 		RDECLARE_ENUM(InitializationStep)
-			RENUM_H(InitializationStep, Values, Values::Complete + 1)
+		RENUM_H(InitializationStep, Values, Values::Complete + 1)
 	};
 
 	TYPE_DEFINE(InitializationStep)

@@ -17,6 +17,12 @@ namespace Gem
 		"Resize",
 		"Destroy",
 		"Active",
+		"KeyDown",
+		"KeyUp",
+		"MouseDown",
+		"MouseUp",
+		"MouseMove",
+		"MouseWheel",
 		"Invalid",
 	};
 }

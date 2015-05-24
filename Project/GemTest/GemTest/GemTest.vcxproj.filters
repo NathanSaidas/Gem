@@ -8,15 +8,24 @@
     <Filter Include="Source Files\Gem">
       <UniqueIdentifier>{09fc60f2-1e86-47f4-8a97-3665ceb4e77f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gameplay">
+      <UniqueIdentifier>{f5b57beb-e170-43b2-b37f-8faaf666a402}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Common\Gameplay\AppHandler.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\Engine.h">
       <Filter>Source Files\Gem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Gameplay\AppHandler.h">
+      <Filter>Source Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

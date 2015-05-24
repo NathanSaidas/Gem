@@ -364,6 +364,18 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\InitializationStep.h">
       <Filter>API\Entity Component</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\KeyCode.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\Input.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\MouseButton.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\InputState.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -560,6 +572,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Core\ErrorConstants.cpp">
       <Filter>API\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\Input.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\InputState.cpp">
+      <Filter>API\Application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

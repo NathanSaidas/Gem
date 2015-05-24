@@ -8,6 +8,7 @@
 
 #pragma  region CHANGE LOG
 // -- Nathan Hanlan	- Stubbed and Implemented class methods.
+// -- Nathan Hanlan - Moved Update method to private, Application is now a friend of Time.
 #pragma endregion
 
 #include "GemAPI.h"
@@ -50,18 +51,22 @@ namespace Gem
 		* @return Returns a status on whether or not the class initialized properly.
 		*/
 		static bool Initialize();
+		
+	private:
+		Time();
+
 		/**
 		* Call this method once per frame to update the timer variables.
 		*/
 		static void Update();
-	private:
-		Time();
 		
 		//-- Static members used by the functions. They are cached each frame to reduce function calls and repeated calculations.
 		static bool s_Initialized;
 		static float s_DeltaTime;
 		static float s_CurrentTime;
 		static TimeStruct s_CurrentTimeStruct;
+
+		friend class Application;
 		
 	};
 }

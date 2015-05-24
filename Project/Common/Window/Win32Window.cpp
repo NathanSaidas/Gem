@@ -13,7 +13,12 @@ using namespace Gem::Debugging;
 
 namespace Gem
 {
-
+	namespace Internal
+	{
+		static const int MOUSE_LEFT = 0;
+		static const int MOUSE_RIGHT = 1;
+		static const int MOUSE_MIDDLE = 2;
+	}
 
 
 #ifdef _WIN32
@@ -22,12 +27,12 @@ namespace Gem
 	{
 		switch (aMessage)
 		{
-		case WM_DESTROY:
+			case WM_DESTROY:
 			{
 				Application::Quit();
 			}
-			return 0;
-		case WM_ACTIVATE:
+				return 0;
+			case WM_ACTIVATE:
 			{
 				if (!HIWORD(aWParam))
 				{
@@ -38,20 +43,51 @@ namespace Gem
 					//active == false
 				}
 			}
-			return 0;
-		case WM_SIZE:
+				return 0;
+			case WM_SIZE:
 			{
-				Window * window = Application::GetWindow(aHandle);
+				Window * window = Application::GetDefaultWindow();
 				if (window != nullptr)
 				{
 					window->OnResize(LOWORD(aLParam), HIWORD(aLParam));
 				}
+				Application::Win32SendMessage(Win32Message::Resize, window);
 			}
-			return 0;
-			
+				return 0;
+			case WM_KEYUP:
+				Application::Win32SendMessage(Win32Message::KeyUp, (Float32)aWParam, 0.0f);
+				return 0;
+			case WM_KEYDOWN:
+				Application::Win32SendMessage(Win32Message::KeyDown, (Float32)aWParam, 0.0f);
+				return 0;
+			case WM_LBUTTONDOWN:
+				Application::Win32SendMessage(Win32Message::MouseDown, (Float32)Internal::MOUSE_LEFT, 0.0f);
+				return 0;
+			case WM_RBUTTONDOWN:
+				Application::Win32SendMessage(Win32Message::MouseDown, (Float32)Internal::MOUSE_RIGHT, 0.0f);
+				return 0;
+			case WM_MBUTTONDOWN:
+				Application::Win32SendMessage(Win32Message::MouseDown, (Float32)Internal::MOUSE_MIDDLE, 0.0f);
+				return 0;
+			case WM_LBUTTONUP:
+				Application::Win32SendMessage(Win32Message::MouseUp, (Float32)Internal::MOUSE_LEFT, 0.0f);
+				return 0;
+			case WM_RBUTTONUP:
+				Application::Win32SendMessage(Win32Message::MouseUp, (Float32)Internal::MOUSE_RIGHT, 0.0f);
+				return 0;
+			case WM_MBUTTONUP:
+				Application::Win32SendMessage(Win32Message::MouseUp, (Float32)Internal::MOUSE_MIDDLE, 0.0f);
+				return 0;
+			case WM_MOUSEMOVE:
+				Application::Win32SendMessage(Win32Message::MouseMove, (Float32)HIWORD(aLParam), (Float32)LOWORD(aLParam));
+				return 0;
+			case WM_MOUSEWHEEL:
+				Application::Win32SendMessage(Win32Message::MouseWheel, (Float32)HIWORD(aWParam), 0.0f);
+				return 0;
 		}
-
+		
 		return DefWindowProc(aHandle, aMessage, aWParam, aLParam);
+
 	}
 
 	RDEFINE_CLASS(Win32Window,Window)
@@ -481,8 +517,8 @@ namespace Gem
 
 			if (leakedMemory)
 			{
-				Error error = Error("Error checking window state, possible memory leaked.", ErrorConstants::LEAKED_WINDOW_MEMORY, GET_TRACE(2), "Win32Window::CheckState");
-				Debug::Error("Window",error);
+				//Error error = Error("Error checking window state, possible memory leaked.", ErrorConstants::LEAKED_WINDOW_MEMORY, GET_TRACE(2), "Win32Window::CheckState");
+				//Debug::Error("Window",error);
 			}
 		}
 		

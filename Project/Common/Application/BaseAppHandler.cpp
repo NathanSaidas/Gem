@@ -26,4 +26,8 @@ namespace Gem
 	{
 
 	}
+	void BaseAppHandler::Update()
+	{
+
+	}
 }

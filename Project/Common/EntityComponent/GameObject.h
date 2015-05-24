@@ -181,7 +181,7 @@ namespace Gem
 
 				for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
 				{
-					(*it)->SendMessage<ARGS...>(aFunctionName, args...);
+					(*it)->SendMessage<Component, ARGS...>(aFunctionName, args...);
 				}
 
 				for (std::vector<GameObject*>::iterator it = m_Children.begin(); it != m_Children.end(); it++)

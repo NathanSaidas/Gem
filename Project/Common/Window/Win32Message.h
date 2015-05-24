@@ -31,6 +31,12 @@ namespace Gem
 			Resize,
 			Destroy,
 			Active,
+			KeyDown,
+			KeyUp,
+			MouseDown,
+			MouseUp,
+			MouseMove,
+			MouseWheel,
 			Invalid
 		};
 		RDECLARE_ENUM(Win32Message)

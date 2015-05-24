@@ -152,23 +152,23 @@ namespace Gem
 
 			//Write all AddGameObject instructions...
 			InstructionTokenID tokenID = InstructionTokenID::AddGameObject;
-			fprintf(file, "begin %s", tokenID.ToString().c_str());
+			fprintf(file, "begin %s\n", tokenID.ToString().c_str());
 			for (int i = 0; i < m_AddGameObjectInstructions.size(); i++)
 			{
 				InstructionData * current = m_AddGameObjectInstructions[i];
 				fprintf(file, "%s %d %d\n", current->tokenIDName, current->reservedParam0, current->reservedParam1);
 			}
-			fprintf(file, "end %s", tokenID.ToString().c_str());
+			fprintf(file, "end %s\n", tokenID.ToString().c_str());
 
 
 			//Write all Link GameObject Instructions...
 			tokenID = InstructionTokenID::LinkGameObject;
-			fprintf(file, "begin %s", tokenID.ToString().c_str());
+			fprintf(file, "begin %s\n", tokenID.ToString().c_str());
 			
 			for (int i = 0; i < m_LinkGameObjectInstructions.size(); i++)
 			{
 				InstructionData * current = m_LinkGameObjectInstructions[i];
-				fprintf(file, "%s [%d]\n count = %d{\n", current->tokenIDName, current->reservedParam0, current->paramCount);
+				fprintf(file, "%s [%d]\ncount = %d{\n", current->tokenIDName, current->reservedParam0, current->paramCount);
 
 				for (int j = 0; j < current->paramCount; j++)
 				{
@@ -177,7 +177,7 @@ namespace Gem
 				
 				fprintf(file, "}\n");
 			}
-			fprintf(file, "end %s", tokenID.ToString().c_str());
+			fprintf(file, "end %s\n", tokenID.ToString().c_str());
 
 			//Write All AddComponent Instructions...
 			

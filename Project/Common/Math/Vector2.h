@@ -48,7 +48,17 @@ namespace Gem
         {
             x = aVector.x;
             y = aVector.y;
-        }
+		}
+
+		inline static Vector2 Zero()
+		{
+			return Vector2(0.0f, 0.0f);
+		}
+
+		inline static Vector2 One()
+		{
+			return Vector2(1.0f, 1.0f);
+		}
 
 		//Converts the data into raw 16 bit format. (8 bytes)
 		glm::vec2 Raw() const;

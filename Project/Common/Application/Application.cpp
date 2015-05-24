@@ -3,6 +3,7 @@
 #include <mutex>
 #include "../Engine.h"
 #include <Windows.h>
+#include "Input.h"
 
 
 
@@ -63,6 +64,10 @@ namespace Gem
 			}
 			int exitCode = s_Instance->m_ExitCode;
 			delete s_Instance;
+			if (aAppHandler != nullptr)
+			{
+				delete aAppHandler;
+			}
 			return exitCode;
 		}
 		return EXIT_FAILURE;
@@ -240,13 +245,48 @@ namespace Gem
 			}
 			break;
 		case Win32Message::Resize:
-
 			if (aWindow != nullptr)
 			{
-
+				
 			}
-
 			break;
+		}
+	}
+
+	void Application::Win32SendMessage(const Win32Message & aMessage, Float32 aParam0, Float32 aParam1)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+		KeyCode keyCode = (KeyCode)((SInt32)aParam0);
+		MouseButton button = (MouseButton)((SInt32)aParam0);
+		Vector2 mousePosition = Vector2(aParam0, aParam1);
+		Float32 axis = aParam0;
+
+		switch (aMessage)
+		{
+			case Win32Message::KeyUp:
+				Input::GetInstance()->ProcessKeyUp(keyCode);
+			break;
+			case Win32Message::KeyDown:
+				Input::GetInstance()->ProcessKeyDown(keyCode);
+			break;
+			case Win32Message::MouseDown:
+				Input::GetInstance()->ProcessMouseDown(button);
+			break;
+			case Win32Message::MouseUp:
+				Input::GetInstance()->ProcessMouseUp(button);
+			break;
+			case Win32Message::MouseMove:
+				Input::GetInstance()->ProcessMouseMove(mousePosition.x, mousePosition.y);
+			break;
+			case Win32Message::MouseWheel:
+				Input::GetInstance()->ProcessMouseScroll(axis);
+			break;
+			default:
+				Debug::WarningFormat("Gem::Application", nullptr, "Win32Message %s is not a valid message for this method.", (CString)aMessage);
+				break;
 		}
 	}
 
@@ -263,6 +303,7 @@ namespace Gem
 		//Initialize Systems
 		Memory::MemoryManager::Initialize();
 		Reflection::Runtime::Compile(nullptr);
+		Input::Initialize();
 		//Invoke callback for OnSystemsInitialized.
 		if (m_AppHandler != nullptr)
 		{
@@ -289,27 +330,21 @@ namespace Gem
 			}
 			else
 			{
+				//Internal Update
 				Time::Update();
 				glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+				//Normal Updates...
+				if (m_AppHandler != nullptr)
+				{
+					m_AppHandler->Update();
+				}
 
 
-
-
+				//Internal Post Update
+				Input::GetInstance()->Update();
 				win32Window->SwapBuffer();
-
-				//Poll Input
-
-				//World Loading ? Load World... 
-
-				//World Not Loading ? Update Game World...
-					//Start Thread - Update Game World
-					//Start Thread - Physics Simulation
-
-					//Render Task Already Queued ? Ignore 
-					//Else Queue Render Task - Render Game World
-
 				CheckThreads();
 				Memory::MemoryManager::GetInstance()->ResetFrame();
 			}
@@ -335,6 +370,7 @@ namespace Gem
 
 
 		//Terminate Systems
+		Input::Terminate();
 		Reflection::Runtime::Terminate();
 		Memory::MemoryManager::Terminate();
 		

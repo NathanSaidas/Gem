@@ -141,7 +141,7 @@ namespace Gem
 		* This method is used by the Win32Window system to send message from the WNDPROC method.
 		*/
 		static void Win32SendMessage(const Win32Message & aMessage, Window * aWindow);
-
+		static void Win32SendMessage(const Win32Message & aMessage, Float32 aParam0, Float32 aParam1);
 		
 
 	protected:
