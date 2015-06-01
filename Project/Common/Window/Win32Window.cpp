@@ -79,7 +79,7 @@ namespace Gem
 				Application::Win32SendMessage(Win32Message::MouseUp, (Float32)Internal::MOUSE_MIDDLE, 0.0f);
 				return 0;
 			case WM_MOUSEMOVE:
-				Application::Win32SendMessage(Win32Message::MouseMove, (Float32)HIWORD(aLParam), (Float32)LOWORD(aLParam));
+				Application::Win32SendMessage(Win32Message::MouseMove, (Float32)LOWORD(aLParam), (Float32)HIWORD(aLParam));
 				return 0;
 			case WM_MOUSEWHEEL:
 				Application::Win32SendMessage(Win32Message::MouseWheel, (Float32)HIWORD(aWParam), 0.0f);

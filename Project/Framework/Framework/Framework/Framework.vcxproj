@@ -134,8 +134,12 @@
     <ClInclude Include="..\..\..\Common\Application\Application.h" />
     <ClInclude Include="..\..\..\Common\Application\ApplicationEventType.h" />
     <ClInclude Include="..\..\..\Common\Application\ApplicationType.h" />
+    <ClInclude Include="..\..\..\Common\Application\InputDevice.h" />
+    <ClInclude Include="..\..\..\Common\Application\InputDeviceType.h" />
     <ClInclude Include="..\..\..\Common\Application\BaseAppHandler.h" />
     <ClInclude Include="..\..\..\Common\Application\Input.h" />
+    <ClInclude Include="..\..\..\Common\Application\InputAxis.h" />
+    <ClInclude Include="..\..\..\Common\Application\InputButton.h" />
     <ClInclude Include="..\..\..\Common\Application\InputState.h" />
     <ClInclude Include="..\..\..\Common\Application\KeyCode.h" />
     <ClInclude Include="..\..\..\Common\Application\MouseButton.h" />
@@ -249,8 +253,12 @@
     <ClCompile Include="..\..\..\Common\Application\Application.cpp" />
     <ClCompile Include="..\..\..\Common\Application\ApplicationEventType.cpp" />
     <ClCompile Include="..\..\..\Common\Application\ApplicationType.cpp" />
+    <ClCompile Include="..\..\..\Common\Application\InputButton.cpp" />
+    <ClCompile Include="..\..\..\Common\Application\InputDevice.cpp" />
+    <ClCompile Include="..\..\..\Common\Application\InputDeviceType.cpp" />
     <ClCompile Include="..\..\..\Common\Application\BaseAppHandler.cpp" />
     <ClCompile Include="..\..\..\Common\Application\Input.cpp" />
+    <ClCompile Include="..\..\..\Common\Application\InputAxis.cpp" />
     <ClCompile Include="..\..\..\Common\Application\InputState.cpp" />
     <ClCompile Include="..\..\..\Common\Core\BasicTypes.cpp" />
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp" />

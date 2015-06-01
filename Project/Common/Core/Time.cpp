@@ -101,8 +101,9 @@ namespace Gem
 			return;
 		}
 
-		s_DeltaTime = (float)(end.QuadPart - g_StartDelta.QuadPart) / (float)g_Frequency.QuadPart;
+		float prevTime = s_CurrentTime;
 		s_CurrentTime = (float)(end.QuadPart - g_StartTime.QuadPart) / (float)g_Frequency.QuadPart;
+		s_DeltaTime = s_CurrentTime - prevTime;
 #endif
 		//Calculate the TimeStruct
 		TimeStruct & time = s_CurrentTimeStruct;

@@ -34,14 +34,44 @@ namespace Gem
 	void AppHandler::OnSystemsInitialized()
 	{
 		Debug::Log("AppHandler", "OnSystemsInitialized");
+
+		Input::CreateAxis("Mouse X", true);
+		Input::CreateAxis("Mouse Y", false);
+
+
+		Input::CreateAxis("AlphaNum", KeyCode::Alpha1, KeyCode::Alpha2, 2.0f, false);
+		Input::CreateButton("ShowLog", KeyCode::S);
+		Input::CreateButton("ShowLog", KeyCode::B);
+		Input::CreateButton("ShowLog", KeyCode::V);
+
+		m_MousePosition = Input::GetMousePosition();
 	}
 
 	void AppHandler::Update()
 	{
-
-		if (Input::GetKeyDown(KeyCode::Alpha1))
+		if (Input::GetButtonDown("ShowLog"))
 		{
-			Debug::Log("AppHandler", "Update");
+
+			Vector2 mp = Input::GetMousePosition();
+
+			Debug::LogFormat("AppHandler", nullptr, "X = %f Y = %f", mp.x, mp.y);
+
+			//float mouseX = Input::GetAxis("Mouse X");
+			//float mouseY = Input::GetAxis("Mouse Y");
+			//float alphaNum = Input::GetAxis("AlphaNum");
+			//
+			//Debug::LogFormat("AppHandler", nullptr, "Mouse X = %f, Mouse Y = %f, AlphaNum = %f", mouseX, mouseY, alphaNum);
 		}
+
+		Vector2 mousePosition = Input::GetMousePosition();
+
+		float deltaX = Input::GetAxis("AlphaNum");
+
+		bool log = deltaX != 0.0f; // mousePosition != m_MousePosition;
+		if (log)
+		{
+			Debug::LogFormat("AppHandler", nullptr, "Delta X = %f", deltaX);
+		}
+		m_MousePosition = mousePosition;
 	}
 }

@@ -9,6 +9,7 @@
 #pragma  region CHANGE LOG
 // -- Nathan Hanlan	- Stubbed and Implemented class methods.
 // -- Nathan Hanlan - Moved Update method to private, Application is now a friend of Time.
+// -- Nathan Hanlan - Fixed bug where delta time was not being calculated properly.
 #pragma endregion
 
 #include "GemAPI.h"

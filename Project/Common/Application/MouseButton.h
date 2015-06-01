@@ -14,6 +14,7 @@ namespace Gem
 {
 	enum class MouseButton
 	{
+		None,
 		Left,
 		Right,
 		Middle

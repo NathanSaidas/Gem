@@ -376,6 +376,18 @@
     <ClInclude Include="..\..\..\Common\Application\InputState.h">
       <Filter>API\Application</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\InputAxis.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\InputButton.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\InputDevice.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Application\InputDeviceType.h">
+      <Filter>API\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -577,6 +589,18 @@
       <Filter>API\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Application\InputState.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\InputAxis.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\InputDevice.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\InputDeviceType.cpp">
+      <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Application\InputButton.cpp">
       <Filter>API\Application</Filter>
     </ClCompile>
   </ItemGroup>

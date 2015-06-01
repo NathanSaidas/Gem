@@ -26,14 +26,7 @@ namespace Gem
 		Scene();
 		~Scene();
 
-
-		
-
-		
-
-
 		void Save();
-
 
 
 	private:

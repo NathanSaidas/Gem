@@ -21,6 +21,8 @@ namespace Gem
 		void Update() override;
 
 	private:
+
+		Vector2 m_MousePosition;
 	};
 
 	TYPE_DEFINE(AppHandler)

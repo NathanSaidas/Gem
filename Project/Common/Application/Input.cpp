@@ -1,4 +1,6 @@
 #include "Input.h"
+#include "../Memory/Memory.h"
+
 
 namespace Gem
 {
@@ -31,11 +33,34 @@ namespace Gem
 	{
 		m_KeyStates.Allocate(512);
 		m_MouseStates.Allocate((SInt32)MouseButton::Middle + 1);
+
+		for (UInt32 i = 0; i < m_KeyStates.GetCount(); i++)
+		{
+			m_KeyStates[i] = InputState::Up;
+		}
+
+		for (UInt32 i = 0; i < m_MouseStates.GetCount(); i++)
+		{
+			m_MouseStates[i] = InputState::Up;
+		}
 	}
 
 	Input::~Input()
 	{
 
+		//Clear up memory for any allocated input axis / buttons.
+		for (UInt32 i = 0; i < m_InputAxis.size(); i++)
+		{
+			MEM_POOL_DEALLOC_T(m_InputAxis[i], InputAxis);
+		}
+
+		for (UInt32 i = 0; i < m_InputButtons.size(); i++)
+		{
+			MEM_POOL_DEALLOC_T(m_InputButtons[i], InputButton);
+		}
+
+		m_InputAxis.clear();
+		m_InputButtons.clear();
 	}
 
 	bool Input::GetKey(KeyCode aKeyCode)
@@ -76,6 +101,167 @@ namespace Gem
 			false;
 	}
 
+	void Input::CreateAxis(const std::string & aName, KeyCode aPositiveKey, KeyCode aNegativeKey, float aSpeed, bool aResetOnRelease)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+
+		InputAxis * inputAxis = MEM_POOL_ALLOC_T(InputAxis, aName, aPositiveKey, aNegativeKey, aSpeed, aResetOnRelease);
+		s_Instance->m_InputAxis.push_back(inputAxis);
+	}
+	void Input::CreateAxis(const std::string & aName, MouseButton aPositiveButton, MouseButton aNegativeButton, float aSpeed, bool aResetOnRelease)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+
+		InputAxis * inputAxis = MEM_POOL_ALLOC_T(InputAxis, aName, aPositiveButton, aNegativeButton, aSpeed, aResetOnRelease);
+		s_Instance->m_InputAxis.push_back(inputAxis);
+	}
+	void Input::CreateAxis(const std::string & aName, bool aMouseX)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+
+		InputAxis * inputAxis = MEM_POOL_ALLOC_T(InputAxis, aName, aMouseX);
+		s_Instance->m_InputAxis.push_back(inputAxis);
+	}
+
+	void Input::CreateButton(const std::string & aName, KeyCode aKey)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+		InputButton * inputButton = MEM_POOL_ALLOC_T(InputButton, aName, aKey);
+		s_Instance->m_InputButtons.push_back(inputButton);
+	}
+
+	void Input::CreateButton(const std::string & aName, MouseButton aMouseButton)
+	{
+		if (s_Instance == nullptr)
+		{
+			return;
+		}
+		InputButton * inputButton = MEM_POOL_ALLOC_T(InputButton, aName, aMouseButton);
+		s_Instance->m_InputButtons.push_back(inputButton);
+	}
+
+	Float32 Input::GetAxis(const std::string & aName)
+	{
+		if (s_Instance == nullptr)
+		{
+			return 0.0f;
+		}
+
+		float totalValue = 0.0f;
+
+		for (std::vector<InputAxis*>::iterator it = s_Instance->m_InputAxis.begin();
+			it != s_Instance->m_InputAxis.end();
+			it++)
+		{
+			InputAxis * axis = *it;
+			if (axis->GetName() == aName)
+			{
+				if (axis->GetInputDeviceType() == InputDeviceType::MousePosition)
+				{
+					return axis->GetValue();
+				}
+				else
+				{
+					totalValue += axis->GetValue();
+				}
+			}
+		}
+		
+		return Math::Clamp(totalValue, -1.0f, 1.0f);
+	}
+
+	bool Input::GetButton(const std::string & aName)
+	{
+		if (s_Instance == nullptr)
+		{
+			return false;
+		}
+
+		int buttonsDown = 0;
+		int buttonsUp = 0;
+
+		for (std::vector<InputButton*>::iterator it = s_Instance->m_InputButtons.begin();
+			it != s_Instance->m_InputButtons.end();
+			it++)
+		{
+			InputButton * button = *it;
+			if (button->GetName() == aName)
+			{
+
+				InputState state = button->GetState();
+
+				if (state == InputState::Down || state == InputState::Pressed)
+				{
+					buttonsDown++;
+				}
+				else
+				{
+					buttonsUp++;
+				}
+			}
+		}
+		return buttonsDown > buttonsUp;
+	}
+
+	bool Input::GetButtonDown(const std::string & aName)
+	{
+		if (s_Instance == nullptr)
+		{
+			return 0.0f;
+		}
+
+		for (std::vector<InputButton*>::iterator it = s_Instance->m_InputButtons.begin();
+			it != s_Instance->m_InputButtons.end();
+			it++)
+		{
+			InputButton * button = *it;
+			if (button->GetName() == aName)
+			{
+
+				InputState state = button->GetState();
+				if (state == InputState::Pressed)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	bool Input::GetButtonUp(const std::string & aName)
+	{
+		if (s_Instance == nullptr)
+		{
+			return 0.0f;
+		}
+
+		for (std::vector<InputButton*>::iterator it = s_Instance->m_InputButtons.begin();
+			it != s_Instance->m_InputButtons.end();
+			it++)
+		{
+			InputButton * button = *it;
+			if (button->GetName() == aName)
+			{
+				InputState state = button->GetState();
+				if (state == InputState::Released)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	void Input::ProcessKeyDown(KeyCode aKey)
 	{
@@ -144,6 +330,13 @@ namespace Gem
 			{
 				m_MouseStates[i] = InputState::Up;
 			}
+		}
+
+		for (std::vector<InputAxis*>::iterator it = m_InputAxis.begin();
+			it != m_InputAxis.end();
+			it++)
+		{
+			(*it)->Update();
 		}
 	}
 

@@ -15,6 +15,7 @@ namespace Gem
 	//These are keycodes as defined by windows.
 	enum class KeyCode
 	{
+		None = 0,
 		Return = 0x0D,
 		Escape = 0x1B,
 		Left = 0x25,

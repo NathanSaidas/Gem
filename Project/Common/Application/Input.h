@@ -18,11 +18,15 @@
 #include "KeyCode.h"
 #include "MouseButton.h"
 #include "InputState.h"
+#include "InputAxis.h"
+#include "InputButton.h"
 
 namespace Gem
 {
 	FORCE_EXPORT_META(Input);
 	FORCE_EXPORT(Array<InputState>);
+	FORCE_EXPORT(std::vector<InputAxis*>);
+	FORCE_EXPORT(std::vector<InputButton*>);
 
 	class GEM_API Input : public object
 	{
@@ -92,6 +96,75 @@ namespace Gem
 		* @return Returns true if the button is released.
 		*/
 		static bool GetMouseButtonUp(MouseButton aButton);
+		
+
+		/**
+		* This method creates an input axis that is managed by the game's input system. This method specifically creates an axis that uses keyboard input.
+		* @param aName The name of the axis to create.
+		* @param aPostiiveKey The keycode of the positive axis.
+		* @param aNegativeKey The keycode of the negative axis.
+		* @param aSpeed The rate at which the input accelerates.
+		* @param aResetOnRelease If this is true the axis value will snap back to 0 when there is no input. Otherwise it slowly moves to 0.
+		*/
+		static void CreateAxis(const std::string & aName, KeyCode aPositiveKey, KeyCode aNegativeKey, float aSpeed, bool aResetOnRelease);
+		/**
+		* This method creates an input axis that is managed by the game's input system. This method specifically creates an axis that uses mouse buttons as input.
+		* @param aName The name of the axis to create.
+		* @param aPositiveButton The mouse button code for the positive axis.
+		* @param aNegativeButton The mouse button code for the negative axis.
+		* @param aSpeed The rate at which the input accelerates.
+		* @param aResetOnRelease  If this is true the axis value will snap back to 0 when there is no input. Otherwise it slowly moves to 0.
+		*/
+		static void CreateAxis(const std::string & aName, MouseButton aPositiveButton, MouseButton aNegativeButton, float aSpeed, bool aResetOnRelease);
+		
+		/**
+		* This method creates an input axis that is managed by the game's input system. This method specifically creates an axis that uses mouse movement as input.
+		* @param aName The name of the axis to create.
+		*/
+		static void CreateAxis(const std::string & aName, bool aMouseX);
+
+		/**
+		* This method creates a button using the specified keycode.
+		* @param aName The name of button to create.
+		* @param aKey The keycode to use.
+		*/
+		static void CreateButton(const std::string & aName, KeyCode aKey);
+		/**
+		* This method creates a button using a specified mousebutton.		
+		* @param aName The name of the button to create.
+		* @param aMouseButton The mouse button to use.
+		*/
+		static void CreateButton(const std::string & aName, MouseButton aMouseButton);
+
+
+	
+		/** 
+		* This method iterates through all the axis and finds the axis with the matching names. It adds all the values of 
+		* each axis together and returns the result. (Min = -1, Max = 1)
+		* @param aName The name of the axis to search for
+		* @return Returns a value of -1 to 1 based on input from the negative and positive axis InputDevices assigned with CreateAxis.
+		*/
+		static Float32 GetAxis(const std::string & aName);
+
+		/**
+		* This method iterates through all buttons and checks if the button has the matching name. It then keeps count of all
+		* buttons that are considered down (Down/Pressed) and up (Up/Released). The result is equal to down > up.
+		* @param aName the nname of the button to search for
+		* @return returns true if the number of down buttons is greater than up.
+		*/
+		static bool GetButton(const std::string & aName);
+		/** 
+		* This method iterates through all buttons until it finds one with the matching name and is being pressed.
+		* @param aName The name of the button to search for.
+		* @return Returns true if any of the buttons are being pressed.
+		*/
+		static bool GetButtonDown(const std::string & aName);
+		/** 
+		* This method iterates through all buttons until it finds one with the matching name and is being released.
+		* @param aName The name of the button to search for.
+		* @return Returns true if any of the buttons are being released.ss
+		*/
+		static bool GetButtonUp(const std::string & aName);
 
 	private:
 		static Input * s_Instance;
@@ -105,7 +178,10 @@ namespace Gem
 		Array<InputState> m_KeyStates;
 		/** The input states for mouse buttons.*/
 		Array<InputState> m_MouseStates;
-		
+		/** The input axis' to manage */
+		std::vector<InputAxis*> m_InputAxis;
+		/** The input buttons' to manage*/
+		std::vector<InputButton*> m_InputButtons;
 		//Internal methods.
 
 		void ProcessKeyDown(KeyCode aKey);
