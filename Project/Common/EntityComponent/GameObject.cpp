@@ -2,10 +2,10 @@
 #include "Scene.h"
 #include "../Application/Application.h"
 #include "../Memory/Memory.h"
+#include "EntityComponentSerialization.h"
 #include "InstructionTerm.h"
 
 using namespace Gem::Debugging;
-using namespace Gem::EntityComponent;
 
 namespace Gem
 {
@@ -55,14 +55,20 @@ namespace Gem
 		m_Position(Vector3::Zero()),
 		m_Rotation(Quaternion::Identity()),
 		m_Scale(Vector3::Zero()),
-		m_SerializerFlag(-1)
+		m_SerializerFlag(-1),
+		m_Owner(nullptr),
+		m_HashCode(0)
 	{
 		//Does not call InternalOnCreate this constructor is intended to be used for by SceneGraphs.
 	}
 
 	GameObject::~GameObject()
 	{
-		InternalOnDestroy();
+		if (m_Owner != nullptr)
+		{
+			InternalOnDestroy();
+		}
+		
 	}
 	
 	void GameObject::Destroy(GameObject * aGameObject)
@@ -105,7 +111,24 @@ namespace Gem
 	}
 	void GameObject::SetName(std::string aName)
 	{
-		m_Name = aName;
+		//If the name is not the same. The scene might have to rehash.
+		if (aName != m_Name && m_Owner != nullptr)
+		{
+			//Check and see what the new hash will be.
+			UInt32 newHash = m_Owner->HashString(aName);
+			//If the codes are different the scene will need to rehash this gameobject.
+			if (newHash != m_HashCode)
+			{
+				m_Owner->OnGameObjectWillChangeName(this);
+				m_Name = aName;
+				m_HashCode = newHash;
+				m_Owner->OnGameObjectChangedName(this);
+			}
+			else
+			{
+				m_Name = aName;
+			}
+		}
 	}
 
 	std::string GameObject::GetTag()
@@ -137,18 +160,34 @@ namespace Gem
 
 	GameObject * GameObject::GetParent()
 	{
+		if (m_Owner->IsRoot(m_Parent))
+		{
+			return nullptr;
+		}
 		return m_Parent;
 	}
 	void GameObject::SetParent(GameObject * aParent)
 	{
+		if (m_Parent == aParent)
+		{
+			return;
+		}
 		if (m_Parent != nullptr)
 		{
 			m_Parent->RemoveChild(this);
+			if (m_Owner != nullptr)
+			{
+				m_Owner->OnGameObjectWillChangeParent(this);
+			}
 		}
 		m_Parent = aParent;
 		if (m_Parent != nullptr)
 		{
 			m_Parent->AddChild(this);
+		}
+		if (m_Owner != nullptr)
+		{
+			m_Owner->OnGameObjectChangedParent(this);
 		}
 	}
 
@@ -249,21 +288,11 @@ namespace Gem
 			{
 				m_Children.push_back(aChild);
 
-				if (aChild->m_Parent != this)
+				if (aChild->m_Parent != this && aChild->m_Parent != nullptr)
 				{
-					Scene * scene = Application::GetCurrentScene();
-					if (scene != nullptr)
-					{
-						scene->Remove(this);
-					}
 					aChild->m_Parent->RemoveChild(aChild);
-					if (scene != nullptr)
-					{
-						scene->Insert(this);
-					}
 					aChild->m_Parent = this;
 				}
-
 			}
 		}
 	}
@@ -464,51 +493,40 @@ namespace Gem
     }
 
 
-	RDEFINE_PRIVATE_FUNCTION(GameObject, OnPreSerializeData, int)
-	int GameObject::OnPreSerializeData()
-	{
-		return 8;
-	}
 
-	RDEFINE_PRIVATE_FUNCTION(GameObject, OnSerializeData, void, const int&, EntityComponent::InstructionTerm**)
-	void GameObject::OnSerializeData(const int & aCount, EntityComponent::InstructionTerm** aTerms)
+	RDEFINE_PRIVATE_FUNCTION(GameObject, OnSerializeData, void, std::vector<InstructionTerm*>&)
+	void GameObject::OnSerializeData(std::vector<InstructionTerm*> & aTerms)
 	{
-		if (aCount != OnPreSerializeData())
-		{
-			Debug::ErrorFormat("Gem", nullptr, "%s", "Failed to serialize data, invalid count.");
-			return;
-		}
-
-		aTerms[0]->SetName("m_Name");
-		aTerms[0]->SetValue(m_Name);
-		aTerms[1]->SetName("m_Tag");
-		aTerms[1]->SetValue(m_Tag);
-		aTerms[2]->SetName("m_RenderMask");
-		aTerms[2]->SetValue(m_RenderMask);
-		aTerms[3]->SetName("m_PhysicsMask");
-		aTerms[3]->SetValue(m_PhysicsMask);
-		aTerms[4]->SetName("m_IsActive");
-		aTerms[4]->SetValue(m_IsActive);
-		aTerms[5]->SetName("m_Position");
-		aTerms[5]->SetComplexValue(m_Position);
-		aTerms[6]->SetName("m_Rotation");
-		aTerms[6]->SetComplexValue(m_Rotation);
-		aTerms[7]->SetName("m_Scale");
-		aTerms[7]->SetComplexValue(m_Scale);
+		aTerms.push_back(SERIALIZE_TERM(m_Name));
+		aTerms.push_back(SERIALIZE_TERM(m_Tag));
+		aTerms.push_back(SERIALIZE_TERM(m_RenderMask));
+		aTerms.push_back(SERIALIZE_TERM(m_RenderMask));
+		aTerms.push_back(SERIALIZE_TERM(m_PhysicsMask));
+		aTerms.push_back(SERIALIZE_TERM(m_IsActive));
+		aTerms.push_back(SERIALIZE_TERM(m_Position));
+		aTerms.push_back(SERIALIZE_TERM(m_Rotation));
+		aTerms.push_back(SERIALIZE_TERM(m_Scale));
 	}
 
 	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnCreate, void)
 	void GameObject::InternalOnCreate()
 	{
 		Scene * scene = Application::GetCurrentScene();
+		m_Owner = scene;
+		m_HashCode = scene->HashString(m_Name);
 		scene->Register(this);
 	}
 	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnDestroy, void)
 	void GameObject::InternalOnDestroy()
 	{
 		Scene * scene = Application::GetCurrentScene();
+		if (scene == nullptr)
+		{
+			return;
+		}
 		scene->Unregister(this);
 
+		//Destroy All Children...
 		for (int i = 0; i < m_Children.size(); i++)
 		{
 			GameObject * gameObject = m_Children[i];
@@ -528,6 +546,7 @@ namespace Gem
 
 		}
 
+		//Destroy all components.
 		for (int i = m_Components.size() - 1; i >= 0; i--)
 		{
 			Component * component = m_Components[i];

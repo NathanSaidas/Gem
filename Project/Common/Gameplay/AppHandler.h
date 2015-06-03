@@ -2,6 +2,7 @@
 #define GEM_APP_HANDLER_H
 
 #include "../Engine.h"
+#include <random>
 
 namespace Gem
 {
@@ -23,6 +24,9 @@ namespace Gem
 	private:
 
 		Vector2 m_MousePosition;
+
+		std::mt19937 m_MTE;
+		std::uniform_int_distribution<int> m_Distribution;
 	};
 
 	TYPE_DEFINE(AppHandler)

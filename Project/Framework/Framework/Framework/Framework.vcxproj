@@ -163,9 +163,12 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\Bounds.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\Camera.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\Component.h" />
-    <ClInclude Include="..\..\..\Common\EntityComponent\ECSerializer.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\EntityComponent.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\EntityComponentSerialization.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Errors\EntityComponentErrors.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\Errors\SceneGraphNotInitialized.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\GameObject.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\GameObjectMap.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\GameObjectTree.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\IComplexTerm.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\InitializationStep.h" />
@@ -173,6 +176,7 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\InstructionTokenID.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\Renderer.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\Scene.h" />
+    <ClInclude Include="..\..\..\Common\EntityComponent\SceneFile.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\SceneFileInstruction.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\InstructionTerm.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\SceneGraph.h" />
@@ -269,8 +273,8 @@
     <ClCompile Include="..\..\..\Common\EntityComponent\Bounds.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\Camera.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\Component.cpp" />
-    <ClCompile Include="..\..\..\Common\EntityComponent\ECSerializer.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\GameObject.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\GameObjectMap.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\GameObjectTree.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\IComplexTerm.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\InitializationStep.cpp" />
@@ -278,6 +282,7 @@
     <ClCompile Include="..\..\..\Common\EntityComponent\Renderer.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\Scene.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\InstructionTerm.cpp" />
+    <ClCompile Include="..\..\..\Common\EntityComponent\SceneFile.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\SceneGraph.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\TestComponent.cpp" />
     <ClCompile Include="..\..\..\Common\Graphics\Color.cpp" />

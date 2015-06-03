@@ -8,7 +8,9 @@
 #include "Camera.h"
 #include "Renderer.h"
 
-#include "ECSerializer.h"
+#include "SceneFile.h"
+#include "SceneGraph.h"
+#include "GameObjectMap.h"
 #include "InstructionTerm.h"
 #include "InstructionData.h"
 #include "InstructionTokenID.h"

@@ -184,7 +184,7 @@ namespace Gem
 		//
 		if (!window->Open())
 		{
-			Error error = Error("Failed to create window", ErrorConstants::FAILED_WINDOW_CREATION, GET_TRACE(2), "Application::CreateWindow");
+			Error error = Error("Failed to create window", ErrorConstants::FailedWindowCreation, GET_TRACE(2), "Application::CreateWindow");
 			Debug::Error("Gem", error);
 		}
 		else
@@ -315,6 +315,7 @@ namespace Gem
 		win32Window->Open();
 
 		m_DefaultWindow = win32Window.Raw();
+		m_CurrentScene = MEM_POOL_ALLOC_T(Scene);
 
 		//m_CurrentScene = MEM_POOL_ALLOC_T(Scene);
 
@@ -341,6 +342,8 @@ namespace Gem
 					m_AppHandler->Update();
 				}
 
+				m_CurrentScene->Update();
+
 
 				//Internal Post Update
 				Input::GetInstance()->Update();
@@ -349,7 +352,9 @@ namespace Gem
 				Memory::MemoryManager::GetInstance()->ResetFrame();
 			}
 		}
+		
 		win32Window->Close();
+		MEM_POOL_DEALLOC_T(m_CurrentScene, Scene);
 		win32Window.Terminate();
 		m_DefaultWindow = nullptr;
 		//MEM_POOL_DEALLOC_T(window, Win32Window);

@@ -1,19 +1,29 @@
 #include "AppHandler.h"
+#include <random>
 
 using namespace Gem::Reflection;
 using namespace Gem::Memory;
-using namespace Gem::EntityComponent;
 using namespace Gem::Debugging;
 
 
 namespace Gem
 {
 
+	const std::string RANDOM_NAMES[] =
+	{
+		"Richard",
+		"Wally",
+		"YouKnowIt",
+		"Ruther",
+		"MOTHER FUCKER"
+	};
+
 	RDEFINE_CLASS(AppHandler, BaseAppHandler)
 
 	AppHandler::AppHandler()
+		: m_MTE(),
+		m_Distribution(0, 4)
 	{
-
 	}
 	AppHandler::~AppHandler()
 	{
@@ -34,44 +44,58 @@ namespace Gem
 	void AppHandler::OnSystemsInitialized()
 	{
 		Debug::Log("AppHandler", "OnSystemsInitialized");
-
-		Input::CreateAxis("Mouse X", true);
-		Input::CreateAxis("Mouse Y", false);
-
-
-		Input::CreateAxis("AlphaNum", KeyCode::Alpha1, KeyCode::Alpha2, 2.0f, false);
-		Input::CreateButton("ShowLog", KeyCode::S);
-		Input::CreateButton("ShowLog", KeyCode::B);
-		Input::CreateButton("ShowLog", KeyCode::V);
-
-		m_MousePosition = Input::GetMousePosition();
+		Input::CreateButton("Create", KeyCode::I);
+		Input::CreateButton("Find", KeyCode::F);
+		Input::CreateButton("Save", KeyCode::S);
 	}
 
 	void AppHandler::Update()
 	{
-		if (Input::GetButtonDown("ShowLog"))
+		if (Input::GetButtonDown("Create"))
 		{
+			GameObject * gameObject = MEM_POOL_ALLOC_T(GameObject, RANDOM_NAMES[m_Distribution(m_MTE)]);
+			Debug::LogFormat("AppHandler", nullptr, "Creating gameobject %s", gameObject->GetName().c_str());
 
-			Vector2 mp = Input::GetMousePosition();
+			if (gameObject->GetName() == RANDOM_NAMES[2])
+			{
+				Debug::Log("AppHandler", "Searching for parent");
+				Scene * scene = Application::GetCurrentScene();
+				GameObject* parent = scene->Find(RANDOM_NAMES[1]);
+				if (parent != nullptr)
+				{
+					Debug::Log("AppHandler", "Found parent");
+					gameObject->SetParent(parent);
+				}
+			}
 
-			Debug::LogFormat("AppHandler", nullptr, "X = %f Y = %f", mp.x, mp.y);
-
-			//float mouseX = Input::GetAxis("Mouse X");
-			//float mouseY = Input::GetAxis("Mouse Y");
-			//float alphaNum = Input::GetAxis("AlphaNum");
-			//
-			//Debug::LogFormat("AppHandler", nullptr, "Mouse X = %f, Mouse Y = %f, AlphaNum = %f", mouseX, mouseY, alphaNum);
+		}
+		if (Input::GetButtonDown("Find"))
+		{
+			std::string searchname = RANDOM_NAMES[m_Distribution(m_MTE)];
+			GameObject * gameObject = Application::GetCurrentScene()->Find(searchname);
+			if (gameObject == nullptr)
+			{
+				Debug::LogFormat("AppHandler", nullptr, "Failed to find gameobject %s", searchname.c_str());
+			}
+			else
+			{
+				Debug::LogFormat("AppHandler", nullptr, "Found gameobject %s", searchname.c_str());
+			}
 		}
 
-		Vector2 mousePosition = Input::GetMousePosition();
-
-		float deltaX = Input::GetAxis("AlphaNum");
-
-		bool log = deltaX != 0.0f; // mousePosition != m_MousePosition;
-		if (log)
+		if (Input::GetButtonDown("Save"))
 		{
-			Debug::LogFormat("AppHandler", nullptr, "Delta X = %f", deltaX);
+			try
+			{
+				Scene * scene = Application::GetCurrentScene();
+				SceneFile sceneFile;
+				sceneFile.SaveScene(scene, "SceneSaveTest.txt");
+				Debug::Log("AppHandler", "Successfully saved scene.");
+			}
+			catch (...)
+			{
+				Debug::Log("AppHandler", "Failed to save scene");
+			}
 		}
-		m_MousePosition = mousePosition;
 	}
 }

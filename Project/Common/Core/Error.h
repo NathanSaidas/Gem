@@ -24,6 +24,14 @@ namespace Gem
 			static bool IsErrorType() { return false; }
 			static bool IsArgumentNull() { return false; }
 			static bool IsInvalidArgument(){ return false; }
+			static bool IsEntityComponentError() { return false; }
+			static bool IsApplicationError() { return false; }
+			static bool IsGraphicsError() { return false; }
+			static bool IsMemoryError() { return false; }
+			static bool IsWindowError() { return false; }
+			static bool IsReflectionError() { return false; }
+			static bool IsPhysicsError() { return false; }
+			static bool IsAudioError() { return false; }
 		};
 
 		/**

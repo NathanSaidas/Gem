@@ -15,13 +15,11 @@
 
 namespace Gem
 {
-	namespace EntityComponent
-	{
-		class InstructionTerm;
-	}
+		
 
-
+	class Scene;
 	class Window;
+	class InstructionTerm;
 	
 	FORCE_EXPORT_META(GameObject);
 
@@ -40,6 +38,11 @@ namespace Gem
 
 		//Getters and Setters
 #pragma region ACCESSORS
+
+		inline UInt32 GetHashCode() const
+		{
+			return m_HashCode;
+		}
 
 		void SetActive(bool aFlag);
 		bool IsActive();
@@ -198,6 +201,8 @@ namespace Gem
 		GameObject(SInt32 aInternalHash);
 	private:
 		
+		UInt32 m_HashCode;
+		Scene* m_Owner;
 
 		std::string m_Name;
 		std::string m_Tag;
@@ -221,21 +226,12 @@ namespace Gem
 		SInt32 m_SerializerFlag;
 		RDECLARE_PRIVATE_MEMBER(GameObject, m_SerializerFlag)
 		
-		
-		/**
-		* This method is used to tell the ECSerializer how many instruction terms it will be saving.
-		* @return Return the number of elements to
-		*/
-		int OnPreSerializeData();
-		RDECLARE_PRIVATE_FUNCTION(GameObject, OnPreSerializeData)
-		
-		
 		/**
 		* This method is intended to get called from ECSerializer to gets its instructions data. ("Terms")
 		* @param aCount The amount of terms being passed in.
 		* @param aTerms A dynamic array of terms to modify, they are already allocated but will only last for the frame.
 		*/
-		void OnSerializeData(const int & aCount, EntityComponent::InstructionTerm** aTerms);
+		void OnSerializeData(std::vector<InstructionTerm*> & aTerms);
 		RDECLARE_PRIVATE_FUNCTION(GameObject, OnSerializeData)
 
 		/**
@@ -281,6 +277,9 @@ namespace Gem
 		void OnWindowClose(Window * aWindow);
 		void OnWindowChangeSize(Window * aWindow, int aWidth, int aHeight);
 
+		
+		friend class Scene;
+		friend class SceneFile;
 		friend class SceneGraph;
 	};
 

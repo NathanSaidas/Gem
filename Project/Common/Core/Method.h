@@ -98,16 +98,13 @@ namespace Gem
 
 		RETURN Invoke(CLASS& aInstance, ARGS ... args)
 		{
-			if (aInstance != nullptr)
+			if (m_Function != nullptr)
 			{
-				if (m_Function != nullptr)
-				{
-					return (aInstance.*m_Function)(args...);
-				}
-				else if (m_ConstFunction != nullptr)
-				{
-					return (aInstance.*m_ConstFunction)(args...);
-				}
+				return (aInstance.*m_Function)(args...);
+			}
+			else if (m_ConstFunction != nullptr)
+			{
+				return (aInstance.*m_ConstFunction)(args...);
 			}
 			return RETURN();
 		}

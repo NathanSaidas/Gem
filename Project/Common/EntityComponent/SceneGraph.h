@@ -51,6 +51,7 @@ namespace Gem
 	private:
 		GraphNode m_Top;
 
+
 		friend class Scene;
 	};
 }

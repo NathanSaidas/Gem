@@ -8,25 +8,26 @@
 
 namespace Gem
 {
-	namespace EntityComponent
-	{
-		struct GEM_API InstructionData
-		{
-			/** The name of the token in a string format*/
-			CString tokenIDName;
-			/** The integer value of the token id*/
-			SInt32 tokenID;
-			/** A parameter reserved for special token operations.*/
-			SInt32 reservedParam0;
-			/** A parameter reserved for special token operations.*/
-			SInt32 reservedParam1;
-			/** Indicates how many parameters there are of an instruction set.*/
-			SInt32 paramCount;
+	FORCE_EXPORT(std::vector<InstructionTerm*>);
 
-			//List of params...
-			InstructionTerm ** terms;
-		};
-	}
+	struct GEM_API InstructionData
+	{
+		/** The name of the token in a string format*/
+		CString tokenIDName;
+		/** The integer value of the token id*/
+		SInt32 tokenID;
+		/** The type this data is responsible for*/
+		std::string typeName;
+		/** A parameter reserved for special token operations.*/
+		SInt32 reservedParam0;
+		/** A parameter reserved for special token operations.*/
+		SInt32 reservedParam1;
+		/** Indicates how many parameters there are of an instruction set.*/
+		SInt32 paramCount;
+
+		//List of params...
+		std::vector<InstructionTerm*> terms;
+	};
 	
 
 }

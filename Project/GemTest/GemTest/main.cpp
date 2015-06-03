@@ -6,6 +6,7 @@
 #include "../../Common/Engine.h"
 #include "../../Common/Gameplay/AppHandler.h"
 #include <Windows.h>
+#include <functional>
 
 using namespace Gem;
 
@@ -28,6 +29,7 @@ int Hash(const std::string & aString)
 
 	return n / aString.size();
 }
+
 
 
 int WINAPI WinMain(HINSTANCE aCurrentInstance, HINSTANCE aPreviousInstance, LPSTR aCommandLineArgs, int aShowCommand)

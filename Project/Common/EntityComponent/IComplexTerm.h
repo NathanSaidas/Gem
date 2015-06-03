@@ -6,19 +6,14 @@
 
 namespace Gem
 {
-	namespace EntityComponent
+	class IComplexTerm
 	{
-		class IComplexTerm
-		{
-			RDECLARE_INTERFACE(IComplexTerm)
-		public:
-			virtual std::string OnSerialize() const;
-			virtual bool OnDeserialize(const std::string & aData) const;
-		};
-
-		
-	}
-	TYPE_DEFINE_NAMED(EntityComponent::IComplexTerm, "IComplexTerm")
+		RDECLARE_INTERFACE(IComplexTerm)
+	public:
+		virtual std::string OnSerialize() const;
+		virtual bool OnDeserialize(const std::string & aData) const;
+	};
+	TYPE_DEFINE(IComplexTerm)
 }
 
 #endif

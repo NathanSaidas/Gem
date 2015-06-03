@@ -2,17 +2,14 @@
 
 namespace Gem
 {
-	namespace EntityComponent
-	{
-		RDEFINE_INTERFACE(IComplexTerm)
+	RDEFINE_INTERFACE(IComplexTerm)
 
-			std::string IComplexTerm::OnSerialize() const
-		{
-			return "";
-		}
-		bool IComplexTerm::OnDeserialize(const std::string & aData) const
-		{
-			return true;
-		}
+		std::string IComplexTerm::OnSerialize() const
+	{
+		return "";
+	}
+	bool IComplexTerm::OnDeserialize(const std::string & aData) const
+	{
+		return true;
 	}
 }

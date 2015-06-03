@@ -1,6 +1,14 @@
 #ifndef GEM_I_FORMATTER_H
 #define GEM_I_FORMATTER_H
 
+//============================================================
+// Date:			June,	2,		2015
+// Description:		Contains the base interface for all Formatter types.
+//============================================================
+
+#pragma  region CHANGE LOG
+// -- Nathan Hanlan - Matrix4x4 is not longer required to be serialized. It will be kept for BinaryFormatter however.
+#pragma endregion
 
 #include "../Core/GemAPI.h"
 #include "../Core/BasicTypes.h"
@@ -36,7 +44,6 @@ namespace Gem
 		virtual void Serialize(Vector3 aValue, Stream & aStream) = 0;
 		virtual void Serialize(Vector4 aValue, Stream & aStream) = 0;
 		virtual void Serialize(Quaternion aValue, Stream & aStream) = 0;
-		virtual void Serialize(Matrix4x4 aValue, Stream & aStream) = 0;
 		virtual void Serialize(std::string & aValue, Stream & aStream) = 0;
 
 		/**
@@ -54,7 +61,6 @@ namespace Gem
 		virtual bool Deserialize(Vector3 & aValue, Stream & aStream) = 0;
 		virtual bool Deserialize(Vector4 & aValue, Stream & aStream) = 0;
 		virtual bool Deserialize(Quaternion & aValue, Stream & aStream) = 0;
-		virtual bool Deserialize(Matrix4x4 & aValue, Stream & aStream) = 0;
 		virtual bool Deserialize(std::string & aValue, Stream & aStream) = 0;
 	};
 

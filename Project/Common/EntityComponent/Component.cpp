@@ -4,6 +4,7 @@
 namespace Gem
 {
 	RDEFINE_CLASS(Component, object)
+	RDEFINE_PRIVATE_MEMBER(Component, m_SerializerFlag, SInt32)
 
 	Component::Component() : object()
 	{
@@ -161,6 +162,12 @@ namespace Gem
 	std::vector<Component*> Component::GetComponentsInParent(const Type & aType)
 	{
 		return m_GameObject->GetComponentsInParent(aType);
+	}
+
+	RDEFINE_PROTECTED_FUNCTION(Component, OnSerializeData, void, std::vector<InstructionTerm*>&)
+	void Component::OnSerializeData(std::vector<InstructionTerm*>& aTerms)
+	{
+		
 	}
 
 }

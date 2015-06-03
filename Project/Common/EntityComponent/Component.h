@@ -8,7 +8,7 @@
 namespace Gem
 {
 	class GameObject;
-
+	class InstructionTerm;
 	class Component;
 	template class GEM_API Reflection::MetaObject<Component>;
 
@@ -124,10 +124,23 @@ namespace Gem
 		//TODO: Implement when Serialization has been designed / implemented.
         virtual void OnSerializeEditor(IFormatter * aFormatter, Stream & aStream);
         virtual void OnDeserializeEditor(IFormatter * aFormatter, Stream & aStream);
+
+	protected:
+			void OnSerializeData(std::vector<InstructionTerm*>& aTerms);
+			RDECLARE_PROTECTED_FUNCTION(Component, OnSerializeData)
+
 	private:
 		GameObject * m_GameObject;
 		bool m_ReceiveGameObjectMessages;
+		SInt32 m_SerializerFlag;
+		RDECLARE_PRIVATE_MEMBER(Component, m_SerializerFlag)
+
+
+		
+		
 		friend GameObject;
+
+		
 	};
 
 	TYPE_DEFINE(Component)

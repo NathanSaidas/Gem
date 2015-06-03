@@ -17,7 +17,7 @@ namespace Gem
 	namespace Memory
 	{
 		template<typename T>
-		class GEM_API Instantiator
+		class Instantiator
 		{
 		public:
 			template<typename ... Types>

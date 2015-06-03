@@ -11,7 +11,7 @@ namespace Gem
 	}
 	SceneGraph::~SceneGraph()
 	{
-		MEM_POOL_DEALLOC_T(m_Top,GameObject);
+		MEM_POOL_DEALLOC_T(m_Top, GameObject);
 	}
 
 
@@ -23,7 +23,7 @@ namespace Gem
 		}
 		if (aGameObject->GetParent() == nullptr)
 		{
-			m_Top->AddChild(aGameObject);
+			aGameObject->SetParent(m_Top);
 		}
 
 	}
@@ -34,9 +34,9 @@ namespace Gem
 			return;
 		}
 
-		if (aGameObject->GetParent() == nullptr)
+		if (aGameObject->GetParent() == m_Top)
 		{
-			m_Top->RemoveChild(aGameObject);
+			aGameObject->SetParent(nullptr);
 		}
 	}
 
@@ -326,4 +326,5 @@ namespace Gem
 		}
 		return gameobjects;
 	}
+
 }

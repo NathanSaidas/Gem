@@ -35,6 +35,9 @@
     <Filter Include="API\Entity Component">
       <UniqueIdentifier>{6bfef947-f742-4ccc-a0a6-c0f5417559f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Entity Component\Errors">
+      <UniqueIdentifier>{5a3faba2-520f-4781-bdf9-ff1c0e4ea60c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -343,9 +346,6 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\InstructionData.h">
       <Filter>API\Entity Component</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Common\EntityComponent\ECSerializer.h">
-      <Filter>API\Entity Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Common\EntityComponent\IComplexTerm.h">
       <Filter>API\Entity Component</Filter>
     </ClInclude>
@@ -387,6 +387,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Common\Application\InputDeviceType.h">
       <Filter>API\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\GameObjectMap.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\SceneFile.h">
+      <Filter>API\Entity Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Errors\SceneGraphNotInitialized.h">
+      <Filter>API\Entity Component\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\Errors\EntityComponentErrors.h">
+      <Filter>API\Entity Component\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityComponent\EntityComponentSerialization.h">
+      <Filter>API\Entity Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -567,9 +582,6 @@
     <ClCompile Include="..\..\..\Common\EntityComponent\InstructionTokenID.cpp">
       <Filter>API\Entity Component</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Common\EntityComponent\ECSerializer.cpp">
-      <Filter>API\Entity Component</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Common\EntityComponent\IComplexTerm.cpp">
       <Filter>API\Entity Component</Filter>
     </ClCompile>
@@ -602,6 +614,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Application\InputButton.cpp">
       <Filter>API\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\GameObjectMap.cpp">
+      <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\EntityComponent\SceneFile.cpp">
+      <Filter>API\Entity Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
