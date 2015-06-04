@@ -84,4 +84,29 @@ namespace Gem
 		}
 		return nullptr;
 	}
+
+	Reflection::Member * Type::GetMethodInfo(const std::string & aBaseClass, const std::string & aName) const
+	{
+		if (aBaseClass == m_Name)
+		{
+			for (std::vector<Reflection::Member*>::const_iterator it = m_Methods.begin(); it != m_Methods.end(); it++)
+			{
+				if (aName == (*it)->GetMemberName())
+				{
+					return *it;
+				}
+			}
+		}
+		else
+		{
+			for (std::vector<Reflection::Member*>::const_iterator it = m_InheritedMethods.begin(); it != m_InheritedMethods.end(); it++)
+			{
+				if (aBaseClass == (*it)->GetClassName() && aName == (*it)->GetMemberName())
+				{
+					return *it;
+				}
+			}
+		}
+		return nullptr;
+	}
 }

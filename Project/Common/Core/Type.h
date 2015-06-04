@@ -8,9 +8,11 @@
 //============================================================
 
 #pragma region CHANGE LOG
-/// -- January, 29, 2015 - Nathan Hanlan - Added class/file Type.
-/// -- April,    1, 2015 - Nathan Hanlan - Changed Collection return types from vector to Array
-/// -- April,    1, 2015 - Nathan Hanlan - Added in class member inspection.
+/// Nathan Hanlan - Added class/file Type.
+/// Nathan Hanlan - Changed Collection return types from vector to Array
+/// Nathan Hanlan - Added in class member inspection.
+/// Nathan Hanlan - Runtime now adds all inherited methods regardless if the names existed before.
+/// Nathan Hanlan - Add GetMethodInfo with aBaseClass argument
 #pragma endregion
 
 #include <string>
@@ -94,6 +96,7 @@ namespace Gem
         Array<Type> GetInterfaces() const;
         
         Type GetInterface(const std::string & aName) const;
+
         Array<Reflection::MemberInfo> GetMembers() const;
 		/**
 		* Searches for a member by name.
@@ -101,10 +104,26 @@ namespace Gem
 		*/
         Reflection::MemberInfo GetMember(const std::string & aName) const;
         
-
+		/**
+		* Gets all of the methods.
+		* @return Returns an array of all methods this type has.
+		*/
 		Array<Reflection::Member*> GetMethods() const;
 
+		/**
+		* Searches for a method with the specified name. Searches in root class before base classes.
+		* @param aName The name of method to search for.
+		* @return Returns a pointer to method info should it exist. Return nullptr otherwise.
+		*/
 		Reflection::Member * GetMethodInfo(const std::string & aName) const;
+
+		/**
+		* Searches for a method with the specified name and of the baseclass type.
+		* @param aBaseClass The name of the baseclass the method needs to be of.
+		* @param aName The name of method to search for.
+		* @return Returns a pointer to the method should it exist. Return nullptr otherwise.
+		*/
+		Reflection::Member * GetMethodInfo(const std::string & aBaseClass, const std::string & aName) const;
 
         Func<void*, void*> GetConstructor() const
         {

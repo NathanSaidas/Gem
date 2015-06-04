@@ -1,5 +1,5 @@
-#ifndef GEM_ENTITY_COMPONENT_H
-#define GEM_ENTITY_COMPONENT_H
+#ifndef GEM_ENTITY_COMPONENT_SERIALIZATION_H
+#define GEM_ENTITY_COMPONENT_SERIALIZATION_H
 
 #include "../Memory/Memory.h"
 #include "InstructionTerm.h"

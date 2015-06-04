@@ -13,7 +13,7 @@ namespace Gem
 	struct GEM_API InstructionData
 	{
 		/** The name of the token in a string format*/
-		CString tokenIDName;
+		std::string tokenIDName;
 		/** The integer value of the token id*/
 		SInt32 tokenID;
 		/** The type this data is responsible for*/

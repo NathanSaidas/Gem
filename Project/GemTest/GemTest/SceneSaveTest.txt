@@ -1,0 +1,108 @@
+begin AddGameObject
+AddGameObject 0 -1
+AddGameObject 1 -1
+AddGameObject 2 -1
+AddGameObject 3 -1
+AddGameObject 4 -1
+end AddGameObject
+begin LinkGameObject
+LinkGameObject 0
+count = 8 {
+m_Name = Wally
+m_Tag = 
+m_RenderMask = 0
+m_PhysicsMask = 0
+m_IsActive = 0
+m_Position = [x=0.0y=0.0z=0.0]
+m_Rotation = [x=0.0y=0.0z=0.0w=1.0]
+m_Scale = [x=0.0y=0.0z=0.0]
+}
+LinkGameObject 1
+count = 8 {
+m_Name = YouKnowIt
+m_Tag = 
+m_RenderMask = 0
+m_PhysicsMask = 0
+m_IsActive = 0
+m_Position = [x=0.0y=0.0z=0.0]
+m_Rotation = [x=0.0y=0.0z=0.0w=1.0]
+m_Scale = [x=0.0y=0.0z=0.0]
+}
+LinkGameObject 2
+count = 8 {
+m_Name = Richard
+m_Tag = 
+m_RenderMask = 0
+m_PhysicsMask = 0
+m_IsActive = 0
+m_Position = [x=0.0y=0.0z=0.0]
+m_Rotation = [x=0.0y=0.0z=0.0w=1.0]
+m_Scale = [x=0.0y=0.0z=0.0]
+}
+LinkGameObject 3
+count = 8 {
+m_Name = Ruther
+m_Tag = 
+m_RenderMask = 0
+m_PhysicsMask = 0
+m_IsActive = 0
+m_Position = [x=0.0y=0.0z=0.0]
+m_Rotation = [x=0.0y=0.0z=0.0w=1.0]
+m_Scale = [x=0.0y=0.0z=0.0]
+}
+LinkGameObject 4
+count = 8 {
+m_Name = Ruther
+m_Tag = 
+m_RenderMask = 0
+m_PhysicsMask = 0
+m_IsActive = 0
+m_Position = [x=0.0y=0.0z=0.0]
+m_Rotation = [x=0.0y=0.0z=0.0w=1.0]
+m_Scale = [x=0.0y=0.0z=0.0]
+}
+end LinkGameObject
+begin AddComponent
+AddComponent 0 0 ComponentZero
+AddComponent 1 1 ComponentZero
+AddComponent 2 2 ComponentZero
+AddComponent 3 3 ComponentZero
+AddComponent 4 4 ComponentZero
+end AddComponent
+begin LinkComponent
+LinkComponent 0
+count = 4 {
+m_Health = 4653.92
+m_Damage = 325.854
+m_Level = 42
+m_SpawnPoint = [x=0.0y=0.0z=0.0]
+}
+LinkComponent 1
+count = 4 {
+m_Health = 5402.06
+m_Damage = 345.56
+m_Level = 44
+m_SpawnPoint = [x=0.0y=0.0z=0.0]
+}
+LinkComponent 2
+count = 4 {
+m_Health = 5720.88
+m_Damage = 235.101
+m_Level = 45
+m_SpawnPoint = [x=0.0y=0.0z=0.0]
+}
+LinkComponent 3
+count = 4 {
+m_Health = 5997.19
+m_Damage = 265.386
+m_Level = 40
+m_SpawnPoint = [x=0.0y=0.0z=0.0]
+}
+LinkComponent 4
+count = 4 {
+m_Health = 6225.7
+m_Damage = 46.8764
+m_Level = 44
+m_SpawnPoint = [x=0.0y=0.0z=0.0]
+}
+end LinkComponent

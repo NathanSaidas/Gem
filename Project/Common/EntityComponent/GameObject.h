@@ -234,6 +234,10 @@ namespace Gem
 		void OnSerializeData(std::vector<InstructionTerm*> & aTerms);
 		RDECLARE_PRIVATE_FUNCTION(GameObject, OnSerializeData)
 
+		void OnDeserializeData(std::vector<InstructionTerm*> & aTerms);
+		RDECLARE_PRIVATE_FUNCTION(GameObject, OnDeserializeData)
+
+
 		/**
 		* This method gets called by gameobject itself to register itself with the scene.
 		*/

@@ -26,7 +26,11 @@ namespace Gem
 		Vector2 m_MousePosition;
 
 		std::mt19937 m_MTE;
-		std::uniform_int_distribution<int> m_Distribution;
+		std::uniform_int_distribution<int> m_Int;
+		std::uniform_real_distribution<float> m_Float;
+
+		float RandomRange(float aMin, float aMax);
+		int RandomRange(int aMin, int aMax);
 	};
 
 	TYPE_DEFINE(AppHandler)

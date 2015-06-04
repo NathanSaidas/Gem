@@ -19,12 +19,18 @@
     <ClCompile Include="..\..\Common\Gameplay\AppHandler.cpp">
       <Filter>Source Files\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Common\Gameplay\ComponentZero.cpp">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\Engine.h">
       <Filter>Source Files\Gem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Gameplay\AppHandler.h">
+      <Filter>Source Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Gameplay\ComponentZero.h">
       <Filter>Source Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>

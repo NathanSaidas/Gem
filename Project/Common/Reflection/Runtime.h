@@ -2,8 +2,9 @@
 #define GAME_ENGINE_RUNTIME_H
 
 #pragma region CHANGE LOG
-/// -- January 30, 2015 - Nathan Hanlan - Added Runtime class/file
-/// -- April    3, 2015 - Nathan Hanlan - Added attribute binding support for MetaObjectLinker::ATTRIBUTE_TYPE_IS_ENUM
+/// Nathan Hanlan - Added Runtime class/file
+/// Nathan Hanlan - Added attribute binding support for MetaObjectLinker::ATTRIBUTE_TYPE_IS_ENUM
+/// Nathan Hanlan - When linking inherited methods, it no longer discards overwritten methods.
 #pragma endregion
 
 #include <string>

@@ -170,4 +170,10 @@ namespace Gem
 		
 	}
 
+	RDEFINE_PROTECTED_FUNCTION(Component, OnDeserializeData, void, std::vector<InstructionTerm*>&)
+	void Component::OnDeserializeData(std::vector<InstructionTerm*>& aTerms)
+	{
+		
+	}
+
 }

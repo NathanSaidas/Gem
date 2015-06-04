@@ -125,9 +125,11 @@ namespace Gem
         virtual void OnSerializeEditor(IFormatter * aFormatter, Stream & aStream);
         virtual void OnDeserializeEditor(IFormatter * aFormatter, Stream & aStream);
 
-	protected:
-			void OnSerializeData(std::vector<InstructionTerm*>& aTerms);
-			RDECLARE_PROTECTED_FUNCTION(Component, OnSerializeData)
+		virtual void OnSerializeData(std::vector<InstructionTerm*>& aTerms);
+		RDECLARE_PROTECTED_FUNCTION(Component, OnSerializeData)
+
+		virtual void OnDeserializeData(std::vector<InstructionTerm*>& aTerms);
+		RDECLARE_PROTECTED_FUNCTION(Component, OnDeserializeData);
 
 	private:
 		GameObject * m_GameObject;

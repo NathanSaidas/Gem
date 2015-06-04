@@ -29,6 +29,15 @@ namespace Gem
 
 		std::string GetName() const;
 		std::string GetValue() const;
+		SInt32 AsInt() const;
+		UInt32 AsUInt() const;
+		bool AsBool() const;
+		Float32 AsFloat() const;
+		Vector2 AsVector2() const;
+		Vector3 AsVector3() const;
+		Vector4 AsVector4() const;
+		Quaternion AsQuaternion() const;
+		void AsComplexTerm(IComplexTerm* aValue);
 
 		void SetName(std::string aName);
 		void SetValue(std::string aValue);
@@ -52,6 +61,8 @@ namespace Gem
 		void SetComplexValue(const IComplexTerm * aValue);
 
 		std::string ToString() override;
+
+		static InstructionTerm* GetTerm(std::vector<InstructionTerm*> & aTerms, const std::string & aName);
 
 	private:
 		std::string m_Name;

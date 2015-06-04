@@ -403,6 +403,9 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\EntityComponentSerialization.h">
       <Filter>API\Entity Component</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Utilities\CFileExtensions.h">
+      <Filter>API\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -620,6 +623,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\EntityComponent\SceneFile.cpp">
       <Filter>API\Entity Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Utilities\CFileExtensions.cpp">
+      <Filter>API\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

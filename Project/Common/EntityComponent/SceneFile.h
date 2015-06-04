@@ -31,6 +31,7 @@ namespace Gem
 	public:
 	
 		void SaveScene(Scene* aScene, const std::string & aFilename);
+		void LoadScene(const std::string & aFilename);
 	
 	private:
 
@@ -49,11 +50,16 @@ namespace Gem
 		*/
 		void AddGameObject(GameObject* aGameObject);
 
+		void AddGameObject(SInt32 aID, SInt32 aParentID);
+
+
 		/** 
 		* This method wil generate an instruction to create a component .
 		* @param aComponent The component to create.
 		*/
 		void AddComponent(Component* aComponent);
+
+		void AddComponent(SInt32 aID, SInt32 aParentID, const std::string & aTypename);
 
 		/**
 		* This method will save meta data about the object that will be set when it is re-created.

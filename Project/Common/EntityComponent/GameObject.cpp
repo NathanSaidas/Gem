@@ -500,13 +500,58 @@ namespace Gem
 		aTerms.push_back(SERIALIZE_TERM(m_Name));
 		aTerms.push_back(SERIALIZE_TERM(m_Tag));
 		aTerms.push_back(SERIALIZE_TERM(m_RenderMask));
-		aTerms.push_back(SERIALIZE_TERM(m_RenderMask));
 		aTerms.push_back(SERIALIZE_TERM(m_PhysicsMask));
 		aTerms.push_back(SERIALIZE_TERM(m_IsActive));
 		aTerms.push_back(SERIALIZE_TERM(m_Position));
 		aTerms.push_back(SERIALIZE_TERM(m_Rotation));
 		aTerms.push_back(SERIALIZE_TERM(m_Scale));
 	}
+
+	RDEFINE_PRIVATE_FUNCTION(GameObject, OnDeserializeData, void, std::vector<InstructionTerm*>&)
+	void GameObject::OnDeserializeData(std::vector<InstructionTerm*> & aTerms)
+	{
+		InstructionTerm* term = InstructionTerm::GetTerm(aTerms, "m_Name");
+		if (term != nullptr)
+		{
+			SetName(term->GetValue());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_Tag");
+		if (term != nullptr)
+		{
+			SetTag(term->GetValue());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_RenderMask");
+		if (term != nullptr)
+		{
+			SetRenderMask(term->AsUInt());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_PhysicsMask");
+		if (term != nullptr)
+		{
+			SetPhysicsMask(term->AsUInt());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_IsActive");
+		if (term != nullptr)
+		{
+			SetActive(term->AsBool());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_Position");
+		if (term != nullptr)
+		{
+			SetPosition(term->AsVector3());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_Rotation");
+		if (term != nullptr)
+		{
+			SetRotation(term->AsQuaternion());
+		}
+		term = InstructionTerm::GetTerm(aTerms, "m_Scale");
+		if (term != nullptr)
+		{
+			SetScale(term->AsVector3());
+		}
+	}
+
 
 	RDEFINE_PRIVATE_FUNCTION(GameObject, InternalOnCreate, void)
 	void GameObject::InternalOnCreate()

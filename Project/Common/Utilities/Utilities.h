@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "StringExtensions.h"
+#include "CFileExtensions.h"
 #include "../Core/Debug.h"
 #include "Array.h"
 #include "IniFileStream.h"
@@ -53,6 +54,8 @@ namespace Gem
 			return false;
 		}
 
+
+		
 		
 	}
 }

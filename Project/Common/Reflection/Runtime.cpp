@@ -366,20 +366,22 @@ namespace Gem
 			for (int i = 0; i < methods.GetCount(); i++)
 			{
 				bool exists = false;
-				for (std::vector<Member*>::iterator it = aChild.m_Methods.begin();
-					it != aChild.m_Methods.end();
-					it++)
-				{
-					if (strcmp((*it)->GetMemberName(), methods[i]->GetMemberName()) == 0)
-					{
-						exists = true;
-						break;
-					}
-				}
-				if (!exists)
-				{
-					aChild.m_InheritedMethods.push_back(methods[i]);
-				}
+				aChild.m_InheritedMethods.push_back(methods[i]);
+
+				//for (std::vector<Member*>::iterator it = aChild.m_Methods.begin();
+				//	it != aChild.m_Methods.end();
+				//	it++)
+				//{
+				//	if (strcmp((*it)->GetMemberName(), methods[i]->GetMemberName()) == 0)
+				//	{
+				//		exists = true;
+				//		break;
+				//	}
+				//}
+				//if (!exists)
+				//{
+				//	aChild.m_InheritedMethods.push_back(methods[i]);
+				//}
 			}
 
 			//Add all interfaces...

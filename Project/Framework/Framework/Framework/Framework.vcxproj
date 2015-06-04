@@ -236,6 +236,7 @@
     <ClInclude Include="..\..\..\Common\Resource\ResourceDatabase.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Array.h" />
     <ClInclude Include="..\..\..\Common\Utilities\BinaryFormatter.h" />
+    <ClInclude Include="..\..\..\Common\Utilities\CFileExtensions.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Directory.h" />
     <ClInclude Include="..\..\..\Common\Utilities\Guid.h" />
     <ClInclude Include="..\..\..\Common\Utilities\IFormatter.h" />
@@ -313,6 +314,7 @@
     <ClCompile Include="..\..\..\Common\Resource\Resource.cpp" />
     <ClCompile Include="..\..\..\Common\Resource\ResourceDatabase.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\BinaryFormatter.cpp" />
+    <ClCompile Include="..\..\..\Common\Utilities\CFileExtensions.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\Directory.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\Guid.cpp" />
     <ClCompile Include="..\..\..\Common\Utilities\IFormatter.cpp" />

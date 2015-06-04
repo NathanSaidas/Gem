@@ -51,6 +51,14 @@ namespace Gem
 		* @return Returns a string version of the value.
 		*/
 		static std::string GetName(Enum * aEnum);
+
+		template<typename T>
+		static std::string GetName(SInt32 aValue)
+		{
+			T instance = aValue;
+			return GetName(&instance);
+		}
+
 		/**
 		* Returns the array of strings corresponding with the available values.
 		* @param aEnum The enum to get the names from.
