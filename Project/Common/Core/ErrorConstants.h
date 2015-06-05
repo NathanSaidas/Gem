@@ -18,6 +18,8 @@ namespace Gem
 				//Arguments
 				InvalidArgument,
 				ArgumentNull,
+				FileNotFound,
+				
 
 				//Windows
 				FailedWindowCreation,

@@ -10,21 +10,30 @@
 // -- Nathan Hanlan	- Implemented Class.
 #pragma endregion
 
-#include "GemAPI.h"
-#include "Error.h"
+#include "../GemAPI.h"
+#include "../Error.h"
 
 namespace Gem
 {
 	namespace Debugging
 	{
+		FORCE_EXPORT_META(InvalidArgument);
+
 		/**
 		* An error implementation for invalid arguments.
 		*/
 		class GEM_API InvalidArgument : public Error
 		{
+			RDECLARE_CLASS(InvalidArgument)
 		public:
-			InvalidArgument(const char * aArgumentName, const char * aErrorString, const int aErrorCode, const Trace aErrorTrace, const char * aMethodFullName)
-				: Error(aErrorString, aErrorCode, aErrorTrace, aMethodFullName), m_ArgumentName(aArgumentName)
+
+			InvalidArgument() : Error()
+			{
+
+			}
+
+			InvalidArgument(const char * aArgumentName, const Trace aErrorTrace, const char * aMethodFullName)
+				: Error("Invalid Argument", ErrorConstants::InvalidArgument, aErrorTrace, aMethodFullName), m_ArgumentName(aArgumentName)
 			{
 
 			}
@@ -32,6 +41,8 @@ namespace Gem
 			{
 
 			}
+
+			void Log(CString aHeader) override;
 
 			/**
 			* The name of the argument that is invalid.
@@ -64,6 +75,8 @@ namespace Gem
 			static bool IsAudioError() { return false; }
 		};
 	}
+
+	TYPE_DEFINE_NAMED(Debugging::InvalidArgument, "InvalidArgument")
 }
 
 #endif

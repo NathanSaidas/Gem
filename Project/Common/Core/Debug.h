@@ -13,15 +13,14 @@
 #pragma endregion
 
 #include "GemAPI.h"
-#include "InvalidArgument.h"
-#include "ArgumentNull.h"
-#include "Error.h"
 #include "Trace.h"
 
 namespace Gem
 {
 	namespace Debugging
 	{
+		class Error;
+
 		class GEM_API Debug
 		{
 		public:
@@ -102,18 +101,10 @@ namespace Gem
 			static void ErrorFormat(const char * aHeader, const char * aFormat, ...);
 
 			/**
-			* Writes out a formatted message for an argument null error.
-			* @param aError The error object with information about the argument being null.
+			* Writes a message based on an error object passed in.
+			* @param aHeader The header 
 			*/
-			static void ArgumentNull(const Debugging::ArgumentNull & aError);
-
-			/**
-			* Writes out a formatted message for an invalid argument error.
-			* @param aError The error object with information about the argument being invalid.
-			*/
-			static void InvalidArgument(const Debugging::InvalidArgument & aError);
-
-			static void Error(const char * aHeader, const Debugging::Error & aError);
+			static void Error(const char * aHeader, Debugging::Error * aError);
 
 		private:
 			Debug();

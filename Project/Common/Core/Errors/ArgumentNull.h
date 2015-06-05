@@ -10,21 +10,29 @@
 // -- Nathan Hanlan	- Implemented Class.
 #pragma endregion
 
-#include "GemAPI.h"
-#include "Error.h"
+#include "../GemAPI.h"
+#include "../Error.h"
 
 namespace Gem
 {
 	namespace Debugging
 	{
+		FORCE_EXPORT_META(ArgumentNull);
+
 		/**
 		* An error implementation for Arguments that are null.
 		*/
 		class GEM_API ArgumentNull : public Error
 		{
+			RDECLARE_CLASS(ArgumentNull)
 		public:
-			ArgumentNull(const char * aArgumentName, const char * aErrorString, const int aErrorCode, const Trace aErrorTrace, const char * aMethodFullName)
-				: Error(aErrorString, aErrorCode, aErrorTrace, aMethodFullName), m_ArgumentName(aArgumentName)
+			ArgumentNull() : Error()
+			{
+
+			}
+
+			ArgumentNull(const char * aArgumentName, const Trace aErrorTrace, const char * aMethodFullName)
+				: Error("Argument is null", ErrorConstants::ArgumentNull, aErrorTrace, aMethodFullName), m_ArgumentName(aArgumentName)
 			{
 
 			}
@@ -32,6 +40,8 @@ namespace Gem
 			{
 
 			}
+
+			void Log(CString aHeader) override;
 			
 			/**
 			* The name of the argument that is null.
@@ -65,6 +75,8 @@ namespace Gem
 			static bool IsAudioError() { return false; }
 		};
 	}
+
+	TYPE_DEFINE_NAMED(Debugging::ArgumentNull, "ArgumentNull")
 }
 
 #endif // GEM_ARGUMENT_NULL_H

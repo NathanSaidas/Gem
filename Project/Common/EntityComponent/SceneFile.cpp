@@ -21,6 +21,7 @@ namespace Gem
 		FILE* file = fopen(aFilename.c_str(), "w");
 		if (file == NULL)
 		{
+			//Invalid file
 			return;
 		}
 
@@ -38,12 +39,10 @@ namespace Gem
 		{
 			GameObject* top = gameObjectStack.top();
 			SInt32 currentIndex = indexStack.top();
-
 			if (top == root && currentIndex >= root->m_Children.size())
 			{
 				break;
 			}
-
 			std::vector<GameObject*> & children = top->m_Children;
 
 			//Go deeper.

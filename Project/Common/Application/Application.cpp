@@ -89,8 +89,8 @@ namespace Gem
 		default:
 #ifdef _DEBUG
 			{
-				   InvalidArgument error = GENERATE_INVALID_ARGUMENT("aEventType", "Application::RegisterEvent", 16);
-				   Debug::InvalidArgument(error);
+				   InvalidArgument error = InvalidArgument("aEventType", GET_TRACE(0), "Application::RegisterEvent");
+				   Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			}
 #endif
 			break;
@@ -112,8 +112,8 @@ namespace Gem
 		default:
 #ifdef _DEBUG
 			{
-				   InvalidArgument error = GENERATE_INVALID_ARGUMENT("aEventType", "Application::RegisterEvent", 16);
-				   Debug::InvalidArgument(error);
+				   InvalidArgument error = InvalidArgument("aEventType", GET_TRACE(0), "Application::UnregisterEvent");
+				   Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			}
 #endif
 			break;
@@ -182,12 +182,7 @@ namespace Gem
 		Pointer<Win32Window> win32Window = Pointer<Win32Window>(aName, (HINSTANCE)s_Instance->m_HandleInstance);
 		Pointer<Window>  window = win32Window.Cast<Window>();
 		//
-		if (!window->Open())
-		{
-			Error error = Error("Failed to create window", ErrorConstants::FailedWindowCreation, GET_TRACE(2), "Application::CreateWindow");
-			Debug::Error("Gem", error);
-		}
-		else
+		if (window->Open())
 		{
 			s_Instance->m_Windows.push_back(window);
 		}

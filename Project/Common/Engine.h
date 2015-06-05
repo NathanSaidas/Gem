@@ -10,7 +10,9 @@
 #pragma warning ( disable : 4244)
 
 #include "Graphics\Graphics.h"
-#include "Core\GemAPI.h"
+#include "Core\Core.h"
+#include "Core\CoreConstants.h"
+#include "Core\Errors\CoreErrors.h"
 #include "Core\Debug.h"
 #include "Core\Time.h"
 #include "Core\ErrorConstants.h"

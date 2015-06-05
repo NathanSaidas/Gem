@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "Time.h"
+#include "Error.h"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -175,36 +176,12 @@ namespace Gem
 			}
 		}
 
-		void Debug::ArgumentNull(const Debugging::ArgumentNull & aError)
+		void Debug::Error(const char * aHeader, Debugging::Error * aError)
 		{
-			ErrorFormat(nullptr, nullptr, 
-				"Argument Null[%d]: %s at %s\nFile: %s\nLine: %d", 
-				aError.GetErrorCode(), 
-				aError.GetArgumentName(), 
-				aError.GetMethodFullName(), 
-				aError.GetErrorTrace().filename, 
-				aError.GetErrorTrace().line);
-		}
-
-		void Debug::InvalidArgument(const Debugging::InvalidArgument & aError)
-		{
-			ErrorFormat(nullptr, nullptr,
-				"Invalid Argument[%d]: %s at %s\nFile: %s\nLine: %d",
-				aError.GetErrorCode(),
-				aError.GetArgumentName(),
-				aError.GetMethodFullName(),
-				aError.GetErrorTrace().filename,
-				aError.GetErrorTrace().line);
-		}
-
-		void Debug::Error(const char * aHeader, const Debugging::Error & aError)
-		{
-			Debug::LogFormat(aHeader, nullptr, "Message[%d]: %s at %s\nFile: %s\nLine%d",
-				aError.GetErrorCode(),
-				aError.GetErrorString(),
-				aError.GetMethodFullName(),
-				aError.GetErrorTrace().filename,
-				aError.GetErrorTrace().line);
+			if (aError != nullptr)
+			{
+				aError->Log(aHeader);
+			}
 		}
 
 		void Debug::CreateConsole()

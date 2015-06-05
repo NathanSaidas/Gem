@@ -10,8 +10,9 @@
 // -- Nathan Hanlan	- Implemented base class features.
 #pragma endregion
 
-#include "GemAPI.h"
+#include "Core.h"
 #include "Trace.h"
+#include "ErrorConstants.h"
 
 namespace Gem
 {
@@ -34,14 +35,22 @@ namespace Gem
 			static bool IsAudioError() { return false; }
 		};
 
+		FORCE_EXPORT_META(Error);
+
 		/**
 		* Base class for error objects.
 		*/
-		class GEM_API Error
+		class GEM_API Error : public object
 		{
+			RDECLARE_CLASS(Error)
 		public:
+			Error() : object(), m_ErrorString(""), m_ErrorCode(ErrorConstants::Empty), m_ErrorTrace(Trace("", 0)), m_MethodFullname("")
+			{
+
+			}
+
 			Error(const char * aErrorString, const int aErrorCode, const Trace aErrorTrace, const char * aMethodFullname)
-				: m_ErrorString(aErrorString), m_ErrorCode(aErrorCode), m_ErrorTrace(aErrorTrace), m_MethodFullname(aMethodFullname)
+				: object(), m_ErrorString(aErrorString), m_ErrorCode(aErrorCode), m_ErrorTrace(aErrorTrace), m_MethodFullname(aMethodFullname)
 			{
 
 			}
@@ -52,6 +61,8 @@ namespace Gem
 			}
 
 			virtual ~Error(){}
+
+			virtual void Log(CString aHeader);
 
 			/**
 			* @ return Returns a string containing information about the error.
@@ -90,7 +101,8 @@ namespace Gem
 			const int m_ErrorCode;
 			const Trace m_ErrorTrace;
 			const char * m_MethodFullname;
-		};
+		};									
+
 
 		/**
 		* Define the ErrorType compile time constants for Error.
@@ -105,6 +117,8 @@ namespace Gem
 
 		
 	}
+
+	TYPE_DEFINE_NAMED(Debugging::Error, "Error")
 }
 
 #endif // GEM_ERROR_H

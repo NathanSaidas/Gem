@@ -1,4 +1,5 @@
 #include "Win32Window.h"
+#include "Errors\WindowErrors.h"
 #include "../Core/ErrorConstants.h"
 #include "../Core/Debug.h"
 #include "../Application/Application.h"
@@ -151,8 +152,8 @@ namespace Gem
 
 		if (!RegisterClass(&wc))
 		{
-			Error error = Error("Failed to register window class", ErrorConstants::FailedWindowCreation, GET_TRACE(2), "Win32Window::Open");
-			Debug::Error("Window",error);
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			return false;
 		}
 
@@ -190,8 +191,8 @@ namespace Gem
 	
 		if (m_WindowHandle == NULL)
 		{
-			Error error = Error("Failed to create window", ErrorConstants::FailedWindowCreation, GET_TRACE(2), "Win32Window::Open");
-			Debug::Error("Window", error);
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			return false;
 		}
 
@@ -214,8 +215,8 @@ namespace Gem
 		m_WindowDeviceContext = GetDC(m_WindowHandle);
 		if (m_WindowDeviceContext == NULL)
 		{
-			Error error = Error("Failed to get device context", ErrorConstants::FailedWindowCreation, GET_TRACE(3), "Win32Window::Open");
-			Debug::Error("Window", error);
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			DestroyWindow(m_WindowHandle);
 			UnregisterClass(m_WindowClassName.c_str(), GetModuleHandle(NULL));
 			return false;
@@ -224,12 +225,10 @@ namespace Gem
 		int pixelFormat = ChoosePixelFormat(m_WindowDeviceContext, &pixelFormatDescriptor);
 		if (pixelFormat == 0)
 		{
-			Error error = Error("Failed to choose pixel format.", ErrorConstants::FailedWindowCreation, GET_TRACE(3), "Win32Window::Open");
-			Debug::Error("Window", error);
-
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			ReleaseDC(m_WindowHandle, m_WindowDeviceContext);
 			m_WindowDeviceContext = NULL;
-
 			DestroyWindow(m_WindowHandle);
 			UnregisterClass(m_WindowClassName.c_str(), GetModuleHandle(NULL));
 			return false;
@@ -237,8 +236,8 @@ namespace Gem
 
 		if(SetPixelFormat(m_WindowDeviceContext,pixelFormat,&pixelFormatDescriptor) == FALSE)
 		{
-			Error error = Error("Failed to set pixel format.", ErrorConstants::FailedWindowCreation, GET_TRACE(2), "Win32Window::Open");
-			Debug::Error("Window", error);
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 			ReleaseDC(m_WindowHandle, m_WindowDeviceContext);
 			m_WindowDeviceContext = NULL;
 
@@ -250,8 +249,8 @@ namespace Gem
 		m_OpenGLContext = wglCreateContext(m_WindowDeviceContext);
 		if(m_OpenGLContext == NULL)
 		{
-			Error error = Error("Failed to create OpenGL Context", ErrorConstants::FailedWindowCreation, GET_TRACE(3), "Win32Window::Open");
-			Debug::Error("Window", error);
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 
 			ReleaseDC(m_WindowHandle, m_WindowDeviceContext);
 			m_WindowDeviceContext = NULL;
@@ -263,8 +262,8 @@ namespace Gem
 
 		if (wglMakeCurrent(m_WindowDeviceContext, m_OpenGLContext) == FALSE)
 		{
-			Error error = Error("Failed to make this windows context the current.", ErrorConstants::FailedWindowCreation, GET_TRACE(2), "Win32Window::Open");
-			Debug::Error("Window", error);
+			FailedWindowCreation error = FailedWindowCreation(GET_TRACE(0), "Win32Window::Open");
+			Debug::Error(Constants::GEM_APPLICATION_LOG_HEADER, &error);
 
 			wglMakeCurrent(NULL, NULL);
 			wglDeleteContext(m_OpenGLContext);

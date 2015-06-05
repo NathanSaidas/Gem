@@ -8,9 +8,9 @@ namespace Gem
 		RENUM_CPP(ErrorConstants, Values, Values::Empty + 1)
 		{
 			//Arguments
-			"Invalid Argument",
-			"Argument was null",
-
+			"InvalidArgument",
+			"ArgumentNull",
+			"FileNotFound",
 			//Windows
 			"FailedWindowCreation",
 			"LeakedWindowMemory",

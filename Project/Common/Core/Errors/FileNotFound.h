@@ -1,59 +1,55 @@
-#ifndef GEM_SCENE_GRAPH_NOT_INITIALIZED_H
-#define GEM_SCENE_GRAPH_NOT_INITIALIZED_H
+#ifndef GEM_FILE_NOT_FOUND_H
+#define GEM_FILE_NOT_FOUND_H
 
 //============================================================
 // Date:			June,	 2,		2015
-// Description:		Contains an extended error class for when scene graphs are not initialized.
+// Description:		Contains an extended error class for when a filepath could not be found.
 //============================================================
 
 #pragma  region CHANGE LOG
 // -- Nathan Hanlan	- Implemented Class.
 #pragma endregion
 
-#include "../../Core/ValueTypes.h"
-#include "../../Core/GemAPI.h"
-#include "../../Core/Error.h"
-#include "../../Core/ErrorConstants.h"
-#include "../../Core/Debug.h"
+#include "../Error.h"
+
 
 namespace Gem
 {
 	namespace Debugging
 	{
+		FORCE_EXPORT_META(FileNotFound);
 
 		/**
 		* An error implementation for Arguments that are null.
 		*/
-		class GEM_API SceneGraphNotInitialized : public Error
+		class GEM_API FileNotFound : public Error
 		{
-
+			RDECLARE_CLASS(FileNotFound)
 		public:
-			/** 
+
+			FileNotFound() : Error()
+			{
+
+			}
+
+			/**
 			* @param aArgumentName The name of the scene graph variable that is not initialized.
-			* @param aErrorCode The error code that represents this error. 
+			* @param aErrorCode The error code that represents this error.
 			* @param aTrace The file trace of where this error occured.
 			* @param aMethodFullname The full name of the method of where this error occured.
 			*/
-			SceneGraphNotInitialized(CString aArgumentName, const Trace aErrorTrace, CString aMethodFullName)
-				: Error("Scene graph has not been initialized. Member m_Top is null.", ErrorConstants::SceneGraphNotInitialized, aErrorTrace, aMethodFullName),
+			FileNotFound(CString aArgumentName, const Trace aErrorTrace, CString aMethodFullName)
+				: Error("File was not found.", ErrorConstants::FileNotFound, aErrorTrace, aMethodFullName),
 				m_ArgumentName(aArgumentName)
 			{
 
 			}
-			~SceneGraphNotInitialized()
+			~FileNotFound()
 			{
 
 			}
 
-			void Log(CString aHeader)
-			{
-				Debug::LogFormat(aHeader, nullptr, "Error[%d]: %s at %s\nFile: %s\nLine%d",
-					GetErrorCode(),
-					GetErrorString(),
-					GetMethodFullName(),
-					GetErrorTrace().filename,
-					GetErrorTrace().line);
-			}
+			void Log(CString aHeader) override;
 
 			/**
 			* The name of the argument that is null.
@@ -72,13 +68,13 @@ namespace Gem
 		* Define the ErrorType compile time constants for ArgumentNull.
 		*/
 		template<>
-		class ErrorType<SceneGraphNotInitialized>
+		class ErrorType<FileNotFound>
 		{
 			static bool IsErrorType() { return true; }
 			static bool IsArgumentNull() { return false; }
 			static bool IsInvalidArgument(){ return false; }
-			static bool IsEntityComponentError(){ return true; }
-			static bool IsApplicationError() { return false; }
+			static bool IsEntityComponentError(){ return false; }
+			static bool IsApplicationError() { return true; }
 			static bool IsGraphicsError() { return false; }
 			static bool IsMemoryError() { return false; }
 			static bool IsWindowError() { return false; }
@@ -87,6 +83,8 @@ namespace Gem
 			static bool IsAudioError() { return false; }
 		};
 	}
+
+	TYPE_DEFINE_NAMED(Debugging::FileNotFound, "FileNotFound")
 }
 
 #endif // GEM_SCENE_GRAPH_NOT_INITIALIZED_H
