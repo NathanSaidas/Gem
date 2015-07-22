@@ -12,7 +12,7 @@ namespace Gem
 	/**
 	*	This is the base class for all application handlers.
 	*/
-	class GEM_API BaseAppHandler : public object
+	class BaseAppHandler : public object
 	{
 		/** Declare the meta class data of BaseAppHandler */
 		RDECLARE_CLASS(BaseAppHandler)

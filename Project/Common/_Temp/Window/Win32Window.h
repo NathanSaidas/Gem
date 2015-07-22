@@ -29,7 +29,7 @@ namespace Gem
 	class Win32Window;
 	template class GEM_API Reflection::MetaObject<Win32Window>;
 
-	class GEM_API Win32Window : public Window
+	class Win32Window : public Window
 	{
 		RDECLARE_CLASS(Win32Window)
 	public:

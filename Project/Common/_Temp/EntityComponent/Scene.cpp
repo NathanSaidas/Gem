@@ -9,7 +9,15 @@ using namespace Gem::Debugging;
 
 namespace Gem
 {
-	RDEFINE_CLASS(Scene, Object)
+    
+        const Func<void, GameObject*> PRE_RENDER_FUNC     = [](GameObject* gameObject){gameObject->SendMessage<int>("InternalOnRenderUpdate", 0); };
+        const Func<void, GameObject*> RENDER_FUNC         = [](GameObject* gameObject){gameObject->SendMessage<int>("InternalOnRenderUpdate", 1); };
+        const Func<void, GameObject*> POST_RENDER_FUNC    = [](GameObject* gameObject){gameObject->SendMessage<int>("InternalOnRenderUpdate", 2); };
+        const Func<void, GameObject*> UPDATE_FUNC         = [](GameObject* gameObject){gameObject->SendMessage<int>("InternalOnUpdate", 0); };
+        const Func<void, GameObject*> POST_UPDATE_FUNC    = [](GameObject* gameObject){gameObject->SendMessage<int>("InternalOnUpdate", 1); };
+        const Func<void, GameObject*> UPDATE_STATE_FUNC   = [](GameObject* gameObject){gameObject->SendMessage<>("InternalOnUpdateState"); };
+
+    	RDEFINE_CLASS(Scene, Object)
 
 		const UInt32 Scene::MAX_GAME_OBJECTS = 65535;
 
@@ -159,34 +167,29 @@ namespace Gem
 
 		void Scene::Update()
 		{
-			GameObject * top = m_SceneGraph.m_Top;
-
-			top->BroadcastMessage<>("InternalOnUpdateState");
-			top->BroadcastMessage<int>("InternalOnUpdate", 0);
-			top->BroadcastMessage<int>("InternalOnUpdate", 1);
+            m_SceneMap.Foreach(UPDATE_STATE_FUNC);
+            m_SceneMap.Foreach(UPDATE_FUNC);
+            m_SceneMap.Foreach(POST_UPDATE_FUNC);
 		}
 		void Scene::FixedUpdate()
 		{
-			GameObject * top = m_SceneGraph.m_Top;
-			top->BroadcastMessage<int>("InternalOnPhysicsUpdate", 0);
-			top->BroadcastMessage<int>("InternalOnRenderUpdate", 0);
-			top->BroadcastMessage<int>("InternalOnRenderUpdate", 1);
-			top->BroadcastMessage<int>("InternalOnRenderUpdate", 2);
+			//GameObject * top = m_SceneGraph.m_Top;
+			//top->BroadcastMessage<int>("InternalOnPhysicsUpdate", 0);
+			//top->BroadcastMessage<int>("InternalOnRenderUpdate", 0);
+			//top->BroadcastMessage<int>("InternalOnRenderUpdate", 1);
+			//top->BroadcastMessage<int>("InternalOnRenderUpdate", 2);
 		}
 		void Scene::PreRender()
 		{
-			GameObject * top = m_SceneGraph.m_Top;
-			top->BroadcastMessage<int>("InternalOnRenderUpdate", 0);
+            m_SceneMap.Foreach(PRE_RENDER_FUNC);
 		}
 		void Scene::Render()
 		{
-			GameObject * top = m_SceneGraph.m_Top;
-			top->BroadcastMessage<int>("InternalOnRenderUpdate", 1);
+            m_SceneMap.Foreach(RENDER_FUNC);
 		}
 		void Scene::PostRender()
 		{
-			GameObject * top = m_SceneGraph.m_Top;
-			top->BroadcastMessage<int>("InternalOnRenderUpdate", 2);
+            m_SceneMap.Foreach(POST_RENDER_FUNC);
 		}
 
 		

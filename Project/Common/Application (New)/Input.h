@@ -23,12 +23,12 @@
 
 namespace Gem
 {
-	FORCE_EXPORT_META(Input);
-	FORCE_EXPORT(Array<InputState>);
-	FORCE_EXPORT(std::vector<InputAxis*>);
-	FORCE_EXPORT(std::vector<InputButton*>);
+	//FORCE_EXPORT_META(Input);
+	//FORCE_EXPORT(Array<InputState>);
+	//FORCE_EXPORT(std::vector<InputAxis*>);
+	//FORCE_EXPORT(std::vector<InputButton*>);
 
-	class GEM_API Input : public object
+	class Input : public object
 	{
 		RDECLARE_CLASS(Input)
 	public:
@@ -166,6 +166,29 @@ namespace Gem
 		*/
 		static bool GetButtonUp(const std::string & aName);
 
+        /**
+        * Returns the current character being pressed down.
+        * @returns Returns a unicode value of the character being pressed down. A value of 0 means nothing is being pressed down.
+        */
+        static UInt32 GetCurrentCharacter()
+        {
+            return GetInstance()->m_CurrentCharacter;
+        }
+
+        /**
+        * This method gets the state of a key.
+        * @param aKeyCode The Keycode to query the state of.
+        * @return Returns the state of the keycode.
+        */
+        static InputState QueryState(KeyCode aKeyCode)
+        {
+            if (s_Instance == nullptr || (SInt32)aKeyCode > s_Instance->m_KeyStates.GetCount())
+            {
+                return InputState::InvalidEnum();
+            }
+            return GetInstance()->m_KeyStates[(SInt32)aKeyCode];
+        }
+
 	private:
 		static Input * s_Instance;
 		Input();
@@ -182,14 +205,60 @@ namespace Gem
 		std::vector<InputAxis*> m_InputAxis;
 		/** The input buttons' to manage*/
 		std::vector<InputButton*> m_InputButtons;
+        /** The current key pressed down this frame.*/
+        UInt32 m_CurrentCharacter;
+        /** Whether or not the current key should be recorded.*/
+        bool m_IsListeningForCharacter;
 		//Internal methods.
 
+        /**
+        * Processes a key when pressed down.
+        * @param aKey The keycode to process.
+        */
 		void ProcessKeyDown(KeyCode aKey);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessKeyDown)
+        /**
+        * Processes a key when released.
+        * @param aKey The keycode to process.
+        */
 		void ProcessKeyUp(KeyCode aKey);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessKeyUp)
+        /**
+        * Processes a mouse button when pressed down.
+        * @param aButton The button to process.
+        */
 		void ProcessMouseDown(MouseButton aButton);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessMouseDown)
+        /**
+        * Processes a mouse button when released.
+        * @param aButton The button to process.
+        */
 		void ProcessMouseUp(MouseButton aButton);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessMouseUp)
+        /**
+        * Processes a mouse action for movement.
+        * @param x The x position of the mouse.
+        * @param y The y position of the mouse.
+        */
 		void ProcessMouseMove(Float32 x, Float32 y);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessMouseMove)
+        /**
+        * Processes a mouse scrolling event.
+        * @param aAxis the y axis of the mouse scroll wheel.
+        */
 		void ProcessMouseScroll(Float32 aAxis);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessMouseScroll)
+        /**
+        * Processes a character for a single frame. This method is ignored if 
+        * @param aCharacter The character to process.
+        */
+        void ProcessChar(UInt32 aCharacter);
+        RDECLARE_PRIVATE_FUNCTION(Input, ProcessChar)
+
+        /**
+        * Makes input listen for a key press then records it for the frame.
+        */
+        void ListenForFirstKey();
 		void Update();
 
 

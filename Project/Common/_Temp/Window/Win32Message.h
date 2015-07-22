@@ -1,5 +1,5 @@
-#ifndef GEM_APPLICATION_TYPE_H
-#define GEM_APPLICATION_TYPE_H
+#ifndef GEM_WIN32_MESSAGE_H
+#define GEM_WIN32_MESSAGE_H
 
 //============================================================
 // Date:			May,	12,		2015
@@ -17,28 +17,35 @@ namespace Gem
 	/**
 	* Export the type.
 	*/
-	class ApplicationType;
-	template class GEM_API Gem::Reflection::MetaObject<ApplicationType>;
+	class Win32Message;
+	template class GEM_API Reflection::MetaObject<Win32Message>;
 
 	/**
 	* Specify's the type of application there are.
 	*/
-	class GEM_API ApplicationType : public Enum
+	class Win32Message : public Enum
 	{
 	public:
-		enum GEM_API Values
+		enum Values
 		{
-			Invalid,
-			Console,
-			Window,
+			Resize,
+			Destroy,
+			Active,
+			KeyDown,
+			KeyUp,
+			MouseDown,
+			MouseUp,
+			MouseMove,
+			MouseWheel,
+			Invalid
 		};
-		RDECLARE_ENUM(ApplicationType)
-		RENUM_H(ApplicationType,Values, Values::Window + 1)
+		RDECLARE_ENUM(Win32Message)
+		RENUM_H(Win32Message, Values, Values::Invalid + 1)
 	//private:
-	//	static const std::string NAMES[Values::Window + 1];
+	//	static const std::string NAMES[Values::Invalid + 1];
 	};
 
-	TYPE_DEFINE(ApplicationType)
+	TYPE_DEFINE(Win32Message)
 }
 
 #endif

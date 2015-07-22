@@ -1,54 +1,52 @@
-#include <stdlib.h>
-#include <utility>
-#include <memory>
-#include <chrono>
-#include <iostream>
 #include "../../Common/Engine.h"
-#include "../../Common/Gameplay/AppHandler.h"
+#include <glew-1.10.0\include\GL\glew.h>
+#include <GLFW_3.0.4\include\GLFW\glfw3.h>
 #include <Windows.h>
-#include <functional>
+
 
 using namespace Gem;
 
-int Hash(int v)
-{
-	v = v << 10;
-	v = v ^ 6;
-	return v;
-}
-
-int Hash(const std::string & aString)
-{
-	int n = 0;
-
-	for (int i = 0; i < aString.size(); i++)
-	{
-		n += aString[i];
-	}
-
-
-	return n / aString.size();
-}
-
-
-
 int WINAPI WinMain(HINSTANCE aCurrentInstance, HINSTANCE aPreviousInstance, LPSTR aCommandLineArgs, int aShowCommand)
 {
+    return Application::Execute();
+    ////Create an application
+    //GLFWwindow* window;
+    //if (!glfwInit())
+    //{
+    //    return EXIT_FAILURE;
+    //}
+    //
+    //window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    //if (!window)
+    //{
+    //    glfwTerminate();
+    //    return EXIT_FAILURE;
+    //}
+    //
+    //glfwMakeContextCurrent(window);
+    //
+    //while (!glfwWindowShouldClose(window))
+    //{
+    //    glfwSwapBuffers(window);
+    //    glfwPollEvents();
+    //}
+    //
+    //glfwTerminate();
 
-	try
-	{
-		int code = Gem::Application::Execute(
-			"Test App", 
-			Gem::ApplicationType::Window, 
-			aCurrentInstance, 
-			new AppHandler() );
-		system("pause");
-		return code;
-	}
-	catch (...)
-	{
-		MessageBox(NULL, "Failed", "Error", MB_OK | MB_ICONEXCLAMATION);
-	}
-	system("pause");
-	return EXIT_FAILURE;
+
+	//try
+	//{
+	//	int code = Gem::Application::Execute(
+	//		"Test App", 
+	//		Gem::ApplicationType::Window, 
+	//		aCurrentInstance, 
+	//		new AppHandler() );
+	//	system("pause");
+	//	return code;
+	//}
+	//catch (...)
+	//{
+	//	MessageBox(NULL, "Failed", "Error", MB_OK | MB_ICONEXCLAMATION);
+	//}
+	//system("pause");
 }

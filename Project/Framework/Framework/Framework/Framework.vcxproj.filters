@@ -44,6 +44,9 @@
     <Filter Include="API\Window\Errors">
       <UniqueIdentifier>{d6bcaff3-f26a-4c6a-825f-2a08361b16b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API\Testing %28Temp%29">
+      <UniqueIdentifier>{2394a33c-3187-4405-924b-7ab26c805e63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\Core\Debug.h">
@@ -430,6 +433,9 @@
     <ClInclude Include="..\..\..\Common\Window\Errors\WindowErrors.h">
       <Filter>API\Window\Errors</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\Gameplay\AppHandler.h">
+      <Filter>API\Testing %28Temp%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Common\Core\Debug.cpp">
@@ -668,6 +674,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Common\Core\CoreConstants.cpp">
       <Filter>API\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Gameplay\AppHandler.cpp">
+      <Filter>API\Testing %28Temp%29</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GemTest\GemTest\main.cpp">
+      <Filter>API\Testing %28Temp%29</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

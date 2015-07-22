@@ -50,10 +50,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GEM_FRAMEWORK_IMPORT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\..\Common\Libraries\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(ProjectDir)..\..\Builds\Framework\Gem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)..\..\Builds\Framework\GemCore.lib;$(ProjectDir)..\..\Common\Libraries\GLFW_3.0.4\lib\glfw3dll.lib;$(ProjectDir)..\..\Common\Libraries\glew-1.10.0\lib\glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -61,8 +63,8 @@
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /y "$(TargetDir)..\Framework_Lib\*.dll" "$(TargetDir)"
-xcopy /y "$(TargetDir)..\Framework_Lib\*.lib" "$(TargetDir)"</Command>
+      <Command>xcopy /y "$(TargetDir)..\Framework_Core\*.dll" "$(TargetDir)"
+xcopy /y "$(TargetDir)..\Framework_Core\*.lib" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,14 +82,28 @@ xcopy /y "$(TargetDir)..\Framework_Lib\*.lib" "$(TargetDir)"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Common\Gameplay\AppHandler.cpp" />
-    <ClCompile Include="..\..\Common\Gameplay\ComponentZero.cpp" />
+    <ClCompile Include="..\..\Common\Application %28New%29\BaseWindow.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\Application.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\Input.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\InputAxis.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\InputButton.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\InputDevice.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\InputDeviceType.cpp" />
+    <ClCompile Include="..\..\Common\Application (New)\InputState.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\Application (New)\Application.h" />
+    <ClInclude Include="..\..\Common\Application %28New%29\BaseWindow.h" />
+    <ClInclude Include="..\..\Common\Application (New)\Input.h" />
+    <ClInclude Include="..\..\Common\Application (New)\InputAxis.h" />
+    <ClInclude Include="..\..\Common\Application (New)\InputButton.h" />
+    <ClInclude Include="..\..\Common\Application (New)\InputDevice.h" />
+    <ClInclude Include="..\..\Common\Application (New)\InputDeviceType.h" />
+    <ClInclude Include="..\..\Common\Application (New)\InputState.h" />
+    <ClInclude Include="..\..\Common\Application (New)\KeyCode.h" />
+    <ClInclude Include="..\..\Common\Application (New)\MouseButton.h" />
     <ClInclude Include="..\..\Common\Engine.h" />
-    <ClInclude Include="..\..\Common\Gameplay\AppHandler.h" />
-    <ClInclude Include="..\..\Common\Gameplay\ComponentZero.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

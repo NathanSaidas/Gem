@@ -9,7 +9,7 @@
 #pragma warning ( disable : 4018)
 #pragma warning ( disable : 4244)
 
-#include "Graphics\Graphics.h"
+//#include "Graphics\Graphics.h"
 #include "Core\Core.h"
 #include "Core\CoreConstants.h"
 #include "Core\Errors\CoreErrors.h"
@@ -19,16 +19,18 @@
 #include "Memory\Memory.h"
 #include "Reflection\Reflection.h"
 #include "Math\Math.h"
-#include "Application\Application.h"
-#include "Application\Input.h"
+#include "Application (New)\Application.h"
+#include "Application (New)\Input.h"
+//#include "Application\Application.h"
+//#include "Application\Input.h"
 //Window
-#include "Window\Window.h"
-#include "Window\Win32Window.h"
-#include "Window\Win32Message.h"
+//#include "Window\Window.h"
+//#include "Window\Win32Window.h"
+//#include "Window\Win32Message.h"
 //Utils
 #include "Utilities\Utilities.h"
-#include "EntityComponent\EntityComponent.h"
-#include "Resource\ResourceDatabase.h"
+//#include "EntityComponent\EntityComponent.h"
+//#include "Resource\ResourceDatabase.h"
 
 
 //Namespaces Used.

@@ -5,6 +5,10 @@
 #include <Windows.h>
 #include "Input.h"
 
+#include "..\Window\Window.h"
+#include "..\Window\Win32Window.h"
+#include "..\Window\Win32Message.h"
+
 
 
 using namespace Gem::Debugging;
@@ -19,8 +23,8 @@ namespace Gem
 
 	Application::Application()
 		: m_DefaultWindow(nullptr),
-		m_ShouldQuit(false),
-		m_CurrentScene(nullptr)
+		m_ShouldQuit(false)//,
+		//m_CurrentScene(nullptr)
 	{
 
 	}
@@ -145,10 +149,10 @@ namespace Gem
 		}
 	}
 
-	Scene * Application::GetCurrentScene()
-	{
-		return s_Instance != nullptr ? s_Instance->m_CurrentScene : nullptr;
-	}
+	//Scene * Application::GetCurrentScene()
+	//{
+	//	return s_Instance != nullptr ? s_Instance->m_CurrentScene : nullptr;
+	//}
 
 	Window * Application::GetDefaultWindow()
 	{
@@ -167,12 +171,8 @@ namespace Gem
 		thread->Start(aCallback);
 	}
 
-#ifdef _WIN32
-#ifdef CreateWindow
-#undef CreateWindow
-#endif
 
-	void Application::CreateWindow(const std::string & aName)
+	void Application::NewWindow(const std::string & aName)
 	{
 		if (s_Instance == nullptr)
 		{
@@ -190,11 +190,6 @@ namespace Gem
 
 #endif
 	}
-
-#ifdef _WIN32
-#define CreateWindow CreateWindowA
-#endif
-#endif
 
 	Window * Application::GetWindow(void * aHandle)
 	{
@@ -310,7 +305,7 @@ namespace Gem
 		win32Window->Open();
 
 		m_DefaultWindow = win32Window.Raw();
-		m_CurrentScene = MEM_POOL_ALLOC_T(Scene);
+		//m_CurrentScene = MEM_POOL_ALLOC_T(Scene);
 
 		//m_CurrentScene = MEM_POOL_ALLOC_T(Scene);
 
@@ -337,7 +332,7 @@ namespace Gem
 					m_AppHandler->Update();
 				}
 
-				m_CurrentScene->Update();
+				//m_CurrentScene->Update();
 
 
 				//Internal Post Update
@@ -349,7 +344,7 @@ namespace Gem
 		}
 		
 		win32Window->Close();
-		MEM_POOL_DEALLOC_T(m_CurrentScene, Scene);
+		//MEM_POOL_DEALLOC_T(m_CurrentScene, Scene);
 		win32Window.Terminate();
 		m_DefaultWindow = nullptr;
 		//MEM_POOL_DEALLOC_T(window, Win32Window);

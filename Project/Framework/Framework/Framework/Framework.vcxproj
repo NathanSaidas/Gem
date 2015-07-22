@@ -24,7 +24,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -87,9 +87,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\Common\Libraries</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GEM_FRAMEWORK_EXPORT;_DEBUG;_CRT_SECURE_NO_WARNINGS;GRAPHICS_OPEN_GL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)..\..\..\Common\Libraries\glew-1.10.0\lib\glew32.lib;opengl32.lib;Rpcrt4.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|Win32'">
@@ -185,6 +188,7 @@
     <ClInclude Include="..\..\..\Common\EntityComponent\InstructionTerm.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\SceneGraph.h" />
     <ClInclude Include="..\..\..\Common\EntityComponent\TestComponent.h" />
+    <ClInclude Include="..\..\..\Common\Gameplay\AppHandler.h" />
     <ClInclude Include="..\..\..\Common\Graphics\Color.h" />
     <ClInclude Include="..\..\..\Common\Graphics\DrawCall.h" />
     <ClInclude Include="..\..\..\Common\Graphics\Geometry.h" />
@@ -297,6 +301,7 @@
     <ClCompile Include="..\..\..\Common\EntityComponent\SceneFile.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\SceneGraph.cpp" />
     <ClCompile Include="..\..\..\Common\EntityComponent\TestComponent.cpp" />
+    <ClCompile Include="..\..\..\Common\Gameplay\AppHandler.cpp" />
     <ClCompile Include="..\..\..\Common\Graphics\Color.cpp" />
     <ClCompile Include="..\..\..\Common\Graphics\DrawCall.cpp" />
     <ClCompile Include="..\..\..\Common\Graphics\Geometry.cpp" />
@@ -340,6 +345,7 @@
     <ClCompile Include="..\..\..\Common\Window\Win32Message.cpp" />
     <ClCompile Include="..\..\..\Common\Window\Win32Window.cpp" />
     <ClCompile Include="..\..\..\Common\Window\Window.cpp" />
+    <ClCompile Include="..\..\..\GemTest\GemTest\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

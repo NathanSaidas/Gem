@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{f7244725-a468-4717-99f0-0d07bfcf66d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Memory">
+      <UniqueIdentifier>{062d3f89-72ee-4aba-b904-7a1cc3cb51bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing">
+      <UniqueIdentifier>{b73f081d-deac-4609-9b29-668911ebb939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Core">
+      <UniqueIdentifier>{e6cd9cfb-3363-457a-aea8-cf099a48cfbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Core\Errors">
+      <UniqueIdentifier>{2a0686d7-85d6-41e8-83dc-f6913dbd5b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Utilities">
+      <UniqueIdentifier>{df4223e6-25c2-460e-848f-c100a616d015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Reflection">
+      <UniqueIdentifier>{c8a7c9f3-3efc-4e62-b699-6fc401d0e7b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Math">
+      <UniqueIdentifier>{d70c9e71-a8a6-4a89-9173-9397f68684aa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Memory\AllocationInfo.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\Allocator.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\AllocatorType.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\FrameAllocator.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\Instantiator.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\Memory.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\MemoryConfig.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\MemoryFlags.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\MemoryHeader.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\MemoryInfo.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\MemoryManager.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\MemoryUtils.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\Pointer.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\PoolAllocator.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Memory\StackAllocator.h">
+      <Filter>Framework\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\Attribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\AttributeBinder.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\BoolAttribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\FloatAttribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\FunctionAttribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\IntAttribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\Member.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\MemberAttribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\MemberFlags.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\MemberInfo.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\MetaObject.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\MetaObjectLinker.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\MethodInfo.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\Reflection.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\Runtime.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\StringAttribute.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Reflection\TypeTrait.h">
+      <Filter>Framework\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Engine.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\BasicTypes.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Core.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\CoreConstants.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Debug.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Enum.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Error.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\ErrorConstants.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Event.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Func.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\GemAPI.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Method.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Singleton.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Time.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Trace.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Type.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\ValueTypes.h">
+      <Filter>Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Errors\ArgumentNull.h">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Errors\CoreErrors.h">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Errors\FileNotFound.h">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Core\Errors\InvalidArgument.h">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Array.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\BinaryFormatter.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\CFileExtensions.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Directory.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Guid.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IFormatter.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IniFileStream.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IniSection.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IniVariables.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IniVector3.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\IniVector4.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\ISerializeable.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Stream.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\StringExtensions.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Thread.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Utilities\Utilities.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Math.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\MathTypes.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Matrix4x4.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Quaternion.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Vector2.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Vector3.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Math\Vector4.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Common\Memory\Allocator.cpp">
+      <Filter>Framework\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\FrameAllocator.cpp">
+      <Filter>Framework\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\MemoryHeader.cpp">
+      <Filter>Framework\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\MemoryManager.cpp">
+      <Filter>Framework\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\PoolAllocator.cpp">
+      <Filter>Framework\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Memory\StackAllocator.cpp">
+      <Filter>Framework\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\MemberInfo.cpp">
+      <Filter>Framework\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\MetaObjectLinker.cpp">
+      <Filter>Framework\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Reflection\Runtime.cpp">
+      <Filter>Framework\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\BasicTypes.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\CoreConstants.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Debug.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Enum.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Error.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\ErrorConstants.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Time.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Type.cpp">
+      <Filter>Framework\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Errors\ArgumentNull.cpp">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Errors\FileNotFound.cpp">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Core\Errors\InvalidArgument.cpp">
+      <Filter>Framework\Core\Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\BinaryFormatter.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\CFileExtensions.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\Directory.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\Guid.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\IFormatter.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\IniFileStream.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\IniSection.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\ISerializeable.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\Stream.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\StringExtensions.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\Thread.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Utilities\Utilities.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Matrix4x4.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Quaternion.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Vector2.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Vector3.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Math\Vector4.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

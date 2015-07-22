@@ -1,11 +1,22 @@
 #ifndef GEM_SCENE_H
 #define GEM_SCENE_H
 
-#include "../Core/GemAPI.h"
-#include "../Core/BasicTypes.h"
+//============================================================
+// Date:			July,	7,		2015
+// Description:		Defines the class for Scenes.
+//============================================================
+
+#pragma  region CHANGE LOG
+// -- Nathan Hanlan	- Changed forced exports to macros.
+#pragma endregion
+
+//STL
+#include <vector>
+
+#include "../Core/Core.h"
 #include "SceneGraph.h"
 #include "GameObjectMap.h"
-#include <vector>
+
 
 
 namespace Gem
@@ -16,11 +27,12 @@ namespace Gem
 	class Window;
 	class Graphics;
 
-	class Scene;
-	template class GEM_API Reflection::MetaObject<Scene>;
-
-	template class GEM_API std::vector<GameObject*>;
-
+    FORCE_EXPORT_META(Scene);
+    FORCE_EXPORT(std::vector<GameObject*>);
+    
+    /**
+    * 
+    */
 	class GEM_API Scene : public Object
 	{
 		RDECLARE_CLASS(Scene)
@@ -87,7 +99,7 @@ namespace Gem
 
 		friend Application;
 		friend Graphics;
-		friend class GameObject;
+		friend GameObject;
 		friend class SceneFile;
 
 

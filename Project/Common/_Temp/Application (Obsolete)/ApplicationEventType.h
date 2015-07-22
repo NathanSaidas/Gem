@@ -22,10 +22,10 @@ namespace Gem
 	/**
 	* Specify's the type of events there are for the Application Class.
 	*/
-	class GEM_API ApplicationEventType : public Enum
+	class ApplicationEventType : public Enum
 	{
 	public:
-		enum GEM_API Values
+		enum Values
 		{
 			Invalid,
 			OnStart,

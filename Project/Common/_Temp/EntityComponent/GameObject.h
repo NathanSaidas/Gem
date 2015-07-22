@@ -2,7 +2,9 @@
 #define GEM_GAME_OBJECT_H
 
 #pragma region CHANGE LOG
-///	-- April	3, 2015 - Nathan Hanlan - Removed IFormatter from GameObject class.
+// -- Nathan Hanlan - Removed IFormatter from GameObject class.
+// -- Nathan Hanlan - Cleaned up BroadcastMessage Method. If sending to component the broadcast will no longer send to the gameobject but rather directly to components.
+// -- Nathan Hanlan - Added SendMessage which will invoke a message on the specified GameObject.
 #pragma endregion
 
 #include "../Core/GemAPI.h"
@@ -154,9 +156,31 @@ namespace Gem
         Bounds GetBounds();
         void SetBounds(Bounds aBounds);
 
+        /**
+        * This method will invoke a method on the GameObject based on name using Reflection.
+        * @param aFunctionName The name of the method to invoke.
+        * @param args The list of arguments for the method.
+        */
+        template<typename ... ARGS>
+        void SendMessage(const std::string & aFunctionName, ARGS... args)
+        {
+            Type type = GetType();
+            Reflection::MethodInfo<GameObject, void, ARGS...>* method = dynamic_cast<Reflection::MethodInfo<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
+            if (method != nullptr)
+            {
+                method->GetMethod().Invoke(this, args...);
+            }
+        }
+
+        /**
+        * This method will invoke a method on the GameObject based on the name using Reflection. This method will then broadcast the message down to all children GameObjects.
+        * @param aFunctionName The name of the method to invoke.
+        * @param args The list of arguments for the method.
+        */
 		template<typename ... ARGS>
 		void BroadcastMessage(const std::string & aFunctionName, ARGS... args)
 		{
+            //Get the method and try to invoke it.
 			Type type = GetType();
 			Reflection::MethodInfo<GameObject, void, ARGS...> * method = dynamic_cast<Reflection::MethodInfo<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
 			if (method != nullptr)
@@ -164,24 +188,25 @@ namespace Gem
 				method->GetMethod().Invoke(this, args...);
 			}
 
-			//for (std::vector<GameObject*>::iterator it = m_Children.begin(); it != m_Children.end(); it++)
-			//{
-			//	(*it)->BroadcastMessage<ARGS...>(aFunctionName, args...);
-			//}
+            //Broadcast the message to all other components.
+            for (std::vector<GameObject*>::iterator it = m_Children.begin(); it != m_Children.end(); it++)
+            {
+                (*it)->BroadcastMessage<ARGS...>(aFunctionName, args...);
+            }
 		}
 
+
+        /**
+        * This method will invoke a method on the GameObject based on the name using Reflection. This method will then broadcast the message down to all children GameObjects.
+        * @param aFunctionName The name of the method to invoke.
+        * @param aSendComponents Whether or not the message should be sent directly to components or not.
+        * @param args The list of arguments for the method.
+        */
 		template<typename ... ARGS>
 		void BroadcastMessage(const std::string & aFunctionName, bool aSendComponents, ARGS... args)
 		{
 			if (aSendComponents)
 			{
-				Type type = GetType();
-				Reflection::MethodInfo<GameObject, void, ARGS...> * method = dynamic_cast<Reflection::MethodInfo<GameObject, void, ARGS...>*>(type.GetMethodInfo(aFunctionName));
-				if (method != nullptr)
-				{
-					method->GetMethod().Invoke(this, args...);
-				}
-
 				for (std::vector<Component*>::iterator it = m_Components.begin(); it != m_Components.end(); it++)
 				{
 					(*it)->SendMessage<Component, ARGS...>(aFunctionName, args...);

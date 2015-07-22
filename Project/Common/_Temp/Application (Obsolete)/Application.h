@@ -40,8 +40,7 @@ namespace Gem
 	/**
 	* Export Application Meta data.
 	*/
-	class Application;
-	template class GEM_API Reflection::MetaObject<Application>;
+    FORCE_EXPORT_META(Application);
 
 	/**
 	* Export ApplicationEvent type.
@@ -50,7 +49,7 @@ namespace Gem
 	
 	
 
-	class Scene;
+	//class Scene;
 
 	template class GEM_API std::vector<Pointer<Thread>>;
 	template class GEM_API std::vector<Pointer<Window>>;
@@ -61,7 +60,7 @@ namespace Gem
 	* Call RegisterEvent to register for events ahead of time before calling Execute.
 	* It's not necessary to UnregisterEvents the memory is all managed.
 	*/
-	class GEM_API Application : public object
+	class Application : public object
 	{
 		//Declare class meta data.
 		RDECLARE_CLASS(Application)
@@ -115,7 +114,7 @@ namespace Gem
 		static void Quit();
 
 
-		static Scene * GetCurrentScene();
+		//static Scene * GetCurrentScene();
 		
 
 		//Thread Management
@@ -128,7 +127,7 @@ namespace Gem
 		/**
 		* Creates a window with the given name [untested].
 		*/
-		static void CreateWindow(const std::string & aName);
+		static void NewWindow(const std::string & aName);
 		/**
 		* Gets the window with the matching handle. (On Windows this is the equiv of the Win32Window::m_WindowHandle)
 		*/
@@ -197,7 +196,7 @@ namespace Gem
 		/** This will handle all application events. */
 		BaseAppHandler * m_AppHandler;
 
-		Scene * m_CurrentScene;
+		//Scene * m_CurrentScene;
 	
 
 		/**

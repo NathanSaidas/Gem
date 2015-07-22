@@ -187,7 +187,7 @@ namespace Gem
 		* @param MEMBER_TYPE The type name of the member being reflected.
 		*/
 #define RDEFINE_PROTECTED_MEMBER(TYPE,MEMBER,MEMBER_TYPE)																																			\
-	const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Protected);    \
+	    const Gem::Reflection::MetaObject<TYPE> & TYPE::HIDDEN_ ## MEMBER = Gem::Reflection::MetaObject<TYPE>::DeclareMemberType(#TYPE, #MEMBER, offsetof(TYPE, MEMBER), #MEMBER_TYPE, Gem::Reflection::MemberFlags::Protected);    \
 
 		/**
 		* Declare a meta object for a private reflected member.
