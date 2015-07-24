@@ -16,13 +16,13 @@
 
 namespace Gem
 {
-	const static string INI_BOOL = "Inibool";
-	const static string INI_INT = "Iniint";
-	const static string INI_FLOAT = "Inifloat";
-	const static string INI_STRING = "Inistring";
-	const static string INI_VECTOR_3 = "IniVector3";
-	const static string INI_VECTOR_4 = "IniVector4";
-	const static string INI_BAD_VARIABLE_NAME = "BAD_NAME";
+	const static std::string INI_BOOL = "Inibool";
+	const static std::string INI_INT = "Iniint";
+	const static std::string INI_FLOAT = "Inifloat";
+	const static std::string INI_STRING = "Inistring";
+	const static std::string INI_VECTOR_3 = "IniVector3";
+	const static std::string INI_VECTOR_4 = "IniVector4";
+	const static std::string INI_BAD_VARIABLE_NAME = "BAD_NAME";
 
 
 	/// <summary>
@@ -41,19 +41,19 @@ namespace Gem
 		{
 			m_VariableName = "";
 			memset(&m_Value, 0, sizeof(TYPE));
-			SetName(string("Ini").append(Reflection::TypeTrait<TYPE>::Name()));
+            SetName(std::string("Ini").append(Reflection::TypeTrait<TYPE>::Name()));
 		}
-		IniVariable(const string & aVariableName) : Object()
+        IniVariable(const std::string & aVariableName) : Object()
 		{
 			m_VariableName = aVariableName;
 			memset(&m_Value, 0, sizeof(TYPE));
-			SetName(string("Ini").append(Reflection::TypeTrait<TYPE>::Name()));
+            SetName(std::string("Ini").append(Reflection::TypeTrait<TYPE>::Name()));
 		}
-		IniVariable(const char * aVariableName) : Object()
+		IniVariable(CString aVariableName) : Object()
 		{
 			m_VariableName = aVariableName;
 			memset(&m_Value, 0, sizeof(TYPE));
-			SetName(string("Ini").append(Reflection::TypeTrait<TYPE>::Name()));
+            SetName(std::string("Ini").append(Reflection::TypeTrait<TYPE>::Name()));
 		}
 		~IniVariable()
 		{
@@ -63,7 +63,7 @@ namespace Gem
 		/// Gets the variable name.
 		/// </summary>
 		/// <returns> Returns the variable name </returns>
-		string GetVariableName()
+        std::string GetVariableName()
 		{
 			return m_VariableName;
 		}
@@ -71,7 +71,7 @@ namespace Gem
 		/// Sets the variable name
 		/// </summary>
 		/// <param name="aVariableName">The name of the variable.</param>
-		void SetVariableName(const string & aVariableName)
+        void SetVariableName(const std::string & aVariableName)
 		{
 			m_VariableName = aVariableName;
 		}
@@ -79,7 +79,7 @@ namespace Gem
 		/// Sets the variable name
 		/// </summary>
 		/// <param name="aVariableName">The name of the variable.</param>
-		void SetVariableName(const char * aVariableName)
+		void SetVariableName(CString aVariableName)
 		{
 			m_VariableName = aVariableName;
 		}
@@ -116,13 +116,13 @@ namespace Gem
 		/// Override the object.ToString() method to a string representation of the type name variable name and value
 		/// </summary>
 		/// <returns> Returns the variable value </returns>
-		string ToString()
+        std::string ToString()
 		{
 			//Format ex. type_name variable_name = value
 			//Example: int points = 64
 
 			const char * typeName = Reflection::TypeTrait<TYPE>::Name();
-			string value = "";
+            std::string value = "";
 
 			//Is int type
 			if (strcmp(typeName, Reflection::TypeTrait<int>::Name()) == 0 ||
@@ -197,7 +197,7 @@ namespace Gem
 				}
 			}
 			//As string values
-			else if (strcmp(typeName, Reflection::TypeTrait<string>::Name()) == 0)
+            else if (strcmp(typeName, Reflection::TypeTrait<std::string>::Name()) == 0)
 			{
 				value = m_Value;
 			}
@@ -208,14 +208,14 @@ namespace Gem
 				return "";
 			}
 			//Return a copy of the string with the proper format.
-			return string(typeName).append(" ").append(m_VariableName).append(" = ").append(value);;
+            return std::string(typeName).append(" ").append(m_VariableName).append(" = ").append(value);;
 		}
 
 	private:
 		/// <summary>
 		/// The name of the variable
 		/// </summary>
-		string m_VariableName;
+        std::string m_VariableName;
 		/// <summary>
 		/// The value of the variable.
 		/// </summary>
@@ -226,9 +226,9 @@ namespace Gem
 	// The supported variable types.
 
 	typedef IniVariable<bool> IniBool;
-	typedef IniVariable<int> IniInt;
-	typedef IniVariable<float> IniFloat;
-	typedef IniVariable<string> IniString;
+	typedef IniVariable<SInt32> IniInt;
+	typedef IniVariable<Float32> IniFloat;
+	typedef IniVariable<std::string> IniString;
 
 	template class GEM_API Reflection::MetaObject<IniBool>;
 	template class GEM_API Reflection::MetaObject<IniInt>;

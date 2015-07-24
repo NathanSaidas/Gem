@@ -41,6 +41,7 @@ namespace Gem
         */
         static SInt32 Execute();
         static bool ShouldWindowClose(BaseWindow* aWindow);
+        static BaseWindow* GetMainWindow();
 
         static Application* GetInstance();
         static void Terminate();

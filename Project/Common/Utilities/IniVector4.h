@@ -15,17 +15,17 @@ namespace Gem
 		IniVariable() : Object()
 		{
 			m_VariableName = "";
-			SetName(string("Ini").append(Reflection::TypeTrait<Vector4>::Name()));
+			SetName(std::string("Ini").append(Reflection::TypeTrait<Vector4>::Name()));
 		}
-		IniVariable(const string & aVariableName) : Object()
+        IniVariable(const std::string & aVariableName) : Object()
 		{
 			m_VariableName = aVariableName;
-			SetName(string("Ini").append(Reflection::TypeTrait<Vector4>::Name()));
+			SetName(std::string("Ini").append(Reflection::TypeTrait<Vector4>::Name()));
 		}
 		IniVariable(const char * aVariableName) : Object()
 		{
 			m_VariableName = aVariableName;
-			SetName(string("Ini").append(Reflection::TypeTrait<Vector4>::Name()));
+			SetName(std::string("Ini").append(Reflection::TypeTrait<Vector4>::Name()));
 		}
 		~IniVariable()
 		{
@@ -35,7 +35,7 @@ namespace Gem
 		/// Gets the variable name.
 		/// </summary>
 		/// <returns> Returns the variable name </returns>
-		string GetVariableName()
+		std::string GetVariableName()
 		{
 			return m_VariableName;
 		}
@@ -43,7 +43,7 @@ namespace Gem
 		/// Sets the variable name
 		/// </summary>
 		/// <param name="aVariableName">The name of the variable.</param>
-		void SetVariableName(const string & aVariableName)
+        void SetVariableName(const std::string & aVariableName)
 		{
 			m_VariableName = aVariableName;
 		}
@@ -88,13 +88,13 @@ namespace Gem
 		/// Override the object.ToString() method to a string representation of the type name variable name and value
 		/// </summary>
 		/// <returns> Returns the variable value </returns>
-		string ToString()
+        std::string ToString()
 		{
 			//Format ex. type_name variable_name = value
 			//Example: int points = 64
 
 			const char * typeName = Reflection::TypeTrait<Vector4>::Name();
-			string value = "";
+            std::string value = "";
 
 			if (strcmp(typeName, Reflection::TypeTrait<Vector4>::Name()) == 0)
 			{
@@ -115,14 +115,14 @@ namespace Gem
 				return "";
 			}
 			//Return a copy of the string with the proper format.
-			return string(typeName).append(" ").append(m_VariableName).append(" = ").append(value);
+            return std::string(typeName).append(" ").append(m_VariableName).append(" = ").append(value);
 		}
 
 	private:
 		/// <summary>
 		/// The name of the variable
 		/// </summary>
-		string m_VariableName;
+        std::string m_VariableName;
 		/// <summary>
 		/// The value of the variable.
 		/// </summary>

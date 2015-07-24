@@ -33,12 +33,13 @@ namespace Gem
 			}
 
 			/**
-			* @param aArgumentName The name of the scene graph variable that is not initialized.
-			* @param aErrorCode The error code that represents this error.
+			* @param aArgumentName The variable name of the invalid argument.
+			* @param aFilename The name of the file that was not found.
+            * @param aErrorCode The error code that represents this error.
 			* @param aTrace The file trace of where this error occured.
 			* @param aMethodFullname The full name of the method of where this error occured.
 			*/
-			FileNotFound(CString aArgumentName, const Trace aErrorTrace, CString aMethodFullName)
+			FileNotFound(CString aArgumentName, CString aFilename, const Trace aErrorTrace, CString aMethodFullName)
 				: Error("File was not found.", ErrorConstants::FileNotFound, aErrorTrace, aMethodFullName),
 				m_ArgumentName(aArgumentName)
 			{
@@ -54,13 +55,19 @@ namespace Gem
 			/**
 			* The name of the argument that is null.
 			*/
-			const char * GetArgumentName() const
+			CString GetArgumentName() const
 			{
 				return m_ArgumentName;
 			}
 
+            CString GetFilename() const
+            {
+                return m_Filename;
+            }
+
 		private:
-			const char * m_ArgumentName;
+			CString m_ArgumentName;
+            CString m_Filename;
 
 		};
 

@@ -24,7 +24,7 @@ namespace Gem
 	//This class is designed to keep track of references to a pointer. 
 	//
 	template<typename TYPE>
-	class GEM_API Pointer
+	class Pointer
 	{
 	public:
 		///Default Constructor will allocate a instance of the TYPE and set the reference count to 1.

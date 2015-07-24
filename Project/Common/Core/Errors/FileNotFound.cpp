@@ -9,9 +9,10 @@ namespace Gem
 
 		void FileNotFound::Log(CString aHeader)
 		{
-			Debug::LogFormat(aHeader, nullptr, "Error[%d]: %s %s at %s\nFile: %s\nLine%d",
+			Debug::LogFormat(aHeader, nullptr, "Error[%d]: %s (%s) %s at %s\nFile: %s\nLine%d",
 				GetErrorCode(),
 				GetErrorString(),
+                GetFilename(),
 				GetArgumentName(),
 				GetMethodFullName(),
 				GetErrorTrace().filename,

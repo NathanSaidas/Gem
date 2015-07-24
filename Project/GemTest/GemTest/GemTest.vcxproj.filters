@@ -11,8 +11,14 @@
     <Filter Include="Source Files\Gameplay">
       <UniqueIdentifier>{f5b57beb-e170-43b2-b37f-8faaf666a402}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Application">
+    <Filter Include="Source Files\Gem\Graphics">
+      <UniqueIdentifier>{f6d8cd4f-6405-4641-9d52-ea7022161706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gem\Application">
       <UniqueIdentifier>{bd89d0e0-efa8-4f18-8350-5464ae56821c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gem\Resources">
+      <UniqueIdentifier>{d06ccd96-9558-4714-8634-e72e80533df1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -20,28 +26,40 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application %28New%29\BaseWindow.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\Application.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\Input.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\InputAxis.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\InputButton.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\InputDevice.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\InputDeviceType.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\Application (New)\InputState.cpp">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Graphics\Color.cpp">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Graphics\Shader.cpp">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Graphics\Mesh.cpp">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Graphics\Geometry.cpp">
+      <Filter>Source Files\Gem\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,34 +67,52 @@
       <Filter>Source Files\Gem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\Application.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application %28New%29\BaseWindow.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\Input.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\InputAxis.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\InputButton.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\InputDevice.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\InputDeviceType.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\InputState.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\KeyCode.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\Application (New)\MouseButton.h">
-      <Filter>Source Files\Application</Filter>
+      <Filter>Source Files\Gem\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Graphics\GraphicEnums.h">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Graphics\Color.h">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Graphics\Shader.h">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Graphics\Mesh.h">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Graphics\VertexAttributes.h">
+      <Filter>Source Files\Gem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Graphics\Geometry.h">
+      <Filter>Source Files\Gem\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

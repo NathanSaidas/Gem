@@ -8,7 +8,7 @@ namespace Gem
 {
 	namespace Utilities
 	{
-		void GetWords(std::string aString, std::vector<std::string> & aWords);
+		GEM_API void GetWords(std::string aString, std::vector<std::string> & aWords);
 		std::string F2S(Float32 aValue);
 		std::string I2S(SInt32 aValue);
 		std::string UI2S(UInt32 aValue);

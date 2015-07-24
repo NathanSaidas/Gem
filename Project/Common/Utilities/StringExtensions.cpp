@@ -16,7 +16,7 @@ namespace Gem
 					if (aString[i] == ' ')
 					{
 						end = i;
-						string word = aString.substr(0, end);
+                        std::string word = aString.substr(0, end);
 						aString.erase(aString.begin(), aString.begin() + end + 1);
 						aWords.push_back(word);
 						break;
@@ -24,7 +24,7 @@ namespace Gem
 					else if (i == aString.size() - 1)
 					{
 						end = i;
-						string word = aString.substr(0, end + 1);
+                        std::string word = aString.substr(0, end + 1);
 						aString.clear();
 						aWords.push_back(word);
 						break;

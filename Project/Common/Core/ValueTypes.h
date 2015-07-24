@@ -31,7 +31,7 @@ namespace Gem
 	typedef char *				String;
 	typedef const char *		CString;
 
-    typedef std::string string;
+    //typedef std::string string;
 }
 
 #endif

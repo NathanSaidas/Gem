@@ -21,6 +21,7 @@
 #include "Math\Math.h"
 #include "Application (New)\Application.h"
 #include "Application (New)\Input.h"
+#include "Application (New)\BaseWindow.h"
 //#include "Application\Application.h"
 //#include "Application\Input.h"
 //Window

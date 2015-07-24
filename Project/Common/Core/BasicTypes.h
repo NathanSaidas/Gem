@@ -36,7 +36,7 @@ namespace Gem
 		~Object();
 
 		RDECLARE_PUBLIC_FUNCTION(Object, GetName)
-		string GetName();
+		std::string GetName();
 		RDECLARE_PUBLIC_FUNCTION(Object, SetName)
 		void SetName(const std::string & aName);
 		void SetName(const char * aName);
