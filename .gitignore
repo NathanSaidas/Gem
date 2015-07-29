@@ -1,3 +1,5 @@
 /Project/Common/Libraries
 /Project/Builds
 .sdf
+*.sdf
+*.opensdf

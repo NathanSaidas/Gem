@@ -151,9 +151,9 @@ namespace Gem
 			m_ShaderHandleLoaded = true;
 
 			//TODO(Nathan): Extract Shader Variables
-			glUseProgram(m_ShaderHandle);
-			glBindFragDataLocation(m_ShaderHandle, 0, "v_FragColor");
-			glUseProgram(0);
+			//glUseProgram(m_ShaderHandle);
+			//glBindFragDataLocation(m_ShaderHandle, 0, "v_FragColor");
+			//glUseProgram(0);
 			//Graphics::CheckForGLErrors(__FILE__, __LINE__);
 		}
         //Else Successful Shader Compile

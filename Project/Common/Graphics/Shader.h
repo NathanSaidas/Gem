@@ -59,6 +59,7 @@ namespace Gem
         std::string m_VertexShaderSource;
         std::string m_FragmentShaderSource;
         std::string m_GeometryShaderSource;
+    
 
         bool m_VertexShaderLoaded;
         bool m_FragmentShaderLoaded;
